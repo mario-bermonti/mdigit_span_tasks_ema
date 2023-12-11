@@ -2,14 +2,14 @@ import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class TaskListView extends StatefulWidget {
+  const TaskListView({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<TaskListView> createState() => _TaskListViewState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _TaskListViewState extends State<TaskListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

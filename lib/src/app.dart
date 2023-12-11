@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'digit_span_tasks/digit_span_tasks_view.dart';
+import 'digit_span_tasks/task_list_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'DigitSpanTasks',
-      home: const MyHomePage(),
+      home: const TaskListView(),
       theme: ThemeData(primarySwatch: Colors.grey),
     );
   }
