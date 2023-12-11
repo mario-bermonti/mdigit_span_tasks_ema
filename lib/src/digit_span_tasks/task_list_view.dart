@@ -1,7 +1,6 @@
-import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
+import 'run_dsb.dart';
 import 'run_dsf.dart';
 
 class TaskListView extends StatefulWidget {
@@ -39,17 +38,5 @@ class _TaskListViewState extends State<TaskListView> {
       ),
       backgroundColor: Colors.grey[300],
     );
-  }
-
-  void runDigitSpanBackwards() async {
-    UserConfig config = UserConfig(
-      stimListPractice: ['23', '567'],
-      stimListExperimental: ['0123', '45678', '901234'],
-    );
-    DigitSpanTasksData data = await Get.to(() => DigitSpanBackwards(
-          config: config,
-        ));
-    // ignore: avoid_print
-    print('\n\n\nBAKWARDS data \n $data');
   }
 }
