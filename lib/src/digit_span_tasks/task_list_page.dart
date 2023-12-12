@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'run_dsb.dart';
 import 'run_dsf.dart';
 
-class TaskListView extends StatefulWidget {
-  const TaskListView({super.key});
+class TaskListPage extends StatefulWidget {
+  const TaskListPage({super.key});
 
   @override
-  State<TaskListView> createState() => _TaskListViewState();
+  State<TaskListPage> createState() => _TaskListPageState();
 }
 
-class _TaskListViewState extends State<TaskListView> {
+class _TaskListPageState extends State<TaskListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
