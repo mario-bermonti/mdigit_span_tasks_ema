@@ -1,7 +1,7 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:get/get.dart';
 
-import 'config_dsf.dart';
+import '../config/config_dsf.dart';
 
 void runDigitSpanForward() async {
   DigitSpanTasksData data = await Get.to(() => DigitSpanForward(
