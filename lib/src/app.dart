@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'digit_span_tasks/task_list_page.dart';
+import 'digit_span_tasks/view/task_list_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
