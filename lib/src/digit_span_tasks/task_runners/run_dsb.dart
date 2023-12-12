@@ -1,6 +1,5 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:get/get.dart';
-
 import '../config/config_dsb.dart';
 
 void runDigitSpanBackwards() async {
