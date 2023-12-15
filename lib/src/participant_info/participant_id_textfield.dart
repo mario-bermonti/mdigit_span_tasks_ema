@@ -15,6 +15,7 @@ class ParticipantIDTextInput extends StatelessWidget {
         labelText: 'ID participante',
       ),
       controller: controller,
+      autofocus: true,
     );
   }
 }
