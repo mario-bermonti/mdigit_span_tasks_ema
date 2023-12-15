@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../task_runners/run_dsb.dart';
-import '../task_runners/run_dsf.dart';
+import '../../digit_span_tasks/task_runners/run_dsb.dart';
+import '../../digit_span_tasks/task_runners/run_dsf.dart';
 
 class DSBButton extends StatelessWidget {
   const DSBButton({
