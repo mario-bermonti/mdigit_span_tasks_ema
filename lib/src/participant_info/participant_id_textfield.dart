@@ -3,14 +3,18 @@ import 'package:flutter/material.dart';
 class ParticipantIDTextInput extends StatelessWidget {
   const ParticipantIDTextInput({
     Key? key,
+    required this.controller,
   }) : super(key: key);
+
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
-    return const TextField(
-      decoration: InputDecoration(
+    return TextField(
+      decoration: const InputDecoration(
         labelText: 'ID participante',
       ),
+      controller: controller,
     );
   }
 }
