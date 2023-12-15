@@ -9,5 +9,6 @@ Future<void> showParticipantInfoDialog() async {
   await Get.defaultDialog(
     title: 'Información sobre sesión:',
     content: ParticipantIDTextInput(controller: controller),
+    barrierDismissible: false,
   );
 }
