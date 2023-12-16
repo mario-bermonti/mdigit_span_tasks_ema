@@ -10,5 +10,12 @@ Future<void> showParticipantInfoDialog() async {
     title: 'Información sobre sesión:',
     content: ParticipantIDTextInput(controller: controller),
     barrierDismissible: false,
+    confirm: IconButton(
+      icon: const Icon(
+        Icons.check_circle_outline_outlined,
+        color: Colors.green,
+      ),
+      onPressed: () => Get.back(),
+    ),
   );
 }
