@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import 'participant_id_textfield.dart';
 
-Future<void> showParticipantInfoDialog() async {
+Future<String> showParticipantInfoDialog() async {
   final TextEditingController controller = TextEditingController();
 
   await Get.defaultDialog(
@@ -18,4 +18,5 @@ Future<void> showParticipantInfoDialog() async {
       onPressed: () => Get.back(),
     ),
   );
+  return controller.text;
 }
