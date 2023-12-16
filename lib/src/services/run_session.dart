@@ -1,3 +1,4 @@
+import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:mdigit_span_tasks/src/data_manager/data_manager.dart';
 
 import '../participant_info/participant_info_dialog.dart';
@@ -7,6 +8,6 @@ import '../participant_info/participant_info_dialog.dart';
 /// cognitive task specificed with [taskRunner].
 void runSession({required Function taskRunner}) async {
   final String participantID = await showParticipantInfoDialog();
-  taskRunner();
+  DigitSpanTasksData data = await taskRunner();
   DataManager dataManager = DataManager(participantID: participantID);
 }
