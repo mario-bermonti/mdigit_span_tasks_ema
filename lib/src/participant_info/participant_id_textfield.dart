@@ -13,6 +13,7 @@ class ParticipantIDTextInput extends StatelessWidget {
     return TextField(
       decoration: const InputDecoration(
         labelText: 'ID participante',
+        hintText: 'p123...',
       ),
       controller: controller,
       autofocus: true,
