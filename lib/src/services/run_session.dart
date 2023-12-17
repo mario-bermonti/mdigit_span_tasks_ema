@@ -20,7 +20,8 @@ void runSession({required Function taskRunner}) async {
 
   DataManager dataManager = DataManager(
     participantID: participantID,
-    data: data,
+    sessionID: sessionID,
+    data: data_practice,
   );
   dataManager.createSessionID();
 }
