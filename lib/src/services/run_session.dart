@@ -12,7 +12,6 @@ void runSession({required Function taskRunner}) async {
 
   /// TODO Specify type
   final data_practice = data.practiceData;
-  final data_experimental = data.experimentalData;
   DataManager dataManager = DataManager(
     participantID: participantID,
     data: data,
