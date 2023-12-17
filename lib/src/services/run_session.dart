@@ -23,5 +23,4 @@ void runSession({required Function taskRunner}) async {
     sessionID: sessionID,
     data: data_practice,
   );
-  dataManager.createSessionID();
 }
