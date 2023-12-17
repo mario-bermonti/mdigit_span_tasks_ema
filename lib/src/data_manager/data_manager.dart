@@ -11,10 +11,4 @@ class DataManager {
     required this.participantID,
     required this.data,
   });
-
-  void createSessionID() {
-    sessionID =
-        participantID + data.practiceData.sessionData.startTime.toString();
-    print(sessionID);
-  }
 }
