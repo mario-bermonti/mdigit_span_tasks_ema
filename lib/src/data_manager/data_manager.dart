@@ -2,7 +2,9 @@ import 'package:digit_span_tasks/digit_span_tasks.dart';
 
 class DataManager {
   final String participantID;
-  final DigitSpanTasksData data;
+
+  /// TODO add type
+  final data;
   late final String sessionID;
 
   DataManager({
