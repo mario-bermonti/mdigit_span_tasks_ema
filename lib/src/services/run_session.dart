@@ -9,6 +9,10 @@ import '../participant_info/participant_info_dialog.dart';
 void runSession({required Function taskRunner}) async {
   final String participantID = await showParticipantInfoDialog();
   DigitSpanTasksData data = await taskRunner();
+
+  /// TODO Specify type
+  final data_practice = data.practiceData;
+  final data_experimental = data.experimentalData;
   DataManager dataManager = DataManager(
     participantID: participantID,
     data: data,
