@@ -7,7 +7,7 @@ import '../participant_info/participant_info_dialog.dart';
 /// Run a data collection session
 /// Running a session includes configuring everything needed and running a
 /// cognitive task specificed with [taskRunner].
-void runSession({required Function taskRunner}) async {
+void runSession({required Function taskRunner, required String dbName}) async {
   final String participantID = await showParticipantInfoDialog();
   DigitSpanTasksData data = await taskRunner();
 
@@ -23,4 +23,6 @@ void runSession({required Function taskRunner}) async {
     sessionID: sessionID,
     data: data_practice,
   );
+
+  await dataManager.initDB(name: dbName);
 }
