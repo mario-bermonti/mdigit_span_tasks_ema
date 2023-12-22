@@ -41,6 +41,7 @@ dependencies:
   cognitive_data:
     git:
       url: https://github.com/mario-bermonti/cognitive_data.git
+  path_provider: ^2.0.15
 
 dev_dependencies:
   flutter_test:
