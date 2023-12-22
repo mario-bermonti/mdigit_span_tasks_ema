@@ -11,7 +11,8 @@ class DSBButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => runSession(taskRunner: runDigitSpanBackwards),
+      onPressed: () =>
+          runSession(taskRunner: runDigitSpanBackwards, dbName: 'ds_backwards'),
       child: Text(
         'Digit Span Backwards',
         style: Theme.of(context).textTheme.titleLarge,
