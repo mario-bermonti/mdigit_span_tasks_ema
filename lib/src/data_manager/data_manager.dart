@@ -18,7 +18,7 @@ class DataManager {
 
   Future<void> initDB({required String name}) async {
     final dir = await getApplicationDocumentsDirectory();
-    final String dbPath = "${dir.path}/$name";
+    final String dbPath = "${dir.path}/$name.sqlite3";
 
     _dataBase = DataBase(path: dbPath);
   }
