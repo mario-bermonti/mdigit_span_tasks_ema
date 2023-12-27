@@ -12,16 +12,16 @@ void runSession({required Function taskRunner, required String dbName}) async {
   DigitSpanTasksData data = await taskRunner();
 
   /// TODO Specify type
-  final data_practice = data.practiceData;
+  final dataPractice = data.practiceData;
   final String sessionID = createSessionID(
     participantID: participantID,
-    startTime: data_practice.sessionData.startTime.toString(),
+    startTime: dataPractice.sessionData.startTime.toString(),
   );
 
   DataManager dataManager = DataManager(
     participantID: participantID,
     sessionID: sessionID,
-    data: data_practice,
+    data: dataPractice,
   );
 
   await dataManager.initDB(name: dbName);
