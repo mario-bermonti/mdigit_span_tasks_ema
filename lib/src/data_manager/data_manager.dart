@@ -22,4 +22,12 @@ class DataManager {
 
     _dataBase = DataBase(path: dbPath);
   }
+
+  /// Helper method that adds the necessary device data to db
+  void addDeviceData() {
+    _dataBase.addDeviceData(
+      participantId: participantID,
+      sessionID: sessionID,
+    );
+  }
 }
