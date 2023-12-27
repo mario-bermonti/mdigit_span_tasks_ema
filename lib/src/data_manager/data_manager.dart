@@ -29,4 +29,14 @@ class DataManager {
       sessionID: sessionID,
     );
   }
+
+  /// Helper method that adds the necessary session metadata to db
+  void addSessionMetaData() {
+    _dataBase.addSessionMetaData(
+      participantId: participantID,
+      sessionID: sessionID,
+      timeStart: data.sessionData.startTime,
+      timeEnd: data.sessionData.endTime,
+    );
+  }
 }

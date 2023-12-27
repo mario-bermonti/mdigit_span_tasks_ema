@@ -26,4 +26,5 @@ void runSession({required Function taskRunner, required String dbName}) async {
 
   await dataManager.initDB(name: dbName);
   dataManager.addDeviceData();
+  dataManager.addSessionMetaData();
 }
