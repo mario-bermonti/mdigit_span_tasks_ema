@@ -53,4 +53,8 @@ class DataManager {
       );
     }
   }
+
+  void saveDataDB() {
+    _dataBase.saveData();
+  }
 }
