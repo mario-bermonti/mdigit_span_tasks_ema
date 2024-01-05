@@ -7,9 +7,5 @@ Future<DigitSpanTasksData> runDigitSpanForward() async {
         config: configDSF,
       ));
 
-  /// TODO remove when everything works
-  // ignore: avoid_print
-  print('\n\n\nFORWARD data \n $data');
-
   return data;
 }
