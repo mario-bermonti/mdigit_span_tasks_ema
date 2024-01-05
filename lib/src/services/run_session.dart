@@ -1,3 +1,4 @@
+import 'package:cognitive_data/trial_type.dart';
 import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:mdigit_span_tasks/src/data_manager/data_manager.dart';
 import 'package:mdigit_span_tasks/src/data_manager/session_id_creator.dart';
@@ -27,4 +28,5 @@ void runSession({required Function taskRunner, required String dbName}) async {
   await dataManager.initDB(name: dbName);
   dataManager.addDeviceData();
   dataManager.addSessionMetaData();
+  dataManager.addTrialData(trialType: TrialType.practice);
 }
