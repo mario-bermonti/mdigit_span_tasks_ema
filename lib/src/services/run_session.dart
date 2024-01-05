@@ -29,4 +29,6 @@ void runSession({required Function taskRunner, required String dbName}) async {
   dataManager.addDeviceData();
   dataManager.addSessionMetaData();
   dataManager.addTrialData(trialType: TrialType.practice);
+
+  await dataManager.saveDataDB();
 }
