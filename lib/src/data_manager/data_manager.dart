@@ -54,7 +54,7 @@ class DataManager {
     }
   }
 
-  void saveDataDB() {
-    _dataBase.saveData();
+  Future<void> saveDataDB() async {
+    await _dataBase.saveData();
   }
 }
