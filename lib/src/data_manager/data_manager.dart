@@ -53,4 +53,9 @@ class DataManager {
       );
     }
   }
+
+  /// Save session metadata, device and trial data to db
+  Future<void> saveDataDB() async {
+    await _dataBase.saveData();
+  }
 }
