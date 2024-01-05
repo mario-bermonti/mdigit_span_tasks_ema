@@ -7,8 +7,5 @@ Future<DigitSpanTasksData> runDigitSpanBackwards() async {
         config: configDSB,
       ));
 
-  /// TODO remove when everything works
-  // ignore: avoid_print
-  print('\n\n\nBAKWARDS data \n $data');
   return data;
 }
