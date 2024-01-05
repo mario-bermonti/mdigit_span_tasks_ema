@@ -39,4 +39,18 @@ class DataManager {
       timeEnd: data.sessionData.endTime,
     );
   }
+
+  /// Adds the data from all trials to db
+  /// TODO specify type
+  void addTrialData({required TrialType trialType}) {
+    for (var trial in data.trialData) {
+      _dataBase.addTrialData(
+        participantId: participantID,
+        stim: trial.stim,
+        resp: trial.response,
+        trialType: trialType,
+        sessionID: sessionID,
+      );
+    }
+  }
 }
