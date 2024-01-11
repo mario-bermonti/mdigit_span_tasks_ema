@@ -17,7 +17,7 @@ void runSession({required Function taskRunner, required String dbName}) async {
   final dataPractice = data.practiceData;
   final String sessionID = createSessionID(
     participantID: participantID,
-    startTime: dataPractice.sessionData.startTime.toString(),
+    startTime: data.practiceData.sessionData.startTime.toString(),
   );
 
   await processData(
