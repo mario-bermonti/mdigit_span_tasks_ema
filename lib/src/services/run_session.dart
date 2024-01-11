@@ -20,7 +20,7 @@ void runSession({required Function taskRunner, required String dbName}) async {
     startTime: dataPractice.sessionData.startTime.toString(),
   );
 
-  processData(
+  await processData(
     participantID: participantID,
     sessionID: sessionID,
     data: dataPractice,
