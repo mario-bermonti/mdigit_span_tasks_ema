@@ -13,6 +13,8 @@ void runSession({required Function taskRunner, required String dbName}) async {
   final String participantID = await showParticipantInfoDialog();
   DigitSpanTasksData data = await taskRunner();
 
+  /// We use the startTime for the practice session to create a single
+  /// session id for both practice and experimental data.
   final String sessionID = createSessionID(
     participantID: participantID,
     startTime: data.practiceData.sessionData.startTime.toString(),
