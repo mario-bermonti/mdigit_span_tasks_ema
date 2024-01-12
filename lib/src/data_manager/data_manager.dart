@@ -41,9 +41,13 @@ class DataManager {
   }
 
   /// Adds the data from all trials to db
+  /// Helper method to add the data from trials to db
   /// TODO specify type
-  void addTrialData({required TrialType trialType}) {
-    for (var trial in data.trialData) {
+  void addTrialData({
+    required TrialType trialType,
+    required dynamic trialData,
+  }) {
+    for (var trial in trialData) {
       _dataBase.addTrialData(
         participantId: participantID,
         stim: trial.stim,
