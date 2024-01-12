@@ -42,7 +42,7 @@ class DataManager {
 
   /// Adds data from practice trials to db
   void addPracticeTrialData() {
-    addTrialData(
+    _addTrialData(
       trialType: TrialType.practice,
       trialData: data.trialData,
     );
@@ -50,7 +50,7 @@ class DataManager {
 
   /// Helper method to add the data from trials to db
   /// TODO specify type
-  void addTrialData({
+  void _addTrialData({
     required TrialType trialType,
     required dynamic trialData,
   }) {
