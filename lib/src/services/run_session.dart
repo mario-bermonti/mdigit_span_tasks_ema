@@ -26,7 +26,7 @@ void runSession({required Function taskRunner, required String dbName}) async {
   await processData(
     participantID: participantID,
     sessionID: sessionID,
-    data: dataPractice,
+    practiceData: dataPractice,
     dbName: dbName,
     trialType: TrialType.practice,
   );
