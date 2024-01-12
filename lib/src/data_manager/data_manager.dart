@@ -40,7 +40,14 @@ class DataManager {
     );
   }
 
-  /// Adds the data from all trials to db
+  /// Adds data from practice trials to db
+  void addPracticeTrialData() {
+    addTrialData(
+      trialType: TrialType.practice,
+      trialData: data.trialData,
+    );
+  }
+
   /// Helper method to add the data from trials to db
   /// TODO specify type
   void addTrialData({
