@@ -7,6 +7,7 @@ Future<void> processData({
   required String participantID,
   required String sessionID,
   required dynamic practiceData,
+  required dynamic experimentalData,
   required String dbName,
   required TrialType trialType,
 }) async {
@@ -20,6 +21,7 @@ Future<void> processData({
   dataManager.addDeviceData();
   dataManager.addSessionMetaData();
   dataManager.addPracticeTrialData();
+  dataManager.addExperimentalTrialData(trialData: experimentalData.trialData);
 
   await dataManager.saveDataDB();
 }

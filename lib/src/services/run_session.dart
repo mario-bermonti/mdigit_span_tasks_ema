@@ -27,6 +27,7 @@ void runSession({required Function taskRunner, required String dbName}) async {
     participantID: participantID,
     sessionID: sessionID,
     practiceData: dataPractice,
+    experimentalData: data.experimentalData,
     dbName: dbName,
     trialType: TrialType.practice,
   );
