@@ -19,7 +19,7 @@ Future<void> processData({
   await dataManager.initDB(name: dbName);
   dataManager.addDeviceData();
   dataManager.addSessionMetaData();
-  dataManager.addTrialData(trialType: trialType);
+  dataManager.addPracticeTrialData();
 
   await dataManager.saveDataDB();
 }
