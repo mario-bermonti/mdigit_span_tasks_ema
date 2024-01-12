@@ -30,4 +30,15 @@ void runSession({required Function taskRunner, required String dbName}) async {
     dbName: dbName,
     trialType: TrialType.practice,
   );
+
+  // Practice trials
+  // TODO specify type
+  final dataExperimental = data.experimentalData;
+  await processData(
+    participantID: participantID,
+    sessionID: sessionID,
+    data: dataExperimental,
+    dbName: dbName,
+    trialType: TrialType.experimental,
+  );
 }
