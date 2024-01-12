@@ -48,6 +48,15 @@ class DataManager {
     );
   }
 
+  /// Adds data from experimental trials to db
+  /// Requires the experimental trials [trialData]
+  void addExperimentalTrialData({required dynamic trialData}) {
+    _addTrialData(
+      trialType: TrialType.experimental,
+      trialData: trialData,
+    );
+  }
+
   /// Helper method to add the data from trials to db
   /// TODO specify type
   void _addTrialData({
