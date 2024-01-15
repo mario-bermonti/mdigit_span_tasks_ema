@@ -6,20 +6,21 @@ import '../data_manager/data_manager.dart';
 Future<void> processData({
   required String participantID,
   required String sessionID,
-  required dynamic data,
+  required dynamic practiceData,
+  required dynamic experimentalData,
   required String dbName,
   required TrialType trialType,
 }) async {
   DataManager dataManager = DataManager(
     participantID: participantID,
     sessionID: sessionID,
-    data: data,
+    data: practiceData,
   );
 
   await dataManager.initDB(name: dbName);
   dataManager.addDeviceData();
   dataManager.addSessionMetaData();
-  dataManager.addTrialData(trialType: trialType);
-
+  dataManager.addPracticeTrialData();
+  dataManager.addExperimentalTrialData(trialData: experimentalData.trialData);
   await dataManager.saveDataDB();
 }
