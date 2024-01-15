@@ -22,6 +22,5 @@ Future<void> processData({
   dataManager.addSessionMetaData();
   dataManager.addPracticeTrialData();
   dataManager.addExperimentalTrialData(trialData: experimentalData.trialData);
-
   await dataManager.saveDataDB();
 }
