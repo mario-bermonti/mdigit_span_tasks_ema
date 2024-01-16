@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// [ExportButton] Is used by the user to export the data from the app
 class ExportButton extends StatelessWidget {
   const ExportButton({super.key});
 
