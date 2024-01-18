@@ -1,10 +1,12 @@
 import 'dart:io';
 
 import 'package:cognitive_data/errors.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class DataExporter {
   final String dbName;
+  late final File db;
 
   DataExporter({required this.dbName});
 
@@ -16,5 +18,14 @@ class DataExporter {
         throw PermissionNotGrantedException();
       }
     }
+  }
+
+  /// Get db from disk so it can be copied
+  /// It assumes the db is in the [getApplicationDocumentsDirectory] dir
+  /// with the name [dbName]. This method does not modify the original db.
+  Future<void> getDB() async {
+    final Directory dir = await getApplicationDocumentsDirectory();
+    final String dbPath = "${dir.path}/$dbName.sqlite3";
+    db = File(dbPath);
   }
 }
