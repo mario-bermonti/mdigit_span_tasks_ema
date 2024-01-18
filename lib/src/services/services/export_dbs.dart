@@ -5,6 +5,6 @@ Future<void> exportDBs() async {}
 
 /// Export the db specified in [dbName]
 Future<void> _exportDB({required String dbName}) async {
-  DataExporter dataExporter = DataExporter();
+  DataExporter dataExporter = DataExporter(dbName: dbName);
   dataExporter.requestPermission();
 }
