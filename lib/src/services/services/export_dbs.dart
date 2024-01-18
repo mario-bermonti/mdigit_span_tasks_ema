@@ -1,4 +1,4 @@
-import 'package:mdigit_span_tasks/src/export_data/export_data/controller/controller.dart';
+import 'package:mdigit_span_tasks/src/export_data/controller/data_exporter.dart';
 
 /// Export dbs to make them accesible by users
 Future<void> exportDBs() async {}
