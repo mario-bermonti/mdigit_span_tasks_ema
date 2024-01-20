@@ -35,8 +35,8 @@ class DataExporter {
   /// The destination file will be in the external storage and will have the
   /// same name as the db.
   /// Currently only android is supported.
-  Future<void> getDestinationFile() async {
     Directory destinationDir = await _getDestinationDir();
+  Future<void> initDestinationFile() async {
     final String destinationPath = '${destinationDir.path}/$dbName';
     destinationFile = File(destinationPath);
   }
