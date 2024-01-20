@@ -37,7 +37,7 @@ class DataExporter {
   /// Currently only android is supported.
   Future<void> initDestinationFile() async {
     Directory destinationDir = await _initDestinationDir();
-    final String destinationPath = '${destinationDir.path}/$dbName';
+    final String destinationPath = '${destinationDir.path}/$dbName.sqlite3';
     destinationFile = File(destinationPath);
   }
 
