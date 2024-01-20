@@ -8,4 +8,5 @@ Future<void> _exportDB({required String dbName}) async {
   DataExporter dataExporter = DataExporter(dbName: dbName);
   dataExporter.requestPermission();
   await dataExporter.getDB();
+  await dataExporter.getDestinationFile();
 }
