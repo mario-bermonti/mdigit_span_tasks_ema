@@ -55,6 +55,8 @@ class DataExporter {
     return dsExternalDir;
   }
 
+  /// Create copy of db in the path specified by [destinationFile].
+  /// Does not alter the original db.
   Future<void> copyDB() async {
     await db.copy(destinationFile.path);
   }
