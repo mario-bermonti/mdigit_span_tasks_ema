@@ -35,8 +35,8 @@ class DataExporter {
   /// The destination file will be in the external storage and will have the
   /// same name as the db.
   /// Currently only android is supported.
-    Directory destinationDir = await _getDestinationDir();
   Future<void> initDestinationFile() async {
+    Directory destinationDir = await _initDestinationDir();
     final String destinationPath = '${destinationDir.path}/$dbName';
     destinationFile = File(destinationPath);
   }
@@ -45,7 +45,7 @@ class DataExporter {
   /// Currently only android is supported and the destination dir is a
   /// directory named 'mDigitSpanTasks' in the android external storage.
   /// It creates the directory with its parent dirs if these do not exist.
-  Future<Directory> _getDestinationDir() async {
+  Future<Directory> _initDestinationDir() async {
     Directory? externalDir = await getExternalStorageDirectory();
 
     /// TODO handle errors that will arise if [externalDir] is null
