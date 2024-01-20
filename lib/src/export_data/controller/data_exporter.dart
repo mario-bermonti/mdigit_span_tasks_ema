@@ -54,4 +54,8 @@ class DataExporter {
 
     return dsExternalDir;
   }
+
+  Future<void> copyDB() async {
+    await db.copy(destinationFile.path);
+  }
 }
