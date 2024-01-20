@@ -8,6 +8,7 @@ class DataExporter {
   final String dbName;
   late final File db;
   late final String dbPath;
+  late final File destinationFile;
 
   DataExporter({required this.dbName});
 
@@ -29,6 +30,17 @@ class DataExporter {
     dbPath = "${dir.path}/$dbName.sqlite3";
     db = File(dbPath);
   }
+
+  /// Get destination file on which to save the db copy.
+  /// The destination file will be in the external storage and will have the
+  /// same name as the db.
+  /// Currently only android is supported.
+  Future<void> getDestinationFile() async {
+    Directory destinationDir = await _getDestionationDir();
+    final String destinationPath = '${destinationDir.path}/$dbName';
+    destinationFile = File(destinationPath);
+  }
+
   /// Gets the directory to which the db will be exported.
   /// Currently only android is supported and the destionation dir is a
   /// directory named 'mDigitSpanTasks' in the android external storage.
