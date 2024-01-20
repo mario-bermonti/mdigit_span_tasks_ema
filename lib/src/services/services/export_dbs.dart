@@ -1,6 +1,6 @@
 import 'package:mdigit_span_tasks/src/export_data/controller/data_exporter.dart';
 
-/// Export dbs to make them accesible by users
+/// Export dbs to make them accessible to users
 Future<void> exportDBs() async {
   await _exportDB(dbName: 'ds_forward.sqlite3');
   await _exportDB(dbName: 'ds_backwards.sqlite3');
