@@ -37,7 +37,7 @@ class DataExporter {
   /// Currently only android is supported.
   Future<void> initDestinationFile() async {
     Directory destinationDir = await _initDestinationDir();
-    final String destinationPath = '${destinationDir.path}/$dbName';
+    final String destinationPath = '${destinationDir.path}/$dbName.sqlite3';
     destinationFile = File(destinationPath);
   }
 
@@ -53,5 +53,11 @@ class DataExporter {
     dsExternalDir.create(recursive: true);
 
     return dsExternalDir;
+  }
+
+  /// Create copy of db in the path specified by [destinationFile].
+  /// Does not alter the original db.
+  Future<void> copyDB() async {
+    await db.copy(destinationFile.path);
   }
 }
