@@ -27,7 +27,7 @@ class DataExporter {
   /// with the name [dbName]. This method does not modify the original db.
   Future<void> getDB() async {
     final Directory dir = await getApplicationDocumentsDirectory();
-    dbPath = "${dir.path}/$dbName.sqlite3";
+    dbPath = "${dir.path}/$dbName";
     db = File(dbPath);
   }
 
@@ -37,7 +37,7 @@ class DataExporter {
   /// Currently only android is supported.
   Future<void> initDestinationFile() async {
     Directory destinationDir = await _initDestinationDir();
-    final String destinationPath = '${destinationDir.path}/$dbName.sqlite3';
+    final String destinationPath = '${destinationDir.path}/$dbName';
     destinationFile = File(destinationPath);
   }
 
