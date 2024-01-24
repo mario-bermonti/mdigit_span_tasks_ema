@@ -32,8 +32,8 @@ class DataExporter {
   }
 
   /// Get destination file on which to save the db copy.
-  /// The destination file will be in the external storage and will have the
-  /// same name as the db.
+  /// The destination file will be in the `Download` folder and will have the
+  /// same name as the dbs.
   /// Currently only android is supported.
   Future<void> initDestinationFile() async {
     Directory destinationDir = await _initDestinationDir();
@@ -43,7 +43,7 @@ class DataExporter {
 
   /// Gets the directory to which the db will be exported.
   /// Currently only android is supported and the destination dir is a
-  /// directory named 'mDigitSpanTasks' in the android external storage.
+  /// directory named `mDigitSpanTasks` in the android `Download` folder.
   /// It creates the directory with its parent dirs if these do not exist.
   Future<Directory> _initDestinationDir() async {
     Directory downloadsDir =
