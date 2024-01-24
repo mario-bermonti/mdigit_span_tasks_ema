@@ -46,13 +46,11 @@ class DataExporter {
   /// directory named 'mDigitSpanTasks' in the android external storage.
   /// It creates the directory with its parent dirs if these do not exist.
   Future<Directory> _initDestinationDir() async {
-    Directory? externalDir = await getExternalStorageDirectory();
+    Directory downloadsDir =
+        Directory('/storage/emulated/0/Download/mDigitSpanTasks');
+    await downloadsDir.create(recursive: true);
 
-    /// TODO handle errors that will arise if [externalDir] is null
-    Directory dsExternalDir = Directory('${externalDir!.path}/mDigitSpanTasks');
-    dsExternalDir.create(recursive: true);
-
-    return dsExternalDir;
+    return downloadsDir;
   }
 
   /// Create copy of db in the path specified by [destinationFile].
