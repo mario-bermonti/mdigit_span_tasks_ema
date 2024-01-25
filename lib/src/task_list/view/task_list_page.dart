@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mdigit_span_tasks/src/app_bar/app_bar.dart';
 import 'task_buttons.dart';
 
 class TaskListPage extends StatelessWidget {
@@ -7,6 +8,7 @@ class TaskListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appBar,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
