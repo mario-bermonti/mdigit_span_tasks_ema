@@ -38,9 +38,11 @@ dependencies:
   digit_span_tasks:
     git:
       url: https://github.com/mario-bermonti/digit_span_tasks.git
+      ref: 26a03051bb4c8588ca3866882e6b530aae127384
   cognitive_data:
     git:
       url: https://github.com/mario-bermonti/cognitive_data.git
+      ref: e4212ca4917cd84b4db5e65bf49e9bca4f3548ce
   path_provider: ^2.0.15
   permission_handler: ^10.4.5
 
