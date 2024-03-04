@@ -1,5 +1,6 @@
 import 'package:cognitive_data/trial_type.dart';
 import 'package:digit_span_tasks/digit_span_tasks.dart';
+import 'package:flutter/material.dart';
 import 'package:mdigit_span_tasks/src/data_manager/data_manager.dart';
 import 'package:mdigit_span_tasks/src/data_manager/session_id_creator.dart';
 import 'package:mdigit_span_tasks/src/services/data_processor.dart';
@@ -16,7 +17,7 @@ void runSession({required Function taskRunner, required String dbName}) async {
   /// session id for both practice and experimental data.
   final String sessionID = createSessionID(
     participantID: participantID,
-    startTime: data.practiceData.sessionData.startTime.toString(),
+    startTime: TimeOfDay.now().toString(),
   );
 
   DigitSpanTasksData data = await taskRunner();
