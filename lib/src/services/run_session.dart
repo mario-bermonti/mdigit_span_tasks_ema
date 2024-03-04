@@ -10,7 +10,13 @@ import '../participant_info/participant_info_dialog.dart';
 /// Run a data collection session
 /// Running a session includes configuring everything needed and running a
 /// cognitive task specificed with [taskRunner].
-void runSession({required Function taskRunner, required String dbName}) async {
+void runSession(
+    {required Function({
+      required String participantID,
+      required String sessionID,
+    })
+        taskRunner,
+    required String dbName}) async {
   final String participantID = await showParticipantInfoDialog();
 
   /// We use the startTime for the practice session to create a single
