@@ -11,7 +11,6 @@ import '../participant_info/participant_info_dialog.dart';
 /// cognitive task specificed with [taskRunner].
 void runSession({required Function taskRunner, required String dbName}) async {
   final String participantID = await showParticipantInfoDialog();
-  DigitSpanTasksData data = await taskRunner();
 
   /// We use the startTime for the practice session to create a single
   /// session id for both practice and experimental data.
@@ -19,6 +18,8 @@ void runSession({required Function taskRunner, required String dbName}) async {
     participantID: participantID,
     startTime: data.practiceData.sessionData.startTime.toString(),
   );
+
+  DigitSpanTasksData data = await taskRunner();
 
   /// TODO Specify type
   final dataPractice = data.practiceData;
