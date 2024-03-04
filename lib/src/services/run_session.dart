@@ -26,7 +26,10 @@ void runSession(
     startTime: TimeOfDay.now().toString(),
   );
 
-  DigitSpanTasksData data = await taskRunner();
+  DigitSpanTasksData data = await taskRunner(
+    participantID: participantID,
+    sessionID: sessionID,
+  );
 
   /// TODO Specify type
   final dataPractice = data.practiceData;
