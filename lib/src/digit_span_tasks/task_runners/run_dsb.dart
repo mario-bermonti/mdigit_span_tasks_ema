@@ -6,8 +6,16 @@ Future<DigitSpanTasksData> runDigitSpanBackwards({
   required String participantID,
   required String sessionID,
 }) async {
+  final DSBConfig dsbConfig = DSBConfig();
+  final UserConfig userConfig = UserConfig(
+    stimListPractice: dsbConfig.practiceStim,
+    stimListExperimental: dsbConfig.experimentalStim,
+    participantID: participantID,
+    sessionID: sessionID,
+  );
+
   DigitSpanTasksData data = await Get.to(() => DigitSpanBackwards(
-        config: configDSB,
+        config: userConfig,
       ));
 
   return data;
