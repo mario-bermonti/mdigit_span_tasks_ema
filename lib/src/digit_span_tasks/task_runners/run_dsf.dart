@@ -2,6 +2,7 @@ import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:get/get.dart';
 import '../config/config_dsf.dart';
 
+/// Configure and start the DSF
 Future<DigitSpanTaskData> runDigitSpanForward({
   required String participantID,
   required String sessionID,
