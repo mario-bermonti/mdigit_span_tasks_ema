@@ -26,7 +26,7 @@ void runSession(
     startTime: TimeOfDay.now().toString(),
   );
 
-  DigitSpanTasksData data = await taskRunner(
+  DigitSpanTaskData data = await taskRunner(
     participantID: participantID,
     sessionID: sessionID,
   );

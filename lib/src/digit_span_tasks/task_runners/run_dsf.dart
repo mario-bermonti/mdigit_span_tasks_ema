@@ -2,7 +2,7 @@ import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:get/get.dart';
 import '../config/config_dsf.dart';
 
-Future<DigitSpanTasksData> runDigitSpanForward({
+Future<DigitSpanTaskData> runDigitSpanForward({
   required String participantID,
   required String sessionID,
 }) async {
@@ -13,7 +13,7 @@ Future<DigitSpanTasksData> runDigitSpanForward({
       participantID: participantID,
       sessionID: sessionID);
 
-  DigitSpanTasksData data = await Get.to(() => DigitSpanForward(
+  DigitSpanTaskData data = await Get.to(() => DigitSpanForward(
         config: userConfig,
       ));
 

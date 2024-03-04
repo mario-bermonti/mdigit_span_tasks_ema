@@ -2,7 +2,7 @@ import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:get/get.dart';
 import '../config/config_dsb.dart';
 
-Future<DigitSpanTasksData> runDigitSpanBackwards({
+Future<DigitSpanTaskData> runDigitSpanBackwards({
   required String participantID,
   required String sessionID,
 }) async {
@@ -14,7 +14,7 @@ Future<DigitSpanTasksData> runDigitSpanBackwards({
     sessionID: sessionID,
   );
 
-  DigitSpanTasksData data = await Get.to(() => DigitSpanBackwards(
+  DigitSpanTaskData data = await Get.to(() => DigitSpanBackwards(
         config: userConfig,
       ));
 
