@@ -38,7 +38,7 @@ dependencies:
   digit_span_tasks:
     git:
       url: https://github.com/mario-bermonti/digit_span_tasks.git
-      ref: ae1446f754cdfa2d76edd196897a6a02bbfc76aa 
+      ref: v0.2.1
   cognitive_data:
     git:
       url: https://github.com/mario-bermonti/cognitive_data.git
