@@ -1,11 +1,10 @@
-import 'package:digit_span_tasks/digit_span_tasks.dart';
-
-UserConfig configDSB = UserConfig(
-  stimListPractice: [
+class DSBConfig {
+  List<String> practiceStim = <String>[
     '36',
     '283',
-  ],
-  stimListExperimental: [
+  ];
+
+  List<String> experimentalStim = <String>[
     '26',
     '49',
     '926',
@@ -18,5 +17,5 @@ UserConfig configDSB = UserConfig(
     '917468',
     '3692478',
     '3751682',
-  ],
-);
+  ];
+}

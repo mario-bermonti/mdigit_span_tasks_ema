@@ -1,11 +1,10 @@
-import 'package:digit_span_tasks/digit_span_tasks.dart';
-
-UserConfig configDSF = UserConfig(
-  stimListPractice: [
+class DSFConfig {
+  List<String> practiceStim = <String>[
     '27',
     '689',
-  ],
-  stimListExperimental: [
+  ];
+
+  List<String> experimentalStim = <String>[
     '83',
     '67',
     '254',
@@ -22,5 +21,5 @@ UserConfig configDSF = UserConfig(
     '71584926',
     '472638951',
     '521697483',
-  ],
-);
+  ];
+}
