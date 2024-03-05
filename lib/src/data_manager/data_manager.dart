@@ -2,7 +2,7 @@ import 'package:cognitive_data/cognitive_data.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DataManager {
-  late final DataBase _dataBase;
+  late final DriftDB _dataBase;
 
   Future<void> initDB({required String name}) async {
     final dir = await getApplicationDocumentsDirectory();
