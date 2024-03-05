@@ -1,4 +1,4 @@
-import 'package:cognitive_data/data.dart';
+import 'package:cognitive_data/cognitive_data.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DataManager {
