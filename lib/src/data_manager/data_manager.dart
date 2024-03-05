@@ -33,38 +33,6 @@ class DataManager {
     );
   }
 
-  /// Adds data from practice trials to db
-  void addPracticeTrialData() {
-    _addTrialData(
-      trialType: TrialType.practice,
-      trialData: data.trialData,
-    );
-  }
-
-  /// Adds data from experimental trials to db
-  /// Requires the experimental trials [trialData]
-  void addExperimentalTrialData({required dynamic trialData}) {
-    _addTrialData(
-      trialType: TrialType.experimental,
-      trialData: trialData,
-    );
-  }
-
-  /// Helper method to add the data from trials to db
-  /// TODO specify type
-  void _addTrialData({
-    required TrialType trialType,
-    required dynamic trialData,
-  }) {
-    for (var trial in trialData) {
-      _dataBase.addTrialData(
-        participantId: participantID,
-        stim: trial.stim,
-        resp: trial.response,
-        trialType: trialType,
-        sessionID: sessionID,
-      );
-    }
   /// Adds a list of [Trial]s to the db
   void addTrials({required List<Trial> trials}) {
     _dataBase.addTrials(trials: trials);
