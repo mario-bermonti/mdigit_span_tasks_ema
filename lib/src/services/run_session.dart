@@ -31,14 +31,8 @@ void runSession(
     sessionID: sessionID,
   );
 
-  /// TODO Specify type
-  final dataPractice = data.practiceData;
   await processData(
-    participantID: participantID,
-    sessionID: sessionID,
-    practiceData: dataPractice,
-    experimentalData: data.experimentalData,
     dbName: dbName,
-    trialType: TrialType.practice,
+    data: data,
   );
 }
