@@ -15,12 +15,9 @@ class DataManager {
     _dataBase = DriftDB.init(path: dbPath);
   }
 
-  /// Helper method that adds the necessary device data to db
-  void addDeviceData() {
-    _dataBase.addDeviceData(
-      participantId: participantID,
-      sessionID: sessionID,
-    );
+  /// Adds [Device] metadata to db
+  void addDevice({required Device device}) {
+    _dataBase.addDevice(device: device);
   }
 
   /// Helper method that adds the necessary session metadata to db
