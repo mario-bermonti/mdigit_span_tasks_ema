@@ -20,14 +20,9 @@ class DataManager {
     _dataBase.addDevice(device: device);
   }
 
-  /// Helper method that adds the necessary session metadata to db
-  void addSessionMetaData() {
-    _dataBase.addSessionMetaData(
-      participantId: participantID,
-      sessionID: sessionID,
-      timeStart: data.sessionData.startTime,
-      timeEnd: data.sessionData.endTime,
-    );
+  /// Adds [Session] metadata to db
+  void addSession({required Session session}) {
+    _dataBase.addSession(session: session);
   }
 
   /// Adds a list of [Trial]s to the db
