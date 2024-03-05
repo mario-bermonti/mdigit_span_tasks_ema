@@ -2,18 +2,7 @@ import 'package:cognitive_data/cognitive_data.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DataManager {
-  final String participantID;
-  final String sessionID;
   late final DataBase _dataBase;
-
-  /// TODO add type
-  final data;
-
-  DataManager({
-    required this.participantID,
-    required this.sessionID,
-    required this.data,
-  });
 
   Future<void> initDB({required String name}) async {
     final dir = await getApplicationDocumentsDirectory();
