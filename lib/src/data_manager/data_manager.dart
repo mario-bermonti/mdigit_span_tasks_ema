@@ -4,11 +4,15 @@ import 'package:path_provider/path_provider.dart';
 class DataManager {
   late final DriftDB _dataBase;
 
+  /// Initialize a Database named [name] in the
+  /// [getApplicationDocumentsDirectory].
+  ///
+  /// The db is private and can only be accessed through the [DataManager]'s.
   Future<void> initDB({required String name}) async {
     final dir = await getApplicationDocumentsDirectory();
     final String dbPath = "${dir.path}/$name.sqlite3";
 
-    _dataBase = DataBase(path: dbPath);
+    _dataBase = DriftDB.init(path: dbPath);
   }
 
   /// Helper method that adds the necessary device data to db
