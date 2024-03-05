@@ -65,6 +65,9 @@ class DataManager {
         sessionID: sessionID,
       );
     }
+  /// Adds a list of [Trial]s to the db
+  void addTrials({required List<Trial> trials}) {
+    _dataBase.addTrials(trials: trials);
   }
 
   /// Save session metadata, device and trial data to db
