@@ -1,4 +1,4 @@
-import 'package:cognitive_data/data.dart';
+import 'package:digit_span_tasks/digit_span_tasks.dart';
 
 import '../data_manager/data_manager.dart';
 
@@ -7,16 +7,9 @@ Future<void> processData({
   required String dbName,
   required DigitSpanTaskData data,
 }) async {
-  DataManager dataManager = DataManager(
-    participantID: participantID,
-    sessionID: sessionID,
-    data: practiceData,
-  );
-
+  DataManager dataManager = DataManager();
   await dataManager.initDB(name: dbName);
-  dataManager.addDeviceData();
-  dataManager.addSessionMetaData();
-  dataManager.addPracticeTrialData();
-  dataManager.addExperimentalTrialData(trialData: experimentalData.trialData);
-  await dataManager.saveDataDB();
+  dataManager.addDevice(device: data.device);
+  dataManager.addSession(session: data.session);
+  dataManager.addTrials(trials: data.trials);
 }
