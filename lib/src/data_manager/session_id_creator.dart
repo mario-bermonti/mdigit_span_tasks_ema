@@ -1,6 +1,6 @@
-String createSessionID(
-    {required String participantID, required String startTime}) {
-  final String sessionID = participantID + startTime;
+String createSessionID({required String participantID}) {
+  final DateTime startTime = DateTime.now();
+  final String sessionID = participantID + startTime.toString();
 
   return sessionID;
 }

@@ -21,7 +21,6 @@ void runSession(
   /// session id for both practice and experimental data.
   final String sessionID = createSessionID(
     participantID: participantID,
-    startTime: TimeOfDay.now().toString(),
   );
 
   DigitSpanTaskData data = await taskRunner(
