@@ -1,6 +1,5 @@
 name: mdigit_span_tasks
-description: A new Flutter project.
-
+description: "mDigitSpanTasks: A mobile application designed for assessing verbal working memory in the Spanish-speaking population"
 publish_to: 'none' 
 
 version: 0.2.0
