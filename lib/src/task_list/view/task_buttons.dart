@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mdigit_span_tasks/src/services/run_session.dart';
+import 'package:mdigit_span_tasks_ema/src/services/run_session.dart';
 import '../../digit_span_tasks/task_runners/run_dsb.dart';
 import '../../digit_span_tasks/task_runners/run_dsf.dart';
 

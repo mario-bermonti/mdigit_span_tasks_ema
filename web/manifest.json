@@ -1,6 +1,6 @@
 {
-    "name": "mdigit_span_tasks",
-    "short_name": "mdigit_span_tasks",
+    "name": "mdigit_span_tasks_ema",
+    "short_name": "mdigit_span_tasks_ema",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,4 +1,4 @@
-name: mdigit_span_tasks
+name: mdigit_span_tasks_ema
 description: "mDigitSpanTasks: A mobile application designed for assessing verbal working memory in the Spanish-speaking population"
 publish_to: 'none' 
 
