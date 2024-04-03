@@ -24,6 +24,8 @@ dependencies:
       ref: v0.3.0
   path_provider: ^2.0.15
   permission_handler: ^10.4.5
+  firebase_core: ^2.28.0
+  cloud_firestore: ^4.16.0
 
 dev_dependencies:
   flutter_test:
