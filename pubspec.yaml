@@ -17,11 +17,11 @@ dependencies:
   digit_span_tasks:
     git:
       url: https://github.com/mario-bermonti/digit_span_tasks.git
-      ref: v0.2.1
+      ref: v0.2.2
   cognitive_data:
     git:
       url: https://github.com/mario-bermonti/cognitive_data.git
-      ref: v0.2.0
+      ref: v0.3.0
   path_provider: ^2.0.15
   permission_handler: ^10.4.5
 
