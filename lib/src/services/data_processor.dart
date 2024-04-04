@@ -14,7 +14,7 @@ Future<void> processData({
     sessionID: sessionID,
     taskName: taskName,
   );
-  dataManager.addDevice(device: data.device);
-  dataManager.addSession(session: data.session);
-  dataManager.addTrials(trials: data.trials);
+  await dataManager.addDevice(device: data.device);
+  await dataManager.addSession(session: data.session);
+  await dataManager.addTrials(trials: data.trials);
 }

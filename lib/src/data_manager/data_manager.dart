@@ -22,17 +22,17 @@ class DataManager {
   }
 
   /// Adds [Device] metadata to db
-  void addDevice({required Device device}) {
-    _db.addDevice(device: device);
+  Future<void> addDevice({required Device device}) async {
+    await _db.addDevice(device: device);
   }
 
   /// Adds [Session] metadata to db
-  void addSession({required Session session}) {
-    _db.addSession(session: session);
+  Future<void> addSession({required Session session}) async {
+    await _db.addSession(session: session);
   }
 
   /// Adds a list of [Trial]s to the db
-  void addTrials({required List<Trial> trials}) {
-    _db.addTrials(trials: trials);
+  Future<void> addTrials({required List<Trial> trials}) async {
+    await _db.addTrials(trials: trials);
   }
 }
