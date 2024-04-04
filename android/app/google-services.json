@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "741293531855",
+    "project_id": "mdigits-span-tasks-ema",
+    "storage_bucket": "mdigits-span-tasks-ema.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741293531855:android:9d4ead93f1b36202408dba",
+        "android_client_info": {
+          "package_name": "com.example.mdigit_span_tasks_ema"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM87zBTQoAbuN95ifrgno8o4BWz6nCXU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
