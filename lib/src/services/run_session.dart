@@ -28,6 +28,8 @@ void runSession(
   );
 
   await processData(
+    participantID: participantID,
+    sessionID: sessionID,
     taskName: taskName,
     data: data,
   );
