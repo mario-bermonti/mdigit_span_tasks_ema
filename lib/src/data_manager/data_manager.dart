@@ -3,7 +3,7 @@ import 'package:cognitive_data/cognitive_data.dart';
 import 'package:cognitive_data/databases/firebase_db/firebase_db.dart';
 
 class DataManager {
-  late final FirebaseDB _database;
+  late final FirebaseDB _db;
   final String participantID;
   final String sessionID;
   final String taskName;
@@ -13,7 +13,7 @@ class DataManager {
     required this.sessionID,
     required this.taskName,
   }) {
-    _database = FirebaseDB(
+    _db = FirebaseDB(
       FirebaseFirestore.instance,
       participantID: participantID,
       sessionID: sessionID,
@@ -23,16 +23,16 @@ class DataManager {
 
   /// Adds [Device] metadata to db
   void addDevice({required Device device}) {
-    _dataBase.addDevice(device: device);
+    _db.addDevice(device: device);
   }
 
   /// Adds [Session] metadata to db
   void addSession({required Session session}) {
-    _dataBase.addSession(session: session);
+    _db.addSession(session: session);
   }
 
   /// Adds a list of [Trial]s to the db
   void addTrials({required List<Trial> trials}) {
-    _dataBase.addTrials(trials: trials);
+    _db.addTrials(trials: trials);
   }
 }
