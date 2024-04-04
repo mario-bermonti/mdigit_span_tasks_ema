@@ -9,7 +9,11 @@ Future<void> processData({
   required String taskName,
   required DigitSpanTaskData data,
 }) async {
-  DataManager dataManager = DataManager();
+  DataManager dataManager = DataManager(
+    participantID: participantID,
+    sessionID: sessionID,
+    taskName: taskName,
+  );
   await dataManager.initDB(name: taskName);
   dataManager.addDevice(device: data.device);
   dataManager.addSession(session: data.session);
