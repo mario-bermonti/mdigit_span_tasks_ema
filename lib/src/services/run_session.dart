@@ -28,7 +28,7 @@ void runSession(
   );
 
   await processData(
-    dbName: dbName,
+    taskName: dbName,
     data: data,
   );
 }
