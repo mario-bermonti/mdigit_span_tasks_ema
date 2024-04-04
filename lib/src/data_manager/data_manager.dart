@@ -3,6 +3,16 @@ import 'package:path_provider/path_provider.dart';
 
 class DataManager {
   late final DriftDB _dataBase;
+  final String participantID;
+  final String sessionID;
+  final String taskName;
+
+
+  DataManager({
+    required this.participantID,
+    required this.sessionID,
+    required this.taskName,
+  });
 
   /// Initialize a Database named [name] in the
   /// [getApplicationDocumentsDirectory].
