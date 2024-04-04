@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cognitive_data/cognitive_data.dart';
 import 'package:cognitive_data/databases/firebase_db/firebase_db.dart';
-import 'package:path_provider/path_provider.dart';
 
 class DataManager {
   late final FirebaseDB _database;
@@ -20,17 +19,6 @@ class DataManager {
       sessionID: sessionID,
       taskName: taskName,
     );
-  }
-
-  /// Initialize a Database named [name] in the
-  /// [getApplicationDocumentsDirectory].
-  ///
-  /// The db is private and can only be accessed through the [DataManager]'s.
-  Future<void> initDB({required String name}) async {
-    final dir = await getApplicationDocumentsDirectory();
-    final String dbPath = "${dir.path}/$name.sqlite3";
-
-    _dataBase = DriftDB.init(path: dbPath);
   }
 
   /// Adds [Device] metadata to db
