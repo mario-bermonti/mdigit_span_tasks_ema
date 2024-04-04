@@ -13,7 +13,7 @@ void runSession(
       required String participantID,
       required String sessionID,
     }) taskRunner,
-    required String dbName}) async {
+    required String taskName}) async {
   final String participantID = await showParticipantInfoDialog();
 
   /// We use the startTime for the practice session to create a single
@@ -28,7 +28,9 @@ void runSession(
   );
 
   await processData(
-    dbName: dbName,
+    participantID: participantID,
+    sessionID: sessionID,
+    taskName: taskName,
     data: data,
   );
 }

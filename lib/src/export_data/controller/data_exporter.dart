@@ -4,12 +4,12 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class DataExporter {
-  final String dbName;
+  final String taskName;
   late final File db;
   late final String dbPath;
   late final File destinationFile;
 
-  DataExporter({required this.dbName});
+  DataExporter({required this.taskName});
 
   /// Request storage permission
   Future<void> requestPermission() async {
@@ -24,10 +24,10 @@ class DataExporter {
 
   /// Get db from disk so it can be copied
   /// It assumes the db is in the [getApplicationDocumentsDirectory] dir
-  /// with the name [dbName]. This method does not modify the original db.
+  /// with the name [taskName]. This method does not modify the original db.
   Future<void> getDB() async {
     final Directory dir = await getApplicationDocumentsDirectory();
-    dbPath = "${dir.path}/$dbName";
+    dbPath = "${dir.path}/$taskName";
     db = File(dbPath);
   }
 
@@ -37,7 +37,7 @@ class DataExporter {
   /// Currently only android is supported.
   Future<void> initDestinationFile() async {
     Directory destinationDir = await _initDestinationDir();
-    final String destinationPath = '${destinationDir.path}/$dbName';
+    final String destinationPath = '${destinationDir.path}/$taskName';
     destinationFile = File(destinationPath);
   }
 
