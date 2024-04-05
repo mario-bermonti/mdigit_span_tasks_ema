@@ -1,4 +1,5 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mdigit_span_tasks_ema/src/data_manager/session_id_creator.dart';
 import 'package:mdigit_span_tasks_ema/src/services/auth.dart';
@@ -28,7 +29,7 @@ void runSession(
     sessionID: sessionID,
   );
 
-  await Auth().signIn();
+  await Auth(auth: FirebaseAuth.instance).signIn();
 
   await processData(
     participantID: participantID,
