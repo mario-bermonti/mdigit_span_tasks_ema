@@ -24,12 +24,14 @@ dependencies:
       ref: v0.3.0
   firebase_core: ^2.28.0
   cloud_firestore: ^4.16.0
+  firebase_auth: ^4.19.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  firebase_auth_mocks: ^0.13.0
 
 flutter:
   uses-material-design: true

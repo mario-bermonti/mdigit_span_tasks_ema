@@ -1,6 +1,8 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mdigit_span_tasks_ema/src/data_manager/session_id_creator.dart';
+import 'package:mdigit_span_tasks_ema/src/services/auth.dart';
 import 'package:mdigit_span_tasks_ema/src/services/data_processor.dart';
 
 import '../participant_info/participant_info_dialog.dart';
@@ -26,6 +28,8 @@ void runSession(
     participantID: participantID,
     sessionID: sessionID,
   );
+
+  await Auth(auth: FirebaseAuth.instance).signIn();
 
   await processData(
     participantID: participantID,
