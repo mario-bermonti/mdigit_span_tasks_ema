@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mdigit_span_tasks_ema/src/auth/user_model.dart';
 
 /// Manages authorization processes for the app
 class Auth {
@@ -8,7 +9,12 @@ class Auth {
   Auth({required this.auth});
 
   ///  Anonymously add or sign in the user into firebase.
-  Future<void> signIn() async {
+  Future<Participant> signIn() async {
     final UserCredential userCredential = await auth.signInAnonymously();
+    final Participant user = Participant.fromUserCredential(userCredential);
+    if (user.uid == null || user.registerDateTime == null) {
+      throw Exception('Error signing user into server');
+    }
+    return user;
   }
 }
