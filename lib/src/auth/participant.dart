@@ -1,15 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
-
 class Participant {
-  final String? uid;
-  final DateTime? registerDateTime;
+  late final String uid;
+  late final DateTime registerDateTime;
 
   Participant({
-    required this.uid,
-    required this.registerDateTime,
-  });
-
-  Participant.fromUserCredential(UserCredential userCredential)
-      : uid = userCredential.user?.uid,
-        registerDateTime = userCredential.user?.metadata.creationTime;
+    required String? uid,
+    required DateTime? registerDateTime,
+  }) {
+    if (uid == null || registerDateTime == null) {
+      throw Exception('Error creating participant model');
+    } else {
+      this.uid = uid;
+      this.registerDateTime = registerDateTime;
+    }
+  }
 }

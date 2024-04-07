@@ -11,10 +11,10 @@ class Auth {
   ///  Anonymously add or sign in the user into firebase.
   Future<Participant> signIn() async {
     final UserCredential userCredential = await auth.signInAnonymously();
-    final Participant user = Participant.fromUserCredential(userCredential);
-    if (user.uid == null || user.registerDateTime == null) {
-      throw Exception('Error signing user into server');
-    }
-    return user;
+    final Participant participant = Participant(
+      uid: userCredential.user?.uid,
+      registerDateTime: userCredential.user?.metadata.creationTime,
+    );
+    return participant;
   }
 }
