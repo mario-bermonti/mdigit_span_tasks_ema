@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mdigit_span_tasks_ema/src/auth/user_model.dart';
+import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
 
 /// Manages authorization processes for the app
 class Auth {
