@@ -11,4 +11,13 @@ void main() {
       );
     },
   );
+  test(
+    "When passing a null registerDateTime, Participant's constructor will throw an exception",
+    () {
+      expect(
+        () => Participant(uid: 'uid', registerDateTime: null),
+        throwsException,
+      );
+    },
+  );
 }
