@@ -1,3 +1,6 @@
+/// Represents a single study participant.
+/// Can be used to keep track of participants' important info, including
+/// "identifying" info.
 class Participant {
   late final String uid;
   late final DateTime registerDateTime;
