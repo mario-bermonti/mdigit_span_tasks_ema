@@ -7,6 +7,5 @@ class DSBConfig {
   List<String> experimentalStim = <String>[
     '926',
     '6157',
-    '18542',
   ];
 }
