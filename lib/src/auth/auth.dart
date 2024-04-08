@@ -8,7 +8,7 @@ class Auth {
 
   Auth({required this.auth});
 
-  ///  Anonymously add or sign in the user into firebase.
+  ///  Anonymously add or sign in the participant into firebase.
   Future<Participant> signIn() async {
     final UserCredential userCredential = await auth.signInAnonymously();
     final Participant participant = Participant(
