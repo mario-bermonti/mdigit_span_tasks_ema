@@ -6,4 +6,11 @@ import 'package:get/get.dart';
 class Notifications extends GetxController {
   final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
+
+  Future<void> showNotification({
+    int id = 0,
+    required String title,
+    required String body,
+    required String payload,
+  }) async {}
 }
