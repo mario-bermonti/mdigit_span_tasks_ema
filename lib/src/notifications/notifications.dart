@@ -12,5 +12,14 @@ class Notifications extends GetxController {
     required String title,
     required String body,
     required String payload,
-  }) async {}
+  }) async {
+    await _notifications.show(
+      id,
+      title,
+      body,
+      getNotificationDetails(),
+      payload: payload,
+    );
+  }
+
 }
