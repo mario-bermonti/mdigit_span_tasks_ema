@@ -30,9 +30,27 @@ class Notifications extends GetxController {
       id,
       title,
       body,
-      getNotificationDetails(),
+      notificationDetails,
       payload: payload,
     );
   }
 
+  NotificationDetails get notificationDetails {
+    const AndroidNotificationDetails androidNotificationDetails =
+        AndroidNotificationDetails(
+      'tasks_reminders',
+      'task_reminders',
+      importance: Importance.max,
+      priority: Priority.max,
+      ticker: 'task_reminder',
+    );
+    const DarwinNotificationDetails darwinNotificationDetails =
+        DarwinNotificationDetails();
+    const NotificationDetails notificationDetails = NotificationDetails(
+      android: androidNotificationDetails,
+      iOS: darwinNotificationDetails,
+    );
+
+    return notificationDetails;
+  }
 }
