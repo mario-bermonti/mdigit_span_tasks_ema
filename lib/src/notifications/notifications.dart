@@ -7,6 +7,19 @@ class Notifications extends GetxController {
   final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
 
+  Future<void> init() async {
+    const AndroidInitializationSettings initializationSettingsAndroid =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
+    const DarwinInitializationSettings initializationSettingsDarwin =
+        DarwinInitializationSettings();
+    const InitializationSettings initializationSettings =
+        InitializationSettings(
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsDarwin,
+    );
+    await _notifications.initialize(initializationSettings);
+  }
+
   Future<void> showNotification({
     int id = 0,
     required String title,
