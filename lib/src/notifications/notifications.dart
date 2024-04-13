@@ -10,6 +10,7 @@ class Notifications extends GetxController {
   @override
   onInit() async {
     super.onInit();
+    await askNotificationPermission();
     await init();
   }
 
