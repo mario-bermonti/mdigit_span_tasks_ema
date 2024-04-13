@@ -36,7 +36,7 @@ class Notifications extends GetxController {
           'Error in setup for requesting permission to send notifications');
     }
     bool? granted = await manager.requestNotificationsPermission();
-    if (granted == null) {
+    if (granted == null || granted == false) {
       throw Exception('Permission to send notifications not granted');
     }
   }
