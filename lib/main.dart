@@ -10,8 +10,6 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // final Notifications notifications = Notifications();
-  // await notifications.init();
   Get.put(LocalNotifications());
   runApp(const MyApp());
 }
