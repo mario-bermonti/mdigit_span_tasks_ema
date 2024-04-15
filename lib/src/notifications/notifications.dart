@@ -26,6 +26,19 @@ class Notifications extends GetxController {
     await _notifications.initialize(initializationSettings);
   }
 
+  Future<void> askNotificationPermission() async {
+    final AndroidFlutterLocalNotificationsPlugin? manager =
+        _notifications.resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>();
+    if (manager == null) {
+      throw Exception(
+          'Error in setup for requesting permission to send notifications');
+    }
+      throw Exception('Permission to send notifications not granted');
+    }
+    await manager.requestNotificationsPermission();
+  }
+
   Future<void> showNotification({
     int id = 0,
     required String title,
