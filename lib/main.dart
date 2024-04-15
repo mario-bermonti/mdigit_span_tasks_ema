@@ -12,6 +12,6 @@ Future<void> main() async {
   );
   // final Notifications notifications = Notifications();
   // await notifications.init();
-  Get.put(Notifications());
+  Get.put(LocalNotifications());
   runApp(const MyApp());
 }

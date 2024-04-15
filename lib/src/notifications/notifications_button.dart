@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'notifications.dart';
 
 class NotificationsButton extends StatelessWidget {
-  final Notifications _notifications = Get.find();
+  final LocalNotifications _notifications = Get.find();
 
   NotificationsButton({
     super.key,
