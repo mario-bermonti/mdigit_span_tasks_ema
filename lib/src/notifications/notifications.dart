@@ -43,21 +43,6 @@ class Notifications extends GetxController {
     }
   }
 
-  Future<void> showNotification({
-    int id = 0,
-    required String title,
-    required String body,
-    required String payload,
-  }) async {
-    await _notifications.show(
-      id,
-      title,
-      body,
-      notificationDetails,
-      payload: payload,
-    );
-  }
-
   NotificationDetails get notificationDetails {
     const AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails(
@@ -75,5 +60,20 @@ class Notifications extends GetxController {
     );
 
     return notificationDetails;
+  }
+
+  Future<void> showNotification({
+    int id = 0,
+    required String title,
+    required String body,
+    required String payload,
+  }) async {
+    await _notifications.show(
+      id,
+      title,
+      body,
+      notificationDetails,
+      payload: payload,
+    );
   }
 }
