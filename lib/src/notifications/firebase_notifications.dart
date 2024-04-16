@@ -3,4 +3,15 @@ import 'package:get/get.dart';
 
 class FirebaseNotifications extends GetxController {
   final FirebaseMessaging notifications = FirebaseMessaging.instance;
+
+  @override
+  onInit() async {
+    super.onInit();
+    await init();
+  }
+
+  Future<void> init() async {
+    await notifications.requestPermission();
+    final String? token = await notifications.getToken();
+  }
 }
