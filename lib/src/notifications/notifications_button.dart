@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'notifications.dart';
+import 'local_notifications.dart';
 
 class NotificationsButton extends StatelessWidget {
   final LocalNotifications _notifications = Get.find();
