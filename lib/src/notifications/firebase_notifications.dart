@@ -1,10 +1,26 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/local_notifications.dart';
 
 /// Handles messages received from FCM while in the background.
 ///
 /// It needs to be a top-level method (static method do not work).
-Future<void> handleBackgroundMessages(RemoteMessage message) async {
+Future<void> handleBackgroundMessages(RemoteMessage message) async {}
+
+Future<void> _handleForegroundMessages(RemoteMessage message) async {
+  final LocalNotifications localNotifications = Get.find();
+  final RemoteNotification? notification = message.notification;
+  final AndroidNotification? android = message.notification?.android;
+  if (notification == null || notification.body == null) {
+    return;
+  }
+  if (android != null) {
+    await localNotifications.showNotification(
+      title: notification.title ?? '',
+      body: notification.body ?? '',
+      payload: '',
+    );
+  }
 }
 
 /// Service that handles all interactions with FCM.
@@ -24,6 +40,8 @@ class FirebaseNotifications extends GetxController {
   Future<void> init() async {
     await notifications.requestPermission();
     final String? token = await notifications.getToken();
-    FirebaseMessaging.onBackgroundMessage(handleBackgroundMessages);
+    FirebaseMessaging.onMessage.listen(((message) async {
+      await _handleForegroundMessages(message);
+    }));
   }
 }
