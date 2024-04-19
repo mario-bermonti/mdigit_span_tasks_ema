@@ -12,6 +12,7 @@ Future<void> handleBackgroundMessages(RemoteMessage message) async {
 /// It is a [GetxController] so it can be accessed from anywhere in the app.
 class FirebaseNotifications extends GetxController {
   final FirebaseMessaging notifications = FirebaseMessaging.instance;
+  final LocalNotifications _localNotifications = Get.put(LocalNotifications());
 
   @override
   onInit() async {
