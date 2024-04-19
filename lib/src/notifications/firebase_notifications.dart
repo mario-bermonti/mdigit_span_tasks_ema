@@ -2,11 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/local_notifications.dart';
 
-/// Handles messages received from FCM while in the background.
-///
-/// It needs to be a top-level method (static method do not work).
-Future<void> handleBackgroundMessages(RemoteMessage message) async {}
-
+/// Handle messages that are received while app in the foreground.
 Future<void> _handleForegroundMessages(RemoteMessage message) async {
   final LocalNotifications localNotifications = Get.find();
   final RemoteNotification? notification = message.notification;
