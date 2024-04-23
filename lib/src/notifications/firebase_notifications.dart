@@ -40,5 +40,9 @@ class FirebaseNotifications extends GetxController {
     FirebaseMessaging.onMessage.listen(((message) async {
       await _handleForegroundMessages(message);
     }));
+  void onNotificationTap(RemoteMessage? message) {
+    if (message == null) return;
+
+    Get.toNamed('/emaScreen');
   }
 }
