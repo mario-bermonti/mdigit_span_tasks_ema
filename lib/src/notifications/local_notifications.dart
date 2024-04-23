@@ -56,8 +56,8 @@ class LocalNotifications extends GetxController {
   NotificationDetails get notificationDetails {
     const AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails(
-      'tasks_reminders',
-      'task_reminders',
+      'ema_tasks_reminders',
+      'ema_tasks_reminders',
       importance: Importance.max,
       priority: Priority.max,
       ticker: 'task_reminder',
