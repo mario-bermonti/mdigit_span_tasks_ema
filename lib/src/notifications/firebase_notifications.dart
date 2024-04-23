@@ -36,6 +36,7 @@ class FirebaseNotifications extends GetxController {
   Future<void> init() async {
     await notifications.requestPermission();
     final String? token = await notifications.getToken();
+    print('token: $token');
     FirebaseMessaging.onMessage.listen(((message) async {
       await _handleForegroundMessages(message);
     }));

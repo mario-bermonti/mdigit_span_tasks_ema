@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'task_list/view/task_list_page.dart';
+import 'package:mdigit_span_tasks_ema/src/routes.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,8 +10,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'DigitSpanTasks',
-      home: const TaskListPage(),
+      initialRoute: '/',
       theme: ThemeData(primarySwatch: Colors.grey),
+      getPages: routes,
     );
   }
 }
