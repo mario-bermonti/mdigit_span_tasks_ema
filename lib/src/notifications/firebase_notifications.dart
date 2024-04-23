@@ -40,6 +40,9 @@ class FirebaseNotifications extends GetxController {
     FirebaseMessaging.onMessage.listen(((message) async {
       await _handleForegroundMessages(message);
     }));
+    await notifications
+        .getInitialMessage()
+        .then((message) => onNotificationTap(message));
   void onNotificationTap(RemoteMessage? message) {
     if (message == null) return;
 
