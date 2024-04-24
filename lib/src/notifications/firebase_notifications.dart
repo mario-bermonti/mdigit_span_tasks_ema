@@ -50,6 +50,7 @@ class FirebaseNotifications extends GetxController {
     );
   }
 
+  /// Handles notification taps while app is in the background or terminated.
   void onNotificationTapBG(RemoteMessage? message) {
     if (message == null) return;
 
