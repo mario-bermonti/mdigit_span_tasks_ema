@@ -53,4 +53,8 @@ class FirebaseNotifications extends GetxController {
 
     Get.toNamed('/emaScreen');
   }
+
+  void onLocalNotificationTap(NotificationResponse response) {
+    Get.toNamed('/emaScreen');
+  }
 }
