@@ -44,6 +44,8 @@ class FirebaseNotifications extends GetxController {
         .getInitialMessage()
         .then((message) => onNotificationTap(message));
     FirebaseMessaging.onMessageOpenedApp.listen(onNotificationTap);
+    await _localNotifications.init(
+    );
   }
 
   void onNotificationTap(RemoteMessage? message) {

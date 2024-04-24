@@ -9,12 +9,6 @@ class LocalNotifications extends GetxController {
   final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
 
-  @override
-  onInit() async {
-    super.onInit();
-    await init();
-  }
-
   /// Initializes the [LocalNotifications] for android and ios.
   ///
   /// Must be called before using the notifications objects.
