@@ -43,14 +43,14 @@ class FirebaseNotifications extends GetxController {
     }));
     await notifications
         .getInitialMessage()
-        .then((message) => onNotificationTap(message));
-    FirebaseMessaging.onMessageOpenedApp.listen(onNotificationTap);
+        .then((message) => onNotificationTapBG(message));
+    FirebaseMessaging.onMessageOpenedApp.listen(onNotificationTapBG);
     await _localNotifications.init(
       onLocalNotificationTap: onLocalNotificationTap,
     );
   }
 
-  void onNotificationTap(RemoteMessage? message) {
+  void onNotificationTapBG(RemoteMessage? message) {
     if (message == null) return;
 
     Get.toNamed('/emaScreen');
