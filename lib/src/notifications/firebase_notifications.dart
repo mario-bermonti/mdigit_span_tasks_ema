@@ -57,6 +57,7 @@ class FirebaseNotifications extends GetxController {
     Get.toNamed('/emaScreen');
   }
 
+  /// Handles notification taps while app is in the foreground.
   void onLocalNotificationTap(NotificationResponse response) {
     Get.toNamed('/emaScreen');
   }
