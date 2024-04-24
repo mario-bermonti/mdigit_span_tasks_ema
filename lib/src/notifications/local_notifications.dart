@@ -11,7 +11,9 @@ class LocalNotifications extends GetxController {
 
   /// Initializes the [LocalNotifications] for android and ios.
   ///
-  /// Must be called before using the notifications objects.
+  /// It requires [onLocalNotificationTap] that specifies how to handle taps on
+  /// notifications. This method must be called before using the notifications
+  /// object.
   Future<void> init({
     required void Function(NotificationResponse response)
         onLocalNotificationTap,
