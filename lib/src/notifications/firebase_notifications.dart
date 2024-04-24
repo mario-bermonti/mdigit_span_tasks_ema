@@ -1,4 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/local_notifications.dart';
 
@@ -45,6 +46,7 @@ class FirebaseNotifications extends GetxController {
         .then((message) => onNotificationTap(message));
     FirebaseMessaging.onMessageOpenedApp.listen(onNotificationTap);
     await _localNotifications.init(
+      onLocalNotificationTap: onLocalNotificationTap,
     );
   }
 

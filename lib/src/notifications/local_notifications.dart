@@ -12,7 +12,10 @@ class LocalNotifications extends GetxController {
   /// Initializes the [LocalNotifications] for android and ios.
   ///
   /// Must be called before using the notifications objects.
-  Future<void> init() async {
+  Future<void> init({
+    required void Function(NotificationResponse response)
+        onLocalNotificationTap,
+  }) async {
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/ic_launcher');
     const DarwinInitializationSettings initializationSettingsDarwin =
@@ -22,7 +25,10 @@ class LocalNotifications extends GetxController {
       android: initializationSettingsAndroid,
       iOS: initializationSettingsDarwin,
     );
-    await _notifications.initialize(initializationSettings);
+    await _notifications.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse: onLocalNotificationTap,
+    );
   }
 
   /// Asks the user during runtime for permission to send notifications.
