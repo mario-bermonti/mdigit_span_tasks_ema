@@ -9,16 +9,15 @@ class LocalNotifications extends GetxController {
   final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
 
-  @override
-  onInit() async {
-    super.onInit();
-    await init();
-  }
-
   /// Initializes the [LocalNotifications] for android and ios.
   ///
-  /// Must be called before using the notifications objects.
-  Future<void> init() async {
+  /// It requires [onLocalNotificationTap] that specifies how to handle taps on
+  /// notifications. This method must be called before using the notifications
+  /// object.
+  Future<void> init({
+    required void Function(NotificationResponse response)
+        onLocalNotificationTap,
+  }) async {
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/ic_launcher');
     const DarwinInitializationSettings initializationSettingsDarwin =
@@ -28,7 +27,10 @@ class LocalNotifications extends GetxController {
       android: initializationSettingsAndroid,
       iOS: initializationSettingsDarwin,
     );
-    await _notifications.initialize(initializationSettings);
+    await _notifications.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse: onLocalNotificationTap,
+    );
   }
 
   /// Asks the user during runtime for permission to send notifications.
@@ -56,8 +58,8 @@ class LocalNotifications extends GetxController {
   NotificationDetails get notificationDetails {
     const AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails(
-      'tasks_reminders',
-      'task_reminders',
+      'ema_tasks_reminders',
+      'ema_tasks_reminders',
       importance: Importance.max,
       priority: Priority.max,
       ticker: 'task_reminder',

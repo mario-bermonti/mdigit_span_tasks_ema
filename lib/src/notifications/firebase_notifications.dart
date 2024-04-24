@@ -1,4 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/local_notifications.dart';
 
@@ -36,8 +37,28 @@ class FirebaseNotifications extends GetxController {
   Future<void> init() async {
     await notifications.requestPermission();
     final String? token = await notifications.getToken();
+    print('token: $token');
     FirebaseMessaging.onMessage.listen(((message) async {
       await _handleForegroundMessages(message);
     }));
+    await notifications
+        .getInitialMessage()
+        .then((message) => onNotificationTapBG(message));
+    FirebaseMessaging.onMessageOpenedApp.listen(onNotificationTapBG);
+    await _localNotifications.init(
+      onLocalNotificationTap: onLocalNotificationTap,
+    );
+  }
+
+  /// Handles notification taps while app is in the background or terminated.
+  void onNotificationTapBG(RemoteMessage? message) {
+    if (message == null) return;
+
+    Get.toNamed('/emaScreen');
+  }
+
+  /// Handles notification taps while app is in the foreground.
+  void onLocalNotificationTap(NotificationResponse response) {
+    Get.toNamed('/emaScreen');
   }
 }
