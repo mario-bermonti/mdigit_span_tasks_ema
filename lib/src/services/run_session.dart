@@ -8,7 +8,7 @@ import 'package:mdigit_span_tasks_ema/src/services/data_processor.dart';
 /// Run a data collection session
 /// Running a session includes configuring everything needed and running a
 /// cognitive task specified with [taskRunner].
-void runSession(
+Future<void> runSession(
     {required Function({
       required String participantID,
       required String sessionID,
