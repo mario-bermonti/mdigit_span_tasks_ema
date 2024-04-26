@@ -63,10 +63,12 @@ class FirebaseNotifications extends GetxController {
     Get.toNamed('/emaScreen');
   }
 
+  /// Subscribes the current device to the FCM topic specified by [topic].
   Future<void> subscribeToTopic({required String topic}) async {
     await notifications.subscribeToTopic(topic);
   }
 
+  /// Subscribes the current device to the FCM topic on ema_tasks_reminders.
   Future<void> subscribeToEMAReminders() async {
     await subscribeToTopic(topic: 'ema_tasks_reminders');
   }
