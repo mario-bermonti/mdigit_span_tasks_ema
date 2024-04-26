@@ -61,4 +61,9 @@ class FirebaseNotifications extends GetxController {
   void onLocalNotificationTap(NotificationResponse response) {
     Get.toNamed('/emaScreen');
   }
+
+  Future<void> subscribeToTopic({required String topic}) async {
+    await notifications.subscribeToTopic(topic);
+  }
+
 }
