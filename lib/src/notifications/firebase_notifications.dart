@@ -48,6 +48,7 @@ class FirebaseNotifications extends GetxController {
     await _localNotifications.init(
       onLocalNotificationTap: onLocalNotificationTap,
     );
+    await subscribeToEMAReminders();
   }
 
   /// Handles notification taps while app is in the background or terminated.
@@ -60,5 +61,15 @@ class FirebaseNotifications extends GetxController {
   /// Handles notification taps while app is in the foreground.
   void onLocalNotificationTap(NotificationResponse response) {
     Get.toNamed('/emaScreen');
+  }
+
+  /// Subscribes the current device to the FCM topic specified by [topic].
+  Future<void> subscribeToTopic({required String topic}) async {
+    await notifications.subscribeToTopic(topic);
+  }
+
+  /// Subscribes the current device to the FCM topic on ema_tasks_reminders.
+  Future<void> subscribeToEMAReminders() async {
+    await subscribeToTopic(topic: 'ema_tasks_reminders');
   }
 }
