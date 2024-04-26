@@ -48,6 +48,7 @@ class FirebaseNotifications extends GetxController {
     await _localNotifications.init(
       onLocalNotificationTap: onLocalNotificationTap,
     );
+    await subscribeToEMAReminders();
   }
 
   /// Handles notification taps while app is in the background or terminated.
@@ -66,4 +67,7 @@ class FirebaseNotifications extends GetxController {
     await notifications.subscribeToTopic(topic);
   }
 
+  Future<void> subscribeToEMAReminders() async {
+    await subscribeToTopic(topic: 'ema_tasks_reminders');
+  }
 }
