@@ -70,6 +70,8 @@ class FirebaseNotifications extends GetxController {
 
   /// Subscribes the current device to the FCM topic on ema_tasks_reminders.
   Future<void> subscribeToEMAReminders() async {
-    await subscribeToTopic(topic: 'ema_tasks_reminders');
+    await subscribeToTopic(topic: 'ema_tasks_reminders_am');
+    await subscribeToTopic(topic: 'ema_tasks_reminders_afternoon');
+    await subscribeToTopic(topic: 'ema_tasks_reminders_night');
   }
 }
