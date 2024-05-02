@@ -8,9 +8,9 @@ class EMAScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar,
-      body: const Center(
+    return const Scaffold(
+      appBar: CustomAppBar(),
+      body: Center(
         child: EMAButton(),
       ),
     );
