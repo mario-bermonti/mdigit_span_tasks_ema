@@ -8,7 +8,7 @@ class TaskListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar,
+      appBar: const CustomAppBar(),
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
