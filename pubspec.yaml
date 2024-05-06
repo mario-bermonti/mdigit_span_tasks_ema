@@ -21,7 +21,7 @@ dependencies:
   cognitive_data:
     git:
       url: https://github.com/mario-bermonti/cognitive_data.git
-      ref: v0.3.0
+      ref: 4ba539786a5fd2ee74194b0c34fe03d562ef99ed
   firebase_core: ^2.28.0
   cloud_firestore: ^4.16.0
   firebase_auth: ^4.19.0
