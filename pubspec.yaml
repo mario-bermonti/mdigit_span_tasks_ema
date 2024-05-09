@@ -17,11 +17,11 @@ dependencies:
   digit_span_tasks:
     git:
       url: https://github.com/mario-bermonti/digit_span_tasks.git
-      ref: d590f8d2f991c19acaf615d36bdd6f8ce966d10d
+      ref: 3c1f56f12c1dea5ead718c9f981de2aee2b17162
   cognitive_data:
     git:
       url: https://github.com/mario-bermonti/cognitive_data.git
-      ref: 4ba539786a5fd2ee74194b0c34fe03d562ef99ed
+      ref: 1edb41fd77d5e8cb6ae2f6d515f33755dbe1c55d
   firebase_core: ^2.28.0
   cloud_firestore: ^4.16.0
   firebase_auth: ^4.19.0
