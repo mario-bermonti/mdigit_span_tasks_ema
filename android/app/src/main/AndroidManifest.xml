@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
    <application
-        android:label="mdigit_span_tasks_ema"
+        android:label="mDigits"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
