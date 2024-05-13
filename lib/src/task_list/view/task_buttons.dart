@@ -16,7 +16,7 @@ class DSBButton extends StatelessWidget {
             taskRunner: runDigitSpanBackwards, taskName: 'ds_backwards');
       },
       child: Text(
-        'Digit Span Backwards',
+        'Memoria de números al revés',
         style: Theme.of(context).textTheme.titleLarge,
       ),
     );
@@ -36,7 +36,7 @@ class DSFButton extends StatelessWidget {
             taskRunner: runDigitSpanForward, taskName: 'ds_forward');
       },
       child: Text(
-        'Digit Span Forward',
+        'Memoria de números',
         style: Theme.of(context).textTheme.titleLarge,
       ),
     );
