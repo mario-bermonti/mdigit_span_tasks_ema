@@ -36,7 +36,7 @@ class DSFButton extends StatelessWidget {
             taskRunner: runDigitSpanForward, taskName: 'ds_forward');
       },
       child: Text(
-        'Digit Span Forward',
+        'Memoria de números',
         style: Theme.of(context).textTheme.titleLarge,
       ),
     );
