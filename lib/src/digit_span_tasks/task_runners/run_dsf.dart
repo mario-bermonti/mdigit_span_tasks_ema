@@ -1,5 +1,7 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:get/get.dart';
+import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/task_runners/instructions/end_message.dart';
+import 'package:mdigit_span_tasks_ema/src/services/show_screen_duration.dart';
 import '../config/config_dsf.dart';
 import '../prep_data.dart';
 
@@ -8,6 +10,7 @@ Future<DigitSpanTaskData> runDigitSpanForward({
   required String participantID,
   required String sessionID,
 }) async {
+  const endMessageDuration = Duration(seconds: 2);
   DigitSpanTask task;
   final DSFConfig dsfConfig = DSFConfig();
   final UserConfig userConfigPractice = UserConfig(
@@ -21,6 +24,11 @@ Future<DigitSpanTaskData> runDigitSpanForward({
     config: userConfigPractice,
   );
   DigitSpanTaskData practiceData = await task.run();
+
+  await showScreenForDuration(
+    screen: () => const EndView(),
+    duration: endMessageDuration,
+  );
 
   final UserConfig userConfigExperimental = UserConfig(
     stimList: dsfConfig.experimentalStim,
@@ -39,5 +47,11 @@ Future<DigitSpanTaskData> runDigitSpanForward({
     experimentalData: experimentalData,
   );
 
+  await showScreenForDuration(
+    screen: () => const EndView(),
+    duration: endMessageDuration,
+  );
+
+  Get.toNamed('/');
   return data;
 }
