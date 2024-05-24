@@ -2,6 +2,7 @@ import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/task_runners/instructions/end_message.dart';
 import 'package:mdigit_span_tasks_ema/src/services/show_screen_duration.dart';
+import '../../ui_components/loading_screen.dart';
 import '../config/config_dsf.dart';
 import '../prep_data.dart';
 
