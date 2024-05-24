@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: const Text('mDigits'),
       centerTitle: true,
       automaticallyImplyLeading: allowBack,
-      actions: [NotificationsButton()],
+      // actions: [NotificationsButton()],
     );
   }
 
