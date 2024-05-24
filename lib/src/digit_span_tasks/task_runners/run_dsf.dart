@@ -12,7 +12,6 @@ Future<DigitSpanTaskData> runDigitSpanForward({
   required String sessionID,
 }) async {
   Get.to(() => const LoadingScreen());
-  const endMessageDuration = Duration(seconds: 2);
   DigitSpanTask task;
   final DSFConfig dsfConfig = DSFConfig();
   final UserConfig userConfigPractice = UserConfig(
@@ -27,10 +26,7 @@ Future<DigitSpanTaskData> runDigitSpanForward({
   );
   DigitSpanTaskData practiceData = await task.run();
 
-  await showScreenForDuration(
-    screen: () => const EndView(),
-    duration: endMessageDuration,
-  );
+  await Get.to(const EndView());
 
   final UserConfig userConfigExperimental = UserConfig(
     stimList: dsfConfig.experimentalStim,
@@ -49,10 +45,7 @@ Future<DigitSpanTaskData> runDigitSpanForward({
     experimentalData: experimentalData,
   );
 
-  await showScreenForDuration(
-    screen: () => const EndView(),
-    duration: endMessageDuration,
-  );
+  await Get.to(const EndView());
 
   Get.toNamed('/');
   return data;
