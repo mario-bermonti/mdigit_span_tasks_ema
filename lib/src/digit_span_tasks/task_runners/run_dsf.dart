@@ -1,6 +1,6 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/task_runners/instructions/end_message.dart';
+import 'package:mdigit_span_tasks_ema/src/ui_components/instructions.dart';
 import '../../ui_components/loading_screen.dart';
 import '../config/config_dsf.dart';
 import '../prep_data.dart';
@@ -25,7 +25,7 @@ Future<DigitSpanTaskData> runDigitSpanForward({
   );
   DigitSpanTaskData practiceData = await task.run();
 
-  await Get.to(const EndView());
+  await Get.to(() => const Instructions(text: '¡Terminamos esta actividad!'));
 
   final UserConfig userConfigExperimental = UserConfig(
     stimList: dsfConfig.experimentalStim,
@@ -44,7 +44,7 @@ Future<DigitSpanTaskData> runDigitSpanForward({
     experimentalData: experimentalData,
   );
 
-  await Get.to(const EndView());
+  await Get.to(() => const Instructions(text: '¡Terminamos esta actividad!'));
 
   Get.toNamed('/');
   return data;
