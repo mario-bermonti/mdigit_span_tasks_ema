@@ -13,32 +13,33 @@ Future<DigitSpanTaskData> runDigitSpanBackwards({
 }) async {
   Get.to(() => const LoadingScreen());
   await Get.to(
-    () => const Instructions(
-        instructions:
-            Text('Recuerda los números al revés al orden en que los veas')),
+    () => Instructions(
+        instructions: InstructionsText(
+            'Recuerda los números al revés al orden en que los veas')),
   );
   await Get.to(
-    () => const Instructions(
+    () => Instructions(
         instructions: Column(
       children: [
-        Text('Ejemplo:'),
-        Text('Si ves 49'),
-        Text('Escribe 94'),
+        InstructionsText('Ejemplo:'),
+        InstructionsText('Si ves 49'),
+        InstructionsText('Escribe 94'),
       ],
     )),
   );
   await Get.to(
-    () => const Instructions(
+    () => Instructions(
         instructions: Column(
       children: [
-        Text('Ejemplo:'),
-        Text('Si ves 491'),
-        Text('Escribe 194'),
+        InstructionsText('Ejemplo:'),
+        InstructionsText('Si ves 491'),
+        InstructionsText('Escribe 194'),
       ],
     )),
   );
   await Get.to(
-    () => const Instructions(instructions: Text('Comencemos practicando')),
+    () =>
+        Instructions(instructions: InstructionsText('Comencemos practicando')),
   );
   DigitSpanTask task;
   final DSBConfig dsbConfig = DSBConfig();
@@ -55,13 +56,13 @@ Future<DigitSpanTaskData> runDigitSpanBackwards({
   DigitSpanTaskData practiceData = await task.run();
 
   await Get.to(
-    () => const Instructions(
-        instructions:
-            Text('Ahora trabajaremos con los ejercicios principales')),
+    () => Instructions(
+        instructions: InstructionsText(
+            'Ahora trabajaremos con los ejercicios principales')),
   );
   await Get.to(
-    () => const Instructions(
-        instructions: Text(
+    () => Instructions(
+        instructions: InstructionsText(
             'Recuerda escribir los números al revés al orden en que los veas')),
   );
 
@@ -82,8 +83,8 @@ Future<DigitSpanTaskData> runDigitSpanBackwards({
     experimentalData: experimentalData,
   );
 
-  await Get.to(() =>
-      const Instructions(instructions: Text('¡Terminamos esta actividad!')));
+  await Get.to(() => Instructions(
+      instructions: InstructionsText('¡Terminamos esta actividad!')));
 
   Get.toNamed('/');
   return data;

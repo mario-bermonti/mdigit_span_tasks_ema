@@ -13,6 +13,7 @@ class Instructions extends StatelessWidget {
       children: Column(
         children: <Widget>[
           instructions,
+          const SizedBox(height: 30),
           ElevatedButton(
             onPressed: () => Get.back(),
             child: Text(
@@ -23,6 +24,20 @@ class Instructions extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class InstructionsText extends StatelessWidget {
+  final String text;
+  InstructionsText(this.text, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: Theme.of(context).textTheme.titleLarge,
+      textAlign: TextAlign.center,
     );
   }
 }

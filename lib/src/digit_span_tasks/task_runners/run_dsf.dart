@@ -13,12 +13,14 @@ Future<DigitSpanTaskData> runDigitSpanForward({
 }) async {
   Get.to(() => const LoadingScreen());
   await Get.to(
-    () => const Instructions(
-      instructions: Text('Recuerda los números en el orden en que los veas'),
+    () => Instructions(
+      instructions:
+          InstructionsText('Recuerda los números en el orden en que los veas'),
     ),
   );
   await Get.to(
-    () => const Instructions(instructions: Text('Comencemos practicando')),
+    () =>
+        Instructions(instructions: InstructionsText('Comencemos practicando')),
   );
   DigitSpanTask task;
   final DSFConfig dsfConfig = DSFConfig();
@@ -35,14 +37,14 @@ Future<DigitSpanTaskData> runDigitSpanForward({
   DigitSpanTaskData practiceData = await task.run();
 
   await Get.to(
-    () => const Instructions(
-        instructions:
-            Text('Ahora trabajaremos con los ejercicios principales')),
+    () => Instructions(
+        instructions: InstructionsText(
+            'Ahora trabajaremos con los ejercicios principales')),
   );
   await Get.to(
-    () => const Instructions(
-        instructions:
-            Text('Recuerda escribir los números en el orden en que los veas')),
+    () => Instructions(
+        instructions: InstructionsText(
+            'Recuerda escribir los números en el orden en que los veas')),
   );
 
   final UserConfig userConfigExperimental = UserConfig(
@@ -62,8 +64,8 @@ Future<DigitSpanTaskData> runDigitSpanForward({
     experimentalData: experimentalData,
   );
 
-  await Get.to(() =>
-      const Instructions(instructions: Text('¡Terminamos esta actividad!')));
+  await Get.to(() => Instructions(
+      instructions: InstructionsText('¡Terminamos esta actividad!')));
 
   Get.toNamed('/');
   return data;
