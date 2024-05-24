@@ -11,6 +11,7 @@ Future<DigitSpanTaskData> runDigitSpanForward({
   required String participantID,
   required String sessionID,
 }) async {
+  Get.to(() => const LoadingScreen());
   const endMessageDuration = Duration(seconds: 2);
   DigitSpanTask task;
   final DSFConfig dsfConfig = DSFConfig();
