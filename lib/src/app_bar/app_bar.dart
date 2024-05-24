@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../notifications/notifications_button.dart';
-
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// Whether a button to allow the user to go back to the previous screen
   /// will be presented.
