@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Instructions extends StatelessWidget {
   final String text;
@@ -7,10 +8,13 @@ class Instructions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.titleLarge,
-      textAlign: TextAlign.center,
+    return ElevatedButton(
+      onPressed: () => Get.back(),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.titleLarge,
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }
