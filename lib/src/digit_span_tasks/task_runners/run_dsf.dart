@@ -1,5 +1,8 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mdigit_span_tasks_ema/src/ui_components/instructions.dart';
+import '../../ui_components/loading_screen.dart';
 import '../config/config_dsf.dart';
 import '../prep_data.dart';
 
@@ -8,6 +11,17 @@ Future<DigitSpanTaskData> runDigitSpanForward({
   required String participantID,
   required String sessionID,
 }) async {
+  Get.to(() => const LoadingScreen());
+  await Get.to(
+    () => Instructions(
+      instructions:
+          InstructionsText('Recuerda los números en el orden en que los veas'),
+    ),
+  );
+  await Get.to(
+    () =>
+        Instructions(instructions: InstructionsText('Comencemos practicando')),
+  );
   DigitSpanTask task;
   final DSFConfig dsfConfig = DSFConfig();
   final UserConfig userConfigPractice = UserConfig(
@@ -21,6 +35,17 @@ Future<DigitSpanTaskData> runDigitSpanForward({
     config: userConfigPractice,
   );
   DigitSpanTaskData practiceData = await task.run();
+
+  await Get.to(
+    () => Instructions(
+        instructions: InstructionsText(
+            'Ahora trabajaremos con los ejercicios principales')),
+  );
+  await Get.to(
+    () => Instructions(
+        instructions: InstructionsText(
+            'Recuerda escribir los números en el orden en que los veas')),
+  );
 
   final UserConfig userConfigExperimental = UserConfig(
     stimList: dsfConfig.experimentalStim,
@@ -39,5 +64,9 @@ Future<DigitSpanTaskData> runDigitSpanForward({
     experimentalData: experimentalData,
   );
 
+  await Get.to(() => Instructions(
+      instructions: InstructionsText('¡Terminamos esta actividad!')));
+
+  Get.toNamed('/');
   return data;
 }
