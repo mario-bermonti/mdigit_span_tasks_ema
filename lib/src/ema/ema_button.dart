@@ -13,7 +13,7 @@ class EMAButton extends StatelessWidget {
         runEMATasks();
       },
       child: Text(
-        'EMA screen',
+        'Comenzar',
         style: Theme.of(context).textTheme.titleLarge,
       ),
     );
