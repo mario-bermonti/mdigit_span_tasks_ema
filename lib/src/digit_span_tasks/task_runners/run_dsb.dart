@@ -1,6 +1,7 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'rest_instructions.dart';
 import 'package:mdigit_span_tasks_ema/src/ui_components/loading_screen.dart';
 import '../../ui_components/instructions.dart';
 import '../config/config_dsb.dart';
@@ -48,6 +49,7 @@ Future<DigitSpanTaskData> runDigitSpanBackwards({
     participantID: participantID,
     sessionID: sessionID,
     sessionType: SessionType.practice,
+    restInstructions: const RestInstructions(),
   );
 
   task = DigitSpanTask(
@@ -71,6 +73,7 @@ Future<DigitSpanTaskData> runDigitSpanBackwards({
     participantID: participantID,
     sessionID: sessionID,
     sessionType: SessionType.experimental,
+    restInstructions: const RestInstructions(),
   );
 
   task = DigitSpanTask(

@@ -5,6 +5,7 @@ import 'package:mdigit_span_tasks_ema/src/ui_components/instructions.dart';
 import '../../ui_components/loading_screen.dart';
 import '../config/config_dsf.dart';
 import '../prep_data.dart';
+import 'rest_instructions.dart';
 
 /// Configure and start the DSF
 Future<DigitSpanTaskData> runDigitSpanForward({
@@ -29,6 +30,7 @@ Future<DigitSpanTaskData> runDigitSpanForward({
     participantID: participantID,
     sessionID: sessionID,
     sessionType: SessionType.practice,
+    restInstructions: const RestInstructions(),
   );
 
   task = DigitSpanTask(
@@ -52,6 +54,7 @@ Future<DigitSpanTaskData> runDigitSpanForward({
     participantID: participantID,
     sessionID: sessionID,
     sessionType: SessionType.experimental,
+    restInstructions: const RestInstructions(),
   );
 
   task = DigitSpanTask(
