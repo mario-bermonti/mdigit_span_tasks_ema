@@ -1,17 +1,14 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../config/config.dart';
 import 'package:mdigit_span_tasks_ema/src/ui_components/instructions.dart';
 import '../../ui_components/loading_screen.dart';
-import '../config/stim_dsf.dart';
 import '../prep_data.dart';
 import 'rest_instructions.dart';
 
 /// Configure and start the DSF
-Future<DigitSpanTaskData> runDigitSpanForward({
-  required String participantID,
-  required String sessionID,
-}) async {
+Future<DigitSpanTaskData> runDigitSpanForward() async {
+  final DigitSpanTaskConfig config = Get.find();
   Get.to(() => const LoadingScreen());
   await Get.to(
     () => Instructions(
@@ -24,11 +21,10 @@ Future<DigitSpanTaskData> runDigitSpanForward({
         Instructions(instructions: InstructionsText('Comencemos practicando')),
   );
   DigitSpanTask task;
-  final DSFStim dsfConfig = DSFStim();
   final UserConfig userConfigPractice = UserConfig(
-    stimList: dsfConfig.practiceStim,
-    participantID: participantID,
-    sessionID: sessionID,
+    stimList: config.practiceStim,
+    participantID: config.participantID,
+    sessionID: config.sessionID,
     sessionType: SessionType.practice,
     restInstructions: const RestInstructions(),
   );
@@ -50,9 +46,9 @@ Future<DigitSpanTaskData> runDigitSpanForward({
   );
 
   final UserConfig userConfigExperimental = UserConfig(
-    stimList: dsfConfig.experimentalStim,
-    participantID: participantID,
-    sessionID: sessionID,
+    stimList: config.experimentalStim,
+    participantID: config.participantID,
+    sessionID: config.sessionID,
     sessionType: SessionType.experimental,
     restInstructions: const RestInstructions(),
   );
