@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/ui_components/instructions.dart';
 import '../../ui_components/loading_screen.dart';
-import '../config/config_dsf.dart';
+import '../config/stim_dsf.dart';
 import '../prep_data.dart';
 import 'rest_instructions.dart';
 
@@ -24,7 +24,7 @@ Future<DigitSpanTaskData> runDigitSpanForward({
         Instructions(instructions: InstructionsText('Comencemos practicando')),
   );
   DigitSpanTask task;
-  final DSFConfig dsfConfig = DSFConfig();
+  final DSFStim dsfConfig = DSFStim();
   final UserConfig userConfigPractice = UserConfig(
     stimList: dsfConfig.practiceStim,
     participantID: participantID,

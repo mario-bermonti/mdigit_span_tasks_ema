@@ -1,11 +1,11 @@
-class DSFConfig {
+class DSBStim {
   List<String> practiceStim = <String>[
-    '27',
-    '689',
+    '36',
+    '283',
   ];
 
   List<String> experimentalStim = <String>[
-    '4389',
-    '79165',
+    '926',
+    '6157',
   ];
 }
