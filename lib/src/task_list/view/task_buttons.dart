@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/ds_stim.dart';
 import 'package:mdigit_span_tasks_ema/src/services/run_session.dart';
 import '../../digit_span_tasks/config/config.dart';
 import '../../digit_span_tasks/config/stim_dsb.dart';
@@ -18,9 +19,7 @@ class DSBButton extends StatelessWidget {
       onPressed: () async {
         final DigitSpanTaskConfig config = Get.find();
         config.taskName = 'dsb';
-        final DSBStim stim = DSBStim();
-        config.practiceStim = stim.practiceStim;
-        config.experimentalStim = stim.experimentalStim;
+        config.stim = dsbStim;
         await runSession(taskRunner: runDigitSpanBackwards);
       },
       child: Text(
@@ -42,9 +41,7 @@ class DSFButton extends StatelessWidget {
       onPressed: () async {
         final DigitSpanTaskConfig config = Get.find();
         config.taskName = 'dsf';
-        final DSFStim stim = DSFStim();
-        config.practiceStim = stim.practiceStim;
-        config.experimentalStim = stim.experimentalStim;
+        config.stim = dsfStim;
         await runSession(taskRunner: runDigitSpanForward);
       },
       child: Text(

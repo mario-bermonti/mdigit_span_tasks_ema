@@ -22,7 +22,7 @@ Future<DigitSpanTaskData> runDigitSpanForward() async {
   );
   DigitSpanTask task;
   final UserConfig userConfigPractice = UserConfig(
-    stimList: config.practiceStim,
+    stimList: config.stim.practiceStim,
     participantID: config.participantID,
     sessionID: config.sessionID,
     sessionType: SessionType.practice,
@@ -46,7 +46,7 @@ Future<DigitSpanTaskData> runDigitSpanForward() async {
   );
 
   final UserConfig userConfigExperimental = UserConfig(
-    stimList: config.experimentalStim,
+    stimList: config.stim.experimentalStim,
     participantID: config.participantID,
     sessionID: config.sessionID,
     sessionType: SessionType.experimental,
