@@ -32,5 +32,4 @@ Future<void> runEMATasks() async {
   for (Function emaTask in emaTasks) {
     await emaTask();
   }
-  Get.back();
 }
