@@ -1,6 +1,7 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../config/config.dart';
 import 'rest_instructions.dart';
 import 'package:mdigit_span_tasks_ema/src/ui_components/loading_screen.dart';
 import '../../ui_components/instructions.dart';
@@ -8,10 +9,8 @@ import '../config/stim_dsb.dart';
 import '../prep_data.dart';
 
 /// Configure and start the DSB
-Future<DigitSpanTaskData> runDigitSpanBackwards({
-  required String participantID,
-  required String sessionID,
-}) async {
+Future<DigitSpanTaskData> runDigitSpanBackwards() async {
+  final DigitSpanTaskConfig config = Get.find();
   Get.to(() => const LoadingScreen());
   await Get.to(
     () => Instructions(
@@ -45,9 +44,9 @@ Future<DigitSpanTaskData> runDigitSpanBackwards({
   DigitSpanTask task;
   final DSBStim dsbConfig = DSBStim();
   final UserConfig userConfigPractice = UserConfig(
-    stimList: dsbConfig.practiceStim,
-    participantID: participantID,
-    sessionID: sessionID,
+    stimList: config.practiceStim,
+    participantID: config.participantID,
+    sessionID: config.sessionID,
     sessionType: SessionType.practice,
     restInstructions: const RestInstructions(),
   );
@@ -69,9 +68,9 @@ Future<DigitSpanTaskData> runDigitSpanBackwards({
   );
 
   final UserConfig userConfigExperimental = UserConfig(
-    stimList: dsbConfig.experimentalStim,
-    participantID: participantID,
-    sessionID: sessionID,
+    stimList: config.experimentalStim,
+    participantID: config.participantID,
+    sessionID: config.sessionID,
     sessionType: SessionType.experimental,
     restInstructions: const RestInstructions(),
   );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/services/run_session.dart';
 import '../../digit_span_tasks/config/config.dart';
+import '../../digit_span_tasks/config/stim_dsb.dart';
 import '../../digit_span_tasks/config/stim_dsf.dart';
 import '../../digit_span_tasks/task_runners/run_dsb.dart';
 import '../../digit_span_tasks/task_runners/run_dsf.dart';
@@ -15,8 +16,12 @@ class DSBButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
-        await runSession(
-            taskRunner: runDigitSpanBackwards, taskName: 'ds_backwards');
+        final DigitSpanTaskConfig config = Get.find();
+        config.taskName = 'dsb';
+        final DSBStim stim = DSBStim();
+        config.practiceStim = stim.practiceStim;
+        config.experimentalStim = stim.experimentalStim;
+        await runSession(taskRunner: runDigitSpanBackwards);
       },
       child: Text(
         'Memoria de números al revés',
