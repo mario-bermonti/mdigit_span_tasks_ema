@@ -25,8 +25,11 @@ void runEMAdsb() async {
 final List<Function> emaTasks = <Function>[runEMAdsf, runEMAdsb];
 
 Future<void> runEMATasks() async {
+  final DigitSpanTaskConfig config = Get.find();
+  config.nextScreen = '/loading';
   emaTasks.shuffle();
   for (Function emaTask in emaTasks) {
     await emaTask();
   }
+  Get.toNamed('/');
 }

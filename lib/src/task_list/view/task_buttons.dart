@@ -20,6 +20,7 @@ class DSBButton extends StatelessWidget {
         final DigitSpanTaskConfig config = Get.find();
         config.taskName = 'dsb';
         config.stim = dsbStim;
+        config.nextScreen = '/';
         await runSession(taskRunner: runDigitSpanBackwards);
       },
       child: Text(
@@ -42,6 +43,7 @@ class DSFButton extends StatelessWidget {
         final DigitSpanTaskConfig config = Get.find();
         config.taskName = 'dsf';
         config.stim = dsfStim;
+        config.nextScreen = '/';
         await runSession(taskRunner: runDigitSpanForward);
       },
       child: Text(
