@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -46,19 +49,9 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCXExwqe6cK9MKMJmaGhk9qgI5QB76yUAw',
-    appId: '1:741293531855:web:fc407aa6c93f4d50408dba',
-    messagingSenderId: '741293531855',
-    projectId: 'mdigits-span-tasks-ema',
-    authDomain: 'mdigits-span-tasks-ema.firebaseapp.com',
-    storageBucket: 'mdigits-span-tasks-ema.appspot.com',
-    measurementId: 'G-W448FPETS0',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDM87zBTQoAbuN95ifrgno8o4BWz6nCXU8',
-    appId: '1:741293531855:android:9d4ead93f1b36202408dba',
+    appId: '1:741293531855:android:0ffab8208a0c9320408dba',
     messagingSenderId: '741293531855',
     projectId: 'mdigits-span-tasks-ema',
     storageBucket: 'mdigits-span-tasks-ema.appspot.com',
@@ -66,10 +59,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDlmMWhhjkHPsaHzh1zVKzGhF1FgeoS-Mc',
-    appId: '1:741293531855:ios:c73ce9eb30b747fa408dba',
+    appId: '1:741293531855:ios:ee11d7a8add54394408dba',
     messagingSenderId: '741293531855',
     projectId: 'mdigits-span-tasks-ema',
     storageBucket: 'mdigits-span-tasks-ema.appspot.com',
-    iosBundleId: 'com.example.mdigitSpanTasks',
+    iosBundleId: 'com.mbermonti.mdigits',
   );
 }
