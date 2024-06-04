@@ -6,4 +6,5 @@ class DigitSpanTaskConfig extends GetxController {
   late String sessionID;
   late String taskName;
   late DSStim stim;
+  late String nextScreen;
 }
