@@ -66,6 +66,6 @@ Future<DigitSpanTaskData> runDigitSpanForward() async {
   await Get.to(() => Instructions(
       instructions: InstructionsText('¡Terminamos esta actividad!')));
 
-  Get.toNamed('/');
+  Get.toNamed(config.nextScreen);
   return data;
 }
