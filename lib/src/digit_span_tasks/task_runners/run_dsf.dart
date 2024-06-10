@@ -22,11 +22,13 @@ Future<DigitSpanTaskData> runDigitSpanForward() async {
   );
   DigitSpanTask task;
   final UserConfig userConfigPractice = UserConfig(
-    stimList: config.stim.practiceStim,
     participantID: config.participantID,
     sessionID: config.sessionID,
     sessionType: SessionType.practice,
     restInstructions: const RestInstructions(),
+    minStimSize: config.practiceMinStimSize,
+    maxStimSize: config.practiceMaxStimSize,
+    countEachSize: config.practiceCountEachSize,
   );
 
   task = DigitSpanTask(
@@ -46,11 +48,13 @@ Future<DigitSpanTaskData> runDigitSpanForward() async {
   );
 
   final UserConfig userConfigExperimental = UserConfig(
-    stimList: config.stim.experimentalStim,
     participantID: config.participantID,
     sessionID: config.sessionID,
     sessionType: SessionType.experimental,
     restInstructions: const RestInstructions(),
+    minStimSize: config.experimentalMinStimSize,
+    maxStimSize: config.experimentalMaxStimSize,
+    countEachSize: config.experimentalCountEachSize,
   );
 
   task = DigitSpanTask(
