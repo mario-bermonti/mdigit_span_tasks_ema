@@ -18,7 +18,12 @@ void runEMAdsf() async {
 void runEMAdsb() async {
   final DigitSpanTaskConfig config = Get.find();
   config.taskName = 'dsb';
-  config.stim = dsbStim;
+  config.practiceMinStimSize = 2;
+  config.practiceMaxStimSize = 2;
+  config.practiceCountEachSize = 1;
+  config.experimentalMinStimSize = 3;
+  config.experimentalMaxStimSize = 3;
+  config.experimentalCountEachSize = 1;
   await runSession(taskRunner: runDigitSpanBackwards);
 }
 
