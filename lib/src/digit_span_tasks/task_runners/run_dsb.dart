@@ -1,8 +1,6 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/ds_stim.dart';
-import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/stim_dsb.dart';
 import '../config/config.dart';
 import 'rest_instructions.dart';
 import 'package:mdigit_span_tasks_ema/src/ui_components/loading_screen.dart';
@@ -43,13 +41,14 @@ Future<DigitSpanTaskData> runDigitSpanBackwards() async {
         Instructions(instructions: InstructionsText('Comencemos practicando')),
   );
   DigitSpanTask task;
-  final DSStim dsbConfig = dsbStim;
   final UserConfig userConfigPractice = UserConfig(
-    stimList: config.stim.practiceStim,
     participantID: config.participantID,
     sessionID: config.sessionID,
     sessionType: SessionType.practice,
     restInstructions: const RestInstructions(),
+    minStimSize: config.practiceMinStimSize,
+    maxStimSize: config.practiceMaxStimSize,
+    countEachSize: config.practiceCountEachSize,
   );
 
   task = DigitSpanTask(
@@ -69,11 +68,13 @@ Future<DigitSpanTaskData> runDigitSpanBackwards() async {
   );
 
   final UserConfig userConfigExperimental = UserConfig(
-    stimList: config.stim.experimentalStim,
     participantID: config.participantID,
     sessionID: config.sessionID,
     sessionType: SessionType.experimental,
     restInstructions: const RestInstructions(),
+    minStimSize: config.experimentalMinStimSize,
+    maxStimSize: config.experimentalMaxStimSize,
+    countEachSize: config.experimentalCountEachSize,
   );
 
   task = DigitSpanTask(
