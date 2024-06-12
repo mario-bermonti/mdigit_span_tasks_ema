@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDM87zBTQoAbuN95ifrgno8o4BWz6nCXU8',
-    appId: '1:741293531855:android:0ffab8208a0c9320408dba',
+    appId: '1:741293531855:android:af354b17de41568d408dba',
     messagingSenderId: '741293531855',
     projectId: 'mdigits-span-tasks-ema',
     storageBucket: 'mdigits-span-tasks-ema.appspot.com',
@@ -59,10 +59,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDlmMWhhjkHPsaHzh1zVKzGhF1FgeoS-Mc',
-    appId: '1:741293531855:ios:ee11d7a8add54394408dba',
+    appId: '1:741293531855:ios:a965ddc4a688df86408dba',
     messagingSenderId: '741293531855',
     projectId: 'mdigits-span-tasks-ema',
     storageBucket: 'mdigits-span-tasks-ema.appspot.com',
-    iosBundleId: 'com.mbermonti.mdigits',
+    iosBundleId: 'io.mbermonti.mdigits',
   );
 }
