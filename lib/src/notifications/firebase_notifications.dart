@@ -35,7 +35,14 @@ class FirebaseNotifications extends GetxController {
 
   /// Initializes the FCM and all necessary configuration.
   Future<void> init() async {
-    await notifications.requestPermission();
+    await notifications.requestPermission(
+      alert: true,
+      announcement: true,
+      badge: true,
+      criticalAlert: true,
+      provisional: true,
+      sound: true,
+    );
     final String? token = await notifications.getToken();
     print('token: $token');
     FirebaseMessaging.onMessage.listen(((message) async {
