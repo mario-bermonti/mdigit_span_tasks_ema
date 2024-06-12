@@ -7,44 +7,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:741293531855:android:9d4ead93f1b36202408dba",
-        "android_client_info": {
-          "package_name": "com.example.mdigit_span_tasks_ema"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDM87zBTQoAbuN95ifrgno8o4BWz6nCXU8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:741293531855:android:0ffab8208a0c9320408dba",
-        "android_client_info": {
-          "package_name": "com.mbermonti.mdigits"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDM87zBTQoAbuN95ifrgno8o4BWz6nCXU8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:741293531855:android:af354b17de41568d408dba",
         "android_client_info": {
           "package_name": "io.mbermonti.mdigits"
