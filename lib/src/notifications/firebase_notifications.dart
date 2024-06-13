@@ -45,6 +45,11 @@ class FirebaseNotifications extends GetxController {
     );
     final String? token = await notifications.getToken();
     print('token: $token');
+    await notifications.setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
     FirebaseMessaging.onMessage.listen(((message) async {
       await _handleForegroundMessages(message);
     }));
