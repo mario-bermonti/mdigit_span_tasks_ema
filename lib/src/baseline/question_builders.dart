@@ -14,8 +14,8 @@ Future<RPQuestionStep> buildSingleChoiceQuestionFromJson(String path) async {
 }
 
 /// Reads a survey question from a json file in the specified [filename].
-  final String questionString = File(filename).readAsStringSync();
 Future<Map<String, dynamic>> readSurveyQuestionFromJson(String filename) async {
+  final String questionString = await rootBundle.loadString(filename);
   final Map<String, dynamic> questionJson = jsonDecode(questionString);
   return questionJson;
 }
