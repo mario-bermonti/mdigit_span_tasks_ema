@@ -1,6 +1,13 @@
 import 'package:research_package/research_package.dart';
 
 /// Build a [reserach_package] single choice question from a json object.
+/// Reads a survey question from a json file in the specified [filename].
+  final String questionString = File(filename).readAsStringSync();
+Future<Map<String, dynamic>> readSurveyQuestionFromJson(String filename) async {
+  final Map<String, dynamic> questionJson = jsonDecode(questionString);
+  return questionJson;
+}
+
 /// Build a [research_package] single choice question from a json object.
 /// The question build is of type [RPChoiceAnswerStyle.SingleChoice] from the
 /// research package.
