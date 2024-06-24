@@ -26,10 +26,12 @@ Future<Map<String, dynamic>> readSurveyQuestionFromJson(String filename) async {
 RPQuestionStep buildSingleChoiceQuestion({
   required Map<String, dynamic> config,
 }) {
-  final List<RPChoice> choices = buildChoices(choices: config['choices']);
+  final List<Map<String, dynamic>> choicesJson =
+      List<Map<String, dynamic>>.from(config['choices']);
+  final List<RPChoice> choicesRP = buildChoices(choices: choicesJson);
   final RPChoiceAnswerFormat answerFormat = RPChoiceAnswerFormat(
     answerStyle: RPChoiceAnswerStyle.SingleChoice,
-    choices: choices,
+    choices: choicesRP,
   );
   final RPQuestionStep question = RPQuestionStep(
     identifier: config['identifier'],
