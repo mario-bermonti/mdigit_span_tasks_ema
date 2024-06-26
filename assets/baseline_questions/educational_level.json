@@ -1,0 +1,42 @@
+{
+    "identifier": "educational_level",
+    "title": "¿Cuál es el nivel de educación más alto que has completado?",
+    "choices": [
+        {
+            "text": "Menos de cuarto año",
+            "value": 0
+        },
+        {
+            "text": "Cuarto año",
+            "value": 1
+        },
+        {
+            "text": "Grado técnico",
+            "value": 2
+        },
+        {
+            "text": "Grado asociado",
+            "value": 3
+        },
+        {
+            "text": "Bachillerato",
+            "value": 4
+        },
+        {
+            "text": "Maestría",
+            "value": 5
+        },
+        {
+            "text": "Doctorado",
+            "value": 6
+        },
+        {
+            "text": "Post-doctorado",
+            "value": 7
+        },
+        {
+            "text": "Prefiero no contestar",
+            "value": -1
+        }
+    ]
+}
