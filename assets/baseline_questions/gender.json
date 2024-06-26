@@ -1,0 +1,26 @@
+{
+    "identifier": "gender",
+    "title": "¿Qué término describe mejor tu género?",
+    "choices": [
+        {
+            "text": "Hombre",
+            "value": 0
+        },
+        {
+            "text": "Mujer",
+            "value": 1
+        },
+        {
+            "text": "No binario",
+            "value": 2
+        },
+        {
+            "text": "Transgénero",
+            "value": 3
+        },
+        {
+            "text": "Prefiero no contestar",
+            "value": -1
+        }
+    ]
+}
