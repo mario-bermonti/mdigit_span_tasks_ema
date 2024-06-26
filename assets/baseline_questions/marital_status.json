@@ -1,0 +1,34 @@
+{
+    "identifier": "marital_status",
+    "title": "¿Cuál describe mejor tu estado civil actual?",
+    "choices": [
+        {
+            "text": "No tengo pareja",
+            "value": 0
+        },
+        {
+            "text": "Vivo con mi pareja sin casarme",
+            "value": 1
+        },
+        {
+            "text": "Matrimonio",
+            "value": 2
+        },
+        {
+            "text": "Separación",
+            "value": 3
+        },
+        {
+            "text": "Divorcio",
+            "value": 4
+        },
+        {
+            "text": "Viudez",
+            "value": 5
+        },
+        {
+            "text": "Prefiero no contestar",
+            "value": -1
+        }
+    ]
+}

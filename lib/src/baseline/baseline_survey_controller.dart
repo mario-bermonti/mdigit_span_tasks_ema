@@ -6,7 +6,11 @@ import 'package:research_package/research_package.dart';
 
 class BaselineSurveyController extends GetxController {
   final String basePath = 'assets/baseline_questions';
-  final List<String> questionFilenames = <String>['sex.json', 'gender.json'];
+  final List<String> questionFilenames = <String>[
+    'sex.json',
+    'gender.json',
+    'marital_status.json',
+  ];
   final List<RPQuestionStep> questions = <RPQuestionStep>[].obs;
   RxBool isLoading = true.obs;
   RxBool hasError = false.obs;
