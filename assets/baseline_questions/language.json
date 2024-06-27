@@ -1,0 +1,22 @@
+{
+    "identifier": "language",
+    "title": "¿Cuál es tu idioma principal?",
+    "choices": [
+        {
+            "text": "Español",
+            "value": 0
+        },
+        {
+            "text": "Inglés",
+            "value": 1
+        },
+        {
+            "text": "Otro",
+            "value": 2
+        },
+        {
+            "text": "Prefiero no contestar",
+            "value": -1
+        }
+    ]
+}
