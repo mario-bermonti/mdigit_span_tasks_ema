@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:mdigit_span_tasks_ema/src/dob_question.dart';
 import 'package:research_package/research_package.dart';
 
 class BaselineSurveyController extends GetxController {
@@ -15,7 +16,7 @@ class BaselineSurveyController extends GetxController {
     'employment.json',
     'language.json',
   ];
-  final List<RPQuestionStep> questions = <RPQuestionStep>[].obs;
+  final List<RPQuestionStep> questions = <RPQuestionStep>[dobQuestion].obs;
   RxBool isLoading = true.obs;
   RxBool hasError = false.obs;
 
