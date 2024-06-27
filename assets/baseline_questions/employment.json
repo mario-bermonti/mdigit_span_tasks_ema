@@ -1,0 +1,18 @@
+{
+    "identifier": "employment",
+    "title": "¿Trabajas actualmente?",
+    "choices": [
+        {
+            "text": "No",
+            "value": 0
+        },
+        {
+            "text": "Sí",
+            "value": 1
+        },
+        {
+            "text": "Prefiero no contestar",
+            "value": -1
+        }
+    ]
+}
