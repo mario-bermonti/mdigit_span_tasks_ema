@@ -11,6 +11,7 @@ class BaselineSurveyController extends GetxController {
     'gender.json',
     'marital_status.json',
     'educational_level.json',
+    'income.json',
   ];
   final List<RPQuestionStep> questions = <RPQuestionStep>[].obs;
   RxBool isLoading = true.obs;
