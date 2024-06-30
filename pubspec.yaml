@@ -28,6 +28,7 @@ dependencies:
   flutter_local_notifications: ^17.0.0
   firebase_messaging: ^14.8.1
   research_package: ^1.5.0
+  get_storage: ^2.1.1
 
 dev_dependencies:
   flutter_test:
