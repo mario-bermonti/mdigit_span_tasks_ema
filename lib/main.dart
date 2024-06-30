@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:mdigit_span_tasks_ema/src/app.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/config.dart';
@@ -12,6 +13,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await GetStorage.init();
   Get.put(LocalNotifications());
   Get.put(FirebaseNotifications());
   Get.put(DigitSpanTaskConfig(), permanent: true);
