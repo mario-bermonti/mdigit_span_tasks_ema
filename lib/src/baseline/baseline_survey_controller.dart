@@ -65,4 +65,12 @@ class BaselineSurveyController extends GetxController {
     );
     return question;
   }
+
+  /// Build [RPChoice] objects from a json object.
+  List<RPChoice> buildChoices({required List<Map<String, dynamic>> choices}) {
+    final List<RPChoice> formattedChoices = choices
+        .map((Map<String, dynamic> choice) => _buildRPChoice(choice))
+        .toList();
+    return formattedChoices;
+  }
 }
