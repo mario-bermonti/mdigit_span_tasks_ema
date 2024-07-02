@@ -44,4 +44,25 @@ class BaselineSurveyController extends GetxController {
     final Map<String, dynamic> questionJson = jsonDecode(questionString);
     return questionJson;
   }
+
+  /// Build a [research_package] single choice question from a json object.
+  /// The question build is of type [RPChoiceAnswerStyle.SingleChoice] from the
+  /// research package.
+  RPQuestionStep buildSingleChoiceQuestion({
+    required Map<String, dynamic> config,
+  }) {
+    final List<Map<String, dynamic>> choicesJson =
+        List<Map<String, dynamic>>.from(config['choices']);
+    final List<RPChoice> choicesRP = buildChoices(choices: choicesJson);
+    final RPChoiceAnswerFormat answerFormat = RPChoiceAnswerFormat(
+      answerStyle: RPChoiceAnswerStyle.SingleChoice,
+      choices: choicesRP,
+    );
+    final RPQuestionStep question = RPQuestionStep(
+      identifier: config['identifier'],
+      title: config['title'],
+      answerFormat: answerFormat,
+    );
+    return question;
+  }
 }
