@@ -37,4 +37,11 @@ class BaselineSurveyController extends GetxController {
         buildSingleChoiceQuestion(config: questionJson);
     return questionFormatted;
   }
+
+  /// Reads a survey question from a json file in the specified [path].
+  Future<Map<String, dynamic>> readSurveyQuestionFromJson(String path) async {
+    final String questionString = await rootBundle.loadString(path);
+    final Map<String, dynamic> questionJson = jsonDecode(questionString);
+    return questionJson;
+  }
 }
