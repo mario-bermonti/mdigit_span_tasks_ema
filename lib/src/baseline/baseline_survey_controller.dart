@@ -73,4 +73,11 @@ class BaselineSurveyController extends GetxController {
         .toList();
     return formattedChoices;
   }
+
+  RPChoice _buildRPChoice(Map<String, dynamic> choice) {
+    return RPChoice(
+      text: choice['text'],
+      value: choice['value'],
+    );
+  }
 }
