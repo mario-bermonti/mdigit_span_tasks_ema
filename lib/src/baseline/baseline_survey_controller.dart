@@ -16,4 +16,16 @@ class BaselineSurveyController extends GetxController {
     super.onInit();
     loadSurveyQuestions();
   }
+
+  /// Load all survey questions from json files and convert them RP question
+  /// objects.
+  Future<void> loadSurveyQuestions() async {
+    isLoading(true);
+    for (String questionFilename in questionFilenames) {
+      RPQuestionStep question = await buildSingleChoiceQuestionFromJson(
+          '$basePath/$questionFilename');
+      questions.add(question);
+    }
+    isLoading(false);
+  }
 }
