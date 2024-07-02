@@ -28,4 +28,13 @@ class BaselineSurveyController extends GetxController {
     }
     isLoading(false);
   }
+
+  /// Build a [research_package] single choice question from a json file.
+  Future<RPQuestionStep> buildSingleChoiceQuestionFromJson(String path) async {
+    final Map<String, dynamic> questionJson =
+        await readSurveyQuestionFromJson(path);
+    final RPQuestionStep questionFormatted =
+        buildSingleChoiceQuestion(config: questionJson);
+    return questionFormatted;
+  }
 }
