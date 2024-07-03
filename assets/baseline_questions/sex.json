@@ -1,0 +1,22 @@
+{
+    "identifier": "sex",
+    "title": "¿Cuál sexo te fue asignado al nacer?",
+    "choices": [
+        {
+            "text": "Masculino",
+            "value": 0
+        },
+        {
+            "text": "Femenino",
+            "value": 1
+        },
+        {
+            "text": "Intersexual",
+            "value": 2
+        },
+        {
+            "text": "Prefiero no contestar",
+            "value": -1
+        }
+    ]
+}
