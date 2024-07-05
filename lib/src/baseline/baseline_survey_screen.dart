@@ -30,7 +30,6 @@ class BaselineSurveyScreen extends StatelessWidget {
           task: survey,
           onSubmit: (RPTaskResult results) async {
             print('baseline data');
-            print(jsonEncode(results.toJson()));
             GetStorage().write('baselineCompleted', true);
             await Get.toNamed('/tasklist');
           },
