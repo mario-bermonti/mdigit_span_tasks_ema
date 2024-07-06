@@ -17,7 +17,7 @@ void main() {
           "start_date": "2024-07-04T16:04:08.889902",
           "end_date": "2024-07-04T16:22:03.940516",
           "results": {
-            "gender": {
+            "color": {
               "identifier": "color",
               "start_date": "2024-07-04T16:21:59.151739",
               "end_date": "2024-07-04T16:21:59.880927",
