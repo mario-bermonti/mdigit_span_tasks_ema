@@ -15,14 +15,18 @@ Map<String, dynamic> rpSurveyDataToJson(RPTaskResult results) {
 SurveyItemData buildSurveyItemData({
   required Map<String, dynamic> jsonItem,
 }) {
+  final String startTime = jsonItem['start_date'];
+  final String endTime = jsonItem['end_date'];
+  final Map<String, dynamic> answerFormat = jsonItem['answer_format'];
+  final String answer = jsonItem['results']['answer'].first['text'];
   final SurveyItemData item = SurveyItemData(
-    startTime: DateTime.parse(jsonItem['start_date']),
-    endTime: DateTime.parse(jsonItem['end_date']),
+    startTime: DateTime.parse(startTime),
+    endTime: DateTime.parse(endTime),
     identifier: jsonItem['identifier'],
     description: jsonItem['question_title'],
-    type: jsonItem['answer_format']['answer_style'],
-    response: jsonItem['results']['answer'].first['text'],
-    choices: getChoicesText(jsonChoices: jsonItem['answer_format']['choices']),
+    type: answerFormat['answer_style'],
+    response: answer,
+    choices: getChoicesText(jsonChoices: answerFormat['choices']),
   );
   return item;
 }
