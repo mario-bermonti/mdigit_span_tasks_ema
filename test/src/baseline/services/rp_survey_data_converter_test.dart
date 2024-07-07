@@ -37,4 +37,54 @@ void main() {
       },
     );
   });
+  group('buildSurveyItemData', () {
+    test(
+      """
+      given an object that maps from the item identifier to its data of a single
+      choice survey item, it returns a SurveyItem object.
+      """,
+      () {
+        /// arrange
+        final Map<String, dynamic> expectedData = {
+          "identifier": "color",
+          "start_date": "2024-07-04T16:21:59.151739",
+          "end_date": "2024-07-04T16:21:59.880927",
+          "question_title": "What color do you prefer?",
+          "results": {
+            "answer": [
+              {
+                "__type": "RPChoice",
+                "text": "Black",
+                "value": "0",
+                "is_free_text": "false"
+              }
+            ]
+          },
+          "answer_format": {
+            "__type": "RPChoiceAnswerFormat",
+            "question_type": "SingleChoice",
+            "choices": [
+              {
+                "__type": "RPChoice",
+                "text": "Black",
+                "value": "0",
+                "is_free_text": "false"
+              },
+              {
+                "__type": "RPChoice",
+                "text": "White",
+                "value": "1",
+                "is_free_text": "false"
+              },
+            ],
+            "answer_style": "SingleChoice",
+          }
+        };
+
+        /// act
+
+        /// assert
+      },
+    );
+  });
 }
