@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mdigit_span_tasks_ema/src/baseline/data/survey_item_data.dart';
 import 'package:mdigit_span_tasks_ema/src/baseline/services/rp_survey_data_converter.dart';
@@ -97,6 +99,37 @@ void main() {
 
         /// assert
         expect(actualItem, equals(expectedItem));
+      },
+    );
+  });
+  group('getChoicesText', () {
+    test(
+      """
+      Given a list of maps that contains the choices presented to the 
+      participant, return a list containing the text of each choice.
+      """,
+      () {
+        final List<Map<String, dynamic>> jsonChoices = [
+          {
+            "__type": "RPChoice",
+            "text": "Black",
+            "value": "0",
+            "is_free_text": "false"
+          },
+          {
+            "__type": "RPChoice",
+            "text": "White",
+            "value": "1",
+            "is_free_text": "false"
+          },
+        ];
+
+        final List<String> expectedChoices = ['Black', 'White'];
+
+        final List<String> actualChoices =
+            getChoicesText(jsonChoices: jsonChoices);
+
+        expect(actualChoices, equals(expectedChoices));
       },
     );
   });
