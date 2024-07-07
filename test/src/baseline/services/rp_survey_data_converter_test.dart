@@ -45,7 +45,7 @@ void main() {
       """,
       () {
         /// arrange
-        final Map<String, dynamic> expectedData = {
+        final Map<String, dynamic> jsonItem = {
           "identifier": "color",
           "start_date": "2024-07-04T16:21:59.151739",
           "end_date": "2024-07-04T16:21:59.880927",
