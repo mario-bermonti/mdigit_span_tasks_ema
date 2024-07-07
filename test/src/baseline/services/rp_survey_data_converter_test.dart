@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mdigit_span_tasks_ema/src/baseline/data/survey_item_data.dart';
 import 'package:mdigit_span_tasks_ema/src/baseline/services/rp_survey_data_converter.dart';
 import 'package:research_package/model.dart';
 
@@ -80,6 +81,15 @@ void main() {
             "answer_style": "SingleChoice",
           }
         };
+        final SurveyItemData expectedItem = SurveyItemData(
+          startTime: DateTime.parse('2024-07-04T16:21:59.151739'),
+          endTime: DateTime.parse('2024-07-04T16:21:59.880927'),
+          identifier: 'color',
+          description: 'What color do you prefer?',
+          type: 'singleChoice',
+          response: 'Black',
+          choices: ["Black", "White"],
+        );
 
         /// act
 
