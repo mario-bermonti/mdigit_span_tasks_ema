@@ -12,6 +12,6 @@ Map<String, dynamic> rpSurveyDataToJson(RPTaskResult results) {
   return jsonResults;
 }
 
-List<SurveyItemData> buildSurveyItemData({
+SurveyItemData buildSurveyItemData({
   required Map<String, dynamic> jsonItem,
 }) {}
