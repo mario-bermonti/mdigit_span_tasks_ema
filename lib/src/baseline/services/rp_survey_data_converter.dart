@@ -15,25 +15,16 @@ Map<String, dynamic> rpSurveyDataToJson(RPTaskResult results) {
 SurveyItemData buildSurveyItemData({
   required Map<String, dynamic> jsonItem,
 }) {
-  // final Map<String, dynamic> results = jsonItem['results'];
-  // final SurveyItemData item = SurveyItemData(
-  //   startTime: jsonItem['start_date'],
-  //   endTime: jsonItem['end_date'],
-  //   identifier: jsonItem['identifier'],
-  //   description: jsonItem['question_title'],
-  //   type: results['answer_format']['answer_style'],
-  //   response: results['answer']['text'],
-  //   choices: getChoicesText(choices: results['answer_format']['choices']),
-  // );
-  return SurveyItemData(
-    startTime: DateTime.parse('2024-07-04T16:21:59.151739'),
-    endTime: DateTime.parse('2024-07-04T16:21:59.880927'),
-    identifier: 'color',
-    description: 'What color do you prefer?',
-    type: 'singleChoice',
-    response: 'Black',
-    choices: ["Black", ""],
+  final SurveyItemData item = SurveyItemData(
+    startTime: DateTime.parse(jsonItem['start_date']),
+    endTime: DateTime.parse(jsonItem['end_date']),
+    identifier: jsonItem['identifier'],
+    description: jsonItem['question_title'],
+    type: jsonItem['answer_format']['answer_style'],
+    response: jsonItem['results']['answer'].first['text'],
+    choices: getChoicesText(jsonChoices: jsonItem['answer_format']['choices']),
   );
+  return item;
 }
 
 /// Get the text field from [RPChoice]s that are formatted as json.
