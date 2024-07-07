@@ -20,6 +20,14 @@ SurveyItemData buildSurveyItemData({
   final String endTime = jsonItem['end_date'];
   final Map<String, dynamic> answerFormat = jsonItem['answer_format'];
   final String answer = jsonItem['results']['answer'].first['text'];
+  final List<String>? choices;
+
+  /// some survey items do not contains 'choices' (e.g., Date, text input)
+  if (answerFormat.containsKey('choices')) {
+    choices = getChoicesText(jsonChoices: answerFormat['choices']);
+  } else {
+    choices = null;
+  }
   final SurveyItemData item = SurveyItemData(
     startTime: DateTime.parse(startTime),
     endTime: DateTime.parse(endTime),
@@ -27,7 +35,7 @@ SurveyItemData buildSurveyItemData({
     description: jsonItem['question_title'],
     type: answerFormat['answer_style'],
     response: answer,
-    choices: getChoicesText(jsonChoices: answerFormat['choices']),
+    choices: choices,
   );
   return item;
 }
