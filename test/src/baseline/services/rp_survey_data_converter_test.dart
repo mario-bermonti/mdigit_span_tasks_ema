@@ -96,6 +96,7 @@ void main() {
             buildSurveyItemData(jsonItem: jsonItem);
 
         /// assert
+        expect(actualItem, equals(expectedItem));
       },
     );
   });
