@@ -24,6 +24,6 @@ class SurveyItemData with _$SurveyItemData {
     required String response,
 
     /// Possible choices the participant select from.
-    required List<String> choices,
+    List<String>? choices,
   }) = _SurveyItemData;
 }

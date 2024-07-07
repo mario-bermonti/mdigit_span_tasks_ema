@@ -33,7 +33,7 @@ mixin _$SurveyItemData {
   String get response => throw _privateConstructorUsedError;
 
   /// Possible choices the participant select from.
-  List<String> get choices => throw _privateConstructorUsedError;
+  List<String>? get choices => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SurveyItemDataCopyWith<SurveyItemData> get copyWith =>
@@ -53,7 +53,7 @@ abstract class $SurveyItemDataCopyWith<$Res> {
       String description,
       String type,
       String response,
-      List<String> choices});
+      List<String>? choices});
 }
 
 /// @nodoc
@@ -75,7 +75,7 @@ class _$SurveyItemDataCopyWithImpl<$Res, $Val extends SurveyItemData>
     Object? description = null,
     Object? type = null,
     Object? response = null,
-    Object? choices = null,
+    Object? choices = freezed,
   }) {
     return _then(_value.copyWith(
       startTime: null == startTime
@@ -102,10 +102,10 @@ class _$SurveyItemDataCopyWithImpl<$Res, $Val extends SurveyItemData>
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
               as String,
-      choices: null == choices
+      choices: freezed == choices
           ? _value.choices
           : choices // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -125,7 +125,7 @@ abstract class _$$SurveyItemDataImplCopyWith<$Res>
       String description,
       String type,
       String response,
-      List<String> choices});
+      List<String>? choices});
 }
 
 /// @nodoc
@@ -145,7 +145,7 @@ class __$$SurveyItemDataImplCopyWithImpl<$Res>
     Object? description = null,
     Object? type = null,
     Object? response = null,
-    Object? choices = null,
+    Object? choices = freezed,
   }) {
     return _then(_$SurveyItemDataImpl(
       startTime: null == startTime
@@ -172,10 +172,10 @@ class __$$SurveyItemDataImplCopyWithImpl<$Res>
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
               as String,
-      choices: null == choices
+      choices: freezed == choices
           ? _value._choices
           : choices // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
     ));
   }
 }
@@ -192,7 +192,7 @@ class _$SurveyItemDataImpl
       required this.description,
       required this.type,
       required this.response,
-      required final List<String> choices})
+      final List<String>? choices})
       : _choices = choices;
 
   @override
@@ -218,14 +218,16 @@ class _$SurveyItemDataImpl
   final String response;
 
   /// Possible choices the participant select from.
-  final List<String> _choices;
+  final List<String>? _choices;
 
   /// Possible choices the participant select from.
   @override
-  List<String> get choices {
+  List<String>? get choices {
+    final value = _choices;
+    if (value == null) return null;
     if (_choices is EqualUnmodifiableListView) return _choices;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_choices);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -292,7 +294,7 @@ abstract class _SurveyItemData implements SurveyItemData {
       required final String description,
       required final String type,
       required final String response,
-      required final List<String> choices}) = _$SurveyItemDataImpl;
+      final List<String>? choices}) = _$SurveyItemDataImpl;
 
   @override
   DateTime get startTime;
@@ -318,7 +320,7 @@ abstract class _SurveyItemData implements SurveyItemData {
   @override
 
   /// Possible choices the participant select from.
-  List<String> get choices;
+  List<String>? get choices;
   @override
   @JsonKey(ignore: true)
   _$$SurveyItemDataImplCopyWith<_$SurveyItemDataImpl> get copyWith =>
