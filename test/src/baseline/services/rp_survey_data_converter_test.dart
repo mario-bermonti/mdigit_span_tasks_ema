@@ -92,6 +92,8 @@ void main() {
         );
 
         /// act
+        final SurveyItemData actualItem =
+            buildSurveyItemData(jsonItem: jsonItem);
 
         /// assert
       },
