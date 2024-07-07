@@ -12,6 +12,7 @@ Map<String, dynamic> rpSurveyDataToJson(RPTaskResult results) {
   return jsonResults;
 }
 
+/// Builds a [SurveyItemData] from a json object.
 SurveyItemData buildSurveyItemData({
   required Map<String, dynamic> jsonItem,
 }) {
