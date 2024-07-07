@@ -22,6 +22,6 @@ SurveyItemData buildSurveyItemData({
     description: 'What color do you prefer?',
     type: 'singleChoice',
     response: 'Black',
-    choices: ["Black", "White"],
+    choices: ["Black", ""],
   );
 }
