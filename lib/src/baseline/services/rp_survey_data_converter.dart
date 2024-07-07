@@ -14,4 +14,14 @@ Map<String, dynamic> rpSurveyDataToJson(RPTaskResult results) {
 
 SurveyItemData buildSurveyItemData({
   required Map<String, dynamic> jsonItem,
-}) {}
+}) {
+  return SurveyItemData(
+    startTime: DateTime.parse('2024-07-04T16:21:59.151739'),
+    endTime: DateTime.parse('2024-07-04T16:21:59.880927'),
+    identifier: 'color',
+    description: 'What color do you prefer?',
+    type: 'singleChoice',
+    response: 'Black',
+    choices: ["Black", "White"],
+  );
+}
