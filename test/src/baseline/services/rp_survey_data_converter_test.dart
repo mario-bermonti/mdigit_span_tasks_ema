@@ -101,6 +101,39 @@ void main() {
         expect(actualItem, equals(expectedItem));
       },
     );
+    test(
+      """
+      given an object that maps from the item identifier to its data of a date
+      survey item, it returns a SurveyItem object.
+      """,
+      () {
+        final Map<String, dynamic> jsonItem = {
+          "identifier": "today",
+          "start_date": "2024-07-07T17:02:56.250538",
+          "end_date": "2024-07-07T17:03:03.734029",
+          "question_title": "What date is it?",
+          "results": {"answer": "2024-04-07 00:00:00.000"},
+          "answer_format": {
+            "__type": "RPDateTimeAnswerFormat",
+            "question_type": "Date",
+            "date_time_answer_style": "Date"
+          }
+        };
+        final SurveyItemData expectedItem = SurveyItemData(
+          startTime: DateTime.parse('2024-07-07T17:02:56.250538'),
+          endTime: DateTime.parse('2024-07-07T17:03:03.734029'),
+          identifier: 'today',
+          description: 'What date is it?',
+          type: 'Date',
+          response: '2024-04-07 00:00:00.000',
+        );
+
+        final SurveyItemData actualItem =
+            buildSurveyItemData(jsonItem: jsonItem);
+
+        expect(actualItem, equals(expectedItem));
+      },
+    );
   });
   group('getChoicesText', () {
     test(
