@@ -25,3 +25,11 @@ SurveyItemData buildSurveyItemData({
     choices: ["Black", ""],
   );
 }
+
+/// Get the text field from [RPChoice]s that are formatted as json.
+List<String> getChoicesText({required List<Map<String, dynamic>> jsonChoices}) {
+  final List<String> choices = jsonChoices
+      .map((Map<String, dynamic> choice) => choice['text'] as String)
+      .toList();
+  return choices;
+}
