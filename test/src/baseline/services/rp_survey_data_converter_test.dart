@@ -88,7 +88,7 @@ void main() {
           endTime: DateTime.parse('2024-07-04T16:21:59.880927'),
           identifier: 'color',
           description: 'What color do you prefer?',
-          type: 'singleChoice',
+          type: 'SingleChoice',
           response: 'Black',
           choices: ["Black", "White"],
         );
