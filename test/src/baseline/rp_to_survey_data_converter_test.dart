@@ -57,4 +57,33 @@ void main() {
       );
     },
   );
+  group('extractLabelChoices', () {
+    test(
+      """Given a list of json [RPChoice]s, extract the 
+      text label from each one and return them as a list.""",
+      () {
+        final List<Map<String, dynamic>> jsonChoices = [
+          {
+            "__type": "RPChoice",
+            "text": "Black",
+            "value": "0",
+            "is_free_text": "false"
+          },
+          {
+            "__type": "RPChoice",
+            "text": "White",
+            "value": "1",
+            "is_free_text": "false"
+          },
+        ];
+
+        final List<String> expectedChoices = ['Black', 'White'];
+
+        final List<String> actualChoices =
+            converter.extractLabelChoices(jsonChoices);
+
+        expect(actualChoices, equals(expectedChoices));
+      },
+    );
+  });
 }
