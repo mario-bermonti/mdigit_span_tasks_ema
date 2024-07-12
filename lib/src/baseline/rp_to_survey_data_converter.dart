@@ -14,4 +14,12 @@ class RPToSurveyDataConverter {
     final Map<String, dynamic> jsonItem = jsonDecode(stringItem);
     return jsonItem;
   }
+
+  /// Get the label (text field) from [RPChoice]s that are formatted as json.
+  List<String> extractLabelChoices(List<Map<String, dynamic>> choices) {
+    final List<String> labels = choices
+        .map((Map<String, dynamic> choice) => choice['text'] as String)
+        .toList();
+    return labels;
+  }
 }
