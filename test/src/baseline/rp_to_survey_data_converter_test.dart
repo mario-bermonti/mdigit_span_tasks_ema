@@ -86,4 +86,32 @@ void main() {
       },
     );
   });
+  group('formatChoices', () {
+    test(
+      """Given a list of RPchoices formatted as a maps, returns a list containing
+    only the labels in their text fields.""",
+      () {
+        final List<Map<String, dynamic>> jsonChoices = [
+          {
+            "__type": "RPChoice",
+            "text": "Black",
+            "value": "0",
+            "is_free_text": "false"
+          },
+          {
+            "__type": "RPChoice",
+            "text": "White",
+            "value": "1",
+            "is_free_text": "false"
+          },
+        ];
+
+        final List<String> expectedChoices = ['Black', 'White'];
+
+        final List<String> actualChoices = converter.formatChoices(jsonChoices);
+
+        expect(actualChoices, equals(expectedChoices));
+      },
+    );
+  });
 }
