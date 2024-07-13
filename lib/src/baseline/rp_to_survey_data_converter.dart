@@ -15,6 +15,12 @@ class RPToSurveyDataConverter {
     return jsonItem;
   }
 
+  /// Format json [RPChoice]s so they can be used by [SurveyData].
+  List<String> formatChoices(List<Map<String, dynamic>> choices) {
+    List<String> formattedChoices = extractLabelChoices(choices);
+    return formattedChoices;
+  }
+
   /// Get the label (text field) from [RPChoice]s that are formatted as json.
   List<String> extractLabelChoices(List<Map<String, dynamic>> choices) {
     final List<String> labels = choices
