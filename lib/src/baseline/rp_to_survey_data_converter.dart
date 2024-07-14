@@ -21,6 +21,12 @@ class RPToSurveyDataConverter {
     return formattedChoices;
   }
 
+  /// Format the answer to a single choice question
+  String extractSingleChoiceAnswer(List<Map<String, dynamic>> answer) {
+    final String stringAnswer = answer.first['text'];
+    return stringAnswer;
+  }
+
   /// Get the label (text field) from [RPChoice]s that are formatted as json.
   List<String> extractLabelChoices(List<Map<String, dynamic>> choices) {
     final List<String> labels = choices
