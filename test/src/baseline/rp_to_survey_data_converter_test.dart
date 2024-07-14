@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mdigit_span_tasks_ema/src/baseline/rp_to_survey_data_converter.dart';
 import 'package:research_package/research_package.dart';
@@ -114,4 +116,27 @@ void main() {
       },
     );
   });
+  group(
+    "formatSingleChoiceAnswer",
+    () {
+      test(
+        "Given a list of map RPchoices, returns a string with the answer",
+        () {
+          final List<Map<String, dynamic>> jsonAnswer = [
+            {
+              "__type": "RPChoice",
+              "text": "Black",
+              "value": "0",
+              "is_free_text": "false"
+            },
+          ];
+
+          final String actualAnswer =
+              converter.extractSingleChoiceAnswer(jsonAnswer);
+
+          expect(actualAnswer, 'Black');
+        },
+      );
+    },
+  );
 }
