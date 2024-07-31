@@ -21,6 +21,23 @@ class RPToSurveyDataConverter {
     return formattedChoices;
   }
 
+  /// Format the answer to a json formatted [RPQuestion].
+  /// Currently supports Date and SingleChoice questions.
+  dynamic formatAnswer({
+    required dynamic answer,
+    required String questionType,
+  }) {
+    if (questionType == 'Date') {
+      return answer as String;
+    } else if (questionType == 'SingleChoice') {
+      final String formattedAnswer = extractSingleChoiceAnswer(answer);
+      return formattedAnswer;
+    } else {
+      throw UnimplementedError(
+          'Support for $questionType has not been implemented');
+    }
+  }
+
   /// Format the answer to a single choice question
   String extractSingleChoiceAnswer(List<Map<String, dynamic>> answer) {
     final String stringAnswer = answer.first['text'];
