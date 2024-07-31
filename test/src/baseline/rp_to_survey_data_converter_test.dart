@@ -153,6 +153,23 @@ void main() {
         expect(actualAnswer, expectedAnswer);
       },
     );
+    test(
+      """Given a SingleChoice questionType and answer 'Black', 
+      returns 'Black'.""",
+      () {
+        const String expectedAnswer = 'Black';
+        const String questionType = 'SingleChoice';
+        final List<Map<String, dynamic>> rawAnswer = [
+          {
+            "__type": "RPChoice",
+            "text": "Black",
+            "value": "0",
+            "is_free_text": "false"
+          },
+        ];
+
+        final String actualAnswer = converter.formatAnswer(
+            answer: rawAnswer, questionType: questionType);
 
         expect(actualAnswer, expectedAnswer);
       },
