@@ -139,4 +139,23 @@ void main() {
       );
     },
   );
+  group('formatAnswer', () {
+    test(
+      """Given a Date questionType and answer '2024-07-04T16:04:08.889902,' 
+      returns '2024-07-04T16:04:08.889902'""",
+      () {
+        const String expectedAnswer = "2024-07-04T16:04:08.889902";
+        const String questionType = "Date";
+
+        final String actualAnswer = converter.formatAnswer(
+            answer: expectedAnswer, questionType: questionType);
+
+        expect(actualAnswer, expectedAnswer);
+      },
+    );
+
+        expect(actualAnswer, expectedAnswer);
+      },
+    );
+  });
 }
