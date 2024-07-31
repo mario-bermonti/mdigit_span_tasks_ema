@@ -174,5 +174,17 @@ void main() {
         expect(actualAnswer, expectedAnswer);
       },
     );
+    test(
+      "Given an unsupported questionItem, throws a UnImplementedError",
+      () {
+        expect(
+          () => converter.formatAnswer(
+            answer: 'answer',
+            questionType: 'questionType',
+          ),
+          throwsUnimplementedError,
+        );
+      },
+    );
   });
 }
