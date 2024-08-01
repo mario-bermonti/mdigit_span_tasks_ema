@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mdigit_span_tasks_ema/src/baseline/rp_to_survey_data_converter.dart';
 import 'package:research_package/research_package.dart';
 
 void main() {
   late RPToSurveyDataConverter converter;
-  ;
   setUp(() {
     converter = RPToSurveyDataConverter();
   });
