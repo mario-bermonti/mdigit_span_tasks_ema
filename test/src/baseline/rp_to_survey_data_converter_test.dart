@@ -184,4 +184,64 @@ void main() {
       },
     );
   });
+  group('extractItemMetadata', () {
+    test(
+      """Given a valid json [RPResult] for a single choice question, returns its
+      metadata including: 
+      startTime, endTime, identifier, description, type.""",
+      () {
+        final Map<String, dynamic> rawItem = {
+          "identifier": "color",
+          "start_date": "2024-07-04T16:21:59.151739",
+          "end_date": "2024-07-04T16:21:59.880927",
+          "question_title": "What color do you prefer?",
+          "results": {
+            "answer": [
+              {
+                "__type": "RPChoice",
+                "text": "Black",
+                "value": "0",
+                "is_free_text": "false"
+              }
+            ]
+          },
+          "answer_format": {
+            "__type": "RPChoiceAnswerFormat",
+            "question_type": "SingleChoice",
+            "choices": [
+              {
+                "__type": "RPChoice",
+                "text": "Black",
+                "value": "0",
+                "is_free_text": "false"
+              },
+              {
+                "__type": "RPChoice",
+                "text": "White",
+                "value": "1",
+                "is_free_text": "false"
+              }
+            ],
+            "answer_style": "SingleChoice"
+          }
+        };
+        final Map<String, dynamic> expectedMetadata = {
+          "startTime": "2024-07-04T16:21:59.151739",
+          "endTime": "2024-07-04T16:21:59.880927",
+          "identifier": "color",
+          "description": "What color do you prefer?",
+          "type": "SingleChoice",
+        };
+
+        final Map<String, dynamic> actualMetadata =
+            converter.extractItemMetadata(rawItem);
+
+        expect(actualMetadata['startTime'], expectedMetadata['startTime']);
+        expect(actualMetadata['endTime'], expectedMetadata['endTime']);
+        expect(actualMetadata['identifier'], expectedMetadata['identifier']);
+        expect(actualMetadata['description'], expectedMetadata['description']);
+        expect(actualMetadata['type'], expectedMetadata['type']);
+      },
+    );
+  });
 }
