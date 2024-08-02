@@ -15,6 +15,27 @@ class RPToSurveyDataConverter {
     return jsonItem;
   }
 
+  /// Format all the data from a single json RPQuestionStep
+  Map<String, dynamic> formatSurveyItemData(Map<String, dynamic> item) {
+    final Map<String, dynamic> formattedItem = {};
+
+    final Map<String, dynamic> metadata = extractItemMetadata(item);
+    formattedItem.addAll(metadata);
+
+    if (item["answer_format"].containsKey("choices")) {
+      final List<String> choices =
+          formatChoices(item["answer_format"]["choices"]);
+      formattedItem["choices"] = choices;
+    }
+
+    final dynamic formattedAnswer = formatAnswer(
+      answer: item["results"]["answer"],
+      questionType: metadata['type'],
+    );
+    formattedItem["answer"] = formattedAnswer;
+    return formattedItem;
+  }
+
   /// Extract the metadata for a single RPQuestionStep (e.g., start time)
   Map<String, dynamic> extractItemMetadata(Map<String, dynamic> item) {
     final Map<String, dynamic> metadata = {};
