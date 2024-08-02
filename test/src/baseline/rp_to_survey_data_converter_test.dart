@@ -279,4 +279,61 @@ void main() {
       },
     );
   });
+  group('formatSurveyItemData', () {
+    test(
+      """Given a valid json for a single choice RPQuestionStep, returns an json 
+      item that can be used to build a SurveyItemData.""",
+      () {
+        final Map<String, dynamic> rawItem = {
+          "identifier": "color",
+          "start_date": "2024-07-04T16:21:59.151739",
+          "end_date": "2024-07-04T16:21:59.880927",
+          "question_title": "What color do you prefer?",
+          "results": {
+            "answer": [
+              {
+                "__type": "RPChoice",
+                "text": "Black",
+                "value": "0",
+                "is_free_text": "false"
+              }
+            ]
+          },
+          "answer_format": {
+            "__type": "RPChoiceAnswerFormat",
+            "question_type": "SingleChoice",
+            "choices": [
+              {
+                "__type": "RPChoice",
+                "text": "Black",
+                "value": "0",
+                "is_free_text": "false"
+              },
+              {
+                "__type": "RPChoice",
+                "text": "White",
+                "value": "1",
+                "is_free_text": "false"
+              }
+            ],
+            "answer_style": "SingleChoice"
+          }
+        };
+        final Map<String, dynamic> expectedItem = {
+          "startTime": "2024-07-04T16:21:59.151739",
+          "endTime": "2024-07-04T16:21:59.880927",
+          "identifier": "color",
+          "description": "What color do you prefer?",
+          "type": "SingleChoice",
+          "answer": "Black",
+          "choices": ["Black", "White"]
+        };
+
+        final Map<String, dynamic> actualItem =
+            converter.formatSurveyItemData(rawItem);
+
+        expect(actualItem, expectedItem);
+      },
+    );
+  });
 }
