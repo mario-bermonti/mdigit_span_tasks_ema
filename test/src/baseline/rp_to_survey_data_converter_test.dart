@@ -243,5 +243,40 @@ void main() {
         expect(actualMetadata['type'], expectedMetadata['type']);
       },
     );
+    test(
+      """Given a valid json [RPResult] for a date question, returns its
+      metadata including: 
+      startTime, endTime, identifier, description, type.""",
+      () {
+        final Map<String, dynamic> rawItem = {
+          "identifier": "today",
+          "start_date": "2024-07-07T17:02:56.250538",
+          "end_date": "2024-07-07T17:03:03.734029",
+          "question_title": "What date is it?",
+          "results": {"answer": "2024-04-07 00:00:00.000"},
+          "answer_format": {
+            "__type": "RPDateTimeAnswerFormat",
+            "question_type": "Date",
+            "date_time_answer_style": "Date"
+          }
+        };
+        final Map<String, dynamic> expectedMetadata = {
+          "startTime": "2024-07-07T17:02:56.250538",
+          "endTime": "2024-07-07T17:03:03.734029",
+          "identifier": "today",
+          "description": "What date is it?",
+          "type": "Date",
+        };
+
+        final Map<String, dynamic> actualMetadata =
+            converter.extractItemMetadata(rawItem);
+
+        expect(actualMetadata['startTime'], expectedMetadata['startTime']);
+        expect(actualMetadata['endTime'], expectedMetadata['endTime']);
+        expect(actualMetadata['identifier'], expectedMetadata['identifier']);
+        expect(actualMetadata['description'], expectedMetadata['description']);
+        expect(actualMetadata['type'], expectedMetadata['type']);
+      },
+    );
   });
 }
