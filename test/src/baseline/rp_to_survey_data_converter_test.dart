@@ -335,5 +335,36 @@ void main() {
         expect(actualItem, expectedItem);
       },
     );
+    test(
+      """Given a valid json for a date RPQuestionStep, returns an json 
+      item that can be used to build a SurveyItemData.""",
+      () {
+        final Map<String, dynamic> rawItem = {
+          "identifier": "today",
+          "start_date": "2024-07-04T16:21:59.151739",
+          "end_date": "2024-07-04T16:21:59.880927",
+          "question_title": "What date is it?",
+          "results": {"answer": "2024-04-07 00:00:00.000"},
+          "answer_format": {
+            "__type": "RPDateTimeAnswerFormat",
+            "question_type": "Date",
+            "date_time_answer_style": "Date"
+          }
+        };
+        final Map<String, dynamic> expectedItem = {
+          "startTime": "2024-07-04T16:21:59.151739",
+          "endTime": "2024-07-04T16:21:59.880927",
+          "identifier": "today",
+          "description": "What date is it?",
+          "type": "Date",
+          "answer": "2024-04-07 00:00:00.000",
+        };
+
+        final Map<String, dynamic> actualItem =
+            converter.formatSurveyItemData(rawItem);
+
+        expect(actualItem, expectedItem);
+      },
+    );
   });
 }
