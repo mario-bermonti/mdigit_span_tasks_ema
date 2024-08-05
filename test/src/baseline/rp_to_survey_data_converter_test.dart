@@ -49,7 +49,10 @@ void main() {
         dateStep.setResult("2024-04-07 00:00:00.000");
 
         // build raw item
-
+        final Map<String, dynamic> rawItem = {
+          colorStep.identifier: colorStep,
+          dateStep.identifier: dateStep,
+        };
 
         // final Map<String, dynamic> expectecItem = {
         //   "identifier": "survey",
