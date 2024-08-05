@@ -27,13 +27,14 @@ SurveyData buildSurveyData(RPTaskResult rpTaskResult) {
 Map<String, dynamic> formatSurveyMetadata(RPTaskResult rpTaskResult) {
   /// extract data and convert it into map
 }
-Map<String, dynamic> formatSurveyItemsData(Map<String, RPResult> items) {
-  /// define formatted map to store formatted items
+List<Map<String, dynamic>> formatSurveyItemsData(Map<String, RPResult> items) {
+  /// define formatted list to store formatted items
   /// results map: key = id, value = data
   /// iterates over results and passes value to item formatting fun
+  return [{}];
 }
 
-Map<String, dynamic> formatSurveyItemData(RPResult item) {
+Map<String, dynamic> formatSurveyItemData(Map<String, dynamic> item) {
   /// extract metadata into formatted json object
   /// format choices
   /// format answer
