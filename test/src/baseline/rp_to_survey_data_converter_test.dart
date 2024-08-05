@@ -7,6 +7,19 @@ void main() {
   setUp(() {
     converter = RPToSurveyDataConverter();
   });
+  group("formatSurveyItemsData", () {
+    test(
+      """Given a valid RP results object formatted as a json,
+      returns a list of maps with the data for each item.""",
+      () {
+        /// arrange
+
+        /// act
+
+        /// assert
+      },
+    );
+  });
   group(
     "singleRPResultToJson",
     () {
