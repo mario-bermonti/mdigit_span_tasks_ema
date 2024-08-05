@@ -54,60 +54,25 @@ void main() {
           dateStep.identifier: dateStep,
         };
 
-        // final Map<String, dynamic> expectecItem = {
-        //   "identifier": "survey",
-        //   "start_date": "2024-08-05T09:15:30.278044",
-        //   "end_date": "2024-08-05T09:15:38.997728",
-        //   "results": {
-        //     "today": {
-        //       "identifier": "today",
-        //       "start_date": "2024-07-07T17:02:56.250538",
-        //       "end_date": "2024-07-07T17:03:03.734029",
-        //       "question_title": "What date is it?",
-        //       "results": {"answer": "2024-04-07 00:00:00.000"},
-        //       "answer_format": {
-        //         "__type": "RPDateTimeAnswerFormat",
-        //         "question_type": "Date",
-        //         "date_time_answer_style": "Date"
-        //       }
-        //     },
-        //     "color": {
-        //       "identifier": "color",
-        //       "start_date": "2024-07-04T16:21:59.151739",
-        //       "end_date": "2024-07-04T16:21:59.880927",
-        //       "question_title": "What color do you prefer?",
-        //       "results": {
-        //         "answer": [
-        //           {
-        //             "__type": "RPChoice",
-        //             "text": "Black",
-        //             "value": "0",
-        //             "is_free_text": "false"
-        //           }
-        //         ]
-        //       },
-        //       "answer_format": {
-        //         "__type": "RPChoiceAnswerFormat",
-        //         "question_type": "SingleChoice",
-        //         "choices": [
-        //           {
-        //             "__type": "RPChoice",
-        //             "text": "Black",
-        //             "value": "0",
-        //             "is_free_text": "false"
-        //           },
-        //           {
-        //             "__type": "RPChoice",
-        //             "text": "White",
-        //             "value": "1",
-        //             "is_free_text": "false"
-        //           },
-        //         ],
-        //         "answer_style": "SingleChoice",
-        //       }
-        //     }
-        //   }
-        // };
+        final List<Map<String, dynamic>> expectecItem = [
+          {
+            "identifier": colorStep.identifier,
+            "startTime": colorStep.startDate,
+            "endTime": colorStep.endDate,
+            "description": colorStep.questionTitle,
+            "type": colorStep.answerFormat.questionType,
+            "response": "Black",
+            "choices": ["Black", "White"],
+          },
+          {
+            "startTime": dateStep.startDate,
+            "endTime": dateStep.endDate,
+            "identifier": dateStep.identifier,
+            "description": dateStep.questionTitle,
+            "type": "Date",
+            "response": "2024-04-07 00:00:00.000",
+          },
+        ];
 
         /// act
 
