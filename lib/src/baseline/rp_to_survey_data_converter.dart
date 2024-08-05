@@ -6,6 +6,15 @@ import 'package:research_package/research_package.dart';
 /// [SurveyData] object by extracting the relevant data and formatting it
 /// appropriately.
 class RPToSurveyDataConverter {
+  /// Format the data of all survey items.
+  List<Map<String, dynamic>> formatSurveyItemsData(
+      Map<String, RPResult> items) {
+    /// define formatted list to store formatted items
+    /// results map: key = id, value = data
+    /// iterates over results and passes value to item formatting fun
+    return [{}];
+  }
+
   /// Converts an [RPStepResult] from the [research_package] to a json object.
   /// This makes available all the data inside the [RPStepResult] and makes
   /// it easier to handle.
