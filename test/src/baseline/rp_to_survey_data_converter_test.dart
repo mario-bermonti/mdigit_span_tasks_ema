@@ -12,9 +12,6 @@ void main() {
       """Given a valid RP results object formatted as a json,
       returns a list of maps with the data for each item.""",
       () {
-        /// arrange
-        /// define each step
-
         final RPStepResult colorStep = RPStepResult(
           identifier: 'color',
           questionTitle: 'What color do you prefer?',
@@ -48,19 +45,18 @@ void main() {
         );
         dateStep.setResult("2024-04-07 00:00:00.000");
 
-        // build raw item
         final Map<String, RPResult> rawItems = {
           colorStep.identifier: colorStep,
           dateStep.identifier: dateStep,
         };
 
-        final List<Map<String, dynamic>> expectecItem = [
+        final List<Map<String, dynamic>> expectedItems = [
           {
             "identifier": colorStep.identifier,
             "startTime": colorStep.startDate,
             "endTime": colorStep.endDate,
             "description": colorStep.questionTitle,
-            "type": colorStep.answerFormat.questionType,
+            "type": 'SingleChoice',
             "response": "Black",
             "choices": ["Black", "White"],
           },
@@ -74,11 +70,27 @@ void main() {
           },
         ];
 
-        /// act
-        final List<Map<String, dynamic>> actualItem =
+        final List<Map<String, dynamic>> actualItems =
             converter.formatSurveyItemsData(rawItems);
 
-        /// assert
+        /// check color item
+        final Map<String, dynamic> actualColorItem = actualItems.first;
+        final Map<String, dynamic> expectedColorItem = expectedItems.first;
+        expect(actualColorItem['identifier'], expectedColorItem['identifier']);
+        expect(
+            actualColorItem['description'], expectedColorItem['description']);
+        expect(actualColorItem['type'], expectedColorItem['type']);
+        expect(actualColorItem['response'], expectedColorItem['response']);
+        expect(actualColorItem['choices'], expectedColorItem['choices']);
+
+        /// check date item
+        final Map<String, dynamic> actualDateItem = actualItems.last;
+        final Map<String, dynamic> expectedDateItem = expectedItems.last;
+        expect(actualDateItem['identifier'], expectedDateItem['identifier']);
+        expect(actualDateItem['description'], expectedDateItem['description']);
+        expect(actualDateItem['type'], expectedDateItem['type']);
+        expect(actualDateItem['response'], expectedDateItem['response']);
+        expect(actualDateItem['choices'], expectedDateItem['choices']);
       },
     );
   });
