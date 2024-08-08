@@ -9,6 +9,8 @@ class RPToSurveyDataConverter {
   /// Format the data of all survey items.
   List<Map<String, dynamic>> formatSurveyItemsData(
       Map<String, RPResult> items) {
+    final List<Map<String, dynamic>> formattedItems = <Map<String, dynamic>>[];
+
     /// define formatted list to store formatted items
     /// results map: key = id, value = data
     /// iterates over results and passes value to item formatting fun
