@@ -1,3 +1,5 @@
+import 'package:research_package/model.dart';
+
 import 'survey_item_data.dart';
 
 class SurveyData {
@@ -22,4 +24,11 @@ class SurveyData {
     required this.endTime,
     required this.items,
   });
+
+  /// named constructor
+  SurveyData.fromRPTaskResult(RPTaskResult rpSurveyData) {
+    /// build survey metadata
+    /// iterate over items and build them using the named constructor in
+    /// the item's object.
+  }
 }
