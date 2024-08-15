@@ -166,4 +166,30 @@ void main() {
       },
     );
   });
+  group("getLabelFromChoices", () {
+    test(
+      """Given a List<RPChoice>, returns a List<String> with each choice's
+       label (i.e., text).""",
+      () {
+        final List<RPChoice> rawChoices = [
+          RPChoice(
+            text: 'Black',
+            value: 0,
+            isFreeText: false,
+          ),
+          RPChoice(
+            text: 'White',
+            value: 1,
+            isFreeText: false,
+          ),
+        ];
+
+        final List<String> expectedChoices = ['Black', 'White'];
+
+        final List<String> actualChoices = getLabelFromChoices(rawChoices);
+
+        expect(actualChoices, expectedChoices);
+      },
+    );
+  });
 }
