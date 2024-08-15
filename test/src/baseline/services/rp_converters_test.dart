@@ -128,5 +128,41 @@ void main() {
         expect(actualChoices, null);
       },
     );
+    test(
+      """Given an [RPAnswerFormat] for a SingleChoice survey item, returns 
+      a List of Strings with the text (i.e., label) of each choice.""",
+      () {
+        final RPStepResult colorStep = RPStepResult(
+          identifier: 'color',
+          questionTitle: 'What color do you prefer?',
+          answerFormat: RPChoiceAnswerFormat(
+            choices: [
+              RPChoice(
+                text: 'Black',
+                value: 0,
+                isFreeText: false,
+              ),
+              RPChoice(
+                text: 'White',
+                value: 1,
+                isFreeText: false,
+              ),
+            ],
+            answerStyle: RPChoiceAnswerStyle.SingleChoice,
+          ),
+        );
+        colorStep.setResult(RPChoice(
+          text: 'Black',
+          value: 0,
+          isFreeText: false,
+        ));
+
+        final List<String> expectedChoices = ['Black', 'White'];
+
+        final List<String>? actualChoices = getChoices(colorStep.answerFormat);
+
+        expect(actualChoices, expectedChoices);
+      },
+    );
   });
 }
