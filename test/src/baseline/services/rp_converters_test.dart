@@ -111,4 +111,22 @@ void main() {
       );
     },
   );
+  group("getChoices", () {
+    test(
+      "Given an [RPAnswerFormat] for a Date survey item, returns null",
+      () {
+        final RPStepResult dateStep = RPStepResult(
+          identifier: "today",
+          questionTitle: "What date is it?",
+          answerFormat: RPDateTimeAnswerFormat(
+              dateTimeAnswerStyle: RPDateTimeAnswerStyle.Date),
+        );
+        dateStep.setResult("2024-04-07 00:00:00.000");
+
+        final List<String>? actualChoices = getChoices(dateStep.answerFormat);
+
+        expect(actualChoices, null);
+      },
+    );
+  });
 }
