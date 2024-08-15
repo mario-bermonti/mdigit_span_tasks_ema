@@ -26,7 +26,14 @@ List<String>? getChoices(RPAnswerFormat answerFormat) {
     final RPChoiceAnswerFormat choiceAnswerFormat =
         answerFormat as RPChoiceAnswerFormat;
     final List<String> choicesLabels =
-        extractLabelFromChoices(choiceAnswerFormat.choices);
+        getLabelFromChoices(choiceAnswerFormat.choices);
     return choicesLabels;
   }
+}
+
+/// Extracts the label (i.e., text field) from each [RPChoice] in [choices].
+List<String> getLabelFromChoices(List<RPChoice> choices) {
+  final List<String> labels =
+      choices.map((RPChoice choice) => choice.text).toList();
+  return labels;
 }
