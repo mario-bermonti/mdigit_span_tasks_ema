@@ -69,6 +69,46 @@ void main() {
           expect(actualAnswer, expectedAnswer);
         },
       );
+      test(
+        """Given a MultipleChoice itemType and the values inside a results object 
+        of a [RPStepResult] that contains 'Black' in the text field of the 
+        [RPChoice] that contains its answer, throws an UnimplementedError.'""",
+        () {
+          final RPStepResult colorStep = RPStepResult(
+            identifier: 'color',
+            questionTitle: 'What color do you prefer?',
+            answerFormat: RPChoiceAnswerFormat(
+              choices: [
+                RPChoice(
+                  text: 'Black',
+                  value: 0,
+                  isFreeText: false,
+                ),
+                RPChoice(
+                  text: 'White',
+                  value: 1,
+                  isFreeText: false,
+                ),
+              ],
+              answerStyle: RPChoiceAnswerStyle.SingleChoice,
+            ),
+          );
+          colorStep.setResult(RPChoice(
+            text: 'Black',
+            value: 0,
+            isFreeText: false,
+          ));
+          const String itemType = "MultipleChoice";
+
+          expect(
+            () => getAnswer(
+              rpAnswer: colorStep.results.values,
+              itemType: itemType,
+            ),
+            throwsUnimplementedError,
+          );
+        },
+      );
     },
   );
 }
