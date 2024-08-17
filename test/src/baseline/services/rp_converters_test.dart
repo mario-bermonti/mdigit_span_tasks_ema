@@ -29,6 +29,46 @@ void main() {
           expect(actualAnswer, expectedAnswer);
         },
       );
+      test(
+        """Given a SingleChoice itemType and the values inside a results object 
+        of a [RPStepResult] that contains 'Black' in the text field of the 
+        [RPChoice] that contains its answer, returns 'Black'""",
+        () {
+          final RPStepResult colorStep = RPStepResult(
+            identifier: 'color',
+            questionTitle: 'What color do you prefer?',
+            answerFormat: RPChoiceAnswerFormat(
+              choices: [
+                RPChoice(
+                  text: 'Black',
+                  value: 0,
+                  isFreeText: false,
+                ),
+                RPChoice(
+                  text: 'White',
+                  value: 1,
+                  isFreeText: false,
+                ),
+              ],
+              answerStyle: RPChoiceAnswerStyle.SingleChoice,
+            ),
+          );
+          colorStep.setResult(RPChoice(
+            text: 'Black',
+            value: 0,
+            isFreeText: false,
+          ));
+          const String itemType = "SingleChoice";
+          const String expectedAnswer = "Black";
+
+          final String actualAnswer = getAnswer(
+            rpAnswer: colorStep.results.values,
+            itemType: itemType,
+          );
+
+          expect(actualAnswer, expectedAnswer);
+        },
+      );
     },
   );
 }
