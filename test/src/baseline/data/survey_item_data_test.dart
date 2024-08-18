@@ -32,5 +32,50 @@ void main() {
         expect(actualItem, expectedItem);
       },
     );
+    test(
+      """Given a valid [RPStepResult] for a SingleChoice survey item,
+      returns a valid SurveyItemData.""",
+      () {
+        final RPStepResult rawItem = RPStepResult(
+          identifier: 'color',
+          questionTitle: 'What color do you prefer?',
+          answerFormat: RPChoiceAnswerFormat(
+            choices: [
+              RPChoice(
+                text: 'Black',
+                value: 0,
+                isFreeText: false,
+              ),
+              RPChoice(
+                text: 'White',
+                value: 1,
+                isFreeText: false,
+              ),
+            ],
+            answerStyle: RPChoiceAnswerStyle.SingleChoice,
+          ),
+        );
+        rawItem.setResult(RPChoice(
+          text: 'Black',
+          value: 0,
+          isFreeText: false,
+        ));
+
+        final SurveyItemData expectedItem = SurveyItemData(
+          startTime: rawItem.startDate!,
+          endTime: rawItem.endDate!,
+          identifier: "color",
+          description: "What color do you prefer?",
+          type: "SingleChoice",
+          response: "Black",
+          choices: ["Black", "White"],
+        );
+
+        final SurveyItemData actualItem =
+            SurveyItemData.fromRPStepResult(rawItem);
+
+        expect(actualItem, expectedItem);
+      },
+    );
   });
 }
