@@ -1,34 +1,28 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 import 'package:research_package/model.dart';
 
 import 'survey_item_data.dart';
 
-class SurveyData {
-  /// Short description of the item
-  final String identifier;
+part 'survey_data.freezed.dart';
 
-  /// Longer description than the [identifier].
-  /// It's usually the text presented to the participant or
-  /// a long description.
-  final String description;
-  final String startTime;
-  final String endTime;
+/// Model that represents the data for a single survey item.
+@freezed
+class SurveyData with _$SurveyData {
+  const factory SurveyData({
+    required DateTime? startTime,
+    required DateTime? endTime,
 
-  /// List of survey items that include the data about the item and
-  /// the participant's responses.
-  final List<SurveyItemData> items;
+    /// Short description of the item
+    required String identifier,
 
-  SurveyData({
-    required this.identifier,
-    required this.description,
-    required this.startTime,
-    required this.endTime,
-    required this.items,
-  });
+    /// Longer description than the [identifier].
+    /// It's usually the text presented to the participant or
+    /// a long description.
+    required String description,
 
-  /// named constructor
-  SurveyData.fromRPTaskResult(RPTaskResult rpSurveyData) {
-    /// build survey metadata
-    /// iterate over items and build them using the named constructor in
-    /// the item's object.
-  }
+    /// List of survey items that include metadata about the item and
+    /// the participant's response.
+    required List<SurveyItemData> items,
+  }) = _SurveyData;
 }
