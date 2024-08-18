@@ -25,4 +25,25 @@ class SurveyData with _$SurveyData {
     /// the participant's response.
     required List<SurveyItemData> items,
   }) = _SurveyData;
+
+  factory SurveyData.fromRPTaskResult({
+    required RPTaskResult rpSurveyData,
+    required String description,
+  }) {
+    final Iterable<RPResult> rawItems = rpSurveyData.results.values;
+    final List<SurveyItemData> surveyItems = rawItems
+        .map((RPResult rawItem) =>
+            SurveyItemData.fromRPStepResult(rawItem as RPStepResult))
+        .toList();
+
+    final SurveyData surveyData = SurveyData(
+      startTime: rpSurveyData.startDate,
+      endTime: rpSurveyData.endDate,
+      identifier: rpSurveyData.identifier,
+      description: description,
+      items: surveyItems,
+    );
+
+    return surveyData;
+  }
 }
