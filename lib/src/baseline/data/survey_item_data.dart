@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:mdigit_span_tasks_ema/src/baseline/services/rp_converters.dart';
 import 'package:research_package/research_package.dart';
 
 part 'survey_item_data.freezed.dart';
@@ -28,9 +29,23 @@ class SurveyItemData with _$SurveyItemData {
     List<String>? choices,
   }) = _SurveyItemData;
 
-  SurveyItemData.fromRPTaskResult(RPTaskResult rpItemData) {
-    /// extract metadata
-    /// extract choices, if applicable - service
-    /// extract response - service
+  factory SurveyItemData.fromRPStepResult(RPStepResult rpItem) {
+    final String itemType = rpItem.answerFormat.questionType.name;
+    final String response = getAnswer(
+      rpAnswer: rpItem.results.values,
+      itemType: itemType,
+    );
+    final List<String>? choices = getChoices(rpItem.answerFormat);
+
+    final SurveyItemData item = SurveyItemData(
+      startTime: rpItem.startDate,
+      endTime: rpItem.endDate,
+      identifier: rpItem.identifier,
+      description: rpItem.questionTitle,
+      type: itemType,
+      response: response,
+      choices: choices,
+    );
+    return item;
   }
 }
