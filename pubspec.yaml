@@ -29,7 +29,6 @@ dependencies:
   firebase_messaging: ^14.8.1
   research_package: ^1.5.0
   get_storage: ^2.1.1
-  freezed: ^2.5.2
   freezed_annotation: ^2.4.2
   json_annotation: ^4.9.0
 
@@ -42,6 +41,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   rename: ^3.0.2
   build_runner: ^2.4.9
+  freezed: ^2.5.2
   json_serializable: ^6.8.0
 
 flutter:

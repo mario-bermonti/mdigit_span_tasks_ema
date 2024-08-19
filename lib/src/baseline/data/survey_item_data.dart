@@ -4,6 +4,7 @@ import 'package:mdigit_span_tasks_ema/src/baseline/services/rp_converters.dart';
 import 'package:research_package/research_package.dart';
 
 part 'survey_item_data.freezed.dart';
+part 'survey_item_data.g.dart';
 
 /// Model that represents the data for a single survey item.
 @freezed
@@ -48,4 +49,7 @@ class SurveyItemData with _$SurveyItemData {
     );
     return item;
   }
+
+  factory SurveyItemData.fromJson(Map<String, dynamic> json) =>
+      _$SurveyItemDataFromJson(json);
 }

@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+SurveyItemData _$SurveyItemDataFromJson(Map<String, dynamic> json) {
+  return _SurveyItemData.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SurveyItemData {
   DateTime? get startTime => throw _privateConstructorUsedError;
@@ -35,6 +39,7 @@ mixin _$SurveyItemData {
   /// Possible choices the participant select from.
   List<String>? get choices => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SurveyItemDataCopyWith<SurveyItemData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -181,7 +186,7 @@ class __$$SurveyItemDataImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SurveyItemDataImpl
     with DiagnosticableTreeMixin
     implements _SurveyItemData {
@@ -194,6 +199,9 @@ class _$SurveyItemDataImpl
       required this.response,
       final List<String>? choices})
       : _choices = choices;
+
+  factory _$SurveyItemDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SurveyItemDataImplFromJson(json);
 
   @override
   final DateTime? startTime;
@@ -267,6 +275,7 @@ class _$SurveyItemDataImpl
             const DeepCollectionEquality().equals(other._choices, _choices));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -284,6 +293,13 @@ class _$SurveyItemDataImpl
   _$$SurveyItemDataImplCopyWith<_$SurveyItemDataImpl> get copyWith =>
       __$$SurveyItemDataImplCopyWithImpl<_$SurveyItemDataImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SurveyItemDataImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SurveyItemData implements SurveyItemData {
@@ -295,6 +311,9 @@ abstract class _SurveyItemData implements SurveyItemData {
       required final String type,
       required final String response,
       final List<String>? choices}) = _$SurveyItemDataImpl;
+
+  factory _SurveyItemData.fromJson(Map<String, dynamic> json) =
+      _$SurveyItemDataImpl.fromJson;
 
   @override
   DateTime? get startTime;
