@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+SurveyData _$SurveyDataFromJson(Map<String, dynamic> json) {
+  return _SurveyData.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SurveyData {
   DateTime? get startTime => throw _privateConstructorUsedError;
@@ -31,6 +35,7 @@ mixin _$SurveyData {
   /// the participant's response.
   List<SurveyItemData> get items => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SurveyDataCopyWith<SurveyData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -153,7 +158,7 @@ class __$$SurveyDataImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SurveyDataImpl with DiagnosticableTreeMixin implements _SurveyData {
   const _$SurveyDataImpl(
       {required this.startTime,
@@ -162,6 +167,9 @@ class _$SurveyDataImpl with DiagnosticableTreeMixin implements _SurveyData {
       required this.description,
       required final List<SurveyItemData> items})
       : _items = items;
+
+  factory _$SurveyDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SurveyDataImplFromJson(json);
 
   @override
   final DateTime? startTime;
@@ -223,6 +231,7 @@ class _$SurveyDataImpl with DiagnosticableTreeMixin implements _SurveyData {
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, startTime, endTime, identifier,
       description, const DeepCollectionEquality().hash(_items));
@@ -232,6 +241,13 @@ class _$SurveyDataImpl with DiagnosticableTreeMixin implements _SurveyData {
   @pragma('vm:prefer-inline')
   _$$SurveyDataImplCopyWith<_$SurveyDataImpl> get copyWith =>
       __$$SurveyDataImplCopyWithImpl<_$SurveyDataImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SurveyDataImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SurveyData implements SurveyData {
@@ -241,6 +257,9 @@ abstract class _SurveyData implements SurveyData {
       required final String identifier,
       required final String description,
       required final List<SurveyItemData> items}) = _$SurveyDataImpl;
+
+  factory _SurveyData.fromJson(Map<String, dynamic> json) =
+      _$SurveyDataImpl.fromJson;
 
   @override
   DateTime? get startTime;

@@ -5,6 +5,7 @@ import 'package:research_package/model.dart';
 import 'survey_item_data.dart';
 
 part 'survey_data.freezed.dart';
+part 'survey_data.g.dart';
 
 /// Model that represents the data for a single survey item.
 @freezed
@@ -46,4 +47,7 @@ class SurveyData with _$SurveyData {
 
     return surveyData;
   }
+
+  factory SurveyData.fromJson(Map<String, dynamic> json) =>
+      _$SurveyDataFromJson(json);
 }
