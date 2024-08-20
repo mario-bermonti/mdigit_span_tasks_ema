@@ -9,7 +9,7 @@ String getAnswer({
   if (itemType == 'Date') {
     return rpAnswer.first;
   } else if (itemType == 'SingleChoice') {
-    return rpAnswer.first.text as String;
+    return rpAnswer.first.first.text as String;
   } else {
     throw UnimplementedError('Support for $itemType has not been implemented');
   }
