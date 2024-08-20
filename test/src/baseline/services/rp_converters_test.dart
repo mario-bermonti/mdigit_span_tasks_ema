@@ -54,11 +54,13 @@ void main() {
               answerStyle: RPChoiceAnswerStyle.SingleChoice,
             ),
           );
-          colorStep.setResult(RPChoice(
-            text: 'Black',
-            value: 0,
-            isFreeText: false,
-          ));
+          colorStep.setResult([
+            RPChoice(
+              text: 'Black',
+              value: 0,
+              isFreeText: false,
+            )
+          ]);
           const String itemType = "SingleChoice";
           const String expectedAnswer = "Black";
 
@@ -94,11 +96,13 @@ void main() {
               answerStyle: RPChoiceAnswerStyle.SingleChoice,
             ),
           );
-          colorStep.setResult(RPChoice(
-            text: 'Black',
-            value: 0,
-            isFreeText: false,
-          ));
+          colorStep.setResult([
+            RPChoice(
+              text: 'Black',
+              value: 0,
+              isFreeText: false,
+            )
+          ]);
           const String itemType = "MultipleChoice";
 
           expect(
@@ -152,11 +156,13 @@ void main() {
             answerStyle: RPChoiceAnswerStyle.SingleChoice,
           ),
         );
-        colorStep.setResult(RPChoice(
-          text: 'Black',
-          value: 0,
-          isFreeText: false,
-        ));
+        colorStep.setResult([
+          RPChoice(
+            text: 'Black',
+            value: 0,
+            isFreeText: false,
+          )
+        ]);
 
         final List<String> expectedChoices = ['Black', 'White'];
 
