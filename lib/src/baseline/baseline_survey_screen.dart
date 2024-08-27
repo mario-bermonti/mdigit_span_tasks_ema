@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:mdigit_span_tasks_ema/src/baseline/data/survey_data.dart';
+import 'package:mdigit_span_tasks_ema/src/demographics/process_demographics_data.dart';
 import 'package:mdigit_span_tasks_ema/src/ui_components/loading_screen.dart';
 import 'package:research_package/model.dart';
 import 'package:research_package/ui.dart';
@@ -29,22 +28,9 @@ class BaselineSurveyScreen extends StatelessWidget {
 
         return RPUITask(
           task: survey,
-          onSubmit: (RPTaskResult results) => endBaselineSurvey(results),
+          onSubmit: (RPTaskResult results) => endDemographicsSurvey(results),
         );
       }
     });
-  }
-
-  /// Prepares the survey data for exporting, marks the baseline survey as
-  /// completed, and moves to the next screen.
-  Future<SurveyData> endBaselineSurvey(RPTaskResult results) async {
-    final SurveyData surveyData = SurveyData.fromRPTaskResult(
-      rpSurveyData: results,
-      description: 'Baseline demographics survey',
-    );
-    print('survey data ${surveyData.toJson()}');
-    GetStorage().write('baselineCompleted', true);
-    await Get.toNamed('/tasklist');
-    return surveyData;
   }
 }
