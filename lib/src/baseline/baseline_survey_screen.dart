@@ -11,7 +11,9 @@ import 'baseline_survey_controller.dart';
 class BaselineSurveyScreen extends StatelessWidget {
   final BaselineSurveyController controller =
       Get.put(BaselineSurveyController());
-  BaselineSurveyScreen({super.key});
+  final Function onSubmit;
+
+  BaselineSurveyScreen({super.key, required this.onSubmit});
 
   @override
   Widget build(BuildContext context) {
