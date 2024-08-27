@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/demographics/process_demographics_data.dart';
+import 'package:mdigit_span_tasks_ema/src/demographics/end_demographics_survey.dart';
 import 'package:mdigit_span_tasks_ema/src/ui_components/loading_screen.dart';
 import 'package:research_package/model.dart';
 import 'package:research_package/ui.dart';
