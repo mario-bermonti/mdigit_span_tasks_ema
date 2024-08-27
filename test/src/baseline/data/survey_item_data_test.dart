@@ -55,11 +55,13 @@ void main() {
             answerStyle: RPChoiceAnswerStyle.SingleChoice,
           ),
         );
-        rawItem.setResult(RPChoice(
-          text: 'Black',
-          value: 0,
-          isFreeText: false,
-        ));
+        rawItem.setResult([
+          RPChoice(
+            text: 'Black',
+            value: 0,
+            isFreeText: false,
+          )
+        ]);
 
         final SurveyItemData expectedItem = SurveyItemData(
           startTime: rawItem.startDate!,

@@ -45,11 +45,13 @@ void main() {
           answerStyle: RPChoiceAnswerStyle.SingleChoice,
         ),
       );
-      rawColorItem.setResult(RPChoice(
-        text: 'Black',
-        value: 0,
-        isFreeText: false,
-      ));
+      rawColorItem.setResult([
+        RPChoice(
+          text: 'Black',
+          value: 0,
+          isFreeText: false,
+        )
+      ]);
       final SurveyItemData formattedColorItem = SurveyItemData(
         startTime: rawColorItem.startDate,
         endTime: rawColorItem.endDate,
