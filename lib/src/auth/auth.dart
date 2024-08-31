@@ -12,8 +12,7 @@ class Auth {
   Future<Participant> signIn() async {
     final UserCredential userCredential = await auth.signInAnonymously();
     final Participant participant = Participant(
-      uid: userCredential.user?.uid,
-      registerDateTime: userCredential.user?.metadata.creationTime,
+      id: userCredential.user?.uid ?? '',
     );
     return participant;
   }
