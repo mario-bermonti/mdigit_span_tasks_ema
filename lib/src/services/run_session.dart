@@ -16,7 +16,7 @@ Future<void> runSession({
   final DigitSpanTaskConfig config = Get.find();
   final Participant participant =
       await Auth(auth: FirebaseAuth.instance).signIn();
-  config.participantID = participant.uid;
+  config.participantID = participant.id;
 
   /// We use the startTime for the practice session to create a single
   /// session id for both practice and experimental data.
