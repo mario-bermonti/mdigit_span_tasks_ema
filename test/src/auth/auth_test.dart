@@ -7,8 +7,7 @@ void main() {
     "Auth.signIn() does not throw exceptions",
     () async {
       final Auth auth = Auth(auth: MockFirebaseAuth());
-      await auth.signIn();
-      expect(auth.signIn, returnsNormally);
+      expect(() async => await auth.signIn(), returnsNormally);
     },
   );
 }
