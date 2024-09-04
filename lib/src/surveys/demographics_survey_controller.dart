@@ -6,7 +6,7 @@ import 'package:mdigit_span_tasks_ema/src/dob_question.dart';
 import 'package:research_package/research_package.dart';
 
 class DemographicsSurveyController extends GetxController {
-  final String basePath = 'assets/baseline_questions';
+  final String basePath = 'assets/demographics_questions';
   final List<String> questionFilenames = <String>[
     'sex.json',
     'gender.json',
