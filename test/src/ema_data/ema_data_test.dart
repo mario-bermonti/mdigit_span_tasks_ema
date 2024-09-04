@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mdigit_span_tasks_ema/src/baseline/data/survey_data.dart';
-import 'package:mdigit_span_tasks_ema/src/baseline/data/survey_item_data.dart';
+import 'package:mdigit_span_tasks_ema/src/surveys/data/survey_data.dart';
+import 'package:mdigit_span_tasks_ema/src/surveys/data/survey_item_data.dart';
 import 'package:mdigit_span_tasks_ema/src/ema_data/ema_data.dart';
 
 void main() {

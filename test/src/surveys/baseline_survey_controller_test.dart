@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/baseline/baseline_survey_controller.dart';
+import 'package:mdigit_span_tasks_ema/src/surveys/baseline_survey_controller.dart';
 import 'package:research_package/model.dart';
 
 void main() {
