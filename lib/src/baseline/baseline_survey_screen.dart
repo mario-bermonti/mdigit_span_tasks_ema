@@ -28,7 +28,7 @@ class BaselineSurveyScreen extends StatelessWidget {
 
         return RPUITask(
           task: survey,
-          onSubmit: (RPTaskResult results) => endDemographicsSurvey(results),
+          onSubmit: (RPTaskResult results) => onSubmit(results),
         );
       }
     });
