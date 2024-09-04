@@ -17,6 +17,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await GetStorage.init();
+  GetStorage().remove('baselineCompleted');
   Get.put(LocalNotifications());
   Get.put(FirebaseNotifications());
   final Participant participant =

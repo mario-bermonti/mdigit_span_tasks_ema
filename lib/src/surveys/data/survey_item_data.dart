@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:mdigit_span_tasks_ema/src/baseline/services/rp_converters.dart';
+import 'package:mdigit_span_tasks_ema/src/surveys/services/rp_converters.dart';
 import 'package:research_package/research_package.dart';
 
 part 'survey_item_data.freezed.dart';
