@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/surveys/baseline_survey_controller.dart';
+import 'package:mdigit_span_tasks_ema/src/surveys/demographics_survey_controller.dart';
 import 'package:research_package/model.dart';
 
 void main() {
-  late BaselineSurveyController controller;
+  late DemographicsSurveyController controller;
 
   setUp(() {
-    controller = Get.put(BaselineSurveyController());
+    controller = Get.put(DemographicsSurveyController());
   });
 
   test(

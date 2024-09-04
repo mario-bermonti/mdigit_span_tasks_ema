@@ -10,7 +10,7 @@ import '../surveys/data/survey_data.dart';
 void processDemographicsData(RPTaskResult results) {
   final SurveyData surveyData = SurveyData.fromRPTaskResult(
     rpSurveyData: results,
-    description: 'Baseline demographics survey',
+    description: 'Demographics survey',
   );
   final Participant participant = Get.find();
   final EMAData emaData = EMAData(
