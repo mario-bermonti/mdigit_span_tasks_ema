@@ -17,12 +17,11 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await GetStorage.init();
-  GetStorage().remove('baselineCompleted');
   Get.put(LocalNotifications());
   Get.put(FirebaseNotifications());
   final Participant participant =
       await Auth(auth: FirebaseAuth.instance).signIn();
-  Get.put(participant);
+  Get.put(participant, permanent: true);
   Get.put(DigitSpanTaskConfig(), permanent: true);
   runApp(const MyApp());
 }
