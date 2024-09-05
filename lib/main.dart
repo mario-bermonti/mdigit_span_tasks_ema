@@ -22,7 +22,7 @@ Future<void> main() async {
   Get.put(FirebaseNotifications());
   final Participant participant =
       await Auth(auth: FirebaseAuth.instance).signIn();
-  Get.put(participant);
+  Get.put(participant, permanent: true);
   Get.put(DigitSpanTaskConfig(), permanent: true);
   runApp(const MyApp());
 }
