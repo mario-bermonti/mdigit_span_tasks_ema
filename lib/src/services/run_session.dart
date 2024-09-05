@@ -1,9 +1,7 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
 import 'package:mdigit_span_tasks_ema/src/data_manager/session_id_creator.dart';
-import 'package:mdigit_span_tasks_ema/src/auth/auth.dart';
 import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/config.dart';
 import 'package:mdigit_span_tasks_ema/src/services/data_processor.dart';
 
@@ -14,8 +12,7 @@ Future<void> runSession({
   required Function taskRunner,
 }) async {
   final DigitSpanTaskConfig config = Get.find();
-  final Participant participant =
-      await Auth(auth: FirebaseAuth.instance).signIn();
+  final Participant participant = Get.find();
   config.participantID = participant.id;
 
   /// We use the startTime for the practice session to create a single
