@@ -10,6 +10,6 @@ class ConsentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RPUITask(task: consentTask);
+    return RPUITask(task: _controller.consentTask);
   }
 }

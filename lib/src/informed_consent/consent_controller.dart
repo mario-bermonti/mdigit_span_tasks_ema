@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 import 'package:research_package/research_package.dart';
 
-class ConsentController extends GetxController {}
-
 RPConsentSection overviewSection = RPConsentSection(
     type: RPConsentSectionType.Overview,
     summary: "overview.title",
@@ -103,12 +101,14 @@ RPCompletionStep completionStep = RPCompletionStep(
   text: "informed_consent.document_saved",
 );
 
-RPOrderedTask consentTask = RPOrderedTask(
-  identifier: "consentTaskID",
-  steps: [
-    instructionStep,
-    consentVisualStep,
-    consentReviewStep,
-    completionStep,
-  ],
-);
+class ConsentController extends GetxController {
+  final RPOrderedTask consentTask = RPOrderedTask(
+    identifier: "consentTaskID",
+    steps: [
+      instructionStep,
+      consentVisualStep,
+      consentReviewStep,
+      completionStep,
+    ],
+  );
+}
