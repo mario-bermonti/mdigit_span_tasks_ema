@@ -106,17 +106,6 @@ RPConsentDocument consentDocumentFull = RPConsentDocument(
   ],
 );
 
-RPConsentReviewStep consentReviewStep = RPConsentReviewStep(
-  identifier: "consentReview",
-  title: 'Consent Review',
-  consentDocument: consentDocumentFull,
-  reasonForConsent: 'informed_consent.agree_text',
-  text: 'informed_consent.agree_confirm',
-);
-
-RPVisualConsentStep consentVisualStep = RPVisualConsentStep(
-    identifier: "visualStep", consentDocument: consentDocumentSummary);
-
 RPInstructionStep instructionStep = RPInstructionStep(
   identifier: "consentInstruction",
   title: "¡Te damos la bienvenida!",
@@ -129,6 +118,18 @@ Te adelantamos que tu participación será sencilla y nos ayudará mucho.
 
 ¡Gracias por tu apoyo!""",
   text: "¡Nos alegra tu interés en nuestro estudio!",
+);
+
+RPVisualConsentStep consentVisualStep = RPVisualConsentStep(
+    identifier: "visualStep", consentDocument: consentDocumentSummary);
+
+RPConsentReviewStep consentReviewStep = RPConsentReviewStep(
+  identifier: "consentReview",
+  title: 'Confirmación',
+  consentDocument: consentDocumentFull,
+  reasonForConsent:
+      'Al presionar "ACEPTAR" aceptas a participar en el estudio.',
+  text: '¿Aceptas?',
 );
 
 RPCompletionStep completionStep = RPCompletionStep(
