@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:research_package/research_package.dart';
 
-import 'consent_objects.dart';
+import 'consent_steps.dart';
 
 class ConsentController extends GetxController {
   final RPOrderedTask consentTask = RPOrderedTask(
