@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/informed_consent/consent_controller.dart';
@@ -10,6 +12,15 @@ class ConsentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RPUITask(task: _controller.consentTask);
+    return RPUITask(
+      task: _controller.consentTask,
+      onSubmit: (RPTaskResult result) {
+        _controller.completeConsent();
+        _controller.nextScreen();
+      },
+      onCancel: (RPTaskResult? result) {
+        _controller.nextScreen();
+      },
+    );
   }
 }
