@@ -5,15 +5,10 @@ import 'consent_docs.dart';
 RPInstructionStep instructionStep = RPInstructionStep(
   identifier: "consentInstruction",
   title: "¡Te damos la bienvenida!",
+  text:
+      """¡Nos alegra tu interés en nuestro estudio!\n\nmDigits es parte de un estudio de investigación realizado por la Ponce Health Sciences University (PHSU).\n\nNecesitarás aceptar participar en el estudio para utilizar mDigits.""",
   detailText:
-      """mDigits es parte de un estudio de investigación realizado por la Ponce Health Sciences University (PHSU).
-
-A continuación te ofreceremos información sobre el estudio para que puedes decidir si te interesa participar.
-      
-Te adelantamos que tu participación será sencilla y nos ayudará mucho.
-
-¡Gracias por tu apoyo!""",
-  text: "¡Nos alegra tu interés en nuestro estudio!",
+      """A continuación te ofreceremos información sobre el estudio para que puedes decidir si te interesa participar.\n\nTe adelantamos que tu participación será sencilla y nos ayudará mucho.\n\n¡Gracias por tu apoyo!""",
 );
 
 RPVisualConsentStep consentVisualStep = RPVisualConsentStep(
