@@ -16,6 +16,7 @@ class ConsentController extends GetxController {
     closeAfterFinished: false,
   );
 
+  /// Marks consent as completed so it is not presented again.
   Future<void> completeConsent() async {
     await GetStorage().write('consentCompleted', true);
   }
