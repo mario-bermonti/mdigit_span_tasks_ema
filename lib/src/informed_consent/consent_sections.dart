@@ -29,7 +29,7 @@ RPConsentSection dataGatheringSection = RPConsentSection(
     content:
         """mDigits nos permite recoger información sobre cuán bien recuerdas información nueva completando actividades de memoria.
 
-También recogemos alguna información básica sobre ti como tu edad y nivel educativo. 
+También recogemos alguna información básica sobre ti como tu sexo e idioma principal. 
         
 Completarás todas las actividades en este celular.""");
 

@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/dob_question.dart';
 import 'package:research_package/research_package.dart';
 
+import 'demographics_instructions.dart';
+
 class DemographicsSurveyController extends GetxController {
   final String basePath = 'assets/demographics_questions';
   final List<String> questionFilenames = <String>[
@@ -16,7 +18,10 @@ class DemographicsSurveyController extends GetxController {
     'employment.json',
     'language.json',
   ];
-  final List<RPQuestionStep> questions = <RPQuestionStep>[dobQuestion].obs;
+  final List<RPStep> questions = <RPStep>[
+    demographicsInstructionStep,
+    dobQuestion,
+  ];
   RxBool isLoading = true.obs;
   RxBool hasError = false.obs;
 
