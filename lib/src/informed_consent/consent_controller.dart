@@ -21,6 +21,6 @@ class ConsentController extends GetxController {
   }
 
   void nextScreen() {
-    Get.toNamed('/');
+    Get.offAndToNamed('/');
   }
 }
