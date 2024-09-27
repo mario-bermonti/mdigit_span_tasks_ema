@@ -5,4 +5,5 @@ RPQuestionStep dobQuestion = RPQuestionStep(
   title: '¿Cuál es tu fecha de nacimiento?',
   answerFormat:
       RPDateTimeAnswerFormat(dateTimeAnswerStyle: RPDateTimeAnswerStyle.Date),
+  optional: true,
 );

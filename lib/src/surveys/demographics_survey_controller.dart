@@ -76,6 +76,7 @@ class DemographicsSurveyController extends GetxController {
       identifier: config['identifier'],
       title: config['title'],
       answerFormat: answerFormat,
+      optional: true,
     );
     return question;
   }
