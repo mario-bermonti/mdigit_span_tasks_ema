@@ -34,7 +34,7 @@ mixin _$SurveyItemData {
   /// Type of survey item present to understand the response scale.
   /// Common options are single choice, multiple choice, free text.
   String get type => throw _privateConstructorUsedError;
-  String get response => throw _privateConstructorUsedError;
+  String? get response => throw _privateConstructorUsedError;
 
   /// Possible choices the participant select from.
   List<String>? get choices => throw _privateConstructorUsedError;
@@ -57,7 +57,7 @@ abstract class $SurveyItemDataCopyWith<$Res> {
       String identifier,
       String description,
       String type,
-      String response,
+      String? response,
       List<String>? choices});
 }
 
@@ -79,7 +79,7 @@ class _$SurveyItemDataCopyWithImpl<$Res, $Val extends SurveyItemData>
     Object? identifier = null,
     Object? description = null,
     Object? type = null,
-    Object? response = null,
+    Object? response = freezed,
     Object? choices = freezed,
   }) {
     return _then(_value.copyWith(
@@ -103,10 +103,10 @@ class _$SurveyItemDataCopyWithImpl<$Res, $Val extends SurveyItemData>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      response: null == response
+      response: freezed == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       choices: freezed == choices
           ? _value.choices
           : choices // ignore: cast_nullable_to_non_nullable
@@ -129,7 +129,7 @@ abstract class _$$SurveyItemDataImplCopyWith<$Res>
       String identifier,
       String description,
       String type,
-      String response,
+      String? response,
       List<String>? choices});
 }
 
@@ -149,7 +149,7 @@ class __$$SurveyItemDataImplCopyWithImpl<$Res>
     Object? identifier = null,
     Object? description = null,
     Object? type = null,
-    Object? response = null,
+    Object? response = freezed,
     Object? choices = freezed,
   }) {
     return _then(_$SurveyItemDataImpl(
@@ -173,10 +173,10 @@ class __$$SurveyItemDataImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      response: null == response
+      response: freezed == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       choices: freezed == choices
           ? _value._choices
           : choices // ignore: cast_nullable_to_non_nullable
@@ -223,7 +223,7 @@ class _$SurveyItemDataImpl
   @override
   final String type;
   @override
-  final String response;
+  final String? response;
 
   /// Possible choices the participant select from.
   final List<String>? _choices;
@@ -309,7 +309,7 @@ abstract class _SurveyItemData implements SurveyItemData {
       required final String identifier,
       required final String description,
       required final String type,
-      required final String response,
+      required final String? response,
       final List<String>? choices}) = _$SurveyItemDataImpl;
 
   factory _SurveyItemData.fromJson(Map<String, dynamic> json) =
@@ -335,7 +335,7 @@ abstract class _SurveyItemData implements SurveyItemData {
   /// Common options are single choice, multiple choice, free text.
   String get type;
   @override
-  String get response;
+  String? get response;
   @override
 
   /// Possible choices the participant select from.

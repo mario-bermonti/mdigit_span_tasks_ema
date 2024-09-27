@@ -22,7 +22,7 @@ void main() {
           const String itemType = "Date";
           const String expectedAnswer = "2024-04-07 00:00:00.000";
 
-          final String actualAnswer = getAnswer(
+          final String? actualAnswer = getAnswer(
             rpAnswer: dateStep.results.values,
             itemType: itemType,
           );
@@ -64,7 +64,7 @@ void main() {
           const String itemType = "SingleChoice";
           const String expectedAnswer = "Black";
 
-          final String actualAnswer = getAnswer(
+          final String? actualAnswer = getAnswer(
             rpAnswer: colorStep.results.values,
             itemType: itemType,
           );

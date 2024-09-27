@@ -2,11 +2,13 @@ import 'package:research_package/model.dart';
 
 /// Format the answer to an [RPQuestion].
 /// Currently supports Date and SingleChoice questions.
-String getAnswer({
-  required Iterable<dynamic> rpAnswer,
+String? getAnswer({
+  required Iterable<dynamic>? rpAnswer,
   required String itemType,
 }) {
-  if (itemType == 'Date') {
+  if (rpAnswer == null || rpAnswer.first == null) {
+    return null;
+  } else if (itemType == 'Date') {
     return rpAnswer.first;
   } else if (itemType == 'SingleChoice') {
     return rpAnswer.first.first.text as String;
