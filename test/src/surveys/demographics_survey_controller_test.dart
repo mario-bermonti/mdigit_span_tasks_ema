@@ -49,14 +49,14 @@ void main() {
 
       expect(questionActual.identifier, questionExpected.identifier);
       expect(questionActual.title, questionExpected.title);
-      final List<RPChoice> choicesActual =
+      final List<Map<String, dynamic>> choicesActual =
           questionActual.answerFormat.toJson()['choices'];
       expect(
-        choicesActual.first.toJson(),
+        choicesActual.first,
         choicesExpected.first.toJson(),
       );
       expect(
-        choicesActual.last.toJson(),
+        choicesActual.last,
         choicesExpected.last.toJson(),
       );
     },
