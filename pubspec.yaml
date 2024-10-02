@@ -1,16 +1,15 @@
 name: mdigit_span_tasks_ema
 description: "mDigitSpanTasksEMA: A mobile application for measuring verbal working memory in real-time."
-publish_to: 'none' 
+publish_to: "none"
 
 version: 0.1.0
 
 environment:
-  sdk: '>=2.18.0-216.0.dev <3.0.0'
+  sdk: ">=2.18.0-216.0.dev <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
 
   cupertino_icons: ^1.0.2
   get: ^4.6.5
@@ -27,7 +26,11 @@ dependencies:
   firebase_auth: ^4.19.0
   flutter_local_notifications: ^17.0.0
   firebase_messaging: ^14.8.1
-  research_package: ^1.5.0
+  # research_package: ^1.5.0
+  research_package:
+    git:
+      url: https://github.com/mario-bermonti/research.package.git
+      ref: 8f72b1f876f41b420987eb0fed1fb06b1697c44b
   get_storage: ^2.1.1
   freezed_annotation: ^2.4.2
   json_annotation: ^4.9.0
