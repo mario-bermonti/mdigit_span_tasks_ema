@@ -6,10 +6,11 @@ String? getAnswer({
   required Iterable<dynamic>? rpAnswer,
   required String itemType,
 }) {
-  if (rpAnswer == null || rpAnswer.first == null) {
+  if (rpAnswer == null) {
     return null;
   } else if (itemType == 'Date') {
-    return rpAnswer.first;
+    /// we assume response can only be null if the item was skipped
+    return rpAnswer.first ?? "Prefiero no contestar";
   } else if (itemType == 'SingleChoice') {
     return rpAnswer.first.first.text as String;
   } else {
