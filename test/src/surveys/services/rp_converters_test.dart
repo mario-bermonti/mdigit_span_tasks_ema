@@ -22,7 +22,30 @@ void main() {
           const String itemType = "Date";
           const String expectedAnswer = "2024-04-07 00:00:00.000";
 
-          final String actualAnswer = getAnswer(
+          final String? actualAnswer = getAnswer(
+            rpAnswer: dateStep.results.values,
+            itemType: itemType,
+          );
+
+          expect(actualAnswer, expectedAnswer);
+        },
+      );
+      test(
+        """Given a Date itemType and a null value inside a results object of a
+        [RPStepResult] returns 'Prefiero no contestar'.""",
+        () {
+          final RPStepResult dateStep = RPStepResult(
+            identifier: "today",
+            questionTitle: "What date is it?",
+            answerFormat: RPDateTimeAnswerFormat(
+                dateTimeAnswerStyle: RPDateTimeAnswerStyle.Date),
+          );
+          dateStep.setResult(null);
+
+          const String itemType = "Date";
+          const String expectedAnswer = "Prefiero no contestar";
+
+          final String? actualAnswer = getAnswer(
             rpAnswer: dateStep.results.values,
             itemType: itemType,
           );
@@ -64,7 +87,7 @@ void main() {
           const String itemType = "SingleChoice";
           const String expectedAnswer = "Black";
 
-          final String actualAnswer = getAnswer(
+          final String? actualAnswer = getAnswer(
             rpAnswer: colorStep.results.values,
             itemType: itemType,
           );

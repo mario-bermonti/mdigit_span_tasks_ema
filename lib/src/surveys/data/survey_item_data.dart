@@ -24,7 +24,7 @@ class SurveyItemData with _$SurveyItemData {
     /// Type of survey item present to understand the response scale.
     /// Common options are single choice, multiple choice, free text.
     required String type,
-    required String response,
+    required String? response,
 
     /// Possible choices the participant select from.
     List<String>? choices,
@@ -32,7 +32,7 @@ class SurveyItemData with _$SurveyItemData {
 
   factory SurveyItemData.fromRPStepResult(RPStepResult rpItem) {
     final String itemType = rpItem.answerFormat.questionType.name;
-    final String response = getAnswer(
+    final String? response = getAnswer(
       rpAnswer: rpItem.results.values,
       itemType: itemType,
     );

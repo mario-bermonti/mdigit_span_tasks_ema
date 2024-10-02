@@ -17,7 +17,7 @@ _$SurveyItemDataImpl _$$SurveyItemDataImplFromJson(Map<String, dynamic> json) =>
       identifier: json['identifier'] as String,
       description: json['description'] as String,
       type: json['type'] as String,
-      response: json['response'] as String,
+      response: json['response'] as String?,
       choices:
           (json['choices'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
