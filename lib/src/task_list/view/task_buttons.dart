@@ -26,8 +26,9 @@ class DSBButton extends StatelessWidget {
         await runSession(taskRunner: runDigitSpanBackwards);
       },
       child: Text(
-        'Memoria de números al revés',
+        'Memoria de números inversos',
         style: Theme.of(context).textTheme.titleLarge,
+        textAlign: TextAlign.center,
       ),
     );
   }
@@ -56,6 +57,7 @@ class DSFButton extends StatelessWidget {
       child: Text(
         'Memoria de números',
         style: Theme.of(context).textTheme.titleLarge,
+        textAlign: TextAlign.center,
       ),
     );
   }
