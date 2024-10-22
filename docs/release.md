@@ -2,6 +2,7 @@
 
 - Update the version number in `pubspec.yaml`
   Note: We update the part after `+` for internal testing
+- Clean the project `flutter clean` to make sure all the files are up to date
 - Build app for release `flutter build appbundle --release`
 - Test the release build
   - Install the app on a device `flutter install`
