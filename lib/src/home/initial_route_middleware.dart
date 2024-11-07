@@ -15,6 +15,7 @@ class InitialRouteMiddleware extends GetMiddleware {
     } else if (!demographicsSurveyCompleted) {
       return const RouteSettings(name: '/demographicsSurvey');
     }
+
     return const RouteSettings(name: '/tasklist');
   }
 }
