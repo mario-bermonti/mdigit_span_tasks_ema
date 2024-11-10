@@ -7,8 +7,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/auth.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
 import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/config.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/local_notifications.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/firebase_notifications.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -17,8 +15,6 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await GetStorage.init();
-  Get.put(LocalNotifications());
-  Get.put(FirebaseNotifications());
   final Participant participant =
       await Auth(auth: FirebaseAuth.instance).signIn();
   Get.put(participant, permanent: true);
