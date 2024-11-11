@@ -1,31 +1,23 @@
 import 'dart:io';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:get/get.dart';
 
-/// Manager for local notifications
+/// Manager for local notifications.
 ///
-/// It is a [GetXController] so it can be accessed from anywhere in the app.
-class LocalNotifications extends GetxController {
+/// Delivers notifications while application is in the background on Android.
+/// Currently uses the flutter_local_notifications package.
+class LocalNotifications {
   final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
 
-  /// Initializes the [LocalNotifications] for android and ios.
-  ///
-  /// It requires [onLocalNotificationTap] that specifies how to handle taps on
-  /// notifications. This method must be called before using the notifications
-  /// object.
   Future<void> init({
     required void Function(NotificationResponse response)
         onLocalNotificationTap,
   }) async {
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/ic_launcher');
-    const DarwinInitializationSettings initializationSettingsDarwin =
-        DarwinInitializationSettings();
     const InitializationSettings initializationSettings =
         InitializationSettings(
       android: initializationSettingsAndroid,
-      iOS: initializationSettingsDarwin,
     );
     await _notifications.initialize(
       initializationSettings,
@@ -35,7 +27,7 @@ class LocalNotifications extends GetxController {
 
   /// Asks the user during runtime for permission to send notifications.
   ///
-  /// Only android is supported. Will cause throw an [Exception] if the
+  /// Only Android is supported and will cause throw an [Exception] if the
   /// platform is not supported or the user does not grant permission.
   Future<void> askNotificationPermission() async {
     if (!Platform.isAndroid) {
@@ -64,17 +56,14 @@ class LocalNotifications extends GetxController {
       priority: Priority.max,
       ticker: 'task_reminder',
     );
-    const DarwinNotificationDetails darwinNotificationDetails =
-        DarwinNotificationDetails();
     const NotificationDetails notificationDetails = NotificationDetails(
       android: androidNotificationDetails,
-      iOS: darwinNotificationDetails,
     );
 
     return notificationDetails;
   }
 
-  /// Shows a local notification to the user with the given information.
+  /// Shows a local notification to the user.
   Future<void> showNotification({
     int id = 0,
     required String title,
