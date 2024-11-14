@@ -23,7 +23,8 @@ Future<void> main() async {
   await GetStorage.init();
   final bool consentCompleted = GetStorage().read('consentCompleted') ?? false;
   if (consentCompleted) {
-    final NotificationsManager notificationsManager = NotificationsManager();
-    await notificationsManager.initNotifications();
+    final NotificationsManager notificationManager =
+        Get.put(NotificationsManager());
+    await notificationManager.initNotifications();
   }
 }

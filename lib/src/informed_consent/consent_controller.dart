@@ -24,7 +24,8 @@ class ConsentController extends GetxController {
   Future<void> completeConsent() async {
     await GetStorage().write('consentCompleted', true);
 
-    final NotificationsManager notificationsManager = NotificationsManager();
+    final NotificationsManager notificationsManager =
+        Get.put(NotificationsManager());
     await notificationsManager.setupNotifications();
     await notificationsManager.initNotifications();
   }
