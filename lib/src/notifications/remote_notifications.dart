@@ -43,6 +43,12 @@ class RemoteNotifications {
       await onForegroundNotification(message);
     }));
 
+    final RemoteMessage? initialMessage =
+        await FirebaseMessaging.instance.getInitialMessage();
+    if (initialMessage != null) {
+      onNotificationTap(initialMessage);
+    }
+
     /// handle notifications while app is in the background
     FirebaseMessaging.onMessageOpenedApp
         .listen(((RemoteMessage message) => onNotificationTap(message)));

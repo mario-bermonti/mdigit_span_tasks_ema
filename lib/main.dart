@@ -25,6 +25,5 @@ Future<void> main() async {
   if (consentCompleted) {
     final NotificationsManager notificationsManager = NotificationsManager();
     await notificationsManager.initNotifications();
-    await notificationsManager.handleInitialMessage();
   }
 }

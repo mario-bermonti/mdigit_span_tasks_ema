@@ -43,14 +43,6 @@ class NotificationsManager {
     }
   }
 
-  Future<void> handleInitialMessage() async {
-    final RemoteMessage? initialMessage =
-        await FirebaseMessaging.instance.getInitialMessage();
-    if (initialMessage != null) {
-      onNotificationTap(initialMessage);
-    }
-  }
-
   /// Handles notification taps
   void onNotificationTap(dynamic message) {
     Get.toNamed('/emaScreen');
