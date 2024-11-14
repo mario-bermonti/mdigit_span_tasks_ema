@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/notifications_manager.dart';
 
 class LandingController extends GetxController {
   RxString nextScreen = ''.obs;
   GetStorage storage = GetStorage();
+  final NotificationsManager _notificationsManager = Get.find();
 
   @override
   void onInit() {
@@ -18,6 +20,8 @@ class LandingController extends GetxController {
 
     if (!consentCompleted) {
       nextScreen.value = 'consent';
+    } else if (_notificationsManager.notificationWhileOnTerminated != null) {
+      nextScreen.value = 'emaScreen';
     } else if (!demographicsSurveyCompleted) {
       nextScreen.value = 'demographicsSurvey';
     } else {
