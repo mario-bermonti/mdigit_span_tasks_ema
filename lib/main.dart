@@ -19,12 +19,12 @@ Future<void> main() async {
       await Auth(auth: FirebaseAuth.instance).signIn();
   Get.put(participant, permanent: true);
   Get.put(DigitSpanTaskConfig(), permanent: true);
-  runApp(const MyApp());
+  final NotificationsManager notificationManager =
+      Get.put(NotificationsManager());
   await GetStorage.init();
   final bool consentCompleted = GetStorage().read('consentCompleted') ?? false;
   if (consentCompleted) {
-    final NotificationsManager notificationManager =
-        Get.put(NotificationsManager());
     await notificationManager.initNotifications();
   }
+  runApp(const MyApp());
 }
