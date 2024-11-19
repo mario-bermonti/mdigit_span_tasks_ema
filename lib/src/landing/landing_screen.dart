@@ -9,6 +9,9 @@ import '../informed_consent/consent_screen.dart';
 import '../surveys/demographics_survey.dart';
 import 'landing_controller.dart';
 
+/// Redirects the user to the appropriate route based on the user's progress.
+///
+/// Used by many screens as a redirection tool.
 class LandingScreen extends StatelessWidget {
   final LandingController _controller = Get.find();
   LandingScreen({super.key});
