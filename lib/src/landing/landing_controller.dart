@@ -7,12 +7,6 @@ class LandingController extends GetxController {
   GetStorage storage = GetStorage();
   final NotificationsManager _notificationsManager = Get.find();
 
-  @override
-  void onInit() {
-    super.onInit();
-    determineNextScreen();
-  }
-
   void determineNextScreen() {
     final bool consentCompleted = storage.read('consentCompleted') ?? false;
     final bool demographicsSurveyCompleted =
