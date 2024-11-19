@@ -14,8 +14,8 @@ class ConsentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return RPUITask(
       task: _controller.consentTask,
-      onSubmit: (RPTaskResult result) {
-        _controller.completeConsent();
+      onSubmit: (RPTaskResult result) async {
+        await _controller.completeConsent();
         _controller.nextScreen();
       },
       onCancel: (RPTaskResult? result) {
