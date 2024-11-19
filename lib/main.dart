@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/auth.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
 import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/config.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/notifications_manager.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -14,10 +15,16 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await GetStorage.init();
   final Participant participant =
       await Auth(auth: FirebaseAuth.instance).signIn();
   Get.put(participant, permanent: true);
   Get.put(DigitSpanTaskConfig(), permanent: true);
+  final NotificationsManager notificationManager =
+      Get.put(NotificationsManager());
+  await GetStorage.init();
+  final bool consentCompleted = GetStorage().read('consentCompleted') ?? false;
+  if (consentCompleted) {
+    await notificationManager.initNotifications();
+  }
   runApp(const MyApp());
 }

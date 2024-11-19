@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/firebase_notifications.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/notifications_manager.dart';
 import 'package:research_package/research_package.dart';
 
-import '../notifications/local_notifications.dart';
 import 'consent_steps.dart';
 
 class ConsentController extends GetxController {
@@ -25,8 +24,10 @@ class ConsentController extends GetxController {
   Future<void> completeConsent() async {
     await GetStorage().write('consentCompleted', true);
 
-    Get.put(LocalNotifications());
-    Get.put(FirebaseNotifications());
+    final NotificationsManager notificationsManager =
+        Get.put(NotificationsManager());
+    await notificationsManager.setupNotifications();
+    await notificationsManager.initNotifications();
   }
 
   void nextScreen() {
