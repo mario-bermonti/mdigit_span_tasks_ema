@@ -5,7 +5,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 /// It currently uses Firebase Cloud Messaging (FCM) for remote notifications
 class RemoteNotifications {
   final FirebaseMessaging remoteNotifications = FirebaseMessaging.instance;
-  late RemoteMessage? initialMessage;
+  late RemoteMessage? _initialMessage;
+
+  RemoteMessage? get initialMessage {
+    RemoteMessage? message = _initialMessage;
+    _initialMessage = null;
+    return message;
+  }
 
   /// Ask permissions and subscribe to remote notifications.
   ///
@@ -44,7 +50,7 @@ class RemoteNotifications {
       await onForegroundNotification(message);
     }));
 
-    initialMessage = await FirebaseMessaging.instance.getInitialMessage();
+    _initialMessage = await FirebaseMessaging.instance.getInitialMessage();
 
     /// handle notifications while app is in the background
     FirebaseMessaging.onMessageOpenedApp

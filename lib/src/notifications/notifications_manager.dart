@@ -28,7 +28,9 @@ Future<void> _onForegroundNotification(
 class NotificationsManager extends GetxService {
   final RemoteNotifications _remoteNotifications = RemoteNotifications();
   final LocalNotifications _localNotifications = LocalNotifications();
-  late RemoteMessage? notificationWhileOnTerminated;
+
+  RemoteMessage? get notificationWhileOnTerminated =>
+      _remoteNotifications.initialMessage;
 
   Future<void> setupNotifications() async {
     await _remoteNotifications.setup();
@@ -39,7 +41,6 @@ class NotificationsManager extends GetxService {
       onForegroundNotification: _onForegroundNotification,
       onNotificationTap: onNotificationTap,
     );
-    notificationWhileOnTerminated = _remoteNotifications.initialMessage;
     if (Platform.isAndroid) {
       await _localNotifications.init(onLocalNotificationTap: onNotificationTap);
     }
