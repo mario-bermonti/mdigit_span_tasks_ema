@@ -3,7 +3,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/notifications_manager.dart';
 
 class LandingController extends GetxController {
-  RxString nextScreen = ''.obs;
+  String nextScreen = '';
   GetStorage storage = GetStorage();
   final NotificationsManager _notificationsManager = Get.find();
 
@@ -13,13 +13,13 @@ class LandingController extends GetxController {
         storage.read('demographicsSurveyCompleted') ?? false;
 
     if (!consentCompleted) {
-      nextScreen.value = 'consent';
+      nextScreen = 'consent';
     } else if (_notificationsManager.notificationWhileOnTerminated != null) {
-      nextScreen.value = 'emaScreen';
+      nextScreen = 'emaScreen';
     } else if (!demographicsSurveyCompleted) {
-      nextScreen.value = 'demographicsSurvey';
+      nextScreen = 'demographicsSurvey';
     } else {
-      nextScreen.value = 'tasklist';
+      nextScreen = 'tasklist';
     }
   }
 }

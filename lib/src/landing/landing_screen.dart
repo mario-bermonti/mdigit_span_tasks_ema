@@ -16,13 +16,13 @@ class LandingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _controller.determineNextScreen();
-    if (_controller.nextScreen.value == 'consent') {
+    if (_controller.nextScreen == 'consent') {
       return ConsentScreen();
-    } else if (_controller.nextScreen.value == 'demographicsSurvey') {
+    } else if (_controller.nextScreen == 'demographicsSurvey') {
       return DemographicsSurvey(
         onSubmit: endDemographicsSurvey,
       );
-    } else if (_controller.nextScreen.value == 'emaScreen') {
+    } else if (_controller.nextScreen == 'emaScreen') {
       return const EMAScreen();
     } else {
       return const TaskListPage();
