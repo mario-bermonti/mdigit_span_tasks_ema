@@ -30,7 +30,7 @@ dependencies:
   research_package:
     git:
       url: https://github.com/mario-bermonti/research.package.git
-      ref: 8f72b1f876f41b420987eb0fed1fb06b1697c44b
+      ref: 49bec487ed151ccc24e6b3370a57f1fedfb97a12
   get_storage: ^2.1.1
   freezed_annotation: ^2.4.2
   json_annotation: ^4.9.0
