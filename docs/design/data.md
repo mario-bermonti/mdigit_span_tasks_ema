@@ -6,20 +6,20 @@
 
 - Description:
   - General information about the user, their credentials, and their device
-- Components:
+- Components (order of priority):
   - Participant ID
   - Firebase Auth ID
   - Messaging tokens
-  - Nickname
-  - Pic
-  - Timezone
-  - Location (country level)
-  - Installation date
   - Date first time app launched
   - Date notifications accepted
   - Date consent
   - App version
+  - Installation date
   - Locale
+  - Timezone
+  - Location (country level)
+  - Nickname
+  - Pic
 
 ### Notifications
 
