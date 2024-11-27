@@ -25,19 +25,19 @@
 
 - Description:
   - Metadata about the notifications delivered to the user and their interaction with them
-- Components:
+- Components (order of priority):
   - Participant id
   - Notification id
-  - Notification type (e.g., EMA)
   - Date time sent
   - Date time received
   - Date time tapped
+  - Notification type (e.g., EMA)
 
 ### Cognitive tasks
 
 - Description:
   - Metadata about the cognitive tasks and data about the trials
-- Components:
+- Components (order of priority):
   - Metadata
     - Session
       - Participant id
@@ -66,7 +66,7 @@
 
 - Description:
   - Metadata about the cognitive tasks and data about the trials
-- Components:
+- Components (order of priority):
   - Metadata
     - Id
     - Description
