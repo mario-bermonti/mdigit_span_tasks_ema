@@ -3,8 +3,10 @@
 /// "identifying" info.
 class ParticipantModel {
   final String id;
+  final List<String> fcmTokens;
 
   ParticipantModel({
     required this.id,
+    required this.fcmTokens,
   });
 }
