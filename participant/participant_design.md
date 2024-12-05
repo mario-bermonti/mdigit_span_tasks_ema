@@ -19,8 +19,9 @@
 ## Components
 
 - Participant Service
-  - Manage the participant data
-  - Make the participant data available to the app
+  - Exposes the participant data to the app
+- Participant Repository
+  - Interacts with dbs to update data
 - Participant model
   - Contains data
   - Serialization operations
