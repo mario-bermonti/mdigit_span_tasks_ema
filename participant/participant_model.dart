@@ -1,12 +1,12 @@
-/// Represents a single study participant and performs authentication
-/// Can be used to keep track of participants' important info, including
-/// "identifying" info.
+/// Represents a single study participant
 class ParticipantModel {
-  final String id;
-  final List<String> fcmTokens;
+  /// Unique identifier for this participant
+  final String uid;
+
+  /// Tokens for sending push notifications to this participant
+  final List<String> fcmTokens = <String>[];
 
   ParticipantModel({
-    required this.id,
-    required this.fcmTokens,
+    required this.uid,
   });
 }
