@@ -4,9 +4,9 @@ import 'package:mdigit_span_tasks_ema/src/participant/participant_model.dart';
 ///
 /// [uid] is the unique identifier of the participant.
 class ParticipantService {
-  ParticipantModel? _participant;
+  late ParticipantModel _participant;
 
-  ParticipantModel? get participant => _participant;
+  ParticipantModel get participant => _participant;
 
   ParticipantService({required String uid}) {
     _participant = ParticipantModel(uid: uid);
