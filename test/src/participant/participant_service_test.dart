@@ -16,4 +16,14 @@ void main() {
       expect(participantService.participant.fcmTokens, ['a']);
     },
   );
+
+  test(
+    "When a second token is added using updateFcmTokens, the participant's FCM tokens contain both the first and second token.",
+    () {
+      participantService.addFcmTokens(fcmToken: 'a');
+      participantService.addFcmTokens(fcmToken: 'b');
+
+      expect(participantService.participant.fcmTokens, ['a', 'b']);
+    },
+  );
 }
