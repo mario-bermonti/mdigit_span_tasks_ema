@@ -6,6 +6,7 @@ import 'package:mdigit_span_tasks_ema/src/participant/participant_model.dart';
 class ParticipantService {
   late ParticipantModel _participant;
 
+  /// Data about the current participant.
   ParticipantModel get participant => _participant;
 
   ParticipantService({required String uid}) {
