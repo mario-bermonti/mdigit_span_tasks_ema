@@ -3,7 +3,7 @@ import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mdigit_span_tasks_ema/src/surveys/data/survey_data.dart';
 import 'package:mdigit_span_tasks_ema/src/surveys/data/survey_item_data.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_data/ema_db.dart';
+import 'package:mdigit_span_tasks_ema/src/ema_db/ema_db.dart';
 
 void main() {
   late EMADB db;
