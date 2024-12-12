@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mdigit_span_tasks_ema/src/surveys/data/survey_data.dart';
 import 'package:mdigit_span_tasks_ema/src/surveys/data/survey_item_data.dart';
 
-class EMAData {
+class EMADB {
   final FirebaseFirestore db;
   final String participantID;
 
-  EMAData(
+  EMADB(
     this.db, {
     required this.participantID,
   });

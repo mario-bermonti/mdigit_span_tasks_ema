@@ -3,12 +3,12 @@ import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mdigit_span_tasks_ema/src/surveys/data/survey_data.dart';
 import 'package:mdigit_span_tasks_ema/src/surveys/data/survey_item_data.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_data/ema_data.dart';
+import 'package:mdigit_span_tasks_ema/src/ema_data/ema_db.dart';
 
 void main() {
-  late EMAData db;
+  late EMADB db;
   setUp(() {
-    db = EMAData(FakeFirebaseFirestore(), participantID: '101');
+    db = EMADB(FakeFirebaseFirestore(), participantID: '101');
   });
 
   group('addCrossSectionalSurveyData', () {
