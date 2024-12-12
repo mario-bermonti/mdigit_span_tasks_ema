@@ -24,5 +24,6 @@ class ParticipantService {
   void addFcmTokens({required String fcmToken}) {
     final List<String> fcmTokens = [..._participant.fcmTokens, fcmToken];
     _participant = _participant.copyWith(fcmTokens: fcmTokens);
+    participantRepository.saveParticipant(participant: _participant);
   }
 }
