@@ -1,7 +1,7 @@
-import 'data_manager.dart';
+import 'data_source.dart';
 
 /// Manages cross-sectional data in the dbs.
-class DataManagerCrossSectional implements DataManager {
+class CrossSectionalDataSource implements DataSource {
   /// Add metadata from cross-sectional items to db.
   @override
   Future<void> saveMetadata() {
