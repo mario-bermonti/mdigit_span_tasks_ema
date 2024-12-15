@@ -4,12 +4,12 @@ import 'package:mdigit_span_tasks_ema/src/surveys/data/survey_item_data.dart';
 
 /// Provides a simple interface for storing and retrieving data from the remote
 /// db.
-class EMADB {
+class EMADBOriginal {
   final FirebaseFirestore db;
   final String participantID;
 
   /// [participantID] is the unique identifier for the participant.
-  EMADB(
+  EMADBOriginal(
     this.db, {
     required this.participantID,
   });
