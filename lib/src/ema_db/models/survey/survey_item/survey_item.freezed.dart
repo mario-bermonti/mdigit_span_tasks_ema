@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-SurveyItemData _$SurveyItemDataFromJson(Map<String, dynamic> json) {
-  return _SurveyItemData.fromJson(json);
+SurveyItem _$SurveyItemFromJson(Map<String, dynamic> json) {
+  return _SurveyItem.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SurveyItemData {
+mixin _$SurveyItem {
   /// Unique identifier for the participant
   String get participantID => throw _privateConstructorUsedError;
 
@@ -48,15 +48,15 @@ mixin _$SurveyItemData {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SurveyItemDataCopyWith<SurveyItemData> get copyWith =>
+  $SurveyItemCopyWith<SurveyItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SurveyItemDataCopyWith<$Res> {
-  factory $SurveyItemDataCopyWith(
-          SurveyItemData value, $Res Function(SurveyItemData) then) =
-      _$SurveyItemDataCopyWithImpl<$Res, SurveyItemData>;
+abstract class $SurveyItemCopyWith<$Res> {
+  factory $SurveyItemCopyWith(
+          SurveyItem value, $Res Function(SurveyItem) then) =
+      _$SurveyItemCopyWithImpl<$Res, SurveyItem>;
   @useResult
   $Res call(
       {String participantID,
@@ -71,9 +71,9 @@ abstract class $SurveyItemDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SurveyItemDataCopyWithImpl<$Res, $Val extends SurveyItemData>
-    implements $SurveyItemDataCopyWith<$Res> {
-  _$SurveyItemDataCopyWithImpl(this._value, this._then);
+class _$SurveyItemCopyWithImpl<$Res, $Val extends SurveyItem>
+    implements $SurveyItemCopyWith<$Res> {
+  _$SurveyItemCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -135,11 +135,11 @@ class _$SurveyItemDataCopyWithImpl<$Res, $Val extends SurveyItemData>
 }
 
 /// @nodoc
-abstract class _$$SurveyItemDataImplCopyWith<$Res>
-    implements $SurveyItemDataCopyWith<$Res> {
-  factory _$$SurveyItemDataImplCopyWith(_$SurveyItemDataImpl value,
-          $Res Function(_$SurveyItemDataImpl) then) =
-      __$$SurveyItemDataImplCopyWithImpl<$Res>;
+abstract class _$$SurveyItemImplCopyWith<$Res>
+    implements $SurveyItemCopyWith<$Res> {
+  factory _$$SurveyItemImplCopyWith(
+          _$SurveyItemImpl value, $Res Function(_$SurveyItemImpl) then) =
+      __$$SurveyItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -155,11 +155,11 @@ abstract class _$$SurveyItemDataImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SurveyItemDataImplCopyWithImpl<$Res>
-    extends _$SurveyItemDataCopyWithImpl<$Res, _$SurveyItemDataImpl>
-    implements _$$SurveyItemDataImplCopyWith<$Res> {
-  __$$SurveyItemDataImplCopyWithImpl(
-      _$SurveyItemDataImpl _value, $Res Function(_$SurveyItemDataImpl) _then)
+class __$$SurveyItemImplCopyWithImpl<$Res>
+    extends _$SurveyItemCopyWithImpl<$Res, _$SurveyItemImpl>
+    implements _$$SurveyItemImplCopyWith<$Res> {
+  __$$SurveyItemImplCopyWithImpl(
+      _$SurveyItemImpl _value, $Res Function(_$SurveyItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -175,7 +175,7 @@ class __$$SurveyItemDataImplCopyWithImpl<$Res>
     Object? response = freezed,
     Object? choices = freezed,
   }) {
-    return _then(_$SurveyItemDataImpl(
+    return _then(_$SurveyItemImpl(
       participantID: null == participantID
           ? _value.participantID
           : participantID // ignore: cast_nullable_to_non_nullable
@@ -218,10 +218,8 @@ class __$$SurveyItemDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SurveyItemDataImpl
-    with DiagnosticableTreeMixin
-    implements _SurveyItemData {
-  const _$SurveyItemDataImpl(
+class _$SurveyItemImpl with DiagnosticableTreeMixin implements _SurveyItem {
+  const _$SurveyItemImpl(
       {required this.participantID,
       required this.sessionID,
       required this.startTime,
@@ -233,8 +231,8 @@ class _$SurveyItemDataImpl
       final List<String>? choices})
       : _choices = choices;
 
-  factory _$SurveyItemDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SurveyItemDataImplFromJson(json);
+  factory _$SurveyItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SurveyItemImplFromJson(json);
 
   /// Unique identifier for the participant
   @override
@@ -282,14 +280,14 @@ class _$SurveyItemDataImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SurveyItemData(participantID: $participantID, sessionID: $sessionID, startTime: $startTime, endTime: $endTime, identifier: $identifier, description: $description, type: $type, response: $response, choices: $choices)';
+    return 'SurveyItem(participantID: $participantID, sessionID: $sessionID, startTime: $startTime, endTime: $endTime, identifier: $identifier, description: $description, type: $type, response: $response, choices: $choices)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'SurveyItemData'))
+      ..add(DiagnosticsProperty('type', 'SurveyItem'))
       ..add(DiagnosticsProperty('participantID', participantID))
       ..add(DiagnosticsProperty('sessionID', sessionID))
       ..add(DiagnosticsProperty('startTime', startTime))
@@ -305,7 +303,7 @@ class _$SurveyItemDataImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SurveyItemDataImpl &&
+            other is _$SurveyItemImpl &&
             (identical(other.participantID, participantID) ||
                 other.participantID == participantID) &&
             (identical(other.sessionID, sessionID) ||
@@ -340,20 +338,19 @@ class _$SurveyItemDataImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SurveyItemDataImplCopyWith<_$SurveyItemDataImpl> get copyWith =>
-      __$$SurveyItemDataImplCopyWithImpl<_$SurveyItemDataImpl>(
-          this, _$identity);
+  _$$SurveyItemImplCopyWith<_$SurveyItemImpl> get copyWith =>
+      __$$SurveyItemImplCopyWithImpl<_$SurveyItemImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SurveyItemDataImplToJson(
+    return _$$SurveyItemImplToJson(
       this,
     );
   }
 }
 
-abstract class _SurveyItemData implements SurveyItemData {
-  const factory _SurveyItemData(
+abstract class _SurveyItem implements SurveyItem {
+  const factory _SurveyItem(
       {required final String participantID,
       required final String sessionID,
       required final DateTime startTime,
@@ -362,10 +359,10 @@ abstract class _SurveyItemData implements SurveyItemData {
       required final String description,
       required final String type,
       required final String? response,
-      final List<String>? choices}) = _$SurveyItemDataImpl;
+      final List<String>? choices}) = _$SurveyItemImpl;
 
-  factory _SurveyItemData.fromJson(Map<String, dynamic> json) =
-      _$SurveyItemDataImpl.fromJson;
+  factory _SurveyItem.fromJson(Map<String, dynamic> json) =
+      _$SurveyItemImpl.fromJson;
 
   @override
 
@@ -404,6 +401,6 @@ abstract class _SurveyItemData implements SurveyItemData {
   List<String>? get choices;
   @override
   @JsonKey(ignore: true)
-  _$$SurveyItemDataImplCopyWith<_$SurveyItemDataImpl> get copyWith =>
+  _$$SurveyItemImplCopyWith<_$SurveyItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

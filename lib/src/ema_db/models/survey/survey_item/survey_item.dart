@@ -6,8 +6,8 @@ part 'survey_item.g.dart';
 
 /// Model that represents the data for a single survey item.
 @freezed
-class SurveyItemData with _$SurveyItemData {
-  const factory SurveyItemData({
+class SurveyItem with _$SurveyItem {
+  const factory SurveyItem({
     /// Unique identifier for the participant
     required String participantID,
 
@@ -33,8 +33,8 @@ class SurveyItemData with _$SurveyItemData {
 
     /// Possible choices the participant selects from.
     List<String>? choices,
-  }) = _SurveyItemData;
+  }) = _SurveyItem;
 
-  factory SurveyItemData.fromJson(Map<String, dynamic> json) =>
-      _$SurveyItemDataFromJson(json);
+  factory SurveyItem.fromJson(Map<String, dynamic> json) =>
+      _$SurveyItemFromJson(json);
 }
