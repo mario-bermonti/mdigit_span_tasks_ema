@@ -9,19 +9,25 @@ part 'survey.g.dart';
 @freezed
 class Survey with _$Survey {
   const factory Survey({
-    required DateTime? startTime,
-    required DateTime? endTime,
+    /// Unique identifier for the participant
+    required String participantID,
 
-    /// Short description of the item
+    /// Unique identifier for the participant's session.
+    required String sessionID,
+
+    /// Time at which the session started.
+    required DateTime startTime,
+
+    /// Time at which the session ended.
+    required DateTime endTime,
+
+    /// Short description for the survey.
     required String identifier,
 
-    /// Longer description than the [identifier].
-    /// It's usually the text presented to the participant or
-    /// a long description.
+    /// Long description for the survey.
     required String description,
 
-    /// List of survey items that include meta about the item and
-    /// the participant's response.
+    /// List of items in the survey.
     required List<SurveyItem> items,
   }) = _Survey;
 

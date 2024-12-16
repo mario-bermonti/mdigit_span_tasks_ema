@@ -20,19 +20,25 @@ Survey _$SurveyFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Survey {
-  DateTime? get startTime => throw _privateConstructorUsedError;
-  DateTime? get endTime => throw _privateConstructorUsedError;
+  /// Unique identifier for the participant
+  String get participantID => throw _privateConstructorUsedError;
 
-  /// Short description of the item
+  /// Unique identifier for the participant's session.
+  String get sessionID => throw _privateConstructorUsedError;
+
+  /// Time at which the session started.
+  DateTime get startTime => throw _privateConstructorUsedError;
+
+  /// Time at which the session ended.
+  DateTime get endTime => throw _privateConstructorUsedError;
+
+  /// Short description for the survey.
   String get identifier => throw _privateConstructorUsedError;
 
-  /// Longer description than the [identifier].
-  /// It's usually the text presented to the participant or
-  /// a long description.
+  /// Long description for the survey.
   String get description => throw _privateConstructorUsedError;
 
-  /// List of survey items that include meta about the item and
-  /// the participant's response.
+  /// List of items in the survey.
   List<SurveyItem> get items => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,8 +52,10 @@ abstract class $SurveyCopyWith<$Res> {
       _$SurveyCopyWithImpl<$Res, Survey>;
   @useResult
   $Res call(
-      {DateTime? startTime,
-      DateTime? endTime,
+      {String participantID,
+      String sessionID,
+      DateTime startTime,
+      DateTime endTime,
       String identifier,
       String description,
       List<SurveyItem> items});
@@ -66,21 +74,31 @@ class _$SurveyCopyWithImpl<$Res, $Val extends Survey>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startTime = freezed,
-    Object? endTime = freezed,
+    Object? participantID = null,
+    Object? sessionID = null,
+    Object? startTime = null,
+    Object? endTime = null,
     Object? identifier = null,
     Object? description = null,
     Object? items = null,
   }) {
     return _then(_value.copyWith(
-      startTime: freezed == startTime
+      participantID: null == participantID
+          ? _value.participantID
+          : participantID // ignore: cast_nullable_to_non_nullable
+              as String,
+      sessionID: null == sessionID
+          ? _value.sessionID
+          : sessionID // ignore: cast_nullable_to_non_nullable
+              as String,
+      startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      endTime: freezed == endTime
+              as DateTime,
+      endTime: null == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       identifier: null == identifier
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
@@ -105,8 +123,10 @@ abstract class _$$SurveyImplCopyWith<$Res> implements $SurveyCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {DateTime? startTime,
-      DateTime? endTime,
+      {String participantID,
+      String sessionID,
+      DateTime startTime,
+      DateTime endTime,
       String identifier,
       String description,
       List<SurveyItem> items});
@@ -123,21 +143,31 @@ class __$$SurveyImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startTime = freezed,
-    Object? endTime = freezed,
+    Object? participantID = null,
+    Object? sessionID = null,
+    Object? startTime = null,
+    Object? endTime = null,
     Object? identifier = null,
     Object? description = null,
     Object? items = null,
   }) {
     return _then(_$SurveyImpl(
-      startTime: freezed == startTime
+      participantID: null == participantID
+          ? _value.participantID
+          : participantID // ignore: cast_nullable_to_non_nullable
+              as String,
+      sessionID: null == sessionID
+          ? _value.sessionID
+          : sessionID // ignore: cast_nullable_to_non_nullable
+              as String,
+      startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      endTime: freezed == endTime
+              as DateTime,
+      endTime: null == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       identifier: null == identifier
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
@@ -158,7 +188,9 @@ class __$$SurveyImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SurveyImpl with DiagnosticableTreeMixin implements _Survey {
   const _$SurveyImpl(
-      {required this.startTime,
+      {required this.participantID,
+      required this.sessionID,
+      required this.startTime,
       required this.endTime,
       required this.identifier,
       required this.description,
@@ -168,27 +200,34 @@ class _$SurveyImpl with DiagnosticableTreeMixin implements _Survey {
   factory _$SurveyImpl.fromJson(Map<String, dynamic> json) =>
       _$$SurveyImplFromJson(json);
 
+  /// Unique identifier for the participant
   @override
-  final DateTime? startTime;
-  @override
-  final DateTime? endTime;
+  final String participantID;
 
-  /// Short description of the item
+  /// Unique identifier for the participant's session.
+  @override
+  final String sessionID;
+
+  /// Time at which the session started.
+  @override
+  final DateTime startTime;
+
+  /// Time at which the session ended.
+  @override
+  final DateTime endTime;
+
+  /// Short description for the survey.
   @override
   final String identifier;
 
-  /// Longer description than the [identifier].
-  /// It's usually the text presented to the participant or
-  /// a long description.
+  /// Long description for the survey.
   @override
   final String description;
 
-  /// List of survey items that include meta about the item and
-  /// the participant's response.
+  /// List of items in the survey.
   final List<SurveyItem> _items;
 
-  /// List of survey items that include meta about the item and
-  /// the participant's response.
+  /// List of items in the survey.
   @override
   List<SurveyItem> get items {
     if (_items is EqualUnmodifiableListView) return _items;
@@ -198,7 +237,7 @@ class _$SurveyImpl with DiagnosticableTreeMixin implements _Survey {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Survey(startTime: $startTime, endTime: $endTime, identifier: $identifier, description: $description, items: $items)';
+    return 'Survey(participantID: $participantID, sessionID: $sessionID, startTime: $startTime, endTime: $endTime, identifier: $identifier, description: $description, items: $items)';
   }
 
   @override
@@ -206,6 +245,8 @@ class _$SurveyImpl with DiagnosticableTreeMixin implements _Survey {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Survey'))
+      ..add(DiagnosticsProperty('participantID', participantID))
+      ..add(DiagnosticsProperty('sessionID', sessionID))
       ..add(DiagnosticsProperty('startTime', startTime))
       ..add(DiagnosticsProperty('endTime', endTime))
       ..add(DiagnosticsProperty('identifier', identifier))
@@ -218,6 +259,10 @@ class _$SurveyImpl with DiagnosticableTreeMixin implements _Survey {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SurveyImpl &&
+            (identical(other.participantID, participantID) ||
+                other.participantID == participantID) &&
+            (identical(other.sessionID, sessionID) ||
+                other.sessionID == sessionID) &&
             (identical(other.startTime, startTime) ||
                 other.startTime == startTime) &&
             (identical(other.endTime, endTime) || other.endTime == endTime) &&
@@ -230,8 +275,15 @@ class _$SurveyImpl with DiagnosticableTreeMixin implements _Survey {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, startTime, endTime, identifier,
-      description, const DeepCollectionEquality().hash(_items));
+  int get hashCode => Object.hash(
+      runtimeType,
+      participantID,
+      sessionID,
+      startTime,
+      endTime,
+      identifier,
+      description,
+      const DeepCollectionEquality().hash(_items));
 
   @JsonKey(ignore: true)
   @override
@@ -249,8 +301,10 @@ class _$SurveyImpl with DiagnosticableTreeMixin implements _Survey {
 
 abstract class _Survey implements Survey {
   const factory _Survey(
-      {required final DateTime? startTime,
-      required final DateTime? endTime,
+      {required final String participantID,
+      required final String sessionID,
+      required final DateTime startTime,
+      required final DateTime endTime,
       required final String identifier,
       required final String description,
       required final List<SurveyItem> items}) = _$SurveyImpl;
@@ -258,23 +312,32 @@ abstract class _Survey implements Survey {
   factory _Survey.fromJson(Map<String, dynamic> json) = _$SurveyImpl.fromJson;
 
   @override
-  DateTime? get startTime;
-  @override
-  DateTime? get endTime;
+
+  /// Unique identifier for the participant
+  String get participantID;
   @override
 
-  /// Short description of the item
+  /// Unique identifier for the participant's session.
+  String get sessionID;
+  @override
+
+  /// Time at which the session started.
+  DateTime get startTime;
+  @override
+
+  /// Time at which the session ended.
+  DateTime get endTime;
+  @override
+
+  /// Short description for the survey.
   String get identifier;
   @override
 
-  /// Longer description than the [identifier].
-  /// It's usually the text presented to the participant or
-  /// a long description.
+  /// Long description for the survey.
   String get description;
   @override
 
-  /// List of survey items that include meta about the item and
-  /// the participant's response.
+  /// List of items in the survey.
   List<SurveyItem> get items;
   @override
   @JsonKey(ignore: true)
