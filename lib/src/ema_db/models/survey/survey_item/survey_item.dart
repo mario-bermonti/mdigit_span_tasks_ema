@@ -11,27 +11,29 @@ class SurveyItem with _$SurveyItem {
     /// Unique identifier for the participant
     required String participantID,
 
-    /// Unique identifier for the current session of the  current participant.
+    /// Unique identifier for the participant's session.
     required String sessionID,
 
-    /// Time at which the session started.
+    /// Time at which the item was presented.
     required DateTime startTime,
 
-    /// Time at which the session ended.
+    /// Time at which the participant responded to the item.
     required DateTime endTime,
 
-    /// Short description of the data.
+    /// Short description for the item.
     required String identifier,
 
-    /// Long description of the data
+    /// Long description for the item.
     required String description,
 
-    /// Type of survey item present to understand the response scale.
-    /// Common options are single choice, multiple choice, free text.
+    /// Type of survey item presented. This information is key to  understand
+    /// the response scale. Common options are single choice, multiple choice,
+    /// free text.
     required String type,
     required String? response,
 
-    /// Possible choices the participant selects from.
+    /// Choices from which the participant selected their response.
+    /// Does not apply to all survey items.
     List<String>? choices,
   }) = _SurveyItem;
 

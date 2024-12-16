@@ -23,27 +23,29 @@ mixin _$SurveyItem {
   /// Unique identifier for the participant
   String get participantID => throw _privateConstructorUsedError;
 
-  /// Unique identifier for the current session of the  current participant.
+  /// Unique identifier for the participant's session.
   String get sessionID => throw _privateConstructorUsedError;
 
-  /// Time at which the session started.
+  /// Time at which the item was presented.
   DateTime get startTime => throw _privateConstructorUsedError;
 
-  /// Time at which the session ended.
+  /// Time at which the participant responded to the item.
   DateTime get endTime => throw _privateConstructorUsedError;
 
-  /// Short description of the data.
+  /// Short description for the item.
   String get identifier => throw _privateConstructorUsedError;
 
-  /// Long description of the data
+  /// Long description for the item.
   String get description => throw _privateConstructorUsedError;
 
-  /// Type of survey item present to understand the response scale.
-  /// Common options are single choice, multiple choice, free text.
+  /// Type of survey item presented. This information is key to  understand
+  /// the response scale. Common options are single choice, multiple choice,
+  /// free text.
   String get type => throw _privateConstructorUsedError;
   String? get response => throw _privateConstructorUsedError;
 
-  /// Possible choices the participant selects from.
+  /// Choices from which the participant selected their response.
+  /// Does not apply to all survey items.
   List<String>? get choices => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -238,37 +240,40 @@ class _$SurveyItemImpl with DiagnosticableTreeMixin implements _SurveyItem {
   @override
   final String participantID;
 
-  /// Unique identifier for the current session of the  current participant.
+  /// Unique identifier for the participant's session.
   @override
   final String sessionID;
 
-  /// Time at which the session started.
+  /// Time at which the item was presented.
   @override
   final DateTime startTime;
 
-  /// Time at which the session ended.
+  /// Time at which the participant responded to the item.
   @override
   final DateTime endTime;
 
-  /// Short description of the data.
+  /// Short description for the item.
   @override
   final String identifier;
 
-  /// Long description of the data
+  /// Long description for the item.
   @override
   final String description;
 
-  /// Type of survey item present to understand the response scale.
-  /// Common options are single choice, multiple choice, free text.
+  /// Type of survey item presented. This information is key to  understand
+  /// the response scale. Common options are single choice, multiple choice,
+  /// free text.
   @override
   final String type;
   @override
   final String? response;
 
-  /// Possible choices the participant selects from.
+  /// Choices from which the participant selected their response.
+  /// Does not apply to all survey items.
   final List<String>? _choices;
 
-  /// Possible choices the participant selects from.
+  /// Choices from which the participant selected their response.
+  /// Does not apply to all survey items.
   @override
   List<String>? get choices {
     final value = _choices;
@@ -370,34 +375,36 @@ abstract class _SurveyItem implements SurveyItem {
   String get participantID;
   @override
 
-  /// Unique identifier for the current session of the  current participant.
+  /// Unique identifier for the participant's session.
   String get sessionID;
   @override
 
-  /// Time at which the session started.
+  /// Time at which the item was presented.
   DateTime get startTime;
   @override
 
-  /// Time at which the session ended.
+  /// Time at which the participant responded to the item.
   DateTime get endTime;
   @override
 
-  /// Short description of the data.
+  /// Short description for the item.
   String get identifier;
   @override
 
-  /// Long description of the data
+  /// Long description for the item.
   String get description;
   @override
 
-  /// Type of survey item present to understand the response scale.
-  /// Common options are single choice, multiple choice, free text.
+  /// Type of survey item presented. This information is key to  understand
+  /// the response scale. Common options are single choice, multiple choice,
+  /// free text.
   String get type;
   @override
   String? get response;
   @override
 
-  /// Possible choices the participant selects from.
+  /// Choices from which the participant selected their response.
+  /// Does not apply to all survey items.
   List<String>? get choices;
   @override
   @JsonKey(ignore: true)
