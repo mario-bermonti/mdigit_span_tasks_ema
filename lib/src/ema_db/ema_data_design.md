@@ -22,6 +22,7 @@ cache basic data locally to address temporary connectivity issues.
 - LongitudinalData
 - DBCache: Cache basic data locally. This object will not adhere to the DataManager interface.
 - Models
-  - ParticipantData
+  - Metadata
   - SurveyData
   - CognitiveTaskData
+  - ParticipantData
