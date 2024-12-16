@@ -12,7 +12,7 @@ class Metadata with _$Metadata {
     /// Unique identifier for the participant
     required String participantID,
 
-    /// Unique identifier for the current session of the  current participant.
+    /// Unique identifier for the participant's session.
     required String sessionID,
 
     /// Time at which the session started.
@@ -21,10 +21,10 @@ class Metadata with _$Metadata {
     /// Time at which the session ended.
     required DateTime endTime,
 
-    /// Short description of the data.
+    /// Short description of the metadata.
     required String identifier,
 
-    /// Long description of the data
+    /// Long description of the metadata
     required String description,
   }) = _Metadata;
 

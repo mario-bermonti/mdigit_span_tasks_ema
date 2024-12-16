@@ -23,7 +23,7 @@ mixin _$Metadata {
   /// Unique identifier for the participant
   String get participantID => throw _privateConstructorUsedError;
 
-  /// Unique identifier for the current session of the  current participant.
+  /// Unique identifier for the participant's session.
   String get sessionID => throw _privateConstructorUsedError;
 
   /// Time at which the session started.
@@ -32,10 +32,10 @@ mixin _$Metadata {
   /// Time at which the session ended.
   DateTime get endTime => throw _privateConstructorUsedError;
 
-  /// Short description of the data.
+  /// Short description of the metadata.
   String get identifier => throw _privateConstructorUsedError;
 
-  /// Long description of the data
+  /// Long description of the metadata
   String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -189,7 +189,7 @@ class _$MetadataImpl implements _Metadata {
   @override
   final String participantID;
 
-  /// Unique identifier for the current session of the  current participant.
+  /// Unique identifier for the participant's session.
   @override
   final String sessionID;
 
@@ -201,11 +201,11 @@ class _$MetadataImpl implements _Metadata {
   @override
   final DateTime endTime;
 
-  /// Short description of the data.
+  /// Short description of the metadata.
   @override
   final String identifier;
 
-  /// Long description of the data
+  /// Long description of the metadata
   @override
   final String description;
 
@@ -269,7 +269,7 @@ abstract class _Metadata implements Metadata {
   String get participantID;
   @override
 
-  /// Unique identifier for the current session of the  current participant.
+  /// Unique identifier for the participant's session.
   String get sessionID;
   @override
 
@@ -281,11 +281,11 @@ abstract class _Metadata implements Metadata {
   DateTime get endTime;
   @override
 
-  /// Short description of the data.
+  /// Short description of the metadata.
   String get identifier;
   @override
 
-  /// Long description of the data
+  /// Long description of the metadata
   String get description;
   @override
   @JsonKey(ignore: true)
