@@ -4,8 +4,6 @@ part 'metadata.freezed.dart';
 part 'metadata.g.dart';
 
 /// Represents the metadata for an active task's session.
-///
-/// Sessions
 @freezed
 class Metadata with _$Metadata {
   const factory Metadata({
