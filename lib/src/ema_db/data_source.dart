@@ -1,5 +1,5 @@
-/// Interface that all data managers must implement
+/// Provides an interface that standardizes data sources.
 abstract class DataSource {
-  Future<void> saveMetadata();
-  Future<void> saveItemData();
+  Future<void> saveTaskMetadata();
+  Future<void> saveTaskItem();
 }
