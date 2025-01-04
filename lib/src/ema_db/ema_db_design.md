@@ -1,6 +1,7 @@
-# Design of ema data subpackage
+# Design of ema_db subpackage
 
 ## Requirements
+
 - Handle data collected longitudinally (recurring) and cross-sectionally (one-time)
 - Handle survey data
 - Handle data cognitive tasks

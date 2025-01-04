@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_data/ema_data.dart';
+import 'package:mdigit_span_tasks_ema/src/ema_db/ema_data.dart';
 import 'package:research_package/research_package.dart';
 
 import '../surveys/data/survey_data.dart';
