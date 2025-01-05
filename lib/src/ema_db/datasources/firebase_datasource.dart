@@ -19,5 +19,23 @@ class FirebaseDataSource {
     final CollectionReference collectionRef = db.collection(path);
     await collectionRef.doc().set(emaModel.toJson());
   }
+
+  /// Add [EMAModel]s to the db in [path].
+  ///
+  /// [EMAModel]s are stored in separate docs in path. EMAModel are added using
+  /// a [WriteBatch] so either all or none are added.
+  Future<void> saveEMAModels({
+    required List<EMAModel> emaModels,
+    required String path,
+  }) async {
+    final CollectionReference collectionRef = db.collection(path);
+
+    final WriteBatch batch = db.batch();
+
+    for (EMAModel emaModel in emaModels) {
+      Map<String, dynamic> jsonEmaModel = emaModel.toJson();
+      batch.set(collectionRef.doc(), jsonEmaModel);
+    }
+    await batch.commit();
   }
 }
