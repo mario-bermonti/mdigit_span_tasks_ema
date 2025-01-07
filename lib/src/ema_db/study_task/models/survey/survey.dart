@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_db/models/ema_model.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/metadata/metadata.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/survey/survey_item.dart';
+import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/metadata/metadata.dart';
+import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/study_task.dart';
+import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/survey/survey_item.dart';
 
 part 'survey.freezed.dart';
 part 'survey.g.dart';
@@ -13,7 +13,7 @@ part 'survey.g.dart';
 /// and the participants' responses to the survey items and
 /// metadata (e.g., time) about each survey item.
 @freezed
-class Survey extends EMAModel with _$Survey {
+class Survey extends StudyTask with _$Survey {
   const factory Survey({
     /// Metadata about the data collection session.
     required Metadata metadata,
