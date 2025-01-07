@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mdigit_span_tasks_ema/src/ema_db/datasources/datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/ema_db/models/ema_model.dart';
 
 /// Data source that provides basic interface for interacting with Firebase db.
-class FirebaseDataSource {
+class FirebaseDataSource implements DataSource {
   final FirebaseFirestore db;
 
   /// [db] is the instance of the Firestore database.
@@ -12,6 +13,7 @@ class FirebaseDataSource {
   ///
   /// [path] must be a valid path that can be used to create a collection
   /// reference in the Firestore database.
+  @override
   Future<void> saveEMAModel({
     required EMAModel emaModel,
     required String path,
@@ -24,6 +26,7 @@ class FirebaseDataSource {
   ///
   /// [EMAModel]s are stored in separate docs in path. EMAModel are added using
   /// a [WriteBatch] so either all or none are added.
+  @override
   Future<void> saveEMAModels({
     required List<EMAModel> emaModels,
     required String path,
