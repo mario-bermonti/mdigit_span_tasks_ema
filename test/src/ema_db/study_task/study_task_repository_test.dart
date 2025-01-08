@@ -7,6 +7,10 @@ import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/survey/survey
 import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/survey/survey_item.dart';
 import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/study_task_repository.dart';
 
+import '../test_data/general.dart';
+import '../test_data/metadata.dart';
+import '../test_data/survey.dart';
+
 void main() {
   late StudyTaskRepository repository;
   late FirebaseDataSource firebaseDataSource;
@@ -20,64 +24,30 @@ void main() {
     "Given a [StudyTask] and [path], [saveStudyTask] should save the task's "
     "metadata and items to the db.",
     () async {
-      final Metadata expectedMetadata = Metadata(
-        participantID: "101",
-        sessionID: "001",
-        startTime: DateTime.now(),
-        endTime: DateTime.now(),
-        identifier: 'metadata id',
-        description: "metadata description",
-      );
-
-      final SurveyItem surveyItem1 = SurveyItem(
-        participantID: "101",
-        sessionID: "001",
-        startTime: DateTime.now(),
-        endTime: DateTime.now(),
-        identifier: 'identifier A',
-        description: "description A",
-        type: "SingleChoice",
-        response: "response A",
-      );
-
-      final SurveyItem surveyItem2 = SurveyItem(
-        participantID: "102",
-        sessionID: "001",
-        startTime: DateTime.now(),
-        endTime: DateTime.now(),
-        identifier: 'identifier B',
-        description: "description B",
-        type: "SingleChoice",
-        response: "response B",
-      );
-
-      final List<SurveyItem> expectedItems = [surveyItem1, surveyItem2];
-
       final Survey expectedSurvey = Survey(
         metadata: expectedMetadata,
-        items: expectedItems,
+        items: expectedSurveyItems,
       );
 
-      const String path = 'surveys/participants/101/demographics/sessions/001';
       await repository.saveStudyTask(
         studyTask: expectedSurvey,
-        path: path,
+        path: docRefPath,
       );
 
       /// assert metadata
       final QuerySnapshot<Map<String, dynamic>> metadataSnapshot =
-          await firebaseDataSource.db.collection('$path/metadata').get();
+          await firebaseDataSource.db.collection('$docRefPath/metadata').get();
       final Metadata actualMetadata =
           Metadata.fromJson(metadataSnapshot.docs.first.data());
       expect(actualMetadata, expectedMetadata);
 
       /// assert items
       final QuerySnapshot<Map<String, dynamic>> itemsSnapshot =
-          await firebaseDataSource.db.collection('$path/items').get();
+          await firebaseDataSource.db.collection('$docRefPath/items').get();
       final List<SurveyItem> actualItems = itemsSnapshot.docs.map((item) {
         return SurveyItem.fromJson(item.data());
       }).toList();
-      expect(actualItems, expectedItems);
+      expect(actualItems, expectedSurveyItems);
 
       /// assert study task
       final actualSurvey = Survey(
