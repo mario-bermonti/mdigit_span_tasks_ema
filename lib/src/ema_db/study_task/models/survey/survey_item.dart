@@ -16,10 +16,10 @@ class SurveyItem extends TaskItem with _$SurveyItem {
     required String sessionID,
 
     /// Time at which the item was presented.
-    required DateTime startTime,
+    DateTime? startTime,
 
     /// Time at which the participant responded to the item.
-    required DateTime endTime,
+    DateTime? endTime,
 
     /// Short description for the item.
     required String identifier,

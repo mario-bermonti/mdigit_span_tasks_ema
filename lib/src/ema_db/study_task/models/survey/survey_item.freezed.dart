@@ -27,10 +27,10 @@ mixin _$SurveyItem {
   String get sessionID => throw _privateConstructorUsedError;
 
   /// Time at which the item was presented.
-  DateTime get startTime => throw _privateConstructorUsedError;
+  DateTime? get startTime => throw _privateConstructorUsedError;
 
   /// Time at which the participant responded to the item.
-  DateTime get endTime => throw _privateConstructorUsedError;
+  DateTime? get endTime => throw _privateConstructorUsedError;
 
   /// Short description for the item.
   String get identifier => throw _privateConstructorUsedError;
@@ -63,8 +63,8 @@ abstract class $SurveyItemCopyWith<$Res> {
   $Res call(
       {String participantID,
       String sessionID,
-      DateTime startTime,
-      DateTime endTime,
+      DateTime? startTime,
+      DateTime? endTime,
       String identifier,
       String description,
       String type,
@@ -87,8 +87,8 @@ class _$SurveyItemCopyWithImpl<$Res, $Val extends SurveyItem>
   $Res call({
     Object? participantID = null,
     Object? sessionID = null,
-    Object? startTime = null,
-    Object? endTime = null,
+    Object? startTime = freezed,
+    Object? endTime = freezed,
     Object? identifier = null,
     Object? description = null,
     Object? type = null,
@@ -104,14 +104,14 @@ class _$SurveyItemCopyWithImpl<$Res, $Val extends SurveyItem>
           ? _value.sessionID
           : sessionID // ignore: cast_nullable_to_non_nullable
               as String,
-      startTime: null == startTime
+      startTime: freezed == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endTime: null == endTime
+              as DateTime?,
+      endTime: freezed == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       identifier: null == identifier
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
@@ -147,8 +147,8 @@ abstract class _$$SurveyItemImplCopyWith<$Res>
   $Res call(
       {String participantID,
       String sessionID,
-      DateTime startTime,
-      DateTime endTime,
+      DateTime? startTime,
+      DateTime? endTime,
       String identifier,
       String description,
       String type,
@@ -169,8 +169,8 @@ class __$$SurveyItemImplCopyWithImpl<$Res>
   $Res call({
     Object? participantID = null,
     Object? sessionID = null,
-    Object? startTime = null,
-    Object? endTime = null,
+    Object? startTime = freezed,
+    Object? endTime = freezed,
     Object? identifier = null,
     Object? description = null,
     Object? type = null,
@@ -186,14 +186,14 @@ class __$$SurveyItemImplCopyWithImpl<$Res>
           ? _value.sessionID
           : sessionID // ignore: cast_nullable_to_non_nullable
               as String,
-      startTime: null == startTime
+      startTime: freezed == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endTime: null == endTime
+              as DateTime?,
+      endTime: freezed == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       identifier: null == identifier
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
@@ -224,8 +224,8 @@ class _$SurveyItemImpl with DiagnosticableTreeMixin implements _SurveyItem {
   const _$SurveyItemImpl(
       {required this.participantID,
       required this.sessionID,
-      required this.startTime,
-      required this.endTime,
+      this.startTime,
+      this.endTime,
       required this.identifier,
       required this.description,
       required this.type,
@@ -246,11 +246,11 @@ class _$SurveyItemImpl with DiagnosticableTreeMixin implements _SurveyItem {
 
   /// Time at which the item was presented.
   @override
-  final DateTime startTime;
+  final DateTime? startTime;
 
   /// Time at which the participant responded to the item.
   @override
-  final DateTime endTime;
+  final DateTime? endTime;
 
   /// Short description for the item.
   @override
@@ -358,8 +358,8 @@ abstract class _SurveyItem implements SurveyItem {
   const factory _SurveyItem(
       {required final String participantID,
       required final String sessionID,
-      required final DateTime startTime,
-      required final DateTime endTime,
+      final DateTime? startTime,
+      final DateTime? endTime,
       required final String identifier,
       required final String description,
       required final String type,
@@ -380,11 +380,11 @@ abstract class _SurveyItem implements SurveyItem {
   @override
 
   /// Time at which the item was presented.
-  DateTime get startTime;
+  DateTime? get startTime;
   @override
 
   /// Time at which the participant responded to the item.
-  DateTime get endTime;
+  DateTime? get endTime;
   @override
 
   /// Short description for the item.
