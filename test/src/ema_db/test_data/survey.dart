@@ -5,10 +5,10 @@ final SurveyItem expectedSurveyItem = SurveyItem(
   sessionID: "001",
   startTime: DateTime.now(),
   endTime: DateTime.now(),
-  identifier: 'identifier A',
-  description: "description A",
+  identifier: 'item 1 identifier',
+  description: "item 1 description",
   type: "SingleChoice",
-  response: "response A",
+  response: "item 1 response",
 );
 
 final SurveyItem expectedSurveyItem2 = SurveyItem(
@@ -16,10 +16,10 @@ final SurveyItem expectedSurveyItem2 = SurveyItem(
   sessionID: "001",
   startTime: DateTime.now(),
   endTime: DateTime.now(),
-  identifier: 'identifier B',
-  description: "description B",
+  identifier: 'item 2 identifier',
+  description: "item 2 description",
   type: "SingleChoice",
-  response: "response B",
+  response: "item 2 response",
 );
 
 final List<SurveyItem> expectedSurveyItems = [
