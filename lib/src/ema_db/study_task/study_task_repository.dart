@@ -18,13 +18,14 @@ class StudyTaskRepository {
     required StudyTask studyTask,
     required String path,
   }) async {
+    final String basePath = '$path/sessions/${studyTask.metadata.sessionID}';
     await _remoteDataSource.saveEMAModel(
       emaModel: studyTask.metadata,
-      path: '$path/metadata',
+      path: '$basePath/metadata',
     );
     await _remoteDataSource.saveEMAModels(
       emaModels: studyTask.items,
-      path: '$path/items',
+      path: '$basePath/items',
     );
   }
 }

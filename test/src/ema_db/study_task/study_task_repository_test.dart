@@ -34,16 +34,19 @@ void main() {
         path: docRefPath,
       );
 
+      final String basePath =
+          '$docRefPath/sessions/${expectedMetadata.sessionID}';
+
       /// assert metadata
       final QuerySnapshot<Map<String, dynamic>> metadataSnapshot =
-          await firebaseDataSource.db.collection('$docRefPath/metadata').get();
+          await firebaseDataSource.db.collection('$basePath/metadata').get();
       final Metadata actualMetadata =
           Metadata.fromJson(metadataSnapshot.docs.first.data());
       expect(actualMetadata, expectedMetadata);
 
       /// assert items
       final QuerySnapshot<Map<String, dynamic>> itemsSnapshot =
-          await firebaseDataSource.db.collection('$docRefPath/items').get();
+          await firebaseDataSource.db.collection('$basePath/items').get();
       final List<SurveyItem> actualItems = itemsSnapshot.docs.map((item) {
         return SurveyItem.fromJson(item.data());
       }).toList();
