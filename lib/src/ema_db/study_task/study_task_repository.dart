@@ -1,9 +1,10 @@
 import 'package:mdigit_span_tasks_ema/src/ema_db/datasources/firebase_datasource.dart';
+import 'package:mdigit_span_tasks_ema/src/ema_db/datasources/remote_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/study_task.dart';
 
 /// Provides a simple interface for managing [StudyTask] data.
 class StudyTaskRepository {
-  final FirebaseDataSource _remoteDataSource;
+  final RemoteDataSource _remoteDataSource;
 
   StudyTaskRepository({required FirebaseDataSource remoteDataSource})
       : _remoteDataSource = remoteDataSource;

@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_db/datasources/datasource.dart';
+import 'package:mdigit_span_tasks_ema/src/ema_db/datasources/remote_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/ema_db/models/ema_model.dart';
 
 /// Data source that provides basic interface for interacting with Firebase db.
-class FirebaseDataSource implements DataSource {
+class FirebaseDataSource implements RemoteDataSource {
   final FirebaseFirestore db;
 
   /// [db] is the instance of the Firestore database.
