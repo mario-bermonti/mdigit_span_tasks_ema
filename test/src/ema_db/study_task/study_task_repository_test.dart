@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_db/datasources/firebase_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/metadata/metadata.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/survey/survey.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/survey/survey_item.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/study_task_repository.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/metadata/metadata.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/survey/survey.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/survey/survey_item.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/study_task_repository.dart';
 
 import '../test_data/general.dart';
 import '../test_data/metadata.dart';

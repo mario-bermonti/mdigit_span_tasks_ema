@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_db/models/ema_model.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/models/ema_model.dart';
 
 part 'metadata.freezed.dart';
 part 'metadata.g.dart';

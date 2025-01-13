@@ -1,6 +1,6 @@
-import 'package:mdigit_span_tasks_ema/src/ema_db/models/ema_model.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/metadata/metadata.dart';
-import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/task_item.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/models/ema_model.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/metadata/metadata.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/task_item.dart';
 
 /// Base class for all study tasks.
 abstract class StudyTask extends EMAModel {
