@@ -1,4 +1,4 @@
-import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/survey/survey_item.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/survey/survey_item.dart';
 
 final SurveyItem expectedSurveyItem = SurveyItem(
   participantID: "101",

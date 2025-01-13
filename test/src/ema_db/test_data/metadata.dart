@@ -1,4 +1,4 @@
-import 'package:mdigit_span_tasks_ema/src/ema_db/study_task/models/metadata/metadata.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/metadata/metadata.dart';
 
 final Metadata expectedMetadata = Metadata(
   participantID: "101",
