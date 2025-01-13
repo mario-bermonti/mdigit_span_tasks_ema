@@ -29,7 +29,7 @@ void main() {
         items: expectedSurveyItems,
       );
 
-      await repository.saveStudyTask(
+      await repository.save(
         studyTask: expectedSurvey,
         path: docRefPath,
       );

@@ -15,7 +15,7 @@ class StudyTaskRepository {
   /// in [path]/items.
   /// [path] must be a valid path that can be used to create a firebase
   /// document.
-  Future<void> saveStudyTask({
+  Future<void> save({
     required StudyTask studyTask,
     required String path,
   }) async {
