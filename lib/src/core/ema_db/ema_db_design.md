@@ -17,6 +17,7 @@ cache basic data locally to address temporary connectivity issues.
 
 - Separate repositories will be defined for each data type (e.g., study tasks, credentials) to
   maximize flexibility for users and maintainability for developers.
-- Repositories will implement abstract interfaces to standardize them and improve extensibility.
+- Remote and local repositories will implement abstract interfaces to standardize them and improve extensibility.
+- Local repositories will only be supported for some data types, where it is essential to have the data available offline.
 - Repositories will have methods for storing and retrieving data from remote databases.
 - Data sources will be defined as needed to abstract core logic from the repositories.
