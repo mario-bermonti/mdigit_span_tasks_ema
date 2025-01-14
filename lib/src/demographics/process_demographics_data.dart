@@ -59,7 +59,7 @@ void processDemographicsData(RPTaskResult results) {
   );
 
   final String path = 'surveys/participants/$participantID/demographics';
-  studyTaskRepository.saveStudyTask(
+  studyTaskRepository.save(
     studyTask: survey,
     path: path,
   );
