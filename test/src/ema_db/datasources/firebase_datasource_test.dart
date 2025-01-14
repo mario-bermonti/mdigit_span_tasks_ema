@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/models/ema_model.dart';
 
-import '../test_data/general.dart';
+import '../test_data/remote_datasource.dart';
 import '../test_data/survey.dart';
 
 void main() {
