@@ -7,7 +7,7 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/survey/s
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/survey/survey_item.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/study_task_repository.dart';
 
-import '../test_data/general.dart';
+import '../test_data/remote_datasource.dart';
 import '../test_data/metadata.dart';
 import '../test_data/survey.dart';
 
