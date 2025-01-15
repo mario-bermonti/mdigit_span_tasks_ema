@@ -1,5 +1,6 @@
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/local_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/remote_datasource.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart';
 
 class ParticipantRepository {
   final RemoteDataSource _remoteDataSource;
@@ -10,4 +11,11 @@ class ParticipantRepository {
     required LocalDataSource localDataSource,
   })  : _remoteDataSource = remoteDataSource,
         _localDataSource = localDataSource;
+
+  Future<void> save({
+    required Participant participant,
+    required String pathRemoteDB,
+  }) async {
+    print('data saved');
+  }
 }
