@@ -13,6 +13,9 @@ class ParticipantRepository {
     required Participant participant,
     required String pathRemoteDB,
   }) async {
-    print('data saved');
+    await _remoteDataSource.saveEMAModel(
+      emaModel: participant,
+      path: pathRemoteDB,
+    );
   }
 }

@@ -1,10 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/models/ema_model.dart';
 
 part 'participant.freezed.dart';
 part 'participant.g.dart';
 
 @freezed
-class Participant with _$Participant {
+class Participant extends EMAModel with _$Participant {
   const factory Participant({
     required String id,
     List<String>? notificationTokens,
