@@ -4,13 +4,10 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/partici
 
 class ParticipantRepository {
   final RemoteDataSource _remoteDataSource;
-  final LocalDataSource _localDataSource;
 
   ParticipantRepository({
     required RemoteDataSource remoteDataSource,
-    required LocalDataSource localDataSource,
-  })  : _remoteDataSource = remoteDataSource,
-        _localDataSource = localDataSource;
+  }) : _remoteDataSource = remoteDataSource;
 
   Future<void> save({
     required Participant participant,
