@@ -10,5 +10,7 @@ const expectedParticipant = Participant(
   appVersion: '1.0.0',
   appBuildNumber: '100',
 );
+Map<String, dynamic> expectedParticipantJson = expectedParticipant.toJson();
 
 const String testPathRemoteDB = 'participants';
+const String testPathLocalDB = 'participant';
