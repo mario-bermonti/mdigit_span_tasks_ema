@@ -68,13 +68,19 @@ void main() {
       "Given a [pathRemoteDB] and [pathLocalDB], loads the data from local "
       "and remote dbs.",
       () async {
-        final Participant actualParticipant = await repository.load(
+        /// create data for extraction
+        await firebaseDataSource.db
+            .collection(testPathRemoteDB)
+            .add(expectedParticipantJson);
+
+        final Participant actualRemoteParticipant = await repository.load(
           pathRemoteDB: testPathRemoteDB,
         );
-        print(actualParticipant);
+        print(actualRemoteParticipant);
+        print(expectedParticipant);
 
-        /// assert remote db
-        expect(actualParticipant, expectedParticipant);
+        /// remote db
+        expect(actualRemoteParticipant, expectedParticipant);
       },
     );
   });
