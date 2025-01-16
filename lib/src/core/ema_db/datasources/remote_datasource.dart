@@ -13,4 +13,6 @@ abstract class RemoteDataSource {
     required List<EMAModel> emaModels,
     required String path,
   });
+
+  Future<Map<String, dynamic>?> get({required String path});
 }
