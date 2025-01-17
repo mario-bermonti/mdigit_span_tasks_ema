@@ -51,4 +51,29 @@ void main() {
       expect(actual, expected);
     },
   );
+  group("FirebaseDataSource.get", () {
+    test(
+      "Given a valid [path], returns the data as a Map<String, dynamic>",
+      () async {
+        await firebaseDataSource.db.doc(testNamedPath).set(
+              expectedSurveyItem1Json,
+            );
+
+        final Map<String, dynamic>? actualSurveyItem =
+            await firebaseDataSource.getDataModel(path: testNamedPath);
+
+        expect(actualSurveyItem, expectedSurveyItem1Json);
+      },
+    );
+    test(
+      "Given a [path] to a doc that does not exist, returns null",
+      () async {
+        final Map<String, dynamic>? actualSurveyItem =
+            await firebaseDataSource.getDataModel(path: testNamedPath);
+
+        expect(actualSurveyItem, null);
+      },
+    );
+    ;
+  });
 }

@@ -41,4 +41,12 @@ class FirebaseDataSource implements RemoteDataSource {
     }
     await batch.commit();
   }
+
+  @override
+  Future<Map<String, dynamic>?> getDataModel({required String path}) async {
+    final DocumentSnapshot<Map<String, dynamic>> snapshot =
+        await db.doc(path).get();
+    final Map<String, dynamic>? data = snapshot.data();
+    return data;
+  }
 }
