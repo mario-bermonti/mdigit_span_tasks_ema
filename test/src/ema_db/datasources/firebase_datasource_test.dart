@@ -8,21 +8,21 @@ import '../test_data/remote_datasource.dart';
 import '../test_data/survey.dart';
 
 void main() {
-  late FirebaseDataSource db;
+  late FirebaseDataSource firebaseDataSource;
 
   setUp(() {
-    db = FirebaseDataSource(db: FakeFirebaseFirestore());
+    firebaseDataSource = FirebaseDataSource(db: FakeFirebaseFirestore());
   });
 
   test(
     "Given valid [EMAModel] and db [path], [saveEMAModel] should save the model "
     "to Firebase in the specified [path]",
     () async {
-      await db.saveEMAModel(
+      await firebaseDataSource.saveEMAModel(
           emaModel: expectedSurveyItem, path: collectionRefPath);
 
       final QuerySnapshot<Map<String, dynamic>> snapshot =
-          await db.db.collection(collectionRefPath).get();
+          await firebaseDataSource.db.collection(collectionRefPath).get();
       final Map<String, dynamic> actual = snapshot.docs
           .map((QueryDocumentSnapshot<Map<String, dynamic>> doc) => doc.data())
           .toList()
@@ -39,11 +39,11 @@ void main() {
           .map((EMAModel emaModel) => emaModel.toJson())
           .toList();
 
-      await db.saveEMAModels(
+      await firebaseDataSource.saveEMAModels(
           emaModels: expectedSurveyItems, path: collectionRefPath);
 
       final QuerySnapshot<Map<String, dynamic>> snapshot =
-          await db.db.collection(collectionRefPath).get();
+          await firebaseDataSource.db.collection(collectionRefPath).get();
       final List<Map<String, dynamic>> actual = snapshot.docs
           .map((QueryDocumentSnapshot<Map<String, dynamic>> doc) => doc.data())
           .toList();
