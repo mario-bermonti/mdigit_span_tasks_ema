@@ -11,6 +11,9 @@ final SurveyItem expectedSurveyItem = SurveyItem(
   response: "item 1 response",
 );
 
+final Map<String, dynamic> expectedSurveyItem1Json =
+    expectedSurveyItem.toJson();
+
 final SurveyItem expectedSurveyItem2 = SurveyItem(
   participantID: "102",
   sessionID: "001",
@@ -26,3 +29,5 @@ final List<SurveyItem> expectedSurveyItems = [
   expectedSurveyItem,
   expectedSurveyItem2
 ];
+
+const String testNamedPath = "participants/doc1";
