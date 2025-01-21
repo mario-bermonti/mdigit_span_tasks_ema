@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -69,22 +67,66 @@ void main() {
   });
   group("ParticipantRepository.load", () {
     test(
-      "Given a [pathRemoteDB] and [pathLocalDB], loads the data from local "
-      "and remote dbs.",
+      "Given a [pathRemoteDB] and [pathLocalDB], loads the data from remote db.",
       () async {
-        /// create data for extraction
         await firebaseDataSource.db
-            .collection(testPathRemoteDB)
-            .add(expectedParticipantJson);
+            .doc(testPathRemoteDB)
+            .set(expectedParticipantJson);
 
-        final Participant actualRemoteParticipant = await repository.load(
+        final Participant? actualRemoteParticipant = await repository.get(
           pathRemoteDB: testPathRemoteDB,
+          pathLocalDB: testPathLocalDB,
         );
-        print(actualRemoteParticipant);
-        print(expectedParticipant);
 
-        /// remote db
         expect(actualRemoteParticipant, expectedParticipant);
+      },
+    );
+    test(
+      "Given a [pathRemoteDB] and [pathLocalDB], loads the data from local db "
+      "if remote data is null.",
+      () async {
+        await getxDataSource.db.write(testPathLocalDB, expectedParticipantJson);
+
+        final Participant? actualParticipant = await repository.get(
+          pathRemoteDB: testPathRemoteDB,
+          pathLocalDB: testPathLocalDB,
+        );
+
+        expect(actualParticipant, expectedParticipant);
+      },
+    );
+    test(
+      "Given valid [pathRemoteDB] and [pathLocalDB], updates local data with "
+      "remote data if remote data exists.",
+      () async {
+        await firebaseDataSource.db
+            .doc(testPathRemoteDB)
+            .set(expectedParticipantJson);
+
+        await repository.get(
+          pathRemoteDB: testPathRemoteDB,
+          pathLocalDB: testPathLocalDB,
+        );
+
+        final Map<String, dynamic>? actualLocalParticipant =
+            getStorage.read(testPathLocalDB);
+
+        expect(
+          actualLocalParticipant,
+          expectedParticipantJson,
+        );
+      },
+    );
+    test(
+      "Given valid [pathRemoteDB] and [pathLocalDB], returns null if both remote "
+      "and local data are null.",
+      () async {
+        final Participant? actualParticipant = await repository.get(
+          pathRemoteDB: testPathRemoteDB,
+          pathLocalDB: testPathLocalDB,
+        );
+
+        expect(actualParticipant, null);
       },
     );
   });
