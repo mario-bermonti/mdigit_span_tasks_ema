@@ -22,6 +22,19 @@ class FirebaseDataSource implements RemoteDataSource {
     await collectionRef.doc().set(emaModel.toJson());
   }
 
+  /// Add [EMAModel] to the db in the doc specific by [path].
+  ///
+  /// [path] must be a valid path that can be used to create a doc
+  /// reference in the Firestore database.
+  @override
+  Future<void> saveNamedEMAModel({
+    required EMAModel emaModel,
+    required String path,
+  }) async {
+    final DocumentReference docRef = db.doc(path);
+    await docRef.set(emaModel.toJson());
+  }
+
   /// Add [EMAModel]s to the db in [path].
   ///
   /// [EMAModel]s are stored in separate docs in path. EMAModel are added using

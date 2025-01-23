@@ -51,6 +51,24 @@ void main() {
       expect(actual, expected);
     },
   );
+  group("FirebaseDataSource.saveNamedEMAModel", () {
+    test(
+      "Given a valid [EMAModel] and db [path], saves the model to the doc "
+      "specified by [path]",
+      () async {
+        await firebaseDataSource.saveNamedEMAModel(
+          emaModel: expectedSurveyItem,
+          path: testNamedPath,
+        );
+
+        final DocumentSnapshot<Map<String, dynamic>> snapshot =
+            await firebaseDataSource.db.doc(testNamedPath).get();
+        final Map<String, dynamic>? actualSurveyItem = snapshot.data();
+
+        expect(actualSurveyItem, expectedSurveyItem1Json);
+      },
+    );
+  });
   group("FirebaseDataSource.get", () {
     test(
       "Given a valid [path], returns the data as a Map<String, dynamic>",
