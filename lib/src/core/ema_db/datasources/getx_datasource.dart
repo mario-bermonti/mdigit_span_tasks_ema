@@ -18,4 +18,11 @@ class GetxDataSource extends LocalDataSource {
   }) async {
     db.write(path, emaModel.toJson());
   }
+
+  /// Fetches the data from the [path].
+  @override
+  Future<Map<String, dynamic>?> getDataModel({required String path}) async {
+    final Map<String, dynamic>? data = db.read(path);
+    return data;
+  }
 }

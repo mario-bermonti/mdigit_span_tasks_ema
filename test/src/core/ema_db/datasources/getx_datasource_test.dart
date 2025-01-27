@@ -33,4 +33,20 @@ void main() {
       );
     },
   );
+  group("GetxDataSource.getDataModel", () {
+    test(
+      "Given a valid [path], returns the data as a Map<String, dynamic>",
+      () async {
+        await db.write(
+          path,
+          expectedSurveyItem1Json,
+        );
+
+        final Map<String, dynamic>? actualSurveyItem =
+            await dataSource.getDataModel(path: path);
+
+        expect(actualSurveyItem, expectedSurveyItem1Json);
+      },
+    );
+  });
 }

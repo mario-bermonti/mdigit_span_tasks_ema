@@ -7,4 +7,7 @@ abstract class LocalDataSource {
     required EMAModel emaModel,
     required String path,
   });
+
+  /// Fetches [EMAModel] from the data source.
+  Future<Map<String, dynamic>?> getDataModel({required String path});
 }
