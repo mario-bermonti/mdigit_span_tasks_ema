@@ -7,6 +7,10 @@ class GetxDataSource extends LocalDataSource {
 
   GetxDataSource({required this.db});
 
+  /// Saves an [EMAModel] to the local storage.
+  ///
+  /// The [EMAModel] is converted to a JSON object and saved to the local storage.
+  /// It can later be retrieved using the path provided.
   @override
   Future<void> saveEMAModel({
     required EMAModel emaModel,
