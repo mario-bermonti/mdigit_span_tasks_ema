@@ -69,7 +69,7 @@ void main() {
       },
     );
   });
-  group("FirebaseDataSource.get", () {
+  group("FirebaseDataSource.getDataModel", () {
     test(
       "Given a valid [path], returns the data as a Map<String, dynamic>",
       () async {

@@ -55,6 +55,9 @@ class FirebaseDataSource implements RemoteDataSource {
     await batch.commit();
   }
 
+  /// Fetches the data from a single firebase doc defined by [path].
+  ///
+  /// [path] must be a valid path that can be used to create a doc.
   @override
   Future<Map<String, dynamic>?> getDataModel({required String path}) async {
     final DocumentSnapshot<Map<String, dynamic>> snapshot =
