@@ -12,5 +12,5 @@ const expectedParticipant = Participant(
 );
 Map<String, dynamic> expectedParticipantJson = expectedParticipant.toJson();
 
-const String testPathRemoteDB = 'participants';
+const String testPathRemoteDB = 'participants/101';
 const String testPathLocalDB = 'participant';

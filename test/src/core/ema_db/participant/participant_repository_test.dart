@@ -30,6 +30,10 @@ void main() {
       );
     },
   );
+  tearDown(() async {
+    await firebaseDataSource.db.clearPersistence();
+    await getStorage.erase();
+  });
   group('ParticipantRepository.save', () {
     test(
       "Given a [Participant], [pathRemoteDB], [pathLocalDB], saves the data to "
@@ -42,10 +46,10 @@ void main() {
         );
 
         /// assert remote db
-        final QuerySnapshot<Map<String, dynamic>> participantSnapshot =
-            await firebaseDataSource.db.collection(testPathRemoteDB).get();
-        final Map<String, dynamic> actualRemoteParticipant =
-            participantSnapshot.docs.first.data();
+        final DocumentSnapshot<Map<String, dynamic>> participantSnapshot =
+            await firebaseDataSource.db.doc(testPathRemoteDB).get();
+        final Map<String, dynamic>? actualRemoteParticipant =
+            participantSnapshot.data();
 
         expect(
           actualRemoteParticipant,
