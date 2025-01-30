@@ -3,7 +3,9 @@ import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/models/ema_model.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart';
 
+import '../test_data/participant.dart';
 import '../test_data/remote_datasource.dart';
 import '../test_data/survey.dart';
 
@@ -69,6 +71,78 @@ void main() {
       },
     );
   });
+
+  group("FirebaseDataSource.updateEMAModel", () {
+    test(
+      "Given a valid [EMAModel] and db [path], updates the model in the doc "
+      "without modifying fields that were already present in the remote db.",
+      () async {
+        await firebaseDataSource.db.doc(testNamedPath).set(
+              expectedParticipantJson,
+            );
+
+        const Participant incompleteParticipant = Participant(
+          id: '101',
+          nickname: 'TestUserModified',
+          appBuildNumber: '101',
+        );
+
+        await firebaseDataSource.updateEMAModel(
+          emaModel: incompleteParticipant,
+          path: testNamedPath,
+        );
+
+        final Participant expectedParticipant2 = expectedParticipant.copyWith(
+          id: incompleteParticipant.id,
+          nickname: incompleteParticipant.nickname,
+          appBuildNumber: incompleteParticipant.appBuildNumber,
+        );
+
+        final DocumentSnapshot<Map<String, dynamic>> actualParticipant =
+            await firebaseDataSource.db.doc(testNamedPath).get();
+
+        expect(actualParticipant.data(), expectedParticipant2.toJson());
+      },
+    );
+    test(
+      "Given a valid [EMAModel] and db [path], adds new elements to arrays "
+      "without losing elements that were already present in the remote db.",
+      () async {
+        await firebaseDataSource.db.doc(testNamedPath).set(
+              expectedParticipantJson,
+            );
+
+        const Participant incompleteParticipant = Participant(
+          id: '101',
+          nickname: 'TestUserModified',
+          notificationTokens: ['token3'],
+          appBuildNumber: '101',
+        );
+
+        await firebaseDataSource.updateEMAModel(
+          emaModel: incompleteParticipant,
+          path: testNamedPath,
+        );
+
+        final List<String> expectedTokens =
+            expectedParticipant.notificationTokens! +
+                incompleteParticipant.notificationTokens!;
+
+        final Participant expectedParticipant2 = expectedParticipant.copyWith(
+          id: incompleteParticipant.id,
+          notificationTokens: expectedTokens,
+          nickname: incompleteParticipant.nickname,
+          appBuildNumber: incompleteParticipant.appBuildNumber,
+        );
+
+        final DocumentSnapshot<Map<String, dynamic>> actualParticipant =
+            await firebaseDataSource.db.doc(testNamedPath).get();
+
+        expect(actualParticipant.data(), expectedParticipant2.toJson());
+      },
+    );
+  });
+
   group("FirebaseDataSource.getDataModel", () {
     test(
       "Given a valid [path], returns the data as a Map<String, dynamic>",

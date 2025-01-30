@@ -20,5 +20,11 @@ abstract class RemoteDataSource {
     required String path,
   });
 
+  /// Updates the EMAModel in the data sourcei
+  Future<void> updateEMAModel({
+    required EMAModel emaModel,
+    required String path,
+  });
+
   Future<Map<String, dynamic>?> getDataModel({required String path});
 }
