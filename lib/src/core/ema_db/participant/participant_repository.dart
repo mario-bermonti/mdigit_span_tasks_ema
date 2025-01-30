@@ -12,20 +12,31 @@ class ParticipantRepository {
   })  : _remoteDataSource = remoteDataSource,
         _localDataSource = localDataSource;
 
+  /// Saves [participant] to the remote and local databases.
+  ///
+  /// Overrides the data for fields present in [participant].
   Future<void> save({
     required Participant participant,
     required String pathRemoteDB,
     required String pathLocalDB,
   }) async {
-    await _remoteDataSource.saveNamedEMAModel(
+    await _remoteDataSource.updateEMAModel(
       emaModel: participant,
       path: pathRemoteDB,
     );
 
-    await _localDataSource.saveEMAModel(
-      emaModel: participant,
-      path: pathLocalDB,
-    );
+    final Map<String, dynamic>? updatedParticipantJson =
+        await _remoteDataSource.getDataModel(path: pathRemoteDB);
+
+    if (updatedParticipantJson != null) {
+      final Participant updatedParticipant =
+          Participant.fromJson(updatedParticipantJson);
+
+      await _localDataSource.saveEMAModel(
+        emaModel: updatedParticipant,
+        path: pathLocalDB,
+      );
+    }
   }
 
   /// Fetches the [participant] from the database.

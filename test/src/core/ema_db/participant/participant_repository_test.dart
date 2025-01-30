@@ -64,6 +64,53 @@ void main() {
         );
       },
     );
+    test(
+      "Given a [Participant], [pathRemoteDB], [pathLocalDB], update the data to "
+      "the remote and local dbs, without override values that are not passed.",
+      () async {
+        await firebaseDataSource.db.doc(testPathRemoteDB).set(
+              testParticipantJson,
+            );
+
+        const Participant incompleteParticipant = Participant(
+          id: '101',
+          nickname: 'TestUserModified',
+          appBuildNumber: '101',
+        );
+
+        await repository.save(
+          participant: incompleteParticipant,
+          pathRemoteDB: testPathRemoteDB,
+          pathLocalDB: testPathLocalDB,
+        );
+
+        final Participant expectedParticipant = testParticipant.copyWith(
+          id: incompleteParticipant.id,
+          nickname: incompleteParticipant.nickname,
+          appBuildNumber: incompleteParticipant.appBuildNumber,
+        );
+
+        /// assert remote db
+        final DocumentSnapshot<Map<String, dynamic>> participantSnapshot =
+            await firebaseDataSource.db.doc(testPathRemoteDB).get();
+        final Map<String, dynamic>? actualRemoteParticipant =
+            participantSnapshot.data();
+
+        expect(
+          actualRemoteParticipant,
+          expectedParticipant.toJson(),
+        );
+
+        /// assert local db
+        Map<String, dynamic> actualLocalParticipant =
+            getStorage.read(testPathLocalDB);
+
+        expect(
+          actualLocalParticipant,
+          expectedParticipant.toJson(),
+        );
+      },
+    );
   });
   group("ParticipantRepository.load", () {
     test(
