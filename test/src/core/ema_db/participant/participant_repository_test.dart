@@ -38,7 +38,7 @@ void main() {
       "the remote and local dbs.",
       () async {
         await repository.save(
-          participant: expectedParticipant,
+          participant: testParticipant,
           pathRemoteDB: testPathRemoteDB,
           pathLocalDB: testPathLocalDB,
         );
@@ -51,7 +51,7 @@ void main() {
 
         expect(
           actualRemoteParticipant,
-          expectedParticipantJson,
+          testParticipantJson,
         );
 
         /// assert local db
@@ -60,7 +60,7 @@ void main() {
 
         expect(
           actualLocalParticipant,
-          expectedParticipantJson,
+          testParticipantJson,
         );
       },
     );
@@ -71,28 +71,28 @@ void main() {
       () async {
         await firebaseDataSource.db
             .doc(testPathRemoteDB)
-            .set(expectedParticipantJson);
+            .set(testParticipantJson);
 
         final Participant? actualRemoteParticipant = await repository.get(
           pathRemoteDB: testPathRemoteDB,
           pathLocalDB: testPathLocalDB,
         );
 
-        expect(actualRemoteParticipant, expectedParticipant);
+        expect(actualRemoteParticipant, testParticipant);
       },
     );
     test(
       "Given a [pathRemoteDB] and [pathLocalDB], loads the data from local db "
       "if remote data is null.",
       () async {
-        await getxDataSource.db.write(testPathLocalDB, expectedParticipantJson);
+        await getxDataSource.db.write(testPathLocalDB, testParticipantJson);
 
         final Participant? actualParticipant = await repository.get(
           pathRemoteDB: testPathRemoteDB,
           pathLocalDB: testPathLocalDB,
         );
 
-        expect(actualParticipant, expectedParticipant);
+        expect(actualParticipant, testParticipant);
       },
     );
     test(
@@ -101,7 +101,7 @@ void main() {
       () async {
         await firebaseDataSource.db
             .doc(testPathRemoteDB)
-            .set(expectedParticipantJson);
+            .set(testParticipantJson);
 
         await repository.get(
           pathRemoteDB: testPathRemoteDB,
@@ -113,7 +113,7 @@ void main() {
 
         expect(
           actualLocalParticipant,
-          expectedParticipantJson,
+          testParticipantJson,
         );
       },
     );

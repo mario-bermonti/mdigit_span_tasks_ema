@@ -26,7 +26,7 @@ void main() {
     () async {
       final Survey expectedSurvey = Survey(
         metadata: expectedMetadata,
-        items: expectedSurveyItems,
+        items: testSurveyItems,
       );
 
       await repository.save(
@@ -50,7 +50,7 @@ void main() {
       final List<SurveyItem> actualItems = itemsSnapshot.docs.map((item) {
         return SurveyItem.fromJson(item.data());
       }).toList();
-      expect(actualItems, expectedSurveyItems);
+      expect(actualItems, testSurveyItems);
 
       /// assert study task
       final actualSurvey = Survey(

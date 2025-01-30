@@ -22,13 +22,13 @@ void main() {
         "Given valid [EMAModel] and [path], saves the [EMAModel] to the db",
         () async {
           await dataSource.saveEMAModel(
-            emaModel: expectedSurveyItem,
+            emaModel: testSurveyItem,
             path: path,
           );
 
           final Map<String, dynamic> actualSurveyItem = db.read(path);
 
-          expect(actualSurveyItem, expectedSurveyItem.toJson());
+          expect(actualSurveyItem, testSurveyItem.toJson());
         },
       );
     },
@@ -39,13 +39,13 @@ void main() {
       () async {
         await db.write(
           path,
-          expectedSurveyItem1Json,
+          testSurveyItem1Json,
         );
 
         final Map<String, dynamic>? actualSurveyItem =
             await dataSource.getDataModel(path: path);
 
-        expect(actualSurveyItem, expectedSurveyItem1Json);
+        expect(actualSurveyItem, testSurveyItem1Json);
       },
     );
   });

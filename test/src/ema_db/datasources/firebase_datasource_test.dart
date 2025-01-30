@@ -21,7 +21,7 @@ void main() {
     "to Firebase in the specified [path]",
     () async {
       await firebaseDataSource.saveEMAModel(
-          emaModel: expectedSurveyItem, path: collectionRefPath);
+          emaModel: testSurveyItem, path: collectionRefPath);
 
       final QuerySnapshot<Map<String, dynamic>> snapshot =
           await firebaseDataSource.db.collection(collectionRefPath).get();
@@ -30,19 +30,19 @@ void main() {
           .toList()
           .first;
 
-      expect(actual, expectedSurveyItem.toJson());
+      expect(actual, testSurveyItem.toJson());
     },
   );
   test(
     "Given a valid list of [EMAModel]s and db [path], [saveEMAModels] should "
     "save the models to Firebase in the specified [path]",
     () async {
-      final List<Map<String, dynamic>> expected = expectedSurveyItems
+      final List<Map<String, dynamic>> expected = testSurveyItems
           .map((EMAModel emaModel) => emaModel.toJson())
           .toList();
 
       await firebaseDataSource.saveEMAModels(
-          emaModels: expectedSurveyItems, path: collectionRefPath);
+          emaModels: testSurveyItems, path: collectionRefPath);
 
       final QuerySnapshot<Map<String, dynamic>> snapshot =
           await firebaseDataSource.db.collection(collectionRefPath).get();
@@ -59,7 +59,7 @@ void main() {
       "specified by [path]",
       () async {
         await firebaseDataSource.saveNamedEMAModel(
-          emaModel: expectedSurveyItem,
+          emaModel: testSurveyItem,
           path: testNamedPath,
         );
 
@@ -67,7 +67,7 @@ void main() {
             await firebaseDataSource.db.doc(testNamedPath).get();
         final Map<String, dynamic>? actualSurveyItem = snapshot.data();
 
-        expect(actualSurveyItem, expectedSurveyItem1Json);
+        expect(actualSurveyItem, testSurveyItem1Json);
       },
     );
   });
@@ -78,7 +78,7 @@ void main() {
       "without modifying fields that were already present in the remote db.",
       () async {
         await firebaseDataSource.db.doc(testNamedPath).set(
-              expectedParticipantJson,
+              testParticipantJson,
             );
 
         const Participant incompleteParticipant = Participant(
@@ -92,7 +92,7 @@ void main() {
           path: testNamedPath,
         );
 
-        final Participant expectedParticipant2 = expectedParticipant.copyWith(
+        final Participant expectedParticipant = testParticipant.copyWith(
           id: incompleteParticipant.id,
           nickname: incompleteParticipant.nickname,
           appBuildNumber: incompleteParticipant.appBuildNumber,
@@ -101,7 +101,7 @@ void main() {
         final DocumentSnapshot<Map<String, dynamic>> actualParticipant =
             await firebaseDataSource.db.doc(testNamedPath).get();
 
-        expect(actualParticipant.data(), expectedParticipant2.toJson());
+        expect(actualParticipant.data(), expectedParticipant.toJson());
       },
     );
     test(
@@ -109,7 +109,7 @@ void main() {
       "without losing elements that were already present in the remote db.",
       () async {
         await firebaseDataSource.db.doc(testNamedPath).set(
-              expectedParticipantJson,
+              testParticipantJson,
             );
 
         const Participant incompleteParticipant = Participant(
@@ -125,10 +125,10 @@ void main() {
         );
 
         final List<String> expectedTokens =
-            expectedParticipant.notificationTokens! +
+            testParticipant.notificationTokens! +
                 incompleteParticipant.notificationTokens!;
 
-        final Participant expectedParticipant2 = expectedParticipant.copyWith(
+        final Participant expectedParticipant = testParticipant.copyWith(
           id: incompleteParticipant.id,
           notificationTokens: expectedTokens,
           nickname: incompleteParticipant.nickname,
@@ -138,7 +138,7 @@ void main() {
         final DocumentSnapshot<Map<String, dynamic>> actualParticipant =
             await firebaseDataSource.db.doc(testNamedPath).get();
 
-        expect(actualParticipant.data(), expectedParticipant2.toJson());
+        expect(actualParticipant.data(), expectedParticipant.toJson());
       },
     );
   });
@@ -148,13 +148,13 @@ void main() {
       "Given a valid [path], returns the data as a Map<String, dynamic>",
       () async {
         await firebaseDataSource.db.doc(testNamedPath).set(
-              expectedSurveyItem1Json,
+              testSurveyItem1Json,
             );
 
         final Map<String, dynamic>? actualSurveyItem =
             await firebaseDataSource.getDataModel(path: testNamedPath);
 
-        expect(actualSurveyItem, expectedSurveyItem1Json);
+        expect(actualSurveyItem, testSurveyItem1Json);
       },
     );
     test(

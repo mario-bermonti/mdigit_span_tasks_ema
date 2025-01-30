@@ -1,6 +1,6 @@
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart';
 
-const expectedParticipant = Participant(
+const testParticipant = Participant(
   id: '101',
   notificationTokens: ['token1', 'token2'],
   nickname: 'TestUser',
@@ -10,7 +10,7 @@ const expectedParticipant = Participant(
   appVersion: '1.0.0',
   appBuildNumber: '100',
 );
-Map<String, dynamic> expectedParticipantJson = expectedParticipant.toJson();
+Map<String, dynamic> testParticipantJson = testParticipant.toJson();
 
 const String testPathRemoteDB = 'participants/101';
 const String testPathLocalDB = 'participant';
