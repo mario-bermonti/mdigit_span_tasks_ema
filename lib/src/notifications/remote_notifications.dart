@@ -13,6 +13,9 @@ class RemoteNotifications {
     return message;
   }
 
+  /// Returns the token used to send remote notifications to user.
+  Future<String?> getToken() async => await remoteNotifications.getToken();
+
   /// Ask permissions and subscribe to remote notifications.
   ///
   /// Only needs to be called once.
@@ -35,8 +38,7 @@ class RemoteNotifications {
         onForegroundNotification,
     required Function(dynamic message) onNotificationTap,
   }) async {
-    final String? token = await remoteNotifications.getToken();
-    print('token: $token');
+    print('token: ${await getToken()}');
 
     /// ios specific
     await remoteNotifications.setForegroundNotificationPresentationOptions(
