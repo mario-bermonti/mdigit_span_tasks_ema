@@ -42,6 +42,8 @@ void main() {
         const Participant participant = Participant(
           id: 'id',
           notificationTokens: ["0123456789"],
+          appVersion: '0.1.0',
+          appBuildNumber: '100',
         );
 
         await participantService.save(participant: participant);
