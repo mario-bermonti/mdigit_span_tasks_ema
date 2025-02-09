@@ -10,7 +10,7 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/partici
     as ema_participant;
 import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/config.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/notifications_manager.dart';
-import 'package:mdigit_span_tasks_ema/src/participant/participant_service.dart';
+import 'package:mdigit_span_tasks_ema/src/core/participant/participant_service.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {

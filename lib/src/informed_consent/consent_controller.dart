@@ -3,9 +3,9 @@ import 'package:get_storage/get_storage.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart'
     as ema_participant;
-import 'package:mdigit_span_tasks_ema/src/core/location_services/location_services.dart';
+import 'package:mdigit_span_tasks_ema/src/core/participant/location_services.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/notifications_manager.dart';
-import 'package:mdigit_span_tasks_ema/src/participant/participant_service.dart';
+import 'package:mdigit_span_tasks_ema/src/core/participant/participant_service.dart';
 import 'package:research_package/research_package.dart';
 
 import 'consent_steps.dart';

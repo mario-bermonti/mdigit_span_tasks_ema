@@ -6,7 +6,7 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datas
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/participant_repository.dart';
-import 'package:mdigit_span_tasks_ema/src/participant/participant_service.dart';
+import 'package:mdigit_span_tasks_ema/src/core/participant/participant_service.dart';
 
 void main() {
   late FakeFirebaseFirestore remoteDB;
