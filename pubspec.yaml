@@ -37,6 +37,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.1
+  package_info_plus: ^8.0.2
 
 dev_dependencies:
   flutter_test:
