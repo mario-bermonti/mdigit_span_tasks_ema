@@ -1,6 +1,6 @@
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/survey/survey_item.dart';
 
-final SurveyItem expectedSurveyItem = SurveyItem(
+final SurveyItem testSurveyItem = SurveyItem(
   participantID: "101",
   sessionID: "001",
   startTime: DateTime.now(),
@@ -11,7 +11,9 @@ final SurveyItem expectedSurveyItem = SurveyItem(
   response: "item 1 response",
 );
 
-final SurveyItem expectedSurveyItem2 = SurveyItem(
+final Map<String, dynamic> testSurveyItem1Json = testSurveyItem.toJson();
+
+final SurveyItem testSurveyItem2 = SurveyItem(
   participantID: "102",
   sessionID: "001",
   startTime: DateTime.now(),
@@ -22,7 +24,6 @@ final SurveyItem expectedSurveyItem2 = SurveyItem(
   response: "item 2 response",
 );
 
-final List<SurveyItem> expectedSurveyItems = [
-  expectedSurveyItem,
-  expectedSurveyItem2
-];
+final List<SurveyItem> testSurveyItems = [testSurveyItem, testSurveyItem2];
+
+const String testNamedPath = "participants/doc1";

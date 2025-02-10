@@ -22,6 +22,19 @@ class FirebaseDataSource implements RemoteDataSource {
     await collectionRef.doc().set(emaModel.toJson());
   }
 
+  /// Add [EMAModel] to the db in the doc specific by [path].
+  ///
+  /// [path] must be a valid path that can be used to create a doc
+  /// reference in the Firestore database.
+  @override
+  Future<void> saveNamedEMAModel({
+    required EMAModel emaModel,
+    required String path,
+  }) async {
+    final DocumentReference docRef = db.doc(path);
+    await docRef.set(emaModel.toJson());
+  }
+
   /// Add [EMAModel]s to the db in [path].
   ///
   /// [EMAModel]s are stored in separate docs in path. EMAModel are added using
@@ -40,5 +53,47 @@ class FirebaseDataSource implements RemoteDataSource {
       batch.set(collectionRef.doc(), jsonEmaModel);
     }
     await batch.commit();
+  }
+
+  /// Updates [EMAModel] on the db in the doc specific by [path].
+  ///
+  /// Only overrides fields present [emaModel]. Arrays (lists) are always
+  /// updated by adding new elements and keeping old values.
+  ///
+  /// [path] must be a valid path that can be used to create a doc
+  /// reference in the Firestore database.
+  @override
+  Future<void> updateEMAModel({
+    required EMAModel emaModel,
+    required String path,
+  }) async {
+    final Map<String, dynamic> emaModelNewData = emaModel.toJson()
+      ..removeWhere((key, value) => value == null);
+
+    /// Allow updating arrays, if any.
+    emaModelNewData.forEach((key, value) {
+      if (value is List) {
+        emaModelNewData[key] = FieldValue.arrayUnion(value);
+      } else {
+        emaModelNewData[key] = value;
+      }
+    });
+
+    final DocumentReference docRef = db.doc(path);
+    await docRef.set(
+      emaModelNewData,
+      SetOptions(merge: true),
+    );
+  }
+
+  /// Fetches the data from a single firebase doc defined by [path].
+  ///
+  /// [path] must be a valid path that can be used to create a doc.
+  @override
+  Future<Map<String, dynamic>?> getDataModel({required String path}) async {
+    final DocumentSnapshot<Map<String, dynamic>> snapshot =
+        await db.doc(path).get();
+    final Map<String, dynamic>? data = snapshot.data();
+    return data;
   }
 }

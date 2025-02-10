@@ -32,6 +32,9 @@ class NotificationsManager extends GetxService {
   RemoteMessage? get notificationWhileOnTerminated =>
       _remoteNotifications.initialMessage;
 
+  /// Returns the token used to send remote notifications to user.
+  Future<String?> getToken() async => await _remoteNotifications.getToken();
+
   Future<void> setupNotifications() async {
     await _remoteNotifications.setup();
   }
