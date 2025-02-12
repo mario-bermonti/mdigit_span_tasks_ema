@@ -152,4 +152,71 @@ void main() {
       },
     );
   });
+  group(
+    'ProgressRepository.get',
+    () {
+      test(
+        "Given a [pathRemoteDB] and [pathLocalDB], loads the data from remote db.",
+        () async {
+          await firebaseDataSource.db
+              .doc(testPathRemoteDB)
+              .set(testProgressStepJson);
+
+          final ProgressStep? actualProgressStep = await repository.get(
+            pathRemoteDB: testPathRemoteDB,
+            pathLocalDB: testPathLocalDB,
+          );
+
+          expect(actualProgressStep, testProgressStep);
+        },
+      );
+      test(
+        "Given a [pathRemoteDB] and [pathLocalDB], loads the data from local db "
+        "if remote data is null.",
+        () async {
+          await getxDataSource.db
+              .write(testPathLocalDB, testProgressStep.toJson());
+
+          final ProgressRepository mockedRepository = ProgressRepository(
+            remoteDataSource: MockRemoteDataSource(),
+            localDataSource: getxDataSource,
+          );
+
+          final ProgressStep? actualProgressStep = await mockedRepository.get(
+            pathRemoteDB: testPathRemoteDB,
+            pathLocalDB: testPathLocalDB,
+          );
+
+          expect(actualProgressStep, testProgressStep);
+        },
+      );
+      test(
+        "Given a [pathRemoteDB] and [pathLocalDB], updates local data from remote db.",
+        () async {
+          await firebaseDataSource.db
+              .doc(testPathRemoteDB)
+              .set(testProgressStepJson);
+
+          await repository.get(
+              pathRemoteDB: testPathRemoteDB, pathLocalDB: testPathLocalDB);
+
+          final Map<String, dynamic> actualProgressStep =
+              await getxDataSource.db.read(testPathLocalDB);
+
+          expect(testProgressStep, ProgressStep.fromJson(actualProgressStep));
+        },
+      );
+      test(
+        "Given a [pathRemoteDB] and [pathLocalDB], returns null if remote and "
+        "local data are null.",
+        () async {
+          final ProgressStep? actualProgressStep = await repository.get(
+            pathRemoteDB: testPathRemoteDB,
+            pathLocalDB: testPathLocalDB,
+          );
+          expect(actualProgressStep, null);
+        },
+      );
+    },
+  );
 }
