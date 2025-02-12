@@ -152,4 +152,24 @@ void main() {
       },
     );
   });
+  group(
+    'ProgressRepository.get',
+    () {
+      test(
+        "Given a [pathRemoteDB] and [pathLocalDB], loads the data from remote db.",
+        () async {
+          await firebaseDataSource.db
+              .doc(testPathRemoteDB)
+              .set(testProgressStepJson);
+
+          final ProgressStep? actualProgressStep = await repository.get(
+            pathRemoteDB: testPathRemoteDB,
+            pathLocalDB: testPathLocalDB,
+          );
+
+          expect(actualProgressStep, testProgressStep);
+        },
+      );
+    },
+  );
 }

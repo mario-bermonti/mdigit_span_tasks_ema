@@ -37,4 +37,17 @@ class ProgressRepository {
       path: pathLocalDB,
     );
   }
+
+  Future<ProgressStep?> get({
+    required String pathRemoteDB,
+    required String pathLocalDB,
+  }) async {
+    Map<String, dynamic>? progressStepJson =
+        await _remoteDataSource.getDataModel(path: pathRemoteDB);
+
+    if (progressStepJson != null) {
+      final ProgressStep progressStep = ProgressStep.fromJson(progressStepJson);
+      return progressStep;
+    }
+  }
 }
