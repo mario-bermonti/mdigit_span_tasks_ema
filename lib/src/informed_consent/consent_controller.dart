@@ -1,12 +1,14 @@
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart'
     as ema_participant;
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/progress_step.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/app_service.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/location_services.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/notifications_manager.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/participant_service.dart';
+import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
 import 'package:research_package/research_package.dart';
 
 import 'consent_steps.dart';
@@ -28,7 +30,23 @@ class ConsentController extends GetxController {
   /// are only enabled after participants has consented to being part of the
   /// study.
   Future<void> completeConsent() async {
-    await GetStorage().write('consentCompleted', true);
+    final StudyProgressService studyProgressService =
+        StudyProgressService.init();
+
+    final Participant participant = Get.find<Participant>();
+    final DateTime completionTime = DateTime.now();
+    final ProgressStep consentStep = ProgressStep(
+      participantId: participant.id,
+      stepId: "consentStep",
+      completionDateTime: completionTime,
+      stepDescription: "Consent form to participante in the study",
+      lastUpdatedDateTime: completionTime,
+      status: Status.completed,
+    );
+
+    await studyProgressService.save(
+      progressStep: consentStep,
+    );
 
     /// Setup/init notifications
     final NotificationsManager notificationsManager =
@@ -37,7 +55,6 @@ class ConsentController extends GetxController {
     await notificationsManager.initNotifications();
 
     /// Collect localization info about participant.
-    final Participant participant = Get.find<Participant>();
     final LocationService locationService = LocationService();
     final AppService appService = await AppService.init();
     ema_participant.Participant emaParticipant = ema_participant.Participant(
