@@ -5,7 +5,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/progress_step.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/progress_repository.dart';
 import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
 
@@ -70,6 +69,29 @@ void main() {
 
         final ProgressStep actualProgressStep =
             ProgressStep.fromJson(actualProgress);
+
+        expect(
+          actualProgressStep,
+          testProgressStep,
+        );
+      },
+    );
+  });
+  group('StudyProgressService.get', () {
+    test(
+      "Returns a [ProgressStep] from the dbs if it exists in the remote db "
+      " in 'progress/{progressStep.participantId}/steps/{progressStep.stepId}'",
+      () async {
+        await remoteDB
+            .doc(
+              'progress/${testProgressStep.participantId}/steps/${testProgressStep.stepId}',
+            )
+            .set(testProgressStep.toJson());
+
+        final ProgressStep? actualProgressStep = await studyProgressService.get(
+          participantId: testProgressStep.participantId,
+          stepId: testProgressStep.stepId,
+        );
 
         expect(
           actualProgressStep,

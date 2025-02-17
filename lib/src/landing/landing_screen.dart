@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/ema/ema_screen.dart';
 import 'package:mdigit_span_tasks_ema/src/task_list/view/task_list_page.dart';
+import 'package:mdigit_span_tasks_ema/src/ui_components/loading_screen.dart';
 
 import '../demographics/end_demographics_survey.dart';
 import '../informed_consent/consent_screen.dart';
@@ -18,17 +19,23 @@ class LandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _controller.determineNextScreen();
-    if (_controller.nextScreen == 'consent') {
-      return ConsentScreen();
-    } else if (_controller.nextScreen == 'demographicsSurvey') {
-      return DemographicsSurvey(
-        onSubmit: endDemographicsSurvey,
-      );
-    } else if (_controller.nextScreen == 'emaScreen') {
-      return const EMAScreen();
-    } else {
-      return const TaskListPage();
-    }
+    return FutureBuilder(
+        future: _controller.determineNextScreen(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const LoadingScreen();
+          }
+          if (_controller.nextScreen == 'consent') {
+            return ConsentScreen();
+          } else if (_controller.nextScreen == 'demographicsSurvey') {
+            return DemographicsSurvey(
+              onSubmit: endDemographicsSurvey,
+            );
+          } else if (_controller.nextScreen == 'emaScreen') {
+            return const EMAScreen();
+          } else {
+            return const TaskListPage();
+          }
+        });
   }
 }

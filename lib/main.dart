@@ -1,16 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:mdigit_span_tasks_ema/src/app.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/auth.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart'
     as ema_participant;
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/progress_step.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
 import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/config.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/notifications_manager.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/participant_service.dart';
+import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -33,9 +35,12 @@ Future<void> main() async {
   Get.put(DigitSpanTaskConfig(), permanent: true);
   final NotificationsManager notificationManager =
       Get.put(NotificationsManager());
-  await GetStorage.init();
-  final bool consentCompleted = GetStorage().read('consentCompleted') ?? false;
-  if (consentCompleted) {
+  final StudyProgressService studyProgressService = StudyProgressService.init();
+  final ProgressStep? consentStep = await studyProgressService.get(
+    participantId: participant.id,
+    stepId: 'consentStep',
+  );
+  if (consentStep?.status == Status.completed) {
     await notificationManager.initNotifications();
     final String? token = await notificationManager.getToken();
     if (token != null) {

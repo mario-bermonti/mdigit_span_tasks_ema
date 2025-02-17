@@ -31,4 +31,15 @@ class StudyProgressService {
       pathLocalDB: progressStep.stepId,
     );
   }
+
+  /// Get a specific progress step from the database.
+  Future<ProgressStep?> get({
+    required String participantId,
+    required String stepId,
+  }) async {
+    return await _progressRepository.get(
+      pathRemoteDB: 'progress/$participantId/steps/$stepId',
+      pathLocalDB: stepId,
+    );
+  }
 }
