@@ -22,8 +22,12 @@ class LandingController extends GetxController {
       stepId: 'consentStep',
     );
     final bool consentCompleted = consentStep?.status == Status.completed;
+    final ProgressStep? demographicsSurveyStep = await studyProgressService.get(
+      participantId: participant.id,
+      stepId: 'demographicsStep',
+    );
     final bool demographicsSurveyCompleted =
-        storage.read('demographicsSurveyCompleted') ?? false;
+        demographicsSurveyStep?.status == Status.completed;
 
     if (!consentCompleted) {
       nextScreen = 'consent';
