@@ -6,6 +6,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 class RemoteNotifications {
   final FirebaseMessaging remoteNotifications = FirebaseMessaging.instance;
   late RemoteMessage? _initialMessage;
+  AuthorizationStatus? authorizationStatus;
 
   RemoteMessage? get initialMessage {
     RemoteMessage? message = _initialMessage;
@@ -21,7 +22,8 @@ class RemoteNotifications {
   /// Only needs to be called once.
   Future<void> setup() async {
     /// options only apply to ios
-    await remoteNotifications.requestPermission(
+    final NotificationSettings settings =
+        await remoteNotifications.requestPermission(
       alert: true,
       announcement: true,
       badge: true,
@@ -29,6 +31,7 @@ class RemoteNotifications {
       provisional: true,
       sound: true,
     );
+    authorizationStatus = settings.authorizationStatus;
     await subscribeToEMAReminders();
   }
 
