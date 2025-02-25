@@ -31,11 +31,12 @@ Future<void> main() async {
     participantService.save(participant: emaParticipant);
   }
 
+  final StudyProgressService studyProgressService = StudyProgressService.init();
+  studyProgressService.saveFirstAppLaunch(participantId: participant.id);
   Get.put(participant, permanent: true);
   Get.put(DigitSpanTaskConfig(), permanent: true);
   final NotificationsManager notificationManager =
       Get.put(NotificationsManager());
-  final StudyProgressService studyProgressService = StudyProgressService.init();
   final ProgressStep? consentStep = await studyProgressService.get(
     participantId: participant.id,
     stepId: 'consentStep',

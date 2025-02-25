@@ -3,6 +3,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/progress_step.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/progress_repository.dart';
 
 /// Service that handles the study progress.
@@ -41,5 +42,25 @@ class StudyProgressService {
       pathRemoteDB: 'progress/$participantId/steps/$stepId',
       pathLocalDB: stepId,
     );
+  }
+
+  /// Save the first app launch progress step.
+  Future<void> saveFirstAppLaunch({required String participantId}) async {
+    ProgressStep? firstAppLaunch = await get(
+      participantId: participantId,
+      stepId: 'firstAppLaunch',
+    );
+    if (firstAppLaunch != null) return;
+
+    final DateTime now = DateTime.now();
+    firstAppLaunch = ProgressStep(
+      participantId: participantId,
+      stepId: 'firstAppLaunch',
+      stepDescription: "First app launch",
+      status: Status.completed,
+      completionDateTime: now,
+      lastUpdatedDateTime: now,
+    );
+    save(progressStep: firstAppLaunch);
   }
 }
