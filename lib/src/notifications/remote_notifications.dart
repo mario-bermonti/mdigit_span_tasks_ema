@@ -28,7 +28,6 @@ class RemoteNotifications {
       announcement: true,
       badge: true,
       criticalAlert: true,
-      provisional: true,
       sound: true,
     );
     authorizationStatus = settings.authorizationStatus;
