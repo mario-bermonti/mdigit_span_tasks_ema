@@ -22,11 +22,11 @@ ProgressStep _$ProgressStepFromJson(Map<String, dynamic> json) {
 mixin _$ProgressStep {
   String get participantId => throw _privateConstructorUsedError;
   String get stepId => throw _privateConstructorUsedError;
-  DateTime get completionDateTime => throw _privateConstructorUsedError;
+  Status? get status => throw _privateConstructorUsedError;
+  DateTime? get lastUpdatedDateTime => throw _privateConstructorUsedError;
   String? get stepDescription => throw _privateConstructorUsedError;
   DateTime? get startDateTime => throw _privateConstructorUsedError;
-  DateTime? get lastUpdatedDateTime => throw _privateConstructorUsedError;
-  Status? get status => throw _privateConstructorUsedError;
+  DateTime? get completionDateTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,11 +43,11 @@ abstract class $ProgressStepCopyWith<$Res> {
   $Res call(
       {String participantId,
       String stepId,
-      DateTime completionDateTime,
+      Status? status,
+      DateTime? lastUpdatedDateTime,
       String? stepDescription,
       DateTime? startDateTime,
-      DateTime? lastUpdatedDateTime,
-      Status? status});
+      DateTime? completionDateTime});
 }
 
 /// @nodoc
@@ -65,11 +65,11 @@ class _$ProgressStepCopyWithImpl<$Res, $Val extends ProgressStep>
   $Res call({
     Object? participantId = null,
     Object? stepId = null,
-    Object? completionDateTime = null,
+    Object? status = freezed,
+    Object? lastUpdatedDateTime = freezed,
     Object? stepDescription = freezed,
     Object? startDateTime = freezed,
-    Object? lastUpdatedDateTime = freezed,
-    Object? status = freezed,
+    Object? completionDateTime = freezed,
   }) {
     return _then(_value.copyWith(
       participantId: null == participantId
@@ -80,10 +80,14 @@ class _$ProgressStepCopyWithImpl<$Res, $Val extends ProgressStep>
           ? _value.stepId
           : stepId // ignore: cast_nullable_to_non_nullable
               as String,
-      completionDateTime: null == completionDateTime
-          ? _value.completionDateTime
-          : completionDateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as Status?,
+      lastUpdatedDateTime: freezed == lastUpdatedDateTime
+          ? _value.lastUpdatedDateTime
+          : lastUpdatedDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       stepDescription: freezed == stepDescription
           ? _value.stepDescription
           : stepDescription // ignore: cast_nullable_to_non_nullable
@@ -92,14 +96,10 @@ class _$ProgressStepCopyWithImpl<$Res, $Val extends ProgressStep>
           ? _value.startDateTime
           : startDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      lastUpdatedDateTime: freezed == lastUpdatedDateTime
-          ? _value.lastUpdatedDateTime
-          : lastUpdatedDateTime // ignore: cast_nullable_to_non_nullable
+      completionDateTime: freezed == completionDateTime
+          ? _value.completionDateTime
+          : completionDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as Status?,
     ) as $Val);
   }
 }
@@ -115,11 +115,11 @@ abstract class _$$ProgressStepImplCopyWith<$Res>
   $Res call(
       {String participantId,
       String stepId,
-      DateTime completionDateTime,
+      Status? status,
+      DateTime? lastUpdatedDateTime,
       String? stepDescription,
       DateTime? startDateTime,
-      DateTime? lastUpdatedDateTime,
-      Status? status});
+      DateTime? completionDateTime});
 }
 
 /// @nodoc
@@ -135,11 +135,11 @@ class __$$ProgressStepImplCopyWithImpl<$Res>
   $Res call({
     Object? participantId = null,
     Object? stepId = null,
-    Object? completionDateTime = null,
+    Object? status = freezed,
+    Object? lastUpdatedDateTime = freezed,
     Object? stepDescription = freezed,
     Object? startDateTime = freezed,
-    Object? lastUpdatedDateTime = freezed,
-    Object? status = freezed,
+    Object? completionDateTime = freezed,
   }) {
     return _then(_$ProgressStepImpl(
       participantId: null == participantId
@@ -150,10 +150,14 @@ class __$$ProgressStepImplCopyWithImpl<$Res>
           ? _value.stepId
           : stepId // ignore: cast_nullable_to_non_nullable
               as String,
-      completionDateTime: null == completionDateTime
-          ? _value.completionDateTime
-          : completionDateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as Status?,
+      lastUpdatedDateTime: freezed == lastUpdatedDateTime
+          ? _value.lastUpdatedDateTime
+          : lastUpdatedDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       stepDescription: freezed == stepDescription
           ? _value.stepDescription
           : stepDescription // ignore: cast_nullable_to_non_nullable
@@ -162,14 +166,10 @@ class __$$ProgressStepImplCopyWithImpl<$Res>
           ? _value.startDateTime
           : startDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      lastUpdatedDateTime: freezed == lastUpdatedDateTime
-          ? _value.lastUpdatedDateTime
-          : lastUpdatedDateTime // ignore: cast_nullable_to_non_nullable
+      completionDateTime: freezed == completionDateTime
+          ? _value.completionDateTime
+          : completionDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as Status?,
     ));
   }
 }
@@ -180,11 +180,11 @@ class _$ProgressStepImpl implements _ProgressStep {
   const _$ProgressStepImpl(
       {required this.participantId,
       required this.stepId,
-      required this.completionDateTime,
+      required this.status,
+      required this.lastUpdatedDateTime,
       this.stepDescription,
       this.startDateTime,
-      this.lastUpdatedDateTime,
-      this.status});
+      this.completionDateTime});
 
   factory _$ProgressStepImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProgressStepImplFromJson(json);
@@ -194,19 +194,19 @@ class _$ProgressStepImpl implements _ProgressStep {
   @override
   final String stepId;
   @override
-  final DateTime completionDateTime;
+  final Status? status;
+  @override
+  final DateTime? lastUpdatedDateTime;
   @override
   final String? stepDescription;
   @override
   final DateTime? startDateTime;
   @override
-  final DateTime? lastUpdatedDateTime;
-  @override
-  final Status? status;
+  final DateTime? completionDateTime;
 
   @override
   String toString() {
-    return 'ProgressStep(participantId: $participantId, stepId: $stepId, completionDateTime: $completionDateTime, stepDescription: $stepDescription, startDateTime: $startDateTime, lastUpdatedDateTime: $lastUpdatedDateTime, status: $status)';
+    return 'ProgressStep(participantId: $participantId, stepId: $stepId, status: $status, lastUpdatedDateTime: $lastUpdatedDateTime, stepDescription: $stepDescription, startDateTime: $startDateTime, completionDateTime: $completionDateTime)';
   }
 
   @override
@@ -217,28 +217,21 @@ class _$ProgressStepImpl implements _ProgressStep {
             (identical(other.participantId, participantId) ||
                 other.participantId == participantId) &&
             (identical(other.stepId, stepId) || other.stepId == stepId) &&
-            (identical(other.completionDateTime, completionDateTime) ||
-                other.completionDateTime == completionDateTime) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.lastUpdatedDateTime, lastUpdatedDateTime) ||
+                other.lastUpdatedDateTime == lastUpdatedDateTime) &&
             (identical(other.stepDescription, stepDescription) ||
                 other.stepDescription == stepDescription) &&
             (identical(other.startDateTime, startDateTime) ||
                 other.startDateTime == startDateTime) &&
-            (identical(other.lastUpdatedDateTime, lastUpdatedDateTime) ||
-                other.lastUpdatedDateTime == lastUpdatedDateTime) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.completionDateTime, completionDateTime) ||
+                other.completionDateTime == completionDateTime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      participantId,
-      stepId,
-      completionDateTime,
-      stepDescription,
-      startDateTime,
-      lastUpdatedDateTime,
-      status);
+  int get hashCode => Object.hash(runtimeType, participantId, stepId, status,
+      lastUpdatedDateTime, stepDescription, startDateTime, completionDateTime);
 
   @JsonKey(ignore: true)
   @override
@@ -258,11 +251,11 @@ abstract class _ProgressStep implements ProgressStep {
   const factory _ProgressStep(
       {required final String participantId,
       required final String stepId,
-      required final DateTime completionDateTime,
+      required final Status? status,
+      required final DateTime? lastUpdatedDateTime,
       final String? stepDescription,
       final DateTime? startDateTime,
-      final DateTime? lastUpdatedDateTime,
-      final Status? status}) = _$ProgressStepImpl;
+      final DateTime? completionDateTime}) = _$ProgressStepImpl;
 
   factory _ProgressStep.fromJson(Map<String, dynamic> json) =
       _$ProgressStepImpl.fromJson;
@@ -272,15 +265,15 @@ abstract class _ProgressStep implements ProgressStep {
   @override
   String get stepId;
   @override
-  DateTime get completionDateTime;
+  Status? get status;
+  @override
+  DateTime? get lastUpdatedDateTime;
   @override
   String? get stepDescription;
   @override
   DateTime? get startDateTime;
   @override
-  DateTime? get lastUpdatedDateTime;
-  @override
-  Status? get status;
+  DateTime? get completionDateTime;
   @override
   @JsonKey(ignore: true)
   _$$ProgressStepImplCopyWith<_$ProgressStepImpl> get copyWith =>

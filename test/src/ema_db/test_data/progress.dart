@@ -17,6 +17,8 @@ final testProgressStepIncomplete = ProgressStep(
   participantId: '101',
   stepId: 'testStep',
   completionDateTime: DateTime.now(),
+  status: Status.completed,
+  lastUpdatedDateTime: DateTime.now(),
 );
 
 final String testPathRemoteDB =

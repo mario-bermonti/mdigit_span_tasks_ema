@@ -10,11 +10,11 @@ class ProgressStep extends EMAModel with _$ProgressStep {
   const factory ProgressStep({
     required String participantId,
     required String stepId,
-    required DateTime completionDateTime,
+    required Status? status,
+    required DateTime? lastUpdatedDateTime,
     String? stepDescription,
     DateTime? startDateTime,
-    DateTime? lastUpdatedDateTime,
-    Status? status,
+    DateTime? completionDateTime,
   }) = _ProgressStep;
 
   factory ProgressStep.fromJson(Map<String, dynamic> json) =>
