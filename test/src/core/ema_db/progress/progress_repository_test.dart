@@ -6,7 +6,7 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datas
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/remote_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/models/ema_model.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/progress_step.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/progress_repository.dart';
 
 import '../../../ema_db/test_data/progress.dart';
@@ -28,7 +28,7 @@ void main() {
   late FirebaseDataSource firebaseDataSource;
   late GetStorage getStorage;
   late GetxDataSource getxDataSource;
-  late ProgressRepository repository;
+  late StudyProgressRepository repository;
 
   setUp(
     () {
@@ -37,7 +37,7 @@ void main() {
       getStorage = GetStorage();
       getxDataSource = GetxDataSource(db: getStorage);
 
-      repository = ProgressRepository(
+      repository = StudyProgressRepository(
         remoteDataSource: firebaseDataSource,
         localDataSource: getxDataSource,
       );
@@ -64,9 +64,10 @@ void main() {
         final Map<String, dynamic>? actualProgressStepJson =
             progressStepSnapshot.data();
 
-        final ProgressStep? actualProgressStep = actualProgressStepJson != null
-            ? ProgressStep.fromJson(actualProgressStepJson)
-            : null;
+        final StudyProgressStep? actualProgressStep =
+            actualProgressStepJson != null
+                ? StudyProgressStep.fromJson(actualProgressStepJson)
+                : null;
 
         expect(
           actualProgressStep,
@@ -87,9 +88,10 @@ void main() {
         final Map<String, dynamic>? actualProgressStepJson =
             getxDataSource.db.read(testPathLocalDB);
 
-        final ProgressStep? actualProgressStep = actualProgressStepJson != null
-            ? ProgressStep.fromJson(actualProgressStepJson)
-            : null;
+        final StudyProgressStep? actualProgressStep =
+            actualProgressStepJson != null
+                ? StudyProgressStep.fromJson(actualProgressStepJson)
+                : null;
 
         expect(
           actualProgressStep,
@@ -113,9 +115,10 @@ void main() {
         final Map<String, dynamic>? actualProgressStepJson =
             getxDataSource.db.read(testPathLocalDB);
 
-        final ProgressStep? actualProgressStep = actualProgressStepJson != null
-            ? ProgressStep.fromJson(actualProgressStepJson)
-            : null;
+        final StudyProgressStep? actualProgressStep =
+            actualProgressStepJson != null
+                ? StudyProgressStep.fromJson(actualProgressStepJson)
+                : null;
 
         expect(
           actualProgressStep,
@@ -130,7 +133,8 @@ void main() {
         getxDataSource.db
             .write(testPathLocalDB, testProgressStepIncomplete.toJson());
 
-        final ProgressRepository mockedRepository = ProgressRepository(
+        final StudyProgressRepository mockedRepository =
+            StudyProgressRepository(
           remoteDataSource: MockRemoteDataSource(),
           localDataSource: getxDataSource,
         );
@@ -144,9 +148,10 @@ void main() {
         final Map<String, dynamic>? actualProgressStepJson =
             getxDataSource.db.read(testPathLocalDB);
 
-        final ProgressStep? actualProgressStep = actualProgressStepJson != null
-            ? ProgressStep.fromJson(actualProgressStepJson)
-            : null;
+        final StudyProgressStep? actualProgressStep =
+            actualProgressStepJson != null
+                ? StudyProgressStep.fromJson(actualProgressStepJson)
+                : null;
 
         expect(actualProgressStep, testProgressStepIncomplete);
       },
@@ -162,7 +167,7 @@ void main() {
               .doc(testPathRemoteDB)
               .set(testProgressStepJson);
 
-          final ProgressStep? actualProgressStep = await repository.get(
+          final StudyProgressStep? actualProgressStep = await repository.get(
             pathRemoteDB: testPathRemoteDB,
             pathLocalDB: testPathLocalDB,
           );
@@ -177,12 +182,14 @@ void main() {
           await getxDataSource.db
               .write(testPathLocalDB, testProgressStep.toJson());
 
-          final ProgressRepository mockedRepository = ProgressRepository(
+          final StudyProgressRepository mockedRepository =
+              StudyProgressRepository(
             remoteDataSource: MockRemoteDataSource(),
             localDataSource: getxDataSource,
           );
 
-          final ProgressStep? actualProgressStep = await mockedRepository.get(
+          final StudyProgressStep? actualProgressStep =
+              await mockedRepository.get(
             pathRemoteDB: testPathRemoteDB,
             pathLocalDB: testPathLocalDB,
           );
@@ -203,14 +210,15 @@ void main() {
           final Map<String, dynamic> actualProgressStep =
               await getxDataSource.db.read(testPathLocalDB);
 
-          expect(testProgressStep, ProgressStep.fromJson(actualProgressStep));
+          expect(
+              testProgressStep, StudyProgressStep.fromJson(actualProgressStep));
         },
       );
       test(
         "Given a [pathRemoteDB] and [pathLocalDB], returns null if remote and "
         "local data are null.",
         () async {
-          final ProgressStep? actualProgressStep = await repository.get(
+          final StudyProgressStep? actualProgressStep = await repository.get(
             pathRemoteDB: testPathRemoteDB,
             pathLocalDB: testPathLocalDB,
           );

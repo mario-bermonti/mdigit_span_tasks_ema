@@ -1,8 +1,8 @@
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/progress_step.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
 
 final DateTime dateTime = DateTime.now();
-final ProgressStep testProgressStep = ProgressStep(
+final StudyProgressStep testProgressStep = StudyProgressStep(
   participantId: 'id',
   stepId: 'consentStep',
   completionDateTime: dateTime,

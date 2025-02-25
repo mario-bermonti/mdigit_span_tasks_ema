@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart'
     as ema_participant;
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/progress_step.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/app_service.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/location_services.dart';
@@ -35,7 +35,7 @@ class ConsentController extends GetxController {
 
     final Participant participant = Get.find<Participant>();
     final DateTime completionTime = DateTime.now();
-    final ProgressStep consentStep = ProgressStep(
+    final StudyProgressStep consentStep = StudyProgressStep(
       participantId: participant.id,
       stepId: "consentStep",
       completionDateTime: completionTime,
@@ -55,7 +55,7 @@ class ConsentController extends GetxController {
     await notificationsManager.initNotifications();
 
     if (notificationsManager.localNotificationsEnabled) {
-      final ProgressStep localNotificationStep = ProgressStep(
+      final StudyProgressStep localNotificationStep = StudyProgressStep(
         participantId: participant.id,
         stepId: "localNotificationStep",
         completionDateTime: completionTime,
@@ -68,7 +68,7 @@ class ConsentController extends GetxController {
     }
 
     if (notificationsManager.remoteNotificationsEnabled) {
-      final ProgressStep remoteNotificationStep = ProgressStep(
+      final StudyProgressStep remoteNotificationStep = StudyProgressStep(
         participantId: participant.id,
         stepId: "remoteNotificationStep",
         completionDateTime: completionTime,

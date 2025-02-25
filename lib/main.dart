@@ -7,7 +7,7 @@ import 'package:mdigit_span_tasks_ema/src/auth/auth.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart'
     as ema_participant;
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/progress_step.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
 import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/config.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/notifications_manager.dart';
@@ -37,7 +37,7 @@ Future<void> main() async {
   Get.put(DigitSpanTaskConfig(), permanent: true);
   final NotificationsManager notificationManager =
       Get.put(NotificationsManager());
-  final ProgressStep? consentStep = await studyProgressService.get(
+  final StudyProgressStep? consentStep = await studyProgressService.get(
     participantId: participant.id,
     stepId: 'consentStep',
   );

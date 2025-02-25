@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'progress_step.dart';
+part of 'study_progress_step.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

@@ -2,12 +2,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/models/ema_model.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
 
-part 'progress_step.freezed.dart';
-part 'progress_step.g.dart';
+part 'study_progress_step.freezed.dart';
+part 'study_progress_step.g.dart';
 
 @freezed
-class ProgressStep extends EMAModel with _$ProgressStep {
-  const factory ProgressStep({
+class StudyProgressStep extends EMAModel with _$StudyProgressStep {
+  const factory StudyProgressStep({
     required String participantId,
     required String stepId,
     required Status? status,
@@ -17,6 +17,6 @@ class ProgressStep extends EMAModel with _$ProgressStep {
     DateTime? completionDateTime,
   }) = _ProgressStep;
 
-  factory ProgressStep.fromJson(Map<String, dynamic> json) =>
-      _$ProgressStepFromJson(json);
+  factory StudyProgressStep.fromJson(Map<String, dynamic> json) =>
+      _$StudyProgressStepFromJson(json);
 }

@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/progress_step.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/progress_repository.dart';
 import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
 
@@ -24,7 +24,8 @@ void main() {
       remoteDataSource = FirebaseDataSource(db: remoteDB);
       localDB = GetStorage();
       localDataSource = GetxDataSource(db: localDB);
-      final ProgressRepository progressStudyRepository = ProgressRepository(
+      final StudyProgressRepository progressStudyRepository =
+          StudyProgressRepository(
         remoteDataSource: remoteDataSource,
         localDataSource: localDataSource,
       );
@@ -50,8 +51,8 @@ void main() {
                 'progress/${testProgressStep.participantId}/steps/${testProgressStep.stepId}')
             .get();
 
-        final ProgressStep actualProgressStep =
-            ProgressStep.fromJson(progressSnapshot.data()!);
+        final StudyProgressStep actualProgressStep =
+            StudyProgressStep.fromJson(progressSnapshot.data()!);
 
         expect(
           actualProgressStep,
@@ -67,8 +68,8 @@ void main() {
         final Map<String, dynamic> actualProgress =
             await localDB.read(testProgressStep.stepId);
 
-        final ProgressStep actualProgressStep =
-            ProgressStep.fromJson(actualProgress);
+        final StudyProgressStep actualProgressStep =
+            StudyProgressStep.fromJson(actualProgress);
 
         expect(
           actualProgressStep,
@@ -88,7 +89,8 @@ void main() {
             )
             .set(testProgressStep.toJson());
 
-        final ProgressStep? actualProgressStep = await studyProgressService.get(
+        final StudyProgressStep? actualProgressStep =
+            await studyProgressService.get(
           participantId: testProgressStep.participantId,
           stepId: testProgressStep.stepId,
         );

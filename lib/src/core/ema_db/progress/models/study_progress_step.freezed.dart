@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'progress_step.dart';
+part of 'study_progress_step.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ProgressStep _$ProgressStepFromJson(Map<String, dynamic> json) {
+StudyProgressStep _$StudyProgressStepFromJson(Map<String, dynamic> json) {
   return _ProgressStep.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ProgressStep {
+mixin _$StudyProgressStep {
   String get participantId => throw _privateConstructorUsedError;
   String get stepId => throw _privateConstructorUsedError;
   Status? get status => throw _privateConstructorUsedError;
@@ -30,15 +30,15 @@ mixin _$ProgressStep {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ProgressStepCopyWith<ProgressStep> get copyWith =>
+  $StudyProgressStepCopyWith<StudyProgressStep> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProgressStepCopyWith<$Res> {
-  factory $ProgressStepCopyWith(
-          ProgressStep value, $Res Function(ProgressStep) then) =
-      _$ProgressStepCopyWithImpl<$Res, ProgressStep>;
+abstract class $StudyProgressStepCopyWith<$Res> {
+  factory $StudyProgressStepCopyWith(
+          StudyProgressStep value, $Res Function(StudyProgressStep) then) =
+      _$StudyProgressStepCopyWithImpl<$Res, StudyProgressStep>;
   @useResult
   $Res call(
       {String participantId,
@@ -51,9 +51,9 @@ abstract class $ProgressStepCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProgressStepCopyWithImpl<$Res, $Val extends ProgressStep>
-    implements $ProgressStepCopyWith<$Res> {
-  _$ProgressStepCopyWithImpl(this._value, this._then);
+class _$StudyProgressStepCopyWithImpl<$Res, $Val extends StudyProgressStep>
+    implements $StudyProgressStepCopyWith<$Res> {
+  _$StudyProgressStepCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -106,7 +106,7 @@ class _$ProgressStepCopyWithImpl<$Res, $Val extends ProgressStep>
 
 /// @nodoc
 abstract class _$$ProgressStepImplCopyWith<$Res>
-    implements $ProgressStepCopyWith<$Res> {
+    implements $StudyProgressStepCopyWith<$Res> {
   factory _$$ProgressStepImplCopyWith(
           _$ProgressStepImpl value, $Res Function(_$ProgressStepImpl) then) =
       __$$ProgressStepImplCopyWithImpl<$Res>;
@@ -124,7 +124,7 @@ abstract class _$$ProgressStepImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ProgressStepImplCopyWithImpl<$Res>
-    extends _$ProgressStepCopyWithImpl<$Res, _$ProgressStepImpl>
+    extends _$StudyProgressStepCopyWithImpl<$Res, _$ProgressStepImpl>
     implements _$$ProgressStepImplCopyWith<$Res> {
   __$$ProgressStepImplCopyWithImpl(
       _$ProgressStepImpl _value, $Res Function(_$ProgressStepImpl) _then)
@@ -206,7 +206,7 @@ class _$ProgressStepImpl implements _ProgressStep {
 
   @override
   String toString() {
-    return 'ProgressStep(participantId: $participantId, stepId: $stepId, status: $status, lastUpdatedDateTime: $lastUpdatedDateTime, stepDescription: $stepDescription, startDateTime: $startDateTime, completionDateTime: $completionDateTime)';
+    return 'StudyProgressStep(participantId: $participantId, stepId: $stepId, status: $status, lastUpdatedDateTime: $lastUpdatedDateTime, stepDescription: $stepDescription, startDateTime: $startDateTime, completionDateTime: $completionDateTime)';
   }
 
   @override
@@ -247,7 +247,7 @@ class _$ProgressStepImpl implements _ProgressStep {
   }
 }
 
-abstract class _ProgressStep implements ProgressStep {
+abstract class _ProgressStep implements StudyProgressStep {
   const factory _ProgressStep(
       {required final String participantId,
       required final String stepId,
