@@ -10,10 +10,9 @@ _$ProgressStepImpl _$$ProgressStepImplFromJson(Map<String, dynamic> json) =>
     _$ProgressStepImpl(
       participantId: json['participantId'] as String,
       stepId: json['stepId'] as String,
-      status: $enumDecodeNullable(_$StatusEnumMap, json['status']),
-      lastUpdatedDateTime: json['lastUpdatedDateTime'] == null
-          ? null
-          : DateTime.parse(json['lastUpdatedDateTime'] as String),
+      status: $enumDecode(_$StatusEnumMap, json['status']),
+      lastUpdatedDateTime:
+          DateTime.parse(json['lastUpdatedDateTime'] as String),
       stepDescription: json['stepDescription'] as String?,
       startDateTime: json['startDateTime'] == null
           ? null
@@ -27,8 +26,8 @@ Map<String, dynamic> _$$ProgressStepImplToJson(_$ProgressStepImpl instance) =>
     <String, dynamic>{
       'participantId': instance.participantId,
       'stepId': instance.stepId,
-      'status': _$StatusEnumMap[instance.status],
-      'lastUpdatedDateTime': instance.lastUpdatedDateTime?.toIso8601String(),
+      'status': _$StatusEnumMap[instance.status]!,
+      'lastUpdatedDateTime': instance.lastUpdatedDateTime.toIso8601String(),
       'stepDescription': instance.stepDescription,
       'startDateTime': instance.startDateTime?.toIso8601String(),
       'completionDateTime': instance.completionDateTime?.toIso8601String(),

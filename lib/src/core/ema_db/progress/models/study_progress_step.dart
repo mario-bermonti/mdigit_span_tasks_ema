@@ -17,8 +17,8 @@ class StudyProgressStep extends EMAModel with _$StudyProgressStep {
     required String stepId,
 
     /// Status of the step. The steps are defined by [Status].
-    required Status? status,
-    required DateTime? lastUpdatedDateTime,
+    required Status status,
+    required DateTime lastUpdatedDateTime,
     String? stepDescription,
     DateTime? startDateTime,
     DateTime? completionDateTime,

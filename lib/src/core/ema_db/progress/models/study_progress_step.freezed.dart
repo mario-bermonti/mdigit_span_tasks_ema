@@ -21,9 +21,13 @@ StudyProgressStep _$StudyProgressStepFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$StudyProgressStep {
   String get participantId => throw _privateConstructorUsedError;
+
+  /// Unique identifier of the study step
   String get stepId => throw _privateConstructorUsedError;
-  Status? get status => throw _privateConstructorUsedError;
-  DateTime? get lastUpdatedDateTime => throw _privateConstructorUsedError;
+
+  /// Status of the step. The steps are defined by [Status].
+  Status get status => throw _privateConstructorUsedError;
+  DateTime get lastUpdatedDateTime => throw _privateConstructorUsedError;
   String? get stepDescription => throw _privateConstructorUsedError;
   DateTime? get startDateTime => throw _privateConstructorUsedError;
   DateTime? get completionDateTime => throw _privateConstructorUsedError;
@@ -43,8 +47,8 @@ abstract class $StudyProgressStepCopyWith<$Res> {
   $Res call(
       {String participantId,
       String stepId,
-      Status? status,
-      DateTime? lastUpdatedDateTime,
+      Status status,
+      DateTime lastUpdatedDateTime,
       String? stepDescription,
       DateTime? startDateTime,
       DateTime? completionDateTime});
@@ -65,8 +69,8 @@ class _$StudyProgressStepCopyWithImpl<$Res, $Val extends StudyProgressStep>
   $Res call({
     Object? participantId = null,
     Object? stepId = null,
-    Object? status = freezed,
-    Object? lastUpdatedDateTime = freezed,
+    Object? status = null,
+    Object? lastUpdatedDateTime = null,
     Object? stepDescription = freezed,
     Object? startDateTime = freezed,
     Object? completionDateTime = freezed,
@@ -80,14 +84,14 @@ class _$StudyProgressStepCopyWithImpl<$Res, $Val extends StudyProgressStep>
           ? _value.stepId
           : stepId // ignore: cast_nullable_to_non_nullable
               as String,
-      status: freezed == status
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as Status?,
-      lastUpdatedDateTime: freezed == lastUpdatedDateTime
+              as Status,
+      lastUpdatedDateTime: null == lastUpdatedDateTime
           ? _value.lastUpdatedDateTime
           : lastUpdatedDateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       stepDescription: freezed == stepDescription
           ? _value.stepDescription
           : stepDescription // ignore: cast_nullable_to_non_nullable
@@ -115,8 +119,8 @@ abstract class _$$ProgressStepImplCopyWith<$Res>
   $Res call(
       {String participantId,
       String stepId,
-      Status? status,
-      DateTime? lastUpdatedDateTime,
+      Status status,
+      DateTime lastUpdatedDateTime,
       String? stepDescription,
       DateTime? startDateTime,
       DateTime? completionDateTime});
@@ -135,8 +139,8 @@ class __$$ProgressStepImplCopyWithImpl<$Res>
   $Res call({
     Object? participantId = null,
     Object? stepId = null,
-    Object? status = freezed,
-    Object? lastUpdatedDateTime = freezed,
+    Object? status = null,
+    Object? lastUpdatedDateTime = null,
     Object? stepDescription = freezed,
     Object? startDateTime = freezed,
     Object? completionDateTime = freezed,
@@ -150,14 +154,14 @@ class __$$ProgressStepImplCopyWithImpl<$Res>
           ? _value.stepId
           : stepId // ignore: cast_nullable_to_non_nullable
               as String,
-      status: freezed == status
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as Status?,
-      lastUpdatedDateTime: freezed == lastUpdatedDateTime
+              as Status,
+      lastUpdatedDateTime: null == lastUpdatedDateTime
           ? _value.lastUpdatedDateTime
           : lastUpdatedDateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       stepDescription: freezed == stepDescription
           ? _value.stepDescription
           : stepDescription // ignore: cast_nullable_to_non_nullable
@@ -191,12 +195,16 @@ class _$ProgressStepImpl implements _ProgressStep {
 
   @override
   final String participantId;
+
+  /// Unique identifier of the study step
   @override
   final String stepId;
+
+  /// Status of the step. The steps are defined by [Status].
   @override
-  final Status? status;
+  final Status status;
   @override
-  final DateTime? lastUpdatedDateTime;
+  final DateTime lastUpdatedDateTime;
   @override
   final String? stepDescription;
   @override
@@ -251,8 +259,8 @@ abstract class _ProgressStep implements StudyProgressStep {
   const factory _ProgressStep(
       {required final String participantId,
       required final String stepId,
-      required final Status? status,
-      required final DateTime? lastUpdatedDateTime,
+      required final Status status,
+      required final DateTime lastUpdatedDateTime,
       final String? stepDescription,
       final DateTime? startDateTime,
       final DateTime? completionDateTime}) = _$ProgressStepImpl;
@@ -263,11 +271,15 @@ abstract class _ProgressStep implements StudyProgressStep {
   @override
   String get participantId;
   @override
+
+  /// Unique identifier of the study step
   String get stepId;
   @override
-  Status? get status;
+
+  /// Status of the step. The steps are defined by [Status].
+  Status get status;
   @override
-  DateTime? get lastUpdatedDateTime;
+  DateTime get lastUpdatedDateTime;
   @override
   String? get stepDescription;
   @override
