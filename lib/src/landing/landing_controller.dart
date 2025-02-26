@@ -1,16 +1,34 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
+import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/notifications_manager.dart';
+import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
+
+import '../auth/participant.dart';
 
 class LandingController extends GetxController {
   String nextScreen = '';
   GetStorage storage = GetStorage();
+  final StudyProgressService studyProgressService = StudyProgressService.init();
   final NotificationsManager _notificationsManager = Get.find();
+  final Participant participant = Get.find();
+  RxBool isLoading = false.obs;
 
-  void determineNextScreen() {
-    final bool consentCompleted = storage.read('consentCompleted') ?? false;
+  Future<void> determineNextScreen() async {
+    isLoading.value = true;
+    final StudyProgressStep? consentStep = await studyProgressService.get(
+      participantId: participant.id,
+      stepId: 'consentStep',
+    );
+    final bool consentCompleted = consentStep?.status == Status.completed;
+    final StudyProgressStep? demographicsSurveyStep =
+        await studyProgressService.get(
+      participantId: participant.id,
+      stepId: 'demographicsStep',
+    );
     final bool demographicsSurveyCompleted =
-        storage.read('demographicsSurveyCompleted') ?? false;
+        demographicsSurveyStep?.status == Status.completed;
 
     if (!consentCompleted) {
       nextScreen = 'consent';
@@ -21,5 +39,6 @@ class LandingController extends GetxController {
     } else {
       nextScreen = 'tasklist';
     }
+    isLoading.value = false;
   }
 }

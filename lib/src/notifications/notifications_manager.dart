@@ -29,6 +29,11 @@ class NotificationsManager extends GetxService {
   final RemoteNotifications _remoteNotifications = RemoteNotifications();
   final LocalNotifications _localNotifications = LocalNotifications();
 
+  bool get localNotificationsEnabled => _localNotifications.authorized ?? false;
+  bool get remoteNotificationsEnabled =>
+      _remoteNotifications.authorizationStatus ==
+      AuthorizationStatus.authorized;
+
   RemoteMessage? get notificationWhileOnTerminated =>
       _remoteNotifications.initialMessage;
 

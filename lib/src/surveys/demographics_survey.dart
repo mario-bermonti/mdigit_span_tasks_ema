@@ -27,7 +27,7 @@ class DemographicsSurvey extends StatelessWidget {
 
         return RPUITask(
           task: survey,
-          onSubmit: (RPTaskResult results) => onSubmit(results),
+          onSubmit: (RPTaskResult results) async => await onSubmit(results),
         );
       }
     });
