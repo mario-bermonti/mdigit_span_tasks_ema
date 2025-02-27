@@ -36,7 +36,7 @@ Future<void> main() async {
   Get.put(participant, permanent: true);
   Get.put(DigitSpanTaskConfig(), permanent: true);
   final NotificationsManager notificationManager =
-      Get.put(NotificationsManager());
+      Get.put(NotificationsManager(participantId: participant.id));
   final StudyProgressStep? consentStep = await studyProgressService.get(
     participantId: participant.id,
     stepId: 'consentStep',

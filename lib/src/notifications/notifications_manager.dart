@@ -28,6 +28,10 @@ Future<void> _onForegroundNotification(
 class NotificationsManager extends GetxService {
   final RemoteNotifications _remoteNotifications = RemoteNotifications();
   final LocalNotifications _localNotifications = LocalNotifications();
+  final String _participantId;
+
+  NotificationsManager({required String participantId})
+      : _participantId = participantId;
 
   bool get localNotificationsEnabled => _localNotifications.authorized ?? false;
   bool get remoteNotificationsEnabled =>
