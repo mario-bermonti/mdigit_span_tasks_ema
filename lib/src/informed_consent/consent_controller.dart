@@ -50,7 +50,7 @@ class ConsentController extends GetxController {
 
     /// Setup/init notifications
     final NotificationsManager notificationsManager =
-        Get.put(NotificationsManager());
+        Get.put(NotificationsManager(participantId: participant.id));
     await notificationsManager.setupNotifications();
     await notificationsManager.initNotifications();
 
