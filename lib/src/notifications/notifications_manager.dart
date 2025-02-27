@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -16,11 +17,19 @@ Future<void> _onForegroundNotification(
   if (notification == null || notification.body == null) {
     return;
   }
+
+  final Map<String, dynamic> remoteNotification = {
+    'id': message.messageId,
+    'type': message.from,
+    'title': notification.title,
+    'body': notification.body,
+    'timeSent': message.sentTime?.toIso8601String(),
+  };
   if (android != null) {
     await localNotifications.showNotification(
       title: notification.title ?? '',
       body: notification.body ?? '',
-      payload: '',
+      payload: jsonEncode(remoteNotification),
     );
   }
 }
