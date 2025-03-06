@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/notifications/notification_repository.dart';
@@ -11,6 +12,16 @@ class NotificationService extends GetxController {
   final String _participantId;
   final NotificationsManager _notificationManager;
   final NotificationRepository _notificationRepository;
+
+  /// Returns the token used to send remote notifications to user.
+  Future<String?> getToken() async => await _notificationManager.getToken();
+
+  bool get localNotificationsEnabled =>
+      _notificationManager.localNotificationsEnabled;
+  bool get remoteNotificationsEnabled =>
+      _notificationManager.remoteNotificationsEnabled;
+  RemoteMessage? get notificationWhileOnTerminated =>
+      _notificationManager.notificationWhileOnTerminated;
 
   NotificationService({
     required String participantId,
@@ -27,6 +38,14 @@ class NotificationService extends GetxController {
             remoteDataSource:
                 FirebaseDataSource(db: FirebaseFirestore.instance)) {
     _notificationManager.handleData = save;
+  }
+
+  Future<void> setupNotifications() async {
+    await _notificationManager.setupNotifications();
+  }
+
+  Future<void> initNotifications() async {
+    await _notificationManager.initNotifications();
   }
 
   /// Save notification to the remote db.
