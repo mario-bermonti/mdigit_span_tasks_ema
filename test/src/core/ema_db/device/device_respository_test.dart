@@ -40,4 +40,33 @@ void main() {
       },
     );
   });
+
+  group("DeviceRepository.get", () {
+    test(
+      "Given a [pathRemoteDB] and that there are devices in remote db, returns "
+      "a list of [Device] from the remote db.",
+      () async {
+        await firebaseDataSource.db
+            .collection(testPathRemoteDB)
+            .add(testDevice.toJson());
+
+        final List<Device>? actualDevices = await repository.get(
+          pathRemoteDB: testPathRemoteDB,
+        );
+
+        expect(actualDevices?.first, testDevice);
+      },
+    );
+    test(
+      "Given a [pathRemoteDB] and that there are no devices in remote db, "
+      "returns null from the remote db.",
+      () async {
+        final List<Device>? actualDevices = await repository.get(
+          pathRemoteDB: testPathRemoteDB,
+        );
+
+        expect(actualDevices, null);
+      },
+    );
+  });
 }

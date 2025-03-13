@@ -21,4 +21,16 @@ class DeviceRepository {
       path: pathRemoteDB,
     );
   }
+
+  /// Fetches all [Device] from the database.
+  Future<List<Device>?> get({required String pathRemoteDB}) async {
+    final List<Map<String, dynamic>>? devicesJson =
+        await _remoteDataSource.getDataModels(path: pathRemoteDB);
+
+    if (devicesJson == null) return null;
+
+    final List<Device> devices =
+        devicesJson.map((device) => Device.fromJson(device)).toList();
+    return devices;
+  }
 }
