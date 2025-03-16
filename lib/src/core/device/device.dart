@@ -33,4 +33,8 @@ class Device {
       return iosDeviceInfo.model;
     }
   }
+
+  OS get os {
+    return _getOS();
+  }
 }

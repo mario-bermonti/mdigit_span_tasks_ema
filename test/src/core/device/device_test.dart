@@ -39,4 +39,38 @@ void main() {
       },
     );
   });
+  group('Device.os', () {
+    test(
+      "Given an Android device, returns OS.android.",
+      () async {
+        final MockDeviceInfoPlugin deviceInfo = MockDeviceInfoPlugin(
+          androidDeviceInfo: MockAndroidDevice(),
+          iosDeviceInfo: MockIosDevice(),
+        );
+
+        final Device device = Device(
+          deviceInfo: deviceInfo,
+          getOS: () => OS.android,
+        );
+
+        expect(device.os, OS.android);
+      },
+    );
+    test(
+      "Given an ios device, returns OS.ios.",
+      () async {
+        final MockDeviceInfoPlugin deviceInfo = MockDeviceInfoPlugin(
+          androidDeviceInfo: MockAndroidDevice(),
+          iosDeviceInfo: MockIosDevice(),
+        );
+
+        final Device device = Device(
+          deviceInfo: deviceInfo,
+          getOS: () => OS.ios,
+        );
+
+        expect(device.os, OS.ios);
+      },
+    );
+  });
 }
