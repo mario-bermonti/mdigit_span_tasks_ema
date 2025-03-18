@@ -73,4 +73,38 @@ void main() {
       },
     );
   });
+  group('Device.osVersion', () {
+    test(
+      "Given an Android device, returns testAndroidOSVersion.",
+      () async {
+        final MockDeviceInfoPlugin deviceInfo = MockDeviceInfoPlugin(
+          androidDeviceInfo: MockAndroidDevice(),
+          iosDeviceInfo: MockIosDevice(),
+        );
+
+        final Device device = Device(
+          deviceInfo: deviceInfo,
+          getOS: () => OS.android,
+        );
+
+        expect(await device.osVersion, MockAndroidDevice().version.release);
+      },
+    );
+    test(
+      "Given an ios device, returns testIosOSVersion.",
+      () async {
+        final MockDeviceInfoPlugin deviceInfo = MockDeviceInfoPlugin(
+          androidDeviceInfo: MockAndroidDevice(),
+          iosDeviceInfo: MockIosDevice(),
+        );
+
+        final Device device = Device(
+          deviceInfo: deviceInfo,
+          getOS: () => OS.ios,
+        );
+
+        expect(await device.osVersion, MockIosDevice().systemVersion);
+      },
+    );
+  });
 }

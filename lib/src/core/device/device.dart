@@ -37,4 +37,14 @@ class Device {
   OS get os {
     return _getOS();
   }
+
+  Future<String> get osVersion async {
+    if (_getOS() == OS.android) {
+      final AndroidDeviceInfo androidInfo = await _deviceInfo.androidInfo;
+      return androidInfo.version.release;
+    } else {
+      final IosDeviceInfo iosDeviceInfo = await _deviceInfo.iosInfo;
+      return iosDeviceInfo.systemVersion;
+    }
+  }
 }
