@@ -54,4 +54,7 @@ class Device {
 
   double get width =>
       WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.width;
+
+  double get aspectRatio => WidgetsBinding
+      .instance.platformDispatcher.views.first.physicalSize.aspectRatio;
 }

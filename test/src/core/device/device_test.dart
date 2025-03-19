@@ -147,4 +147,24 @@ void main() {
       },
     );
   });
+  group('Device.aspectRatio', () {
+    test(
+      "Returns a double greater than 0.",
+      () {
+        TestWidgetsFlutterBinding.ensureInitialized();
+
+        final MockDeviceInfoPlugin deviceInfo = MockDeviceInfoPlugin(
+          androidDeviceInfo: MockAndroidDevice(),
+          iosDeviceInfo: MockIosDevice(),
+        );
+
+        final Device device = Device(
+          deviceInfo: deviceInfo,
+          getOS: () => OS.android,
+        );
+
+        expect(device.aspectRatio, greaterThan(0));
+      },
+    );
+  });
 }
