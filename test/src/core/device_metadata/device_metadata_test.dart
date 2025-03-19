@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mdigit_span_tasks_ema/src/core/device/device.dart';
-import 'package:mdigit_span_tasks_ema/src/core/device/device_os.dart';
+import 'package:mdigit_span_tasks_ema/src/core/device_metadata/device_metadata.dart';
+import 'package:mdigit_span_tasks_ema/src/core/device_metadata/device_os.dart';
 
 import 'test_cases.dart';
 
@@ -14,7 +14,7 @@ void main() {
           iosDeviceInfo: MockIosDevice(),
         );
 
-        final Device device = Device(
+        final DeviceMetadata device = DeviceMetadata(
           deviceInfo: deviceInfo,
           getOS: () => OS.android,
         );
@@ -30,7 +30,7 @@ void main() {
           iosDeviceInfo: MockIosDevice(),
         );
 
-        final Device device = Device(
+        final DeviceMetadata device = DeviceMetadata(
           deviceInfo: deviceInfo,
           getOS: () => OS.ios,
         );
@@ -48,7 +48,7 @@ void main() {
           iosDeviceInfo: MockIosDevice(),
         );
 
-        final Device device = Device(
+        final DeviceMetadata device = DeviceMetadata(
           deviceInfo: deviceInfo,
           getOS: () => OS.android,
         );
@@ -64,7 +64,7 @@ void main() {
           iosDeviceInfo: MockIosDevice(),
         );
 
-        final Device device = Device(
+        final DeviceMetadata device = DeviceMetadata(
           deviceInfo: deviceInfo,
           getOS: () => OS.ios,
         );
@@ -82,7 +82,7 @@ void main() {
           iosDeviceInfo: MockIosDevice(),
         );
 
-        final Device device = Device(
+        final DeviceMetadata device = DeviceMetadata(
           deviceInfo: deviceInfo,
           getOS: () => OS.android,
         );
@@ -98,7 +98,7 @@ void main() {
           iosDeviceInfo: MockIosDevice(),
         );
 
-        final Device device = Device(
+        final DeviceMetadata device = DeviceMetadata(
           deviceInfo: deviceInfo,
           getOS: () => OS.ios,
         );
@@ -118,7 +118,7 @@ void main() {
           iosDeviceInfo: MockIosDevice(),
         );
 
-        final Device device = Device(
+        final DeviceMetadata device = DeviceMetadata(
           deviceInfo: deviceInfo,
           getOS: () => OS.android,
         );
@@ -138,7 +138,7 @@ void main() {
           iosDeviceInfo: MockIosDevice(),
         );
 
-        final Device device = Device(
+        final DeviceMetadata device = DeviceMetadata(
           deviceInfo: deviceInfo,
           getOS: () => OS.android,
         );
@@ -158,7 +158,7 @@ void main() {
           iosDeviceInfo: MockIosDevice(),
         );
 
-        final Device device = Device(
+        final DeviceMetadata device = DeviceMetadata(
           deviceInfo: deviceInfo,
           getOS: () => OS.android,
         );

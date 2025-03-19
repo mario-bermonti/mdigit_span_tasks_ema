@@ -1,13 +1,14 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mdigit_span_tasks_ema/src/core/device/device_os.dart';
-import 'package:mdigit_span_tasks_ema/src/core/device/get_os.dart' as get_os;
+import 'package:mdigit_span_tasks_ema/src/core/device_metadata/device_os.dart';
+import 'package:mdigit_span_tasks_ema/src/core/device_metadata/get_os.dart'
+    as get_os;
 
 /// Utility object that provides metadata about the user's device.
 ///
 /// It is basically a wrapper around other packages/objects. Only supports
 /// android and ios.
-class Device {
+class DeviceMetadata {
   /// Object provided by [device_info_plus] to access device metadata.
   ///
   /// A default object is provided, but can be overridden for flexibility.
@@ -19,7 +20,7 @@ class Device {
   /// flexibility.
   final OS Function() _getOS;
 
-  Device({
+  DeviceMetadata({
     DeviceInfoPlugin? deviceInfo,
     OS Function() getOS = get_os.getOS,
   })  : _deviceInfo = deviceInfo ?? DeviceInfoPlugin(),
