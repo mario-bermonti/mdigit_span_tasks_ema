@@ -51,4 +51,7 @@ class Device {
 
   double get height => WidgetsBinding
       .instance.platformDispatcher.views.first.physicalSize.height;
+
+  double get width =>
+      WidgetsBinding.instance.platformDispatcher.views.first.physicalSize.width;
 }

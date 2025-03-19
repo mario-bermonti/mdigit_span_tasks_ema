@@ -127,4 +127,24 @@ void main() {
       },
     );
   });
+  group('Device.width', () {
+    test(
+      "Returns a double greater than 0.",
+      () {
+        TestWidgetsFlutterBinding.ensureInitialized();
+
+        final MockDeviceInfoPlugin deviceInfo = MockDeviceInfoPlugin(
+          androidDeviceInfo: MockAndroidDevice(),
+          iosDeviceInfo: MockIosDevice(),
+        );
+
+        final Device device = Device(
+          deviceInfo: deviceInfo,
+          getOS: () => OS.android,
+        );
+
+        expect(device.width, greaterThan(0));
+      },
+    );
+  });
 }
