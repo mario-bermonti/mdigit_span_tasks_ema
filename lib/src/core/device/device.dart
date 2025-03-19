@@ -1,4 +1,5 @@
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/widgets.dart';
 import 'package:mdigit_span_tasks_ema/src/core/device/device_os.dart';
 import 'package:mdigit_span_tasks_ema/src/core/device/get_os.dart' as get_os;
 
@@ -47,4 +48,7 @@ class Device {
       return iosDeviceInfo.systemVersion;
     }
   }
+
+  double get height => WidgetsBinding
+      .instance.platformDispatcher.views.first.physicalSize.height;
 }
