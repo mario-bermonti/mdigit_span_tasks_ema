@@ -23,6 +23,8 @@ class DeviceRepository {
   }
 
   /// Fetches all [Device] from the database.
+  ///
+  /// [pathRemoteDB] must be a valid path that can be used to create a collection.
   Future<List<Device>?> get({required String pathRemoteDB}) async {
     final List<Map<String, dynamic>>? devicesJson =
         await _remoteDataSource.getDataModels(path: pathRemoteDB);
