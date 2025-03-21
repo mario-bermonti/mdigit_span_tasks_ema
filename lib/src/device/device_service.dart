@@ -29,6 +29,7 @@ class DeviceService {
           remoteDataSource: FirebaseDataSource(db: FirebaseFirestore.instance),
         );
 
+  /// Collects and saves the device's metadata to the remote database.
   Future<void> saveData() async {
     final Device device = Device(
       participantId: _participantId,
