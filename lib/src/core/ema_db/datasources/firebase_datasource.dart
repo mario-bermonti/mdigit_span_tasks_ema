@@ -97,6 +97,9 @@ class FirebaseDataSource implements RemoteDataSource {
     return data;
   }
 
+  /// Fetches all data from a firebase collection defined by [path].
+  ///
+  /// [path] must be a valid path that can be used to create a collection.
   @override
   Future<List<Map<String, dynamic>>?> getDataModels(
       {required String path}) async {
