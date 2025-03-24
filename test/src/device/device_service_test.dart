@@ -19,13 +19,17 @@ void main() {
     TestWidgetsFlutterBinding.ensureInitialized();
     firebaseDataSource = FirebaseDataSource(db: FakeFirebaseFirestore());
     deviceRepository = DeviceRepository(remoteDataSource: firebaseDataSource);
+
+    MockDeviceInfoPlugin mockDeviceInfoPlugin = MockDeviceInfoPlugin(
+      androidDeviceInfo: MockAndroidDevice(),
+      iosDeviceInfo: MockIosDevice(),
+    );
+
     final DeviceMetadata device = DeviceMetadata(
-      deviceInfo: MockDeviceInfoPlugin(
-        androidDeviceInfo: MockAndroidDevice(),
-        iosDeviceInfo: MockIosDevice(),
-      ),
+      deviceInfo: mockDeviceInfoPlugin,
       getOS: () => OS.android,
     );
+
     deviceService = DeviceService(
       participantId: participantId,
       device: device,
