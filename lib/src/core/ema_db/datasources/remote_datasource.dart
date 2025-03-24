@@ -27,4 +27,5 @@ abstract class RemoteDataSource {
   });
 
   Future<Map<String, dynamic>?> getDataModel({required String path});
+  Future<List<Map<String, dynamic>>?> getDataModels({required String path});
 }

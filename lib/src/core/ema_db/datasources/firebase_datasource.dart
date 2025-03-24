@@ -96,4 +96,21 @@ class FirebaseDataSource implements RemoteDataSource {
     final Map<String, dynamic>? data = snapshot.data();
     return data;
   }
+
+  /// Fetches all data from a firebase collection defined by [path].
+  ///
+  /// [path] must be a valid path that can be used to create a collection.
+  @override
+  Future<List<Map<String, dynamic>>?> getDataModels(
+      {required String path}) async {
+    final QuerySnapshot<Map<String, dynamic>> snapshot =
+        await db.collection(path).get();
+    if (snapshot.docs.isEmpty) {
+      return null;
+    }
+    final List<Map<String, dynamic>> dataModels =
+        snapshot.docs.map((doc) => doc.data()).toList();
+
+    return dataModels;
+  }
 }
