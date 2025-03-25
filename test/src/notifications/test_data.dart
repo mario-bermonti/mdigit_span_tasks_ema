@@ -1,4 +1,4 @@
-import 'package:mdigit_span_tasks_ema/src/notifications/models/notification.dart';
+import 'package:mdigit_span_tasks_ema/src/core/notifications/models/notification.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/notifications/models/notification.dart'
     as ema_db;
 

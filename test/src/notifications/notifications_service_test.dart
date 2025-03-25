@@ -5,7 +5,7 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datas
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/notifications/models/notification.dart'
     as ema_db;
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/notifications/notification_repository.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/notifications_manager.dart';
+import 'package:mdigit_span_tasks_ema/src/core/notifications/notifications_manager.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/notifications_service.dart';
 
 import 'test_data.dart';
