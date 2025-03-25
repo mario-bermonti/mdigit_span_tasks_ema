@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/view/widgets/notifications_permission_message.dart';
 
 class NotificationsPermissionScreen extends StatelessWidget {
   const NotificationsPermissionScreen({super.key});
@@ -10,21 +11,12 @@ class NotificationsPermissionScreen extends StatelessWidget {
         title: const Text('🔔 Activa las notificaciones'),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 50, 16, 0),
-        child: RichText(
-          text: TextSpan(
-            style: Theme.of(context).textTheme.titleLarge,
-            children: const [
-              TextSpan(
-                  text:
-                      '🔔 Las notificaciones son muy importantes para este estudio.\n\n'),
-              TextSpan(
-                  text:
-                      '📋 Si no las activas no podrás participar en algunas actividades.\n\n'),
-              TextSpan(text: '🙏 Actívalas para no perderte nada.'),
-            ],
-          ),
+      body: const Padding(
+        padding: EdgeInsets.fromLTRB(16, 50, 16, 0),
+        child: Column(
+          children: [
+            NotificationsPermissionMessage(),
+          ],
         ),
       ),
     );
