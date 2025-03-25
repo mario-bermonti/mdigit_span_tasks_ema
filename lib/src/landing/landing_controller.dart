@@ -31,9 +31,15 @@ class LandingController extends GetxController {
     );
     final bool demographicsSurveyCompleted =
         demographicsSurveyStep?.status == Status.completed;
+    final StudyProgressStep? notificationsStep = await studyProgressService.get(
+      participantId: participant.id,
+      stepId: 'remoteNotificationStep',
+    );
 
     if (!consentCompleted) {
       nextScreen = 'consent';
+    } else if (notificationsStep?.status != Status.completed) {
+      nextScreen = 'notificationsPermission';
     } else if (notificationService.notificationWhileOnTerminated != null) {
       nextScreen = 'emaScreen';
     } else if (!demographicsSurveyCompleted) {

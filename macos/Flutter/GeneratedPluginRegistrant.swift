@@ -5,6 +5,7 @@
 import FlutterMacOS
 import Foundation
 
+import app_settings
 import audio_session
 import cloud_firestore
 import device_info_plus
@@ -18,6 +19,7 @@ import path_provider_foundation
 import sqlite3_flutter_libs
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
+  AppSettingsPlugin.register(with: registry.registrar(forPlugin: "AppSettingsPlugin"))
   AudioSessionPlugin.register(with: registry.registrar(forPlugin: "AudioSessionPlugin"))
   FLTFirebaseFirestorePlugin.register(with: registry.registrar(forPlugin: "FLTFirebaseFirestorePlugin"))
   DeviceInfoPlusMacosPlugin.register(with: registry.registrar(forPlugin: "DeviceInfoPlusMacosPlugin"))
