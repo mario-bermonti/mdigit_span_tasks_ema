@@ -29,7 +29,7 @@ class LandingScreen extends StatelessWidget {
           if (_controller.nextScreen == 'consent') {
             return ConsentScreen();
           } else if (_controller.nextScreen == 'notificationsPermission') {
-            return const NotificationsPermissionScreen();
+            return NotificationsPermissionScreen();
           } else if (_controller.nextScreen == 'demographicsSurvey') {
             return DemographicsSurvey(
               onSubmit: endDemographicsSurvey,
