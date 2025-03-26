@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/view/widgets/permission_button.dart';
 
 class PermissionButtonsBar extends StatelessWidget {
@@ -8,7 +9,10 @@ class PermissionButtonsBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        PermissionButton(onPressed: () {}, text: "No activar"),
+        PermissionButton(
+          onPressed: () => Get.toNamed("landing_page"),
+          text: "No activar",
+        ),
         PermissionButton(onPressed: () {}, text: "Activar"),
       ],
     );
