@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/view/widgets/permission_button.dart';
 
 class PermissionButtonsBar extends StatelessWidget {
   final void Function() _onDecline;
+  final void Function() _onAccepted;
 
-  const PermissionButtonsBar({super.key, required void Function() onDecline})
-      : _onDecline = onDecline;
+  const PermissionButtonsBar({
+    super.key,
+    required void Function() onDecline,
+    required void Function() onAccepted,
+  })  : _onDecline = onDecline,
+        _onAccepted = onAccepted;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,10 @@ class PermissionButtonsBar extends StatelessWidget {
           onPressed: _onDecline,
           text: "No activar",
         ),
-        PermissionButton(onPressed: () {}, text: "Activar"),
+        PermissionButton(
+          onPressed: _onAccepted,
+          text: "Activar",
+        ),
       ],
     );
   }

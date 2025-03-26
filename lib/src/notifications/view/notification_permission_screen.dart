@@ -21,7 +21,10 @@ class NotificationsPermissionScreen extends StatelessWidget {
         child: Column(
           children: [
             const NotificationsPermissionMessage(),
-            PermissionButtonsBar(onDecline: _viewModel.onDeclined),
+            PermissionButtonsBar(
+              onDecline: _viewModel.onDeclined,
+              onAccepted: _viewModel.onAccepted,
+            ),
           ],
         ),
       ),
