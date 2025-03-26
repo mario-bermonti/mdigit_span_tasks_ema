@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/view/widgets/notifications_permission_message.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/view/widgets/permission_buttons_bar.dart';
 
 class NotificationsPermissionScreen extends StatelessWidget {
   const NotificationsPermissionScreen({super.key});
@@ -16,6 +17,7 @@ class NotificationsPermissionScreen extends StatelessWidget {
         child: Column(
           children: [
             NotificationsPermissionMessage(),
+            PermissionButtonsBar(),
           ],
         ),
       ),
