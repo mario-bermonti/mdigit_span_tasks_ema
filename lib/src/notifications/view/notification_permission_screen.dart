@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/view/widgets/notifications_permission_message.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/view/widgets/permission_buttons_bar.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/view_model/notification_permission_view_model.dart';
 
 class NotificationsPermissionScreen extends StatelessWidget {
-  final NotificationPermissionViewModel _viewModel =
-      NotificationPermissionViewModel();
+  late final NotificationPermissionViewModel _viewModel;
 
-  NotificationsPermissionScreen({super.key});
+  NotificationsPermissionScreen({super.key}) {
+    final Participant participant = Get.find();
+    _viewModel =
+        Get.put(NotificationPermissionViewModel(participantId: participant.id));
+  }
 
   @override
   Widget build(BuildContext context) {
