@@ -50,5 +50,6 @@ class NotificationPermissionViewModel extends GetxController {
       );
       await studyProgressService.save(progressStep: remoteNotificationStep);
     }
+    Get.toNamed("landing_page");
   }
 }
