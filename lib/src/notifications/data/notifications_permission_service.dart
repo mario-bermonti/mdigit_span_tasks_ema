@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasource.dart';
@@ -10,15 +9,20 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/permissions/permission_rep
 /// It wraps the data repository to manage the metadata.
 class NotificationsPermissionService {
   final PermissionRepository _permissionRepository;
+  final String _participantId;
 
-  NotificationsPermissionService(
-      {required PermissionRepository permissionRepository})
-      : _permissionRepository = permissionRepository;
+  NotificationsPermissionService({
+    required PermissionRepository permissionRepository,
+    required String participantId,
+  })  : _permissionRepository = permissionRepository,
+        _participantId = participantId;
 
   /// Convenience method that initializes the service with all its dependencies.
   ///
   /// It serves as an informal named constructor.
-  static NotificationsPermissionService init() {
+  static NotificationsPermissionService init({
+    required String participantId,
+  }) {
     final FirebaseDataSource firebaseDataSource =
         FirebaseDataSource(db: FirebaseFirestore.instance);
     final GetxDataSource getxDataSource = GetxDataSource(db: GetStorage());
@@ -28,6 +32,9 @@ class NotificationsPermissionService {
     );
 
     return NotificationsPermissionService(
-        permissionRepository: permissionRepository);
+      permissionRepository: permissionRepository,
+      participantId: participantId,
+    );
+  }
   }
 }
