@@ -44,6 +44,7 @@ class NotificationsPermissionService {
     final Permission permission = Permission(
       participantId: _participantId,
       permissionId: 'notifications',
+      permissionDescription: 'Notifications permission',
       dateTimeChanged: DateTime.now(),
       status: Status.accepted,
     );
