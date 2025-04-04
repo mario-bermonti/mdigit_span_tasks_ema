@@ -49,9 +49,9 @@ class NotificationsPermissionService {
       status: Status.accepted,
     );
 
-    String pathRemoteDB =
-        'permissions/$_participantId/$permission.permissionId';
-    String pathLocalDB = 'notificationsPermissions';
+    final String pathRemoteDB =
+        'permissions/$_participantId/${permission.permissionId}';
+    const String pathLocalDB = 'notificationsPermissions';
 
     await _permissionRepository.save(
       permission: permission,
