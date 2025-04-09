@@ -55,30 +55,16 @@ class ConsentController extends GetxController {
     await notificationService.setupNotifications();
     await notificationService.initNotifications();
 
-    if (notificationService.localNotificationsEnabled) {
-      final StudyProgressStep localNotificationStep = StudyProgressStep(
-        participantId: participant.id,
-        stepId: "localNotificationStep",
-        completionDateTime: completionTime,
-        stepDescription:
-            "Local notifications enabled. Necessary for background notifications on Android. Only relevant on Android.",
-        lastUpdatedDateTime: completionTime,
-        status: Status.completed,
-      );
-      await studyProgressService.save(progressStep: localNotificationStep);
-    }
-
-    if (notificationService.remoteNotificationsEnabled) {
-      final StudyProgressStep remoteNotificationStep = StudyProgressStep(
-        participantId: participant.id,
-        stepId: "remoteNotificationStep",
-        completionDateTime: completionTime,
-        stepDescription: "Remote notifications enabled",
-        lastUpdatedDateTime: completionTime,
-        status: Status.completed,
-      );
-      await studyProgressService.save(progressStep: remoteNotificationStep);
-    }
+    final StudyProgressStep notificationStep = StudyProgressStep(
+      participantId: participant.id,
+      stepId: "notificationStep",
+      completionDateTime: completionTime,
+      stepDescription:
+          "Step where participants indicate whether they accept to receive notifications.",
+      lastUpdatedDateTime: completionTime,
+      status: Status.completed,
+    );
+    await studyProgressService.save(progressStep: notificationStep);
 
     /// Collect localization info about participant.
     final LocationService locationService = LocationService();
