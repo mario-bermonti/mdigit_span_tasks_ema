@@ -26,30 +26,16 @@ class NotificationPermissionViewModel extends GetxController {
     await notificationService.setupNotifications();
     await notificationService.initNotifications();
 
-    if (notificationService.localNotificationsEnabled) {
-      final StudyProgressStep localNotificationStep = StudyProgressStep(
-        participantId: _participantId,
-        stepId: "localNotificationStep",
-        completionDateTime: completionTime,
-        stepDescription:
-            "Local notifications enabled. Necessary for background notifications on Android. Only relevant on Android.",
-        lastUpdatedDateTime: completionTime,
-        status: Status.completed,
-      );
-      await studyProgressService.save(progressStep: localNotificationStep);
-    }
+    final StudyProgressStep notificationStep = StudyProgressStep(
+      participantId: _participantId,
+      stepId: "notificationStep",
+      stepDescription:
+          "Step where participants indicate whether they accept to receive notifications.",
+      lastUpdatedDateTime: completionTime,
+      status: Status.completed,
+    );
+    await studyProgressService.save(progressStep: notificationStep);
 
-    if (notificationService.remoteNotificationsEnabled) {
-      final StudyProgressStep remoteNotificationStep = StudyProgressStep(
-        participantId: _participantId,
-        stepId: "remoteNotificationStep",
-        completionDateTime: completionTime,
-        stepDescription: "Remote notifications enabled",
-        lastUpdatedDateTime: completionTime,
-        status: Status.completed,
-      );
-      await studyProgressService.save(progressStep: remoteNotificationStep);
-    }
     Get.toNamed("landing_page");
   }
 }
