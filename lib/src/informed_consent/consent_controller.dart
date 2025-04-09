@@ -8,6 +8,7 @@ import 'package:mdigit_span_tasks_ema/src/core/participant/app_service.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/location_services.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/participant_service.dart';
 import 'package:mdigit_span_tasks_ema/src/device/device_service.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_permission_service.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/notifications_service.dart';
 import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
 import 'package:research_package/research_package.dart';
@@ -65,6 +66,11 @@ class ConsentController extends GetxController {
       status: Status.completed,
     );
     await studyProgressService.save(progressStep: notificationStep);
+
+    /// Save notifications permissions.
+    final NotificationsPermissionService notificationsPermissionService =
+        NotificationsPermissionService.init(participantId: participant.id);
+    await notificationsPermissionService.save();
 
     /// Collect localization info about participant.
     final LocationService locationService = LocationService();
