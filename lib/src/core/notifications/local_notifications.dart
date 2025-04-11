@@ -8,7 +8,14 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 class LocalNotifications {
   final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
-  bool? authorized;
+
+  Future<bool> areEnabled() async {
+    final authorized = await _notifications
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.areNotificationsEnabled();
+    return authorized ?? false;
+  }
 
   Future<void> init({
     required void Function(NotificationResponse response)
@@ -24,11 +31,6 @@ class LocalNotifications {
       initializationSettings,
       onDidReceiveNotificationResponse: onLocalNotificationTap,
     );
-    authorized = await _notifications
-            .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin>()
-            ?.areNotificationsEnabled() ??
-        false;
   }
 
   /// Asks the user during runtime for permission to send notifications.

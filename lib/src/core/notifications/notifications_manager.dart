@@ -45,10 +45,10 @@ class NotificationsManager extends GetxService {
 
   NotificationsManager({this.handleData});
 
-  bool get localNotificationsEnabled => _localNotifications.authorized ?? false;
-  bool get remoteNotificationsEnabled =>
-      _remoteNotifications.authorizationStatus ==
-      AuthorizationStatus.authorized;
+  Future<bool> areLocalNotificationsEnabled() async =>
+      await _localNotifications.areEnabled();
+  Future<bool> areRemoteNotificationsEnabled() async =>
+      await _remoteNotifications.areEnabled();
 
   RemoteMessage? get notificationWhileOnTerminated =>
       _remoteNotifications.initialMessage;
