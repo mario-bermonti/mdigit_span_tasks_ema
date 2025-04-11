@@ -12,7 +12,7 @@ class EMAInstructions extends StatelessWidget {
           style: TextStyle(fontSize: 30),
           textAlign: TextAlign.center,
         ),
-        const SizedBox(height: 40),
+        SizedBox(height: 40),
         Text(
           "Lee bien las instrucciones antes de comenzar porque el orden de las actividades cambia.",
           style: TextStyle(fontSize: 30),
