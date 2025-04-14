@@ -8,7 +8,7 @@ class EMAInstructions extends StatelessWidget {
     return const Column(
       children: [
         Text(
-          "Vamos a continuar con las tareas que hemos estado practicando.",
+          "Vamos a continuar con las actividades que hemos estado practicando.",
           style: TextStyle(fontSize: 30),
           textAlign: TextAlign.center,
         ),
