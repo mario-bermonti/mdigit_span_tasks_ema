@@ -9,15 +9,22 @@ class LocalNotifications {
   final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
 
-  Future<bool?> areEnabled() async {
+  Future<bool> areEnabled() async {
     if (!Platform.isAndroid) {
       throw Exception(
-          "Not supported. Local notifications are only implemented for Android");
+          "Not supported. Local notifications are only implemented for Android.");
     }
-    final authorized = await _notifications
+    final bool? authorized = await _notifications
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
         ?.areNotificationsEnabled();
+    if (authorized == null) {
+      throw Exception(
+          'Error checking local notifications on Android. Make sure '
+          '`flutter_local_notifications` plugin has been configured correctly. '
+          'Also setup and init `LocalNotifications` by calling the '
+          'appropriate methods.');
+    }
     return authorized;
   }
 

@@ -45,10 +45,18 @@ class NotificationsManager extends GetxService {
 
   NotificationsManager({this.handleData});
 
-  Future<bool> areLocalNotificationsEnabled() async =>
-      await _localNotifications.areEnabled();
-  Future<bool> areRemoteNotificationsEnabled() async =>
-      await _remoteNotifications.areEnabled();
+  /// Returns true if notifications are enabled on this device.
+  ///
+  /// On Android, it checks using both remote (FCM) and local
+  /// notifications (flutter_local_notifications).
+  Future<bool> areNotificationsEnabled() async {
+    final bool remoteEnabled = await _remoteNotifications.areEnabled();
+    if (!Platform.isAndroid) {
+      return remoteEnabled;
+    }
+    final bool localEnabled = await _localNotifications.areEnabled();
+    return remoteEnabled && localEnabled;
+  }
 
   RemoteMessage? get notificationWhileOnTerminated =>
       _remoteNotifications.initialMessage;

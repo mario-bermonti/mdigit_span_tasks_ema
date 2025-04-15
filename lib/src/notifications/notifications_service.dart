@@ -16,10 +16,10 @@ class NotificationService extends GetxController {
   /// Returns the token used to send remote notifications to user.
   Future<String?> getToken() async => await _notificationManager.getToken();
 
-  Future<bool> areLocalNotificationsEnabled() async =>
-      await _notificationManager.areLocalNotificationsEnabled();
-  Future<bool> areRemoteNotificationsEnabled() async =>
-      await _notificationManager.areRemoteNotificationsEnabled();
+  Future<bool> areNotificationsEnabled() async {
+    return await _notificationManager.areNotificationsEnabled();
+  }
+
   RemoteMessage? get notificationWhileOnTerminated =>
       _notificationManager.notificationWhileOnTerminated;
 
