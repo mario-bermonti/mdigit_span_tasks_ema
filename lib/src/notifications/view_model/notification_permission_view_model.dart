@@ -2,8 +2,8 @@ import 'package:app_settings/app_settings.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_permission_service.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/notifications_service.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_manager_service.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_permission_repository_service.dart';
 import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
 
 class NotificationPermissionViewModel extends GetxController {
@@ -22,10 +22,10 @@ class NotificationPermissionViewModel extends GetxController {
         StudyProgressService.init();
     final DateTime completionTime = DateTime.now();
 
-    final NotificationService notificationService =
-        NotificationService.init(participantId: _participantId);
-    await notificationService.setupNotifications();
-    await notificationService.initNotifications();
+    final NotificationsManagerService notificationsManagerService =
+        NotificationsManagerService.init(participantId: _participantId);
+    await notificationsManagerService.setupNotifications();
+    await notificationsManagerService.initNotifications();
 
     final StudyProgressStep notificationStep = StudyProgressStep(
       participantId: _participantId,
@@ -37,8 +37,10 @@ class NotificationPermissionViewModel extends GetxController {
     );
     await studyProgressService.save(progressStep: notificationStep);
 
-    final NotificationsPermissionService notificationsPermissionService =
-        NotificationsPermissionService.init(participantId: _participantId);
+    final NotificationsPermissionRepositoryService
+        notificationsPermissionService =
+        NotificationsPermissionRepositoryService.init(
+            participantId: _participantId);
     await notificationsPermissionService.save();
 
     Get.toNamed("landing_page");

@@ -8,8 +8,8 @@ import 'package:mdigit_span_tasks_ema/src/core/participant/app_service.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/location_services.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/participant_service.dart';
 import 'package:mdigit_span_tasks_ema/src/device/device_service.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_permission_service.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/notifications_service.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_manager_service.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_permission_repository_service.dart';
 import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
 import 'package:research_package/research_package.dart';
 
@@ -51,10 +51,10 @@ class ConsentController extends GetxController {
     );
 
     /// Setup/init notifications
-    final NotificationService notificationService =
-        NotificationService.init(participantId: participant.id);
-    await notificationService.setupNotifications();
-    await notificationService.initNotifications();
+    final NotificationsManagerService notificationsManagerService =
+        NotificationsManagerService.init(participantId: participant.id);
+    await notificationsManagerService.setupNotifications();
+    await notificationsManagerService.initNotifications();
 
     final StudyProgressStep notificationStep = StudyProgressStep(
       participantId: participant.id,
@@ -68,8 +68,10 @@ class ConsentController extends GetxController {
     await studyProgressService.save(progressStep: notificationStep);
 
     /// Save notifications permissions.
-    final NotificationsPermissionService notificationsPermissionService =
-        NotificationsPermissionService.init(participantId: participant.id);
+    final NotificationsPermissionRepositoryService
+        notificationsPermissionService =
+        NotificationsPermissionRepositoryService.init(
+            participantId: participant.id);
     await notificationsPermissionService.save();
 
     /// Collect localization info about participant.
@@ -84,7 +86,7 @@ class ConsentController extends GetxController {
     );
 
     /// Collect remote notification tokens.
-    final String? token = await notificationService.getToken();
+    final String? token = await notificationsManagerService.getToken();
     if (token != null) {
       emaParticipant = emaParticipant.copyWith(
         notificationTokens: [token],
