@@ -9,12 +9,12 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/permissions/permission_rep
 /// Service that handles the permissions metadata.
 ///
 /// It wraps the data repository to manage the metadata.
-class NotificationsPermissionService {
+class NotificationsPermissionRepositoryService {
   final PermissionRepository _permissionRepository;
   final String permissionId = 'notifications';
   final String _participantId;
 
-  NotificationsPermissionService({
+  NotificationsPermissionRepositoryService({
     required PermissionRepository permissionRepository,
     required String participantId,
   })  : _permissionRepository = permissionRepository,
@@ -23,7 +23,7 @@ class NotificationsPermissionService {
   /// Convenience method that initializes the service with all its dependencies.
   ///
   /// It serves as an informal named constructor.
-  static NotificationsPermissionService init({
+  static NotificationsPermissionRepositoryService init({
     required String participantId,
   }) {
     final FirebaseDataSource firebaseDataSource =
@@ -34,7 +34,7 @@ class NotificationsPermissionService {
       localDataSource: getxDataSource,
     );
 
-    return NotificationsPermissionService(
+    return NotificationsPermissionRepositoryService(
       permissionRepository: permissionRepository,
       participantId: participantId,
     );
