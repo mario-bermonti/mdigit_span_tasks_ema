@@ -41,13 +41,16 @@ class NotificationsPermissionRepositoryService {
   }
 
   /// Save notifications permission to the remote and local dbs.
-  Future<void> save() async {
+  ///
+  /// Converts `areAccepted` to the appropriate status.
+  Future<void> save({required bool areAccepted}) async {
+    final Status status = areAccepted ? Status.accepted : Status.denied;
     final Permission permission = Permission(
       participantId: _participantId,
       permissionId: permissionId,
       permissionDescription: 'Notifications permission',
       dateTimeChanged: DateTime.now(),
-      status: Status.accepted,
+      status: status,
     );
 
     final String pathRemoteDB =

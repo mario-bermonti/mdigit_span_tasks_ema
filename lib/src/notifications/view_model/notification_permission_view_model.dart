@@ -41,7 +41,9 @@ class NotificationPermissionViewModel extends GetxController {
         notificationsPermissionService =
         NotificationsPermissionRepositoryService.init(
             participantId: _participantId);
-    await notificationsPermissionService.save();
+    await notificationsPermissionService.save(
+        areAccepted:
+            await notificationsManagerService.areNotificationsEnabled());
 
     Get.toNamed("landing_page");
   }

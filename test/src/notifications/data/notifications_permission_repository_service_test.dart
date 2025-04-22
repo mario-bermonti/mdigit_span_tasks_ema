@@ -26,7 +26,7 @@ void main() {
 
     service = NotificationsPermissionRepositoryService(
       permissionRepository: permissionRepository,
-      participantId: testPermission.participantId,
+      participantId: testAcceptedPermission.participantId,
     );
   });
 
@@ -37,36 +37,59 @@ void main() {
 
   group('NotificationsPermissionService.save', () {
     test(
-      "Saves a permission with correct data to the remote db.",
+      "Saves an accepted permission with correct data to the remote db.",
       () async {
-        await service.save();
+        await service.save(areAccepted: true);
 
         final QuerySnapshot<Map<String, dynamic>> snapshot =
             await remoteDB.collection(testPathRemoteDB).get();
         final Permission actualPermission =
             Permission.fromJson(snapshot.docs.first.data());
 
-        expect(actualPermission.participantId, testPermission.participantId);
-        expect(actualPermission.permissionId, testPermission.permissionId);
-        expect(actualPermission.status, testPermission.status);
+        expect(actualPermission.participantId,
+            testAcceptedPermission.participantId);
+        expect(
+            actualPermission.permissionId, testAcceptedPermission.permissionId);
+        expect(actualPermission.status, testAcceptedPermission.status);
         expect(actualPermission.permissionDescription,
-            testPermission.permissionDescription);
+            testAcceptedPermission.permissionDescription);
       },
     );
     test(
-      "Saves a permission with correct data to the local db.",
+      "Saves an accepted permission with correct data to the local db.",
       () async {
-        await service.save();
+        await service.save(areAccepted: true);
 
         final Map<String, dynamic> permissionJson =
             localDB.read(testPathLocalDB);
         final Permission actualPermission = Permission.fromJson(permissionJson);
 
-        expect(actualPermission.participantId, testPermission.participantId);
-        expect(actualPermission.permissionId, testPermission.permissionId);
-        expect(actualPermission.status, testPermission.status);
+        expect(actualPermission.participantId,
+            testAcceptedPermission.participantId);
+        expect(
+            actualPermission.permissionId, testAcceptedPermission.permissionId);
+        expect(actualPermission.status, testAcceptedPermission.status);
         expect(actualPermission.permissionDescription,
-            testPermission.permissionDescription);
+            testAcceptedPermission.permissionDescription);
+      },
+    );
+    test(
+      "Saves a denied permission with correct data to the remote db.",
+      () async {
+        await service.save(areAccepted: false);
+
+        final QuerySnapshot<Map<String, dynamic>> snapshot =
+            await remoteDB.collection(testPathRemoteDB).get();
+        final Permission actualPermission =
+            Permission.fromJson(snapshot.docs.first.data());
+
+        expect(
+            actualPermission.participantId, testDeniedPermission.participantId);
+        expect(
+            actualPermission.permissionId, testDeniedPermission.permissionId);
+        expect(actualPermission.status, testDeniedPermission.status);
+        expect(actualPermission.permissionDescription,
+            testDeniedPermission.permissionDescription);
       },
     );
   });
@@ -74,29 +97,35 @@ void main() {
     test(
       "Returns valid permission if it only exists in remote.",
       () async {
-        remoteDB.collection(testPathRemoteDB).add(testPermission.toJson());
+        remoteDB
+            .collection(testPathRemoteDB)
+            .add(testAcceptedPermission.toJson());
 
         final Permission? actualPermission = await service.getLatest();
 
-        expect(actualPermission?.participantId, testPermission.participantId);
-        expect(actualPermission?.permissionId, testPermission.permissionId);
-        expect(actualPermission?.status, testPermission.status);
+        expect(actualPermission?.participantId,
+            testAcceptedPermission.participantId);
+        expect(actualPermission?.permissionId,
+            testAcceptedPermission.permissionId);
+        expect(actualPermission?.status, testAcceptedPermission.status);
         expect(actualPermission?.permissionDescription,
-            testPermission.permissionDescription);
+            testAcceptedPermission.permissionDescription);
       },
     );
     test(
       "Returns valid permission if it only exists in local.",
       () async {
-        await localDB.write(testPathLocalDB, testPermission.toJson());
+        await localDB.write(testPathLocalDB, testAcceptedPermission.toJson());
 
         final Permission? actualPermission = await service.getLatest();
 
-        expect(actualPermission?.participantId, testPermission.participantId);
-        expect(actualPermission?.permissionId, testPermission.permissionId);
-        expect(actualPermission?.status, testPermission.status);
+        expect(actualPermission?.participantId,
+            testAcceptedPermission.participantId);
+        expect(actualPermission?.permissionId,
+            testAcceptedPermission.permissionId);
+        expect(actualPermission?.status, testAcceptedPermission.status);
         expect(actualPermission?.permissionDescription,
-            testPermission.permissionDescription);
+            testAcceptedPermission.permissionDescription);
       },
     );
   });

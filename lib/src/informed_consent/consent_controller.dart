@@ -72,7 +72,9 @@ class ConsentController extends GetxController {
         notificationsPermissionService =
         NotificationsPermissionRepositoryService.init(
             participantId: participant.id);
-    await notificationsPermissionService.save();
+    await notificationsPermissionService.save(
+        areAccepted:
+            await notificationsManagerService.areNotificationsEnabled());
 
     /// Collect localization info about participant.
     final LocationService locationService = LocationService();
