@@ -9,13 +9,18 @@ class TaskListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            DSFButton(),
-            SizedBox(height: 10),
-            DSBButton(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: const <Widget>[
+            ListTile(
+              title: Text("Memoria de números"),
+              subtitle: Text("Recuerda los números en orden."),
+            ),
+            ListTile(
+              title: Text("Memoria de números inversos"),
+              subtitle: Text("Recuerda los números de atrás hacia adelante."),
+            ),
           ],
         ),
       ),
