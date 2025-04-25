@@ -9,6 +9,7 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/partici
     as ema_participant;
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
+import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_service.dart';
 import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/config.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/participant_service.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_manager_service.dart';
@@ -54,5 +55,7 @@ Future<void> main() async {
       participantService.save(participant: emaParticipant);
     }
   }
-  runApp(const MyApp());
+  final NavigatorService navigatorService = Get.put(NavigatorService());
+  final String initialRoute = await navigatorService.determineNextScreen();
+  runApp(MyApp(initialRoute: initialRoute));
 }

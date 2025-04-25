@@ -5,7 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 /// It currently uses Firebase Cloud Messaging (FCM) for remote notifications
 class RemoteNotifications {
   final FirebaseMessaging remoteNotifications = FirebaseMessaging.instance;
-  late RemoteMessage? _initialMessage;
+  RemoteMessage? _initialMessage;
 
   /// Returns the current notification settings for the user.
   Future<bool> areEnabled() async {

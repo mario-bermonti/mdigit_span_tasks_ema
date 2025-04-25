@@ -4,6 +4,7 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/partici
     as ema_participant;
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
+import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_service.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/app_service.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/location_services.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/participant_service.dart';
@@ -104,7 +105,9 @@ class ConsentController extends GetxController {
     deviceService.saveData();
   }
 
-  void nextScreen() {
-    Get.offAndToNamed('/');
+  Future<void> nextScreen() async {
+    final NavigatorService navigatorService = Get.find();
+    final String nextScreen = await navigatorService.determineNextScreen();
+    Get.offAndToNamed(nextScreen);
   }
 }
