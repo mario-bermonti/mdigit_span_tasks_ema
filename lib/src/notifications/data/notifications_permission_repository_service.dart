@@ -76,4 +76,19 @@ class NotificationsPermissionRepositoryService {
 
     return permission;
   }
+
+  /// Saves permission to the db the status has changed since the most recent.
+  ///
+  /// It will do nothing if there is no permission in the db or if
+  /// the status has not changed.
+  Future<void> updateIfNecessary({required bool areAccepted}) async {
+    final Permission? latestPermission = await getLatest();
+    final Status status = areAccepted ? Status.accepted : Status.denied;
+    if (latestPermission == null) {
+      return;
+    } else if (latestPermission.status == status) {
+      return;
+    }
+    await save(areAccepted: areAccepted);
+  }
 }

@@ -13,6 +13,7 @@ import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_servi
 import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/config.dart';
 import 'package:mdigit_span_tasks_ema/src/core/participant/participant_service.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_manager_service.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_permission_repository_service.dart';
 import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
 import 'firebase_options.dart';
 
@@ -55,6 +56,19 @@ Future<void> main() async {
       participantService.save(participant: emaParticipant);
     }
   }
+
+  /// Update notifications permission to db if it has changed
+  final NotificationsPermissionRepositoryService
+      notificationsPermissionRepositoryService =
+      NotificationsPermissionRepositoryService.init(
+          participantId: participant.id);
+
+  final bool areAccepted =
+      await notificationsManagerService.areNotificationsEnabled();
+  notificationsPermissionRepositoryService.updateIfNecessary(
+      areAccepted: areAccepted);
+
+  /// Start app
   final NavigatorService navigatorService = Get.put(NavigatorService());
   final String initialRoute = await navigatorService.determineNextScreen();
   runApp(MyApp(initialRoute: initialRoute));

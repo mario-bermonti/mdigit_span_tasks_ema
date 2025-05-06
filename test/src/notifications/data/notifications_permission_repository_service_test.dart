@@ -129,4 +129,101 @@ void main() {
       },
     );
   });
+  group('NotificationsPermissionRepositoryService.updateIfNecessary', () {
+    test(
+      "Given that there are no previous permissions in remote db, does nothing.",
+      () async {
+        await service.updateIfNecessary(areAccepted: false);
+
+        final QuerySnapshot<Map<String, dynamic>> snapshot =
+            await remoteDB.collection(testPathRemoteDB).get();
+        expect(snapshot.docs.isEmpty, true);
+      },
+    );
+    test(
+      "Given that the new and the permission in remote db are both accepted, "
+      "does nothing",
+      () async {
+        await remoteDB
+            .collection(testPathRemoteDB)
+            .add(testAcceptedPermission.toJson());
+
+        await service.updateIfNecessary(areAccepted: true);
+
+        final QuerySnapshot<Map<String, dynamic>> snapshot =
+            await remoteDB.collection(testPathRemoteDB).get();
+        expect(snapshot.docs.length, 1);
+      },
+    );
+    test(
+      "Given that the new and the permission in remote db are both denied, "
+      "does nothing",
+      () async {
+        await remoteDB
+            .collection(testPathRemoteDB)
+            .add(testDeniedPermission.toJson());
+
+        await service.updateIfNecessary(areAccepted: false);
+
+        final QuerySnapshot<Map<String, dynamic>> snapshot =
+            await remoteDB.collection(testPathRemoteDB).get();
+
+        expect(snapshot.docs.length, 1);
+        ;
+      },
+    );
+    test(
+      "Given that permissions have changed in remote db, "
+      "save the new permission object to db.",
+      () async {
+        await remoteDB
+            .collection(testPathRemoteDB)
+            .add(testAcceptedPermission.toJson());
+
+        await service.updateIfNecessary(areAccepted: false);
+
+        final QuerySnapshot<Map<String, dynamic>> snapshot =
+            await remoteDB.collection(testPathRemoteDB).get();
+
+        expect(snapshot.docs.length, 2);
+      },
+    );
+    test(
+      "Given that there are no previous permissions in local db, does nothing.",
+      () async {
+        await service.updateIfNecessary(areAccepted: false);
+
+        final Map<String, dynamic>? actualPermission =
+            localDB.read(testPathLocalDB);
+        expect(actualPermission, null);
+      },
+    );
+    test(
+      "Given that permissions have not changed in local db, "
+      "does nothing and keeps on being only one permission in db.",
+      () async {
+        await localDB.write(testPathLocalDB, testAcceptedPermission.toJson());
+
+        await service.updateIfNecessary(areAccepted: true);
+
+        final Map<String, dynamic>? actualPermission =
+            localDB.read(testPathLocalDB);
+        expect(actualPermission, testAcceptedPermission.toJson());
+      },
+    );
+    test(
+      "Given that permissions have changed in local db, "
+      "save the new permission object to db.",
+      () async {
+        await localDB.write(testPathLocalDB, testAcceptedPermission.toJson());
+
+        await service.updateIfNecessary(areAccepted: false);
+
+        final Map<String, dynamic> actualPermission =
+            localDB.read(testPathLocalDB);
+
+        expect(actualPermission, isNot(testAcceptedPermission.toJson()));
+      },
+    );
+  });
 }
