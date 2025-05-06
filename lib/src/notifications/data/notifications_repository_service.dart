@@ -1,52 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/notifications/notification_repository.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/notifications/models/notification.dart'
     as notification_model;
-import 'package:mdigit_span_tasks_ema/src/notifications/models/notification.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/notifications_manager.dart';
+import 'package:mdigit_span_tasks_ema/src/core/notifications/models/notification.dart';
 
-class NotificationService extends GetxController {
+class NotificationsRepositoryService extends GetxController {
   final String _participantId;
-  final NotificationsManager _notificationManager;
   final NotificationRepository _notificationRepository;
 
-  /// Returns the token used to send remote notifications to user.
-  Future<String?> getToken() async => await _notificationManager.getToken();
-
-  bool get localNotificationsEnabled =>
-      _notificationManager.localNotificationsEnabled;
-  bool get remoteNotificationsEnabled =>
-      _notificationManager.remoteNotificationsEnabled;
-  RemoteMessage? get notificationWhileOnTerminated =>
-      _notificationManager.notificationWhileOnTerminated;
-
-  NotificationService({
+  NotificationsRepositoryService({
     required String participantId,
-    required NotificationsManager notificationManager,
     required NotificationRepository notificationRepository,
   })  : _participantId = participantId,
-        _notificationManager = notificationManager,
         _notificationRepository = notificationRepository;
 
-  NotificationService.init({required String participantId})
+  NotificationsRepositoryService.init({required String participantId})
       : _participantId = participantId,
-        _notificationManager = NotificationsManager(),
         _notificationRepository = NotificationRepository(
             remoteDataSource:
-                FirebaseDataSource(db: FirebaseFirestore.instance)) {
-    _notificationManager.handleData = save;
-  }
-
-  Future<void> setupNotifications() async {
-    await _notificationManager.setupNotifications();
-  }
-
-  Future<void> initNotifications() async {
-    await _notificationManager.initNotifications();
-  }
+                FirebaseDataSource(db: FirebaseFirestore.instance));
 
   /// Save notification to the remote db.
   Future<void> save({required Notification notification}) async {

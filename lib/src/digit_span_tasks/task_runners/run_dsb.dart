@@ -1,6 +1,7 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_service.dart';
 import '../config/config.dart';
 import 'rest_instructions.dart';
 import 'package:mdigit_span_tasks_ema/src/ui_components/loading_screen.dart';
@@ -90,6 +91,8 @@ Future<DigitSpanTaskData> runDigitSpanBackwards() async {
   await Get.to(() => Instructions(
       instructions: InstructionsText('¡Terminamos esta actividad!')));
 
-  Get.toNamed(config.nextScreen);
+  final NavigatorService navigatorService = Get.find();
+  final String nextScreen = await navigatorService.determineNextScreen();
+  Get.offAllNamed(nextScreen);
   return data;
 }

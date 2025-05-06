@@ -3,8 +3,9 @@ import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/models/notification.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/remote_notifications.dart';
+import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_service.dart';
+import 'package:mdigit_span_tasks_ema/src/core/notifications/models/notification.dart';
+import 'package:mdigit_span_tasks_ema/src/core/notifications/remote_notifications.dart';
 import 'package:uuid/uuid.dart';
 
 import 'local_notifications.dart';
@@ -45,10 +46,18 @@ class NotificationsManager extends GetxService {
 
   NotificationsManager({this.handleData});
 
-  bool get localNotificationsEnabled => _localNotifications.authorized ?? false;
-  bool get remoteNotificationsEnabled =>
-      _remoteNotifications.authorizationStatus ==
-      AuthorizationStatus.authorized;
+  /// Returns true if notifications are enabled on this device.
+  ///
+  /// On Android, it checks using both remote (FCM) and local
+  /// notifications (flutter_local_notifications).
+  Future<bool> areNotificationsEnabled() async {
+    final bool remoteEnabled = await _remoteNotifications.areEnabled();
+    if (!Platform.isAndroid) {
+      return remoteEnabled;
+    }
+    final bool localEnabled = await _localNotifications.areEnabled();
+    return remoteEnabled && localEnabled;
+  }
 
   RemoteMessage? get notificationWhileOnTerminated =>
       _remoteNotifications.initialMessage;
@@ -71,7 +80,7 @@ class NotificationsManager extends GetxService {
   }
 
   /// Handles notification taps
-  void onNotificationTap(dynamic message) {
+  Future<void> onNotificationTap(dynamic message) async {
     final DateTime timeTapped = DateTime.now();
     final Notification notification;
 
@@ -99,6 +108,8 @@ class NotificationsManager extends GetxService {
     if (handleData != null) {
       handleData!(notification: notification);
     }
-    Get.toNamed('/emaScreen');
+    final NavigatorService navigatorService = Get.find();
+    final String nextScreen = await navigatorService.determineNextScreen();
+    Get.offAndToNamed(nextScreen);
   }
 }

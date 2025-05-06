@@ -7,14 +7,17 @@ import 'package:research_package/research_package.dart';
 import 'intl/internationalization.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String _initialRoute;
+
+  const MyApp({super.key, required String initialRoute})
+      : _initialRoute = initialRoute;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'DigitSpanTasks',
-      initialRoute: '/',
+      initialRoute: _initialRoute,
       theme: ThemeData(primarySwatch: Colors.grey),
       getPages: routes,
       locale: locale,

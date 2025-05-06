@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_service.dart';
 import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/task_runners/run_dsb.dart';
 
 import '../digit_span_tasks/config/config.dart';
@@ -42,5 +43,7 @@ Future<void> runEMATasks() async {
     Get.deleteAll();
     await emaTask();
   }
-  Get.toNamed('/');
+  final NavigatorService navigatorService = Get.find();
+  final String nextScreen = await navigatorService.determineNextScreen();
+  Get.offAndToNamed(nextScreen);
 }

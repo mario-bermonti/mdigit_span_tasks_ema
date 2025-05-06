@@ -1,23 +1,19 @@
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/notifications_service.dart';
+import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_manager_service.dart';
 import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
 
-import '../auth/participant.dart';
+import '../../auth/participant.dart';
 
-class LandingController extends GetxController {
-  String nextScreen = '';
-  GetStorage storage = GetStorage();
+class NavigatorService extends GetxService {
+  bool notificationsPermissionAsked = false;
   final StudyProgressService studyProgressService = StudyProgressService.init();
   final Participant participant = Get.find();
-  RxBool isLoading = false.obs;
 
-  Future<void> determineNextScreen() async {
-    isLoading.value = true;
-    final NotificationService notificationService =
-        NotificationService.init(participantId: participant.id);
+  Future<String> determineNextScreen() async {
+    final NotificationsManagerService notificationsManagerService =
+        NotificationsManagerService.init(participantId: participant.id);
 
     final StudyProgressStep? consentStep = await studyProgressService.get(
       participantId: participant.id,
@@ -33,14 +29,19 @@ class LandingController extends GetxController {
         demographicsSurveyStep?.status == Status.completed;
 
     if (!consentCompleted) {
-      nextScreen = 'consent';
-    } else if (notificationService.notificationWhileOnTerminated != null) {
-      nextScreen = 'emaScreen';
+      return 'consent';
+    } else if (await notificationsManagerService.areNotificationsEnabled() ==
+            false &&
+        notificationsPermissionAsked == false) {
+      notificationsPermissionAsked = true;
+      return 'notificationsPermission';
+    } else if (notificationsManagerService.notificationWhileOnTerminated !=
+        null) {
+      return 'emaScreen';
     } else if (!demographicsSurveyCompleted) {
-      nextScreen = 'demographicsSurvey';
+      return 'demographicsSurvey';
     } else {
-      nextScreen = 'tasklist';
+      return 'tasklist';
     }
-    isLoading.value = false;
   }
 }

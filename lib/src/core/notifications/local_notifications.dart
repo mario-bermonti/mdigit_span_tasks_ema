@@ -8,7 +8,25 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 class LocalNotifications {
   final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
-  bool? authorized;
+
+  Future<bool> areEnabled() async {
+    if (!Platform.isAndroid) {
+      throw Exception(
+          "Not supported. Local notifications are only implemented for Android.");
+    }
+    final bool? authorized = await _notifications
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.areNotificationsEnabled();
+    if (authorized == null) {
+      throw Exception(
+          'Error checking local notifications on Android. Make sure '
+          '`flutter_local_notifications` plugin has been configured correctly. '
+          'Also setup and init `LocalNotifications` by calling the '
+          'appropriate methods.');
+    }
+    return authorized;
+  }
 
   Future<void> init({
     required void Function(NotificationResponse response)
@@ -24,11 +42,6 @@ class LocalNotifications {
       initializationSettings,
       onDidReceiveNotificationResponse: onLocalNotificationTap,
     );
-    authorized = await _notifications
-            .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin>()
-            ?.areNotificationsEnabled() ??
-        false;
   }
 
   /// Asks the user during runtime for permission to send notifications.
