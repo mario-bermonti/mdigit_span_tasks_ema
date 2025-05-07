@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mdigits/src/app_bar/app_bar.dart';
-import 'task_buttons.dart';
+import 'package:mdigits/src/task_list/view/widgets/task_tile.dart';
+import '../task_buttons.dart';
 
 class TaskListPage extends StatelessWidget {
   const TaskListPage({super.key});
@@ -13,13 +14,13 @@ class TaskListPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: const <Widget>[
-            ListTile(
-              title: Text("Memoria de números"),
-              subtitle: Text("Recuerda los números en orden."),
+            TaskTile(
+              title: "Memoria de números",
+              subtitle: "Recuerda los números en orden.",
             ),
-            ListTile(
-              title: Text("Memoria de números inversos"),
-              subtitle: Text("Recuerda los números de atrás hacia adelante."),
+            TaskTile(
+              title: "Memoria de números inversos",
+              subtitle: "Recuerda los números de atrás hacia adelante.",
             ),
           ],
         ),
