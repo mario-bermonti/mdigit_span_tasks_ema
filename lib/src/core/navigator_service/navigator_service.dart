@@ -8,6 +8,7 @@ import '../../auth/participant.dart';
 
 class NavigatorService extends GetxService {
   bool notificationsPermissionAsked = false;
+  bool demographicsSurveyAsked = false;
   final StudyProgressService studyProgressService = StudyProgressService.init();
   final Participant participant = Get.find();
 
@@ -38,7 +39,9 @@ class NavigatorService extends GetxService {
     } else if (notificationsManagerService.notificationWhileOnTerminated !=
         null) {
       return 'emaScreen';
-    } else if (!demographicsSurveyCompleted) {
+    } else if (!demographicsSurveyCompleted &&
+        demographicsSurveyAsked == false) {
+      demographicsSurveyAsked = true;
       return 'demographicsSurvey';
     } else {
       return 'tasklist';
