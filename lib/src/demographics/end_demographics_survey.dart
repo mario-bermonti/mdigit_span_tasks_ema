@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
-import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_service.dart';
+import 'package:mdigit_span_tasks_ema/src/demographics/close_demographics_screen.dart';
 import 'package:mdigit_span_tasks_ema/src/demographics/process_demographics_data.dart';
 import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
 import 'package:research_package/research_package.dart';
@@ -25,7 +25,5 @@ Future<void> endDemographicsSurvey(RPTaskResult results) async {
   final StudyProgressService studyProgressService = StudyProgressService.init();
   await studyProgressService.save(progressStep: progressStep);
 
-  final NavigatorService navigatorService = Get.find();
-  final String nextScreen = await navigatorService.determineNextScreen();
-  Get.offAndToNamed(nextScreen);
+  await closeDemographicsScreen();
 }

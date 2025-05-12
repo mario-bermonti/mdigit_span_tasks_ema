@@ -10,8 +10,13 @@ class DemographicsSurvey extends StatelessWidget {
   final DemographicsSurveyController controller =
       Get.put(DemographicsSurveyController());
   final Function onSubmit;
+  final Function onCancel;
 
-  DemographicsSurvey({super.key, required this.onSubmit});
+  DemographicsSurvey({
+    super.key,
+    required this.onSubmit,
+    required this.onCancel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +33,7 @@ class DemographicsSurvey extends StatelessWidget {
         return RPUITask(
           task: survey,
           onSubmit: (RPTaskResult results) async => await onSubmit(results),
+          onCancel: (RPTaskResult? results) async => await onCancel(),
         );
       }
     });

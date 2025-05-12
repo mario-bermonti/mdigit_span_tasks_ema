@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mdigit_span_tasks_ema/src/demographics/close_demographics_screen.dart';
 import 'package:mdigit_span_tasks_ema/src/demographics/end_demographics_survey.dart';
 import 'package:mdigit_span_tasks_ema/src/ema/ema_screen.dart';
 import 'package:mdigit_span_tasks_ema/src/informed_consent/consent_screen.dart';
@@ -15,6 +16,7 @@ final List<GetPage> routes = <GetPage>[
       name: '/demographicsSurvey',
       page: () => DemographicsSurvey(
             onSubmit: endDemographicsSurvey,
+            onCancel: closeDemographicsScreen,
           )),
   GetPage(name: '/emaScreen', page: () => const EMAScreen()),
   GetPage(name: '/loading', page: () => const LoadingScreen()),
