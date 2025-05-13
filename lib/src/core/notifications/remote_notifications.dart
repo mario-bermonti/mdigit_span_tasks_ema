@@ -44,8 +44,6 @@ class RemoteNotifications {
         onForegroundNotification,
     required Function(dynamic message) onNotificationTap,
   }) async {
-    print('token: ${await getToken()}');
-
     /// ios specific
     await remoteNotifications.setForegroundNotificationPresentationOptions(
       alert: true,

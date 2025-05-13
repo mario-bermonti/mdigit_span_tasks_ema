@@ -30,7 +30,7 @@ class Instructions extends StatelessWidget {
 
 class InstructionsText extends StatelessWidget {
   final String text;
-  InstructionsText(this.text, {super.key});
+  const InstructionsText(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {

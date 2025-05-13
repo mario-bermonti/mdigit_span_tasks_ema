@@ -166,6 +166,5 @@ void main() {
         expect(actualSurveyItem, null);
       },
     );
-    ;
   });
 }
