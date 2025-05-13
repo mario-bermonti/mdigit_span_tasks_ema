@@ -1,0 +1,31 @@
+name: Linting
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/dependencies
+          key: ${{ runner.os }}-dependencies-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-dependencies-
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2.19.0
+        with:
+          channel: stable
+          flutter-version: 3.19.4
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run analyzer (lint)
+        run: flutter analyze
