@@ -37,7 +37,7 @@ Future<void> runEMATasks() async {
   config.nextScreen = '/loading';
   emaTasks.shuffle();
   for (Function emaTask in emaTasks) {
-    // TODO: Find a better solution. See issue #99.
+    /// Find a better solution. See issue #99.
     /// This temporary solution allows starting a cognitive task if a cognitive
     /// task is already running, but has serious side effects.
     Get.deleteAll();

@@ -12,14 +12,14 @@ Future<DigitSpanTaskData> runDigitSpanForward() async {
   final DigitSpanTaskConfig config = Get.find();
   Get.to(() => const LoadingScreen());
   await Get.to(
-    () => Instructions(
+    () => const Instructions(
       instructions:
           InstructionsText('Recuerda los números en el orden en que los veas'),
     ),
   );
   await Get.to(
     () =>
-        Instructions(instructions: InstructionsText('Comencemos practicando')),
+        const Instructions(instructions: InstructionsText('Comencemos practicando')),
   );
   DigitSpanTask task;
   final UserConfig userConfigPractice = UserConfig(
@@ -38,12 +38,12 @@ Future<DigitSpanTaskData> runDigitSpanForward() async {
   DigitSpanTaskData practiceData = await task.run();
 
   await Get.to(
-    () => Instructions(
+    () => const Instructions(
         instructions: InstructionsText(
             'Ahora trabajaremos con los ejercicios principales')),
   );
   await Get.to(
-    () => Instructions(
+    () => const Instructions(
         instructions: InstructionsText(
             'Recuerda escribir los números en el orden en que los veas')),
   );
@@ -68,7 +68,7 @@ Future<DigitSpanTaskData> runDigitSpanForward() async {
     experimentalData: experimentalData,
   );
 
-  await Get.to(() => Instructions(
+  await Get.to(() => const Instructions(
       instructions: InstructionsText('¡Terminamos esta actividad!')));
 
   final NavigatorService navigatorService = Get.find();

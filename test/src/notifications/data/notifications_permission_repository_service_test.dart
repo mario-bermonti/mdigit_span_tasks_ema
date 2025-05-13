@@ -169,7 +169,6 @@ void main() {
             await remoteDB.collection(testPathRemoteDB).get();
 
         expect(snapshot.docs.length, 1);
-        ;
       },
     );
     test(

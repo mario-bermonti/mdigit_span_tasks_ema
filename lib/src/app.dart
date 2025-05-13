@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:mdigit_span_tasks_ema/src/routes.dart';
-import 'package:research_package/research_package.dart';
 
 import 'intl/internationalization.dart';
 
