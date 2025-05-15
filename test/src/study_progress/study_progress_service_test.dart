@@ -7,7 +7,9 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasourc
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/progress_repository.dart';
 import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
+import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 
+import '../core/ema_db/fake_path_provider.dart';
 import 'study_progress_test_cases.dart';
 
 void main() {
@@ -20,6 +22,7 @@ void main() {
   setUp(
     () {
       TestWidgetsFlutterBinding.ensureInitialized();
+      PathProviderPlatform.instance = FakePathProviderPlatform();
       remoteDB = FakeFirebaseFirestore();
       remoteDataSource = FirebaseDataSource(db: remoteDB);
       localDB = GetStorage();
