@@ -18,7 +18,7 @@ class EMAScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             EMAInstructions(),
-            const SizedBox(height: 60),
+            SizedBox(height: 60),
             EMAButton(),
           ],
         ),
