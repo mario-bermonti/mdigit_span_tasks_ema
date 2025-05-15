@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mdigits/src/app_bar/app_bar.dart';
 import 'package:mdigits/src/task_list/view/widgets/task_tile.dart';
+import 'package:mdigits/src/task_list/viewmodels/task_list_viewmodel.dart';
 import '../task_buttons.dart';
 
 class TaskListPage extends StatelessWidget {
-  const TaskListPage({super.key});
+  final TaskListViewModel taskListViewModel = TaskListViewModel();
+
+  TaskListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +16,14 @@ class TaskListPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
-          children: const <Widget>[
+          children: <Widget>[
             TaskTile(
-              title: "Memoria de números",
-              subtitle: "Recuerda los números en orden.",
+              title: taskListViewModel.taskTileModels[0].title,
+              subtitle: taskListViewModel.taskTileModels[0].subtitle,
             ),
             TaskTile(
-              title: "Memoria de números inversos",
-              subtitle: "Recuerda los números de atrás hacia adelante.",
+              title: taskListViewModel.taskTileModels[1].title,
+              subtitle: taskListViewModel.taskTileModels[1].subtitle,
             ),
           ],
         ),
