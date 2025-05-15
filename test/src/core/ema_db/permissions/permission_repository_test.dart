@@ -24,12 +24,13 @@ void main() {
   late FirebaseFirestore remoteDB;
   late GetStorage localDB;
 
-  setUp(() {
+  setUp(() async {
     TestWidgetsFlutterBinding.ensureInitialized();
     PathProviderPlatform.instance = FakePathProviderPlatform();
     remoteDB = FakeFirebaseFirestore();
     FirebaseDataSource firebaseDataSource = FirebaseDataSource(db: remoteDB);
 
+    await GetStorage.init();
     localDB = GetStorage();
     GetxDataSource getXDataSource = GetxDataSource(db: localDB);
 

@@ -18,10 +18,11 @@ void main() {
   late ParticipantRepository repository;
 
   setUp(
-    () {
+    () async {
       TestWidgetsFlutterBinding.ensureInitialized();
       PathProviderPlatform.instance = FakePathProviderPlatform();
       firebaseDataSource = FirebaseDataSource(db: FakeFirebaseFirestore());
+      await GetStorage.init();
       getStorage = GetStorage();
       getxDataSource = GetxDataSource(db: getStorage);
 

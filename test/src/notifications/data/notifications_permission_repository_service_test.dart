@@ -17,10 +17,11 @@ void main() {
   late GetStorage localDB;
   late NotificationsPermissionRepositoryService service;
 
-  setUp(() {
+  setUp(() async {
     TestWidgetsFlutterBinding.ensureInitialized();
     PathProviderPlatform.instance = FakePathProviderPlatform();
     remoteDB = FakeFirebaseFirestore();
+    await GetStorage.init();
     localDB = GetStorage();
     final PermissionRepository permissionRepository = PermissionRepository(
       remoteDataSource: FirebaseDataSource(db: remoteDB),
