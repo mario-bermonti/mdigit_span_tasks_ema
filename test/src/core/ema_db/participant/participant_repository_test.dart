@@ -6,8 +6,10 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datas
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/participant_repository.dart';
+import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 
 import '../../../ema_db/test_data/participant.dart';
+import '../fake_path_provider.dart';
 
 void main() {
   late FirebaseDataSource firebaseDataSource;
@@ -16,9 +18,11 @@ void main() {
   late ParticipantRepository repository;
 
   setUp(
-    () {
+    () async {
       TestWidgetsFlutterBinding.ensureInitialized();
+      PathProviderPlatform.instance = FakePathProviderPlatform();
       firebaseDataSource = FirebaseDataSource(db: FakeFirebaseFirestore());
+      await GetStorage.init();
       getStorage = GetStorage();
       getxDataSource = GetxDataSource(db: getStorage);
 

@@ -7,7 +7,9 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasourc
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/permissions/models/permission.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/permissions/permission_repository.dart';
 import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_permission_repository_service.dart';
+import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 
+import '../../core/ema_db/fake_path_provider.dart';
 import 'notifications_permission_repo_test_cases.dart';
 
 void main() {
@@ -15,9 +17,11 @@ void main() {
   late GetStorage localDB;
   late NotificationsPermissionRepositoryService service;
 
-  setUp(() {
+  setUp(() async {
     TestWidgetsFlutterBinding.ensureInitialized();
+    PathProviderPlatform.instance = FakePathProviderPlatform();
     remoteDB = FakeFirebaseFirestore();
+    await GetStorage.init();
     localDB = GetStorage();
     final PermissionRepository permissionRepository = PermissionRepository(
       remoteDataSource: FirebaseDataSource(db: remoteDB),

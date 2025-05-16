@@ -7,7 +7,9 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasourc
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/remote_datasource.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/permissions/models/permission.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/permissions/permission_repository.dart';
+import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 
+import '../fake_path_provider.dart';
 import 'test_cases.dart';
 
 class MockRemoteDataSource extends Fake implements RemoteDataSource {
@@ -22,11 +24,13 @@ void main() {
   late FirebaseFirestore remoteDB;
   late GetStorage localDB;
 
-  setUp(() {
+  setUp(() async {
     TestWidgetsFlutterBinding.ensureInitialized();
+    PathProviderPlatform.instance = FakePathProviderPlatform();
     remoteDB = FakeFirebaseFirestore();
     FirebaseDataSource firebaseDataSource = FirebaseDataSource(db: remoteDB);
 
+    await GetStorage.init();
     localDB = GetStorage();
     GetxDataSource getXDataSource = GetxDataSource(db: localDB);
 

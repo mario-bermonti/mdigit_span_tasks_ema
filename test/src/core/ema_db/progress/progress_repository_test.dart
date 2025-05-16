@@ -8,8 +8,10 @@ import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/remote_datasou
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/models/ema_model.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/progress_repository.dart';
+import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 
 import '../../../ema_db/test_data/progress.dart';
+import '../fake_path_provider.dart';
 
 class MockRemoteDataSource extends Fake implements RemoteDataSource {
   @override
@@ -31,9 +33,11 @@ void main() {
   late StudyProgressRepository repository;
 
   setUp(
-    () {
+    () async {
       TestWidgetsFlutterBinding.ensureInitialized();
+      PathProviderPlatform.instance = FakePathProviderPlatform();
       firebaseDataSource = FirebaseDataSource(db: FakeFirebaseFirestore());
+      await GetStorage.init();
       getStorage = GetStorage();
       getxDataSource = GetxDataSource(db: getStorage);
 
