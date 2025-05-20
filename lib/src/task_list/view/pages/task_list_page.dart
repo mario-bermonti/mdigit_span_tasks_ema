@@ -15,17 +15,13 @@ class TaskListPage extends StatelessWidget {
       appBar: const CustomAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: <Widget>[
-            TaskTile(
-              title: taskListViewModel.taskTileModels[0].title,
-              subtitle: taskListViewModel.taskTileModels[0].subtitle,
-            ),
-            TaskTile(
-              title: taskListViewModel.taskTileModels[1].title,
-              subtitle: taskListViewModel.taskTileModels[1].subtitle,
-            ),
-          ],
+        child: ListView.builder(
+          itemCount: taskListViewModel.taskTileModels.length,
+          itemBuilder: (context, index) {
+            return TaskTile(
+              taskTileModel: taskListViewModel.taskTileModels[index],
+            );
+          },
         ),
       ),
       backgroundColor: Colors.grey[300],

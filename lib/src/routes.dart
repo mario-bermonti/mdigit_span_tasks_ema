@@ -10,7 +10,7 @@ import 'package:mdigits/src/ui_components/loading_screen.dart';
 import 'surveys/demographics_survey.dart';
 
 final List<GetPage> routes = <GetPage>[
-  GetPage(name: '/tasklist', page: () => const TaskListPage()),
+  GetPage(name: '/tasklist', page: () => TaskListPage()),
   GetPage(name: '/consent', page: () => ConsentScreen()),
   GetPage(
       name: '/demographicsSurvey',
