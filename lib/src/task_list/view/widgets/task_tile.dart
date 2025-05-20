@@ -11,9 +11,14 @@ class TaskTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(taskTileModel.title),
-      subtitle: Text(taskTileModel.subtitle),
+    return GestureDetector(
+      onTap: () async {
+        await taskTileModel.onTap();
+      },
+      child: ListTile(
+        title: Text(taskTileModel.title),
+        subtitle: Text(taskTileModel.subtitle),
+      ),
     );
   }
 }
