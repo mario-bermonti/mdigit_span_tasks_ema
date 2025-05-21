@@ -23,7 +23,29 @@ jobs:
           channel: stable
           flutter-version: 3.19.4
           cache: true
-      - run: flutter doctor --verbose
-      - run: flutter pub get
-      - run: flutter build apk
-      - run: flutter build appbundle
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Install Android SDK components
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
+
+      - name: Accept Android licenses
+        run: yes | flutter doctor --android-licenses
+
+      - name: Flutter doctor
+        run: flutter doctor --verbose
+
+      - name: Get Flutter dependencies
+        run: flutter pub get
+
+      - name: Build Android APK
+        run: flutter build apk --release
+
+      - name: Build Android app bundle
+        run: flutter build appbundle
