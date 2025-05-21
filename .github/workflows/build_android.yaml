@@ -23,6 +23,7 @@ jobs:
           channel: stable
           flutter-version: 3.19.4
           cache: true
+      - run: flutter doctor --verbose
       - run: flutter pub get
       - run: flutter build apk
       - run: flutter build appbundle
