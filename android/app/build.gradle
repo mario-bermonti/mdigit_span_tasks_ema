@@ -36,6 +36,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
+    namespace "io.mbermonti.mdigits"
     compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 

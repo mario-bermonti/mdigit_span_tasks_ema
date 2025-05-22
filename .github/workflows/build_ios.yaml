@@ -1,0 +1,30 @@
+name: Build iOS app
+
+on: [pull_request]
+
+jobs:
+  main:
+    runs-on: macos-14
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/dependencies
+          key: ${{ runner.os }}-dependencies-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-dependencies-
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2.19.0
+        with:
+          channel: stable
+          flutter-version: 3.19.4
+          cache: true
+      - run: flutter doctor --verbose
+      - run: flutter pub get
+      - run: flutter build ios --debug --no-codesign
