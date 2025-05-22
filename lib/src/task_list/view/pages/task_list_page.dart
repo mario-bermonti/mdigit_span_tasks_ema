@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mdigits/src/app_bar/app_bar.dart';
 import 'package:mdigits/src/task_list/view/widgets/task_tile.dart';
 import 'package:mdigits/src/task_list/viewmodels/task_list_viewmodel.dart';
-import '../task_buttons.dart';
 
 class TaskListPage extends StatelessWidget {
   final TaskListViewModel taskListViewModel = TaskListViewModel();
