@@ -1,11 +1,14 @@
 import 'package:pedometer/pedometer.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+/// Pedometer service that provides step count data in real time.
 class PedometerService {
   late Stream<StepCount> _stepCountStream;
 
+  /// Streams the step count data in real time.
   Stream<StepCount> get stepCountStream => _stepCountStream;
 
+  /// Asks permission and initializes the pedometer service.
   Future<void> init() async {
     await _askPermission();
     _stepCountStream = Pedometer.stepCountStream;
@@ -26,6 +29,8 @@ class PedometerService {
     print(stackTrace);
   }
 
+  /// Asks the user for permission to access activity recognition, if it
+  /// has not been granted.
   Future<void> _askPermission() async {
     final bool granted =
         await Permission.activityRecognition.request().isGranted;
@@ -34,6 +39,7 @@ class PedometerService {
     }
   }
 
+  /// Handles the step count events.
   void onStepCount(StepCount event) {
     print("Steps: $event");
   }
