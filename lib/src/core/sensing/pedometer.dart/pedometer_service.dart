@@ -13,10 +13,17 @@ class PedometerService {
       (event) {
         onStepCount(event);
       },
-      onDone: () {
-        print("Error collecting step count data");
+      onError: (object, stackTrace) {
+        onError(object, stackTrace);
       },
     );
+  }
+
+  /// Handles errors that occur while collecting step count data.
+  void onError(object, stackTrace) {
+    print("Error collecting step count data");
+    print(object);
+    print(stackTrace);
   }
 
   Future<void> _askPermission() async {
