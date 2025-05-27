@@ -35,7 +35,8 @@ class PedometerService {
     final bool granted =
         await Permission.activityRecognition.request().isGranted;
     if (!granted) {
-      throw Exception("Activity recognition permission not granted");
+      // throw Exception("Activity recognition permission not granted");
+      print("Error requesting activity recognition permission");
     }
   }
 
