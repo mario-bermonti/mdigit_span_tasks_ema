@@ -8,6 +8,7 @@ import 'package:mdigits/src/core/navigator_service/navigator_service.dart';
 import 'package:mdigits/src/core/participant/app_service.dart';
 import 'package:mdigits/src/core/participant/location_services.dart';
 import 'package:mdigits/src/core/participant/participant_service.dart';
+import 'package:mdigits/src/core/sensing/step_counter/step_counter_service.dart';
 import 'package:mdigits/src/device/device_service.dart';
 import 'package:mdigits/src/notifications/data/notifications_manager_service.dart';
 import 'package:mdigits/src/notifications/data/notifications_permission_repository_service.dart';
@@ -103,6 +104,12 @@ class ConsentController extends GetxController {
     final DeviceService deviceService =
         DeviceService.init(participantId: participant.id);
     deviceService.saveData();
+
+    /// Step counter service
+    await Get.putAsync<StepCounterService>(() async {
+      final StepCounterService stepCounter = await StepCounterService.init();
+      return stepCounter;
+    }, permanent: true);
   }
 
   Future<void> nextScreen() async {

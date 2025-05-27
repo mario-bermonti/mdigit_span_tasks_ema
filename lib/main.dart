@@ -10,6 +10,7 @@ import 'package:mdigits/src/core/ema_db/participant/models/participant.dart'
 import 'package:mdigits/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigits/src/core/ema_db/progress/models/status.dart';
 import 'package:mdigits/src/core/navigator_service/navigator_service.dart';
+import 'package:mdigits/src/core/sensing/step_counter/step_counter_service.dart';
 import 'package:mdigits/src/digit_span_tasks/config/config.dart';
 import 'package:mdigits/src/core/participant/participant_service.dart';
 import 'package:mdigits/src/notifications/data/notifications_manager_service.dart';
@@ -55,6 +56,10 @@ Future<void> main() async {
 
       participantService.save(participant: emaParticipant);
     }
+    await Get.putAsync<StepCounterService>(() async {
+      final StepCounterService stepCounter = await StepCounterService.init();
+      return stepCounter;
+    }, permanent: true);
   }
 
   /// Update notifications permission to db if it has changed
