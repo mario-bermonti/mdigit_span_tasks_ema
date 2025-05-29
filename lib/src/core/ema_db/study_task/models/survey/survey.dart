@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/metadata/metadata.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/study_task.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/survey/survey_item.dart';
+import 'package:mdigits/src/core/ema_db/study_task/models/metadata/metadata.dart';
+import 'package:mdigits/src/core/ema_db/study_task/models/study_task.dart';
+import 'package:mdigits/src/core/ema_db/study_task/models/survey/survey_item.dart';
 
 part 'survey.freezed.dart';
 part 'survey.g.dart';

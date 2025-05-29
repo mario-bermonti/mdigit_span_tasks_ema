@@ -1,4 +1,4 @@
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/models/ema_model.dart';
+import 'package:mdigits/src/core/ema_db/models/ema_model.dart';
 
 /// Declares the contract that all remote data sources must implement.
 abstract class RemoteDataSource {
