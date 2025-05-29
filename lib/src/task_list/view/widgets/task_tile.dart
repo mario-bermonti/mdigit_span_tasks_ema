@@ -11,13 +11,29 @@ class TaskTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () async {
-        await taskTileModel.onTap();
-      },
-      child: ListTile(
-        title: Text(taskTileModel.title),
-        subtitle: Text(taskTileModel.subtitle),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+      child: Material(
+        elevation: 2,
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(12),
+          onTap: () async {
+            await taskTileModel.onTap();
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: ListTile(
+              title: Text(
+                taskTileModel.title,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(taskTileModel.subtitle),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+        ),
       ),
     );
   }
