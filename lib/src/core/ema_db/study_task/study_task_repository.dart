@@ -1,6 +1,6 @@
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/remote_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/study_task/models/study_task.dart';
+import 'package:mdigits/src/core/ema_db/datasources/firebase_datasource.dart';
+import 'package:mdigits/src/core/ema_db/datasources/remote_datasource.dart';
+import 'package:mdigits/src/core/ema_db/study_task/models/study_task.dart';
 
 /// Provides a simple interface for managing [StudyTask] data.
 class StudyTaskRepository {

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasource.dart';
+import 'package:mdigits/src/core/ema_db/datasources/getx_datasource.dart';
 import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 
 import '../../../ema_db/test_data/local_datasource.dart';

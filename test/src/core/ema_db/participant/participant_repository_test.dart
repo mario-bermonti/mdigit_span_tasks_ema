@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/participant_repository.dart';
+import 'package:mdigits/src/core/ema_db/datasources/firebase_datasource.dart';
+import 'package:mdigits/src/core/ema_db/datasources/getx_datasource.dart';
+import 'package:mdigits/src/core/ema_db/participant/models/participant.dart';
+import 'package:mdigits/src/core/ema_db/participant/participant_repository.dart';
 import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 
 import '../../../ema_db/test_data/participant.dart';

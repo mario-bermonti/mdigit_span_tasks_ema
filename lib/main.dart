@@ -1,20 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/app.dart';
+import 'package:mdigits/src/app.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mdigit_span_tasks_ema/src/auth/auth.dart';
-import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart'
+import 'package:mdigits/src/auth/auth.dart';
+import 'package:mdigits/src/auth/participant.dart';
+import 'package:mdigits/src/core/ema_db/participant/models/participant.dart'
     as ema_participant;
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
-import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_service.dart';
-import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/config.dart';
-import 'package:mdigit_span_tasks_ema/src/core/participant/participant_service.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_manager_service.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_permission_repository_service.dart';
-import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
+import 'package:mdigits/src/core/ema_db/progress/models/study_progress_step.dart';
+import 'package:mdigits/src/core/ema_db/progress/models/status.dart';
+import 'package:mdigits/src/core/navigator_service/navigator_service.dart';
+import 'package:mdigits/src/digit_span_tasks/config/config.dart';
+import 'package:mdigits/src/core/participant/participant_service.dart';
+import 'package:mdigits/src/notifications/data/notifications_manager_service.dart';
+import 'package:mdigits/src/notifications/data/notifications_permission_repository_service.dart';
+import 'package:mdigits/src/study_progress/study_progress_service.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {

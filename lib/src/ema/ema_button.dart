@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mdigit_span_tasks_ema/src/ema/run_ema_tasks.dart';
+import 'package:mdigits/src/ema/run_ema_tasks.dart';
 
 class EMAButton extends StatelessWidget {
   const EMAButton({

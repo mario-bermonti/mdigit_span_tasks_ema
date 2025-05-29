@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/models/ema_model.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/permissions/models/status.dart';
+import 'package:mdigits/src/core/ema_db/models/ema_model.dart';
+import 'package:mdigits/src/core/ema_db/permissions/models/status.dart';
 
 part 'permission.freezed.dart';
 part 'permission.g.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mdigit_span_tasks_ema/src/intl/internationalization.dart';
+import 'package:mdigits/src/intl/internationalization.dart';
 
 void main() {
   group('resolveLocale', () {

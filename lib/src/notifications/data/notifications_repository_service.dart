@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/notifications/notification_repository.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/notifications/models/notification.dart'
+import 'package:mdigits/src/core/ema_db/datasources/firebase_datasource.dart';
+import 'package:mdigits/src/core/ema_db/notifications/notification_repository.dart';
+import 'package:mdigits/src/core/ema_db/notifications/models/notification.dart'
     as notification_model;
-import 'package:mdigit_span_tasks_ema/src/core/notifications/models/notification.dart';
+import 'package:mdigits/src/core/notifications/models/notification.dart';
 
 class NotificationsRepositoryService extends GetxController {
   final String _participantId;

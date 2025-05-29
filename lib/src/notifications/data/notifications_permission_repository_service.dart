@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/getx_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/permissions/models/permission.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/permissions/models/status.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/permissions/permission_repository.dart';
+import 'package:mdigits/src/core/ema_db/datasources/firebase_datasource.dart';
+import 'package:mdigits/src/core/ema_db/datasources/getx_datasource.dart';
+import 'package:mdigits/src/core/ema_db/permissions/models/permission.dart';
+import 'package:mdigits/src/core/ema_db/permissions/models/status.dart';
+import 'package:mdigits/src/core/ema_db/permissions/permission_repository.dart';
 
 /// Service that handles the permissions metadata.
 ///

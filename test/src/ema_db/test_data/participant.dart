@@ -1,4 +1,4 @@
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart';
+import 'package:mdigits/src/core/ema_db/participant/models/participant.dart';
 
 const testParticipant = Participant(
   id: '101',
