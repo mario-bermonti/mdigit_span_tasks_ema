@@ -1,4 +1,4 @@
-package com.example.mdigit_span_tasks_ema
+package io.mbermonti.mdigits
 
 import io.flutter.embedding.android.FlutterActivity
 

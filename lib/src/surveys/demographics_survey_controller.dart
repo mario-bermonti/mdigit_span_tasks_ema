@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/dob_question.dart';
+import 'package:mdigits/src/dob_question.dart';
 import 'package:research_package/research_package.dart';
 
 import 'demographics_instructions.dart';

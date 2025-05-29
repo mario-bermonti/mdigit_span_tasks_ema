@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:mdigit_span_tasks_ema/src/core/device_metadata/device_os.dart';
+import 'package:mdigits/src/core/device_metadata/device_os.dart';
 
 /// Returns the device's OS.
 ///

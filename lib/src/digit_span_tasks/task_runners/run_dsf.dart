@@ -1,8 +1,8 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_service.dart';
+import 'package:mdigits/src/core/navigator_service/navigator_service.dart';
 import '../config/config.dart';
-import 'package:mdigit_span_tasks_ema/src/ui_components/instructions.dart';
+import 'package:mdigits/src/ui_components/instructions.dart';
 import '../../ui_components/loading_screen.dart';
 import '../prep_data.dart';
 import 'rest_instructions.dart';
@@ -18,8 +18,8 @@ Future<DigitSpanTaskData> runDigitSpanForward() async {
     ),
   );
   await Get.to(
-    () =>
-        const Instructions(instructions: InstructionsText('Comencemos practicando')),
+    () => const Instructions(
+        instructions: InstructionsText('Comencemos practicando')),
   );
   DigitSpanTask task;
   final UserConfig userConfigPractice = UserConfig(

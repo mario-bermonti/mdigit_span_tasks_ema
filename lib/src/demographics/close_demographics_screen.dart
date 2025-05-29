@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_service.dart';
+import 'package:mdigits/src/core/navigator_service/navigator_service.dart';
 
 Future<void> closeDemographicsScreen() async {
   final NavigatorService navigatorService = Get.find();

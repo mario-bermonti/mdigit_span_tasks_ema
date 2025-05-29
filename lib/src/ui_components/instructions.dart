@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/ui_components/screen.dart';
+import 'package:mdigits/src/ui_components/screen.dart';
 
 class Instructions extends StatelessWidget {
   final Widget instructions;

@@ -1,9 +1,9 @@
 import 'package:digit_span_tasks/digit_span_tasks.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
-import 'package:mdigit_span_tasks_ema/src/data_manager/session_id_creator.dart';
-import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/config.dart';
-import 'package:mdigit_span_tasks_ema/src/services/data_processor.dart';
+import 'package:mdigits/src/auth/participant.dart';
+import 'package:mdigits/src/data_manager/session_id_creator.dart';
+import 'package:mdigits/src/digit_span_tasks/config/config.dart';
+import 'package:mdigits/src/services/data_processor.dart';
 
 /// Run a data collection session
 /// Running a session includes configuring everything needed and running a

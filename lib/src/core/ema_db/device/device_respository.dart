@@ -1,5 +1,5 @@
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/remote_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/device/models/device.dart';
+import 'package:mdigits/src/core/ema_db/datasources/remote_datasource.dart';
+import 'package:mdigits/src/core/ema_db/device/models/device.dart';
 
 /// Provides a simple interface for managing [Device] metadata.
 class DeviceRepository {

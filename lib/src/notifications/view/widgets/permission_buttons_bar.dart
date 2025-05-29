@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/view/widgets/permission_button.dart';
+import 'package:mdigits/src/notifications/view/widgets/permission_button.dart';
 
 class PermissionButtonsBar extends StatelessWidget {
   final void Function() _onDecline;

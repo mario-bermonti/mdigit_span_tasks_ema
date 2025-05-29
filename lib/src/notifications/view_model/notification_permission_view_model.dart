@@ -1,11 +1,11 @@
 import 'package:app_settings/app_settings.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
-import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_service.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_manager_service.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_permission_repository_service.dart';
-import 'package:mdigit_span_tasks_ema/src/study_progress/study_progress_service.dart';
+import 'package:mdigits/src/core/ema_db/progress/models/status.dart';
+import 'package:mdigits/src/core/ema_db/progress/models/study_progress_step.dart';
+import 'package:mdigits/src/core/navigator_service/navigator_service.dart';
+import 'package:mdigits/src/notifications/data/notifications_manager_service.dart';
+import 'package:mdigits/src/notifications/data/notifications_permission_repository_service.dart';
+import 'package:mdigits/src/study_progress/study_progress_service.dart';
 
 class NotificationPermissionViewModel extends GetxController {
   final String _participantId;

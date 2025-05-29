@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mdigit_span_tasks_ema/src/core/device_metadata/device_metadata.dart';
-import 'package:mdigit_span_tasks_ema/src/core/device_metadata/device_os.dart';
+import 'package:mdigits/src/core/device_metadata/device_metadata.dart';
+import 'package:mdigits/src/core/device_metadata/device_os.dart';
 
 import 'test_cases.dart';
 

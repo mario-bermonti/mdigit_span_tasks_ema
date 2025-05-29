@@ -1,4 +1,4 @@
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/device/models/device.dart';
+import 'package:mdigits/src/core/ema_db/device/models/device.dart';
 
 const Device testDevice = Device(
   participantId: 'testParticipant',

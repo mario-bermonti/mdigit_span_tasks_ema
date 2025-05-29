@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/firebase_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/device/device_respository.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/device/models/device.dart';
+import 'package:mdigits/src/core/ema_db/datasources/firebase_datasource.dart';
+import 'package:mdigits/src/core/ema_db/device/device_respository.dart';
+import 'package:mdigits/src/core/ema_db/device/models/device.dart';
 
 import '../../../ema_db/test_data/device.dart';
 

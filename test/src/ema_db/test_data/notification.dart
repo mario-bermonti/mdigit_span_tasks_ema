@@ -1,4 +1,4 @@
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/notifications/models/notification.dart';
+import 'package:mdigits/src/core/ema_db/notifications/models/notification.dart';
 
 final Notification testNotification = Notification(
   participantId: 'testParticipantId',

@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_service.dart';
-import 'package:mdigit_span_tasks_ema/src/core/notifications/models/notification.dart';
-import 'package:mdigit_span_tasks_ema/src/core/notifications/remote_notifications.dart';
+import 'package:mdigits/src/core/navigator_service/navigator_service.dart';
+import 'package:mdigits/src/core/notifications/models/notification.dart';
+import 'package:mdigits/src/core/notifications/remote_notifications.dart';
 import 'package:uuid/uuid.dart';
 
 import 'local_notifications.dart';

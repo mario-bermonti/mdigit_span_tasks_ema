@@ -1,7 +1,6 @@
-
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/informed_consent/consent_controller.dart';
+import 'package:mdigits/src/informed_consent/consent_controller.dart';
 import 'package:research_package/research_package.dart';
 
 class ConsentScreen extends StatelessWidget {

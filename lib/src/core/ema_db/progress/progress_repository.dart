@@ -1,6 +1,6 @@
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/local_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/remote_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
+import 'package:mdigits/src/core/ema_db/datasources/local_datasource.dart';
+import 'package:mdigits/src/core/ema_db/datasources/remote_datasource.dart';
+import 'package:mdigits/src/core/ema_db/progress/models/study_progress_step.dart';
 
 /// Provides a simple interface for managing participant's progress in the study.
 class StudyProgressRepository {

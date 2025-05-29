@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/auth/participant.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/view/widgets/notifications_permission_message.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/view/widgets/permission_buttons_bar.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/view_model/notification_permission_view_model.dart';
+import 'package:mdigits/src/auth/participant.dart';
+import 'package:mdigits/src/notifications/view/widgets/notifications_permission_message.dart';
+import 'package:mdigits/src/notifications/view/widgets/permission_buttons_bar.dart';
+import 'package:mdigits/src/notifications/view_model/notification_permission_view_model.dart';
 
 class NotificationsPermissionScreen extends StatelessWidget {
   late final NotificationPermissionViewModel _viewModel;

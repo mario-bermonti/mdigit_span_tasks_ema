@@ -1,5 +1,5 @@
-name: mdigit_span_tasks_ema
-description: "mDigitSpanTasksEMA: A mobile application for measuring verbal working memory in real-time."
+name: mdigits
+description: "mDigits: A mobile application for studying verbal working memory in real-time."
 publish_to: "none"
 
 version: 0.1.0+8

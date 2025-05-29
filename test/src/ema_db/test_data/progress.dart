@@ -1,5 +1,5 @@
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/study_progress_step.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
+import 'package:mdigits/src/core/ema_db/progress/models/study_progress_step.dart';
+import 'package:mdigits/src/core/ema_db/progress/models/status.dart';
 
 final testProgressStep = StudyProgressStep(
   participantId: '101',

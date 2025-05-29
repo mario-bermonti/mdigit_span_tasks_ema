@@ -1,6 +1,6 @@
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/local_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/datasources/remote_datasource.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/participant/models/participant.dart';
+import 'package:mdigits/src/core/ema_db/datasources/local_datasource.dart';
+import 'package:mdigits/src/core/ema_db/datasources/remote_datasource.dart';
+import 'package:mdigits/src/core/ema_db/participant/models/participant.dart';
 
 /// Provides a simple interface for managing [Participant] metadata.
 class ParticipantRepository {

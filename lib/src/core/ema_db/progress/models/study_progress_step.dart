@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/models/ema_model.dart';
-import 'package:mdigit_span_tasks_ema/src/core/ema_db/progress/models/status.dart';
+import 'package:mdigits/src/core/ema_db/models/ema_model.dart';
+import 'package:mdigits/src/core/ema_db/progress/models/status.dart';
 
 part 'study_progress_step.freezed.dart';
 part 'study_progress_step.g.dart';

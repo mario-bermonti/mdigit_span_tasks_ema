@@ -1,7 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/core/notifications/notifications_manager.dart';
-import 'package:mdigit_span_tasks_ema/src/notifications/data/notifications_repository_service.dart';
+import 'package:mdigits/src/core/notifications/notifications_manager.dart';
+import 'package:mdigits/src/notifications/data/notifications_repository_service.dart';
 
 /// Provides an interface to manage/handle notifications.
 ///

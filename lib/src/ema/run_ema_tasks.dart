@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/core/navigator_service/navigator_service.dart';
-import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/task_runners/run_dsb.dart';
+import 'package:mdigits/src/core/navigator_service/navigator_service.dart';
+import 'package:mdigits/src/digit_span_tasks/task_runners/run_dsb.dart';
 
 import '../digit_span_tasks/config/config.dart';
 import '../digit_span_tasks/task_runners/run_dsf.dart';

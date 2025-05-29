@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/routes.dart';
+import 'package:mdigits/src/routes.dart';
 
 import 'intl/internationalization.dart';
 

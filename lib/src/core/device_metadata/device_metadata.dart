@@ -1,8 +1,7 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mdigit_span_tasks_ema/src/core/device_metadata/device_os.dart';
-import 'package:mdigit_span_tasks_ema/src/core/device_metadata/get_os.dart'
-    as get_os;
+import 'package:mdigits/src/core/device_metadata/device_os.dart';
+import 'package:mdigits/src/core/device_metadata/get_os.dart' as get_os;
 
 /// Utility object that provides metadata about the user's device.
 ///
