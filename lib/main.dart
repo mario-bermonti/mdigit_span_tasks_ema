@@ -56,7 +56,7 @@ Future<void> main() async {
 
       participantService.save(participant: emaParticipant);
     }
-    final PedometerService pedometerService = Get.put(PedometerService());
+    final StepCounterService pedometerService = Get.put(StepCounterService());
     await pedometerService.init();
   }
 

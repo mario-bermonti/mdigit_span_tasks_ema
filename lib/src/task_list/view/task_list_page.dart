@@ -7,7 +7,7 @@ import 'task_buttons.dart';
 
 class TaskListPage extends StatelessWidget {
   TaskListPage({super.key});
-  final PedometerService pedometer = Get.find();
+  final StepCounterService pedometer = Get.find();
 
   @override
   Widget build(BuildContext context) {
