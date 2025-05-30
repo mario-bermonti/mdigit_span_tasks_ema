@@ -6,6 +6,29 @@ class StepCounterDataSource {
   late Stream<StepCount> _stepCountStream;
   late Stream<PedestrianStatus> _pedestrianStatusStream;
 
+  /// Will be called every time a new step count is available.
+  final void Function(StepCount)? onStepCount;
+
+  /// Will be called every time a pedestrian status is available.
+  final void Function(PedestrianStatus)? onPedestrianStatus;
+
+  /// Will be called when an error occurs collecting data.
+  ///
+  /// Used for both step count and pedestrian status streams.
+  final void Function(dynamic object, dynamic stackTrace)? onError;
+
+  /// Will be called when the streams are done.
+  ///
+  /// Used for both step count and pedestrian status streams.
+  final void Function()? onDone;
+
+  StepCounterDataSource({
+    this.onStepCount,
+    this.onPedestrianStatus,
+    this.onError,
+    this.onDone,
+  });
+
   /// Streams the step count data in real time.
   Stream<StepCount> get stepCountStream => _stepCountStream;
 
@@ -16,7 +39,22 @@ class StepCounterDataSource {
   Future<void> init() async {
     await _askPermission();
     _stepCountStream = Pedometer.stepCountStream;
+    _stepCountStream.listen((event) {
+      onStepCount?.call(event);
+    }, onError: (object, stackTrace) {
+      onError?.call(object, stackTrace);
+    }, onDone: () {
+      onDone?.call();
+    });
+
     _pedestrianStatusStream = Pedometer.pedestrianStatusStream;
+    _pedestrianStatusStream.listen((event) {
+      onPedestrianStatus?.call(event);
+    }, onError: (object, stackTrace) {
+      onError?.call(object, stackTrace);
+    }, onDone: () {
+      onDone?.call();
+    });
   }
 
   /// Asks the user for permission to access activity recognition, if it
