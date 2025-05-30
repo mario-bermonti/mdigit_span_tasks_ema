@@ -10,7 +10,7 @@ import 'package:mdigits/src/core/ema_db/participant/models/participant.dart'
 import 'package:mdigits/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigits/src/core/ema_db/progress/models/status.dart';
 import 'package:mdigits/src/core/navigator_service/navigator_service.dart';
-import 'package:mdigits/src/core/sensing/pedometer.dart/pedometer_service.dart';
+import 'package:mdigits/src/core/sensing/step_counter/step_counter_service.dart';
 import 'package:mdigits/src/digit_span_tasks/config/config.dart';
 import 'package:mdigits/src/core/participant/participant_service.dart';
 import 'package:mdigits/src/notifications/data/notifications_manager_service.dart';

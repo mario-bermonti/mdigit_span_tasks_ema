@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mdigits/src/app_bar/app_bar.dart';
-import 'package:mdigits/src/core/sensing/pedometer.dart/pedometer_service.dart';
+import 'package:mdigits/src/core/sensing/step_counter/step_counter_service.dart';
 import 'package:pedometer/pedometer.dart';
 import 'task_buttons.dart';
 
