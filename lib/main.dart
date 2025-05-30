@@ -56,7 +56,8 @@ Future<void> main() async {
 
       participantService.save(participant: emaParticipant);
     }
-    await PedometerService().init();
+    final PedometerService pedometerService = Get.put(PedometerService());
+    await pedometerService.init();
   }
 
   /// Update notifications permission to db if it has changed

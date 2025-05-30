@@ -1,8 +1,9 @@
+import 'package:get/get.dart';
 import 'package:pedometer/pedometer.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 /// Pedometer service that provides step count data in real time.
-class PedometerService {
+class PedometerService extends GetxService {
   late Stream<StepCount> _stepCountStream;
   late Stream<PedestrianStatus> _pedestrianStatusStream;
 
