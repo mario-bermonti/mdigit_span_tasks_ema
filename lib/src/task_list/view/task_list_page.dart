@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mdigits/src/app_bar/app_bar.dart';
 import 'package:mdigits/src/core/sensing/pedometer.dart/pedometer_service.dart';
+import 'package:pedometer/pedometer.dart';
 import 'task_buttons.dart';
 
 class TaskListPage extends StatelessWidget {
@@ -19,18 +20,22 @@ class TaskListPage extends StatelessWidget {
             const DSFButton(),
             const SizedBox(height: 10),
             const DSBButton(),
-            StreamBuilder(
+            StreamBuilder<StepCount>(
               stream: pedometer.stepCountStream,
-              initialData: 'initial Data',
               builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData) {
+                if (snapshot.hasError) {
+                  return Text(
+                    'Steps: Some issue occurred!: ${snapshot.error}',
+                    style: const TextStyle(fontSize: 20),
+                  );
+                } else if (snapshot.hasData) {
                   return Text(
                     'Steps: ${snapshot.data}',
                     style: const TextStyle(fontSize: 20),
                   );
                 } else {
                   return const Text(
-                    'Some issue occurred!',
+                    'Steps: ?',
                     style: TextStyle(fontSize: 20),
                   );
                 }
@@ -38,16 +43,20 @@ class TaskListPage extends StatelessWidget {
             ),
             StreamBuilder(
               stream: pedometer.pedestrianStatusStream,
-              initialData: 'initial Data',
               builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData) {
+                if (snapshot.hasError) {
                   return Text(
-                    'Pedestrian Status: ${snapshot.data}',
+                    'Pedestrian status: Some issue occurred!: ${snapshot.error}',
+                    style: const TextStyle(fontSize: 20),
+                  );
+                } else if (snapshot.hasData) {
+                  return Text(
+                    'Pedestrian: ${snapshot.data}',
                     style: const TextStyle(fontSize: 20),
                   );
                 } else {
                   return const Text(
-                    'Some issue occurred!',
+                    'Pedestrian status: ?',
                     style: TextStyle(fontSize: 20),
                   );
                 }
