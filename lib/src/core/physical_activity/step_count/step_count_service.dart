@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mdigits/src/core/physical_activity/step_count/pedestrian_status_repository.dart';
 import 'package:mdigits/src/core/physical_activity/step_count/step_count_repository.dart';
 import 'package:mdigits/src/core/physical_activity/step_count/step_count_datasource.dart';
 import 'package:pedometer/pedometer.dart';
@@ -19,8 +20,14 @@ class StepCountService extends GetxService {
   static Future<StepCountService> init({required String participantId}) async {
     final StepCountRepository stepCountRepo =
         StepCountRepository.init(participantId: participantId);
-    final StepCountDataSource dataSource =
-        StepCountDataSource(onStepCount: stepCountRepo.save);
+
+    final PedestrianStatusRepository pedestrianStatusRepo =
+        PedestrianStatusRepository.init(participantId: participantId);
+
+    final StepCountDataSource dataSource = StepCountDataSource(
+      onStepCount: stepCountRepo.save,
+      onPedestrianStatus: pedestrianStatusRepo.save,
+    );
     await dataSource.init();
     return StepCountService(dataSource: dataSource);
   }
