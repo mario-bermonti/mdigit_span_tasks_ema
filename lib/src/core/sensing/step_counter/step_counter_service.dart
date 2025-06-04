@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mdigits/src/core/sensing/step_counter/step_count_repository.dart';
 import 'package:mdigits/src/core/sensing/step_counter/step_counter_datasource.dart';
 import 'package:pedometer/pedometer.dart';
 
@@ -15,8 +16,12 @@ class StepCounterService extends GetxService {
   Stream<PedestrianStatus> get pedestrianStatusStream =>
       _dataSource.pedestrianStatusStream;
 
-  static Future<StepCounterService> init() async {
-    final StepCounterDataSource dataSource = StepCounterDataSource();
+  static Future<StepCounterService> init(
+      {required String participantId}) async {
+    final StepCountRepository stepCountRepo =
+        StepCountRepository.init(participantId: participantId);
+    final StepCounterDataSource dataSource =
+        StepCounterDataSource(onStepCount: stepCountRepo.save);
     await dataSource.init();
     return StepCounterService(dataSource: dataSource);
   }

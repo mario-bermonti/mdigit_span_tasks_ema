@@ -107,7 +107,8 @@ class ConsentController extends GetxController {
 
     /// Step counter service
     await Get.putAsync<StepCounterService>(() async {
-      final StepCounterService stepCounter = await StepCounterService.init();
+      final StepCounterService stepCounter =
+          await StepCounterService.init(participantId: participant.id);
       return stepCounter;
     }, permanent: true);
   }
