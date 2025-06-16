@@ -7,6 +7,7 @@ import 'package:permission_handler/permission_handler.dart';
 class StepCountDataSource {
   late Stream<StepCount> _stepCountStream;
   late Stream<PedestrianStatus> _pedestrianStatusStream;
+  bool permissionGranted = false;
 
   /// Will be called every time a new step count is available.
   final void Function(StepCount)? onStepCount;
@@ -62,12 +63,14 @@ class StepCountDataSource {
   /// Asks the user for permission to access activity recognition on Android,
   /// if it has not been granted. It has no effect on iOS.
   Future<void> _askPermission() async {
-    if (!Platform.isAndroid) return;
-    final bool granted =
-        await Permission.activityRecognition.request().isGranted;
-    if (!granted) {
-      throw Exception(
-          "Activity recognition permission not granted: ${await Permission.activityRecognition.status}");
+    if (Platform.isAndroid) {
+      permissionGranted =
+          await Permission.activityRecognition.request().isGranted;
+    } else if (Platform.isIOS) {
+      permissionGranted = true; // permission is handled automatically by ios
+    } else {
+      throw UnsupportedError(
+          'Platform not supported: ${Platform.operatingSystem}');
     }
   }
 }
