@@ -56,14 +56,12 @@ class PermissionRepository {
 
   /// Saves permission to the db if the status has changed since the most recent.
   ///
-  /// It will do nothing if there is no permission in the db or if
-  /// the status has not changed.
-  Future<void> updateIfNecessary({required Permission permission}) async {
+  /// The permission is saved to the db if there is no permission in the db
+  /// because it is treated as having changed.
+  Future<void> saveIfChanged({required Permission permission}) async {
     final Permission? latestPermission =
         await getLatest(permissionId: permission.permissionId);
-    if (latestPermission == null) {
-      return;
-    } else if (latestPermission.status == permission.status) {
+    if (latestPermission?.status == permission.status) {
       return;
     }
     await save(permission: permission);

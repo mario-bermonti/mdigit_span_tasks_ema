@@ -97,13 +97,14 @@ void main() {
   });
   group('PermissionsRepository.updateIfNecessary', () {
     test(
-      "Given that there are no previous permissions in remote db, does nothing.",
+      "Given that there are no previous permissions in remote db, save new "
+      "permission to db.",
       () async {
-        await repo.updateIfNecessary(permission: testAcceptedPermission);
+        await repo.saveIfChanged(permission: testAcceptedPermission);
 
         final QuerySnapshot<Map<String, dynamic>> snapshot =
             await remoteDB.collection(testPathRemoteDB).get();
-        expect(snapshot.docs.isEmpty, true);
+        expect(snapshot.docs.length, 1);
       },
     );
     test(
@@ -114,7 +115,7 @@ void main() {
             .collection(testPathRemoteDB)
             .add(testAcceptedPermission.toJson());
 
-        await repo.updateIfNecessary(permission: testAcceptedPermission);
+        await repo.saveIfChanged(permission: testAcceptedPermission);
 
         final QuerySnapshot<Map<String, dynamic>> snapshot =
             await remoteDB.collection(testPathRemoteDB).get();
@@ -129,7 +130,7 @@ void main() {
             .collection(testPathRemoteDB)
             .add(testDeniedPermission.toJson());
 
-        await repo.updateIfNecessary(permission: testDeniedPermission);
+        await repo.saveIfChanged(permission: testDeniedPermission);
 
         final QuerySnapshot<Map<String, dynamic>> snapshot =
             await remoteDB.collection(testPathRemoteDB).get();
@@ -145,7 +146,7 @@ void main() {
             .collection(testPathRemoteDB)
             .add(testAcceptedPermission.toJson());
 
-        await repo.updateIfNecessary(permission: testDeniedPermission);
+        await repo.saveIfChanged(permission: testDeniedPermission);
 
         final QuerySnapshot<Map<String, dynamic>> snapshot =
             await remoteDB.collection(testPathRemoteDB).get();
@@ -156,11 +157,11 @@ void main() {
     test(
       "Given that there are no previous permissions in local db, does nothing.",
       () async {
-        await repo.updateIfNecessary(permission: testAcceptedPermission);
+        await repo.saveIfChanged(permission: testAcceptedPermission);
 
-        final Map<String, dynamic>? actualPermission =
+        final Map<String, dynamic> actualPermission =
             localDB.read(testPathLocalDB);
-        expect(actualPermission, null);
+        expect(Permission.fromJson(actualPermission), testAcceptedPermission);
       },
     );
     test(
@@ -169,7 +170,7 @@ void main() {
       () async {
         await localDB.write(testPathLocalDB, testAcceptedPermission.toJson());
 
-        await repo.updateIfNecessary(permission: testAcceptedPermission);
+        await repo.saveIfChanged(permission: testAcceptedPermission);
 
         final Map<String, dynamic> actualPermission =
             localDB.read(testPathLocalDB);
@@ -182,7 +183,7 @@ void main() {
       () async {
         await localDB.write(testPathLocalDB, testAcceptedPermission.toJson());
 
-        await repo.updateIfNecessary(permission: testDeniedPermission);
+        await repo.saveIfChanged(permission: testDeniedPermission);
 
         final Map<String, dynamic> actualPermission =
             localDB.read(testPathLocalDB);
