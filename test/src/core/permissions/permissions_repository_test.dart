@@ -155,7 +155,8 @@ void main() {
       },
     );
     test(
-      "Given that there are no previous permissions in local db, does nothing.",
+      "Given that there are no previous permissions in local db, save new "
+      "permission to db.",
       () async {
         await repo.saveIfChanged(permission: testAcceptedPermission);
 

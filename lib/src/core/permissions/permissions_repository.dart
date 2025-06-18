@@ -59,11 +59,14 @@ class PermissionRepository {
   /// The permission is saved to the db if there is no permission in the db
   /// because it is treated as having changed.
   Future<void> saveIfChanged({required Permission permission}) async {
-    final Permission? latestPermission =
-        await getLatest(permissionId: permission.permissionId);
-    if (latestPermission?.status == permission.status) {
-      return;
-    }
-    await save(permission: permission);
+    final String pathRemoteDB =
+        'permissions/$_participantId/${permission.permissionId}';
+    String pathLocalDB = '${permission.permissionId}Permission';
+
+    await _permissionRepository.saveIfChanged(
+      permission: permission,
+      pathRemoteDB: pathRemoteDB,
+      pathLocalDB: pathLocalDB,
+    );
   }
 }

@@ -25,6 +25,14 @@ final Permission testPermission3 = Permission(
   permissionDescription: 'Test permission description',
 );
 
+final Permission testDeniedPermission = Permission(
+  participantId: 'testParticipant',
+  permissionId: 'testLatestPermission',
+  dateTimeChanged: DateTime.now(),
+  status: Status.denied,
+  permissionDescription: 'Test permission description',
+);
+
 String testPathRemoteDB =
     'permissions/${testPermission.participantId}/${testPermission.permissionId}';
 

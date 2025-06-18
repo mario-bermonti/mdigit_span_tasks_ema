@@ -167,4 +167,130 @@ void main() {
       },
     );
   });
+  group('PermissionsRepository.updateIfNecessary', () {
+    test(
+      "Given that there are no previous permissions in remote db, save new "
+      "permission to db.",
+      () async {
+        await repository.saveIfChanged(
+          permission: testPermission,
+          pathRemoteDB: testPathRemoteDB,
+          pathLocalDB: testPathLocalDB,
+        );
+
+        final QuerySnapshot<Map<String, dynamic>> snapshot =
+            await remoteDB.collection(testPathRemoteDB).get();
+        expect(snapshot.docs.length, 1);
+      },
+    );
+    test(
+      "Given that the new and the permission in remote db are both accepted, "
+      "does nothing.",
+      () async {
+        await remoteDB
+            .collection(testPathRemoteDB)
+            .add(testPermission.toJson());
+
+        await repository.saveIfChanged(
+          permission: testPermission,
+          pathRemoteDB: testPathRemoteDB,
+          pathLocalDB: testPathLocalDB,
+        );
+
+        final QuerySnapshot<Map<String, dynamic>> snapshot =
+            await remoteDB.collection(testPathRemoteDB).get();
+        expect(snapshot.docs.length, 1);
+      },
+    );
+    test(
+      "Given that the new and the permission in remote db are both denied, "
+      "does nothing.",
+      () async {
+        await remoteDB
+            .collection(testPathRemoteDB)
+            .add(testDeniedPermission.toJson());
+
+        await repository.saveIfChanged(
+          permission: testDeniedPermission,
+          pathRemoteDB: testPathRemoteDB,
+          pathLocalDB: testPathLocalDB,
+        );
+
+        final QuerySnapshot<Map<String, dynamic>> snapshot =
+            await remoteDB.collection(testPathRemoteDB).get();
+
+        expect(snapshot.docs.length, 1);
+      },
+    );
+    test(
+      "Given that permissions have changed in remote db, "
+      "save the new permission object to db.",
+      () async {
+        await remoteDB
+            .collection(testPathRemoteDB)
+            .add(testPermission.toJson());
+
+        await repository.saveIfChanged(
+          permission: testDeniedPermission,
+          pathRemoteDB: testPathRemoteDB,
+          pathLocalDB: testPathLocalDB,
+        );
+
+        final QuerySnapshot<Map<String, dynamic>> snapshot =
+            await remoteDB.collection(testPathRemoteDB).get();
+
+        expect(snapshot.docs.length, 2);
+      },
+    );
+    test(
+      "Given that there are no previous permissions in local db, save new "
+      "permission to db.",
+      () async {
+        await repository.saveIfChanged(
+          permission: testPermission,
+          pathRemoteDB: testPathRemoteDB,
+          pathLocalDB: testPathLocalDB,
+        );
+
+        final Map<String, dynamic> actualPermission =
+            localDB.read(testPathLocalDB);
+        expect(Permission.fromJson(actualPermission), testPermission);
+      },
+    );
+    test(
+      "Given that permissions have not changed in local db, "
+      "does nothing and keeps on being only one permission in db.",
+      () async {
+        await localDB.write(testPathLocalDB, testPermission.toJson());
+
+        await repository.saveIfChanged(
+          permission: testPermission2,
+          pathRemoteDB: testPathRemoteDB,
+          pathLocalDB: testPathLocalDB,
+        );
+
+        final Map<String, dynamic> actualPermission =
+            localDB.read(testPathLocalDB);
+        expect(Permission.fromJson(actualPermission), testPermission);
+      },
+    );
+    test(
+      "Given that permissions have changed in local db, "
+      "save the new permission object to db.",
+      () async {
+        await localDB.write(testPathLocalDB, testPermission.toJson());
+
+        await repository.saveIfChanged(
+          permission: testDeniedPermission,
+          pathRemoteDB: testPathRemoteDB,
+          pathLocalDB: testPathLocalDB,
+        );
+
+        final Map<String, dynamic> actualPermission =
+            localDB.read(testPathLocalDB);
+
+        expect(Permission.fromJson(actualPermission), isNot(testPermission));
+      },
+    );
+  });
 }
