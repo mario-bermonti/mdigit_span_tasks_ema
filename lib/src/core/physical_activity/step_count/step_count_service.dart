@@ -26,9 +26,9 @@ class StepCountService extends GetxService {
         PedestrianStatusRepository.init(participantId: participantId);
 
     final StepCountDataSource dataSource = StepCountDataSource(
-      onStepCount: stepCountRepo.save,
-      onPedestrianStatus: pedestrianStatusRepo.save,
-    );
+        onStepCount: stepCountRepo.save,
+        onPedestrianStatus: pedestrianStatusRepo.save,
+        onError: _onError);
     await dataSource.init();
 
     StepCountPermissionsRepo.init(
@@ -40,4 +40,9 @@ class StepCountService extends GetxService {
       dataSource: dataSource,
     );
   }
+
+  /// Handles errors thrown by the data source.
+  ///
+  /// We are currently not handling the errors because we just want to stop collecting the data if something goes wrong without crashing the app.
+  static void _onError(dynamic object, dynamic stackTrace) {}
 }
