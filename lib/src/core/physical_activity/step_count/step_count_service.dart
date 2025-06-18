@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:mdigits/src/core/physical_activity/step_count/pedestrian_status_repository.dart';
+import 'package:mdigits/src/core/physical_activity/step_count/step_count_permissions_repo.dart';
 import 'package:mdigits/src/core/physical_activity/step_count/step_count_repository.dart';
 import 'package:mdigits/src/core/physical_activity/step_count/step_count_datasource.dart';
 import 'package:pedometer/pedometer.dart';
@@ -29,6 +30,14 @@ class StepCountService extends GetxService {
       onPedestrianStatus: pedestrianStatusRepo.save,
     );
     await dataSource.init();
-    return StepCountService(dataSource: dataSource);
+
+    StepCountPermissionsRepo.init(
+      dataSource: dataSource,
+      participantId: participantId,
+    ).savePermissionsToDB();
+
+    return StepCountService(
+      dataSource: dataSource,
+    );
   }
 }
