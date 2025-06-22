@@ -4,7 +4,7 @@ import 'package:pedometer/pedometer.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 /// Provides data on step count and pedestrian status.
-class StepCountDataSource {
+class PedometerDataSource {
   late Stream<StepCount> _stepCountStream;
   late Stream<PedestrianStatus> _pedestrianStatusStream;
   bool permissionGranted = false;
@@ -25,7 +25,7 @@ class StepCountDataSource {
   /// Used for both step count and pedestrian status streams.
   final void Function()? onDone;
 
-  StepCountDataSource({
+  PedometerDataSource({
     this.onStepCount,
     this.onPedestrianStatus,
     this.onError,
