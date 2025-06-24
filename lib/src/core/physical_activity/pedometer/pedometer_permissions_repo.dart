@@ -24,6 +24,10 @@ class PedometerPermissionsRepo {
         _permissionRepo =
             PermissionRepository.init(participantId: participantId);
 
+  /// Saves pedometer data to the db if it has changed since last time saved.
+
+  /// The permission is saved to the db if there is no permission in the db
+  /// because it is treated as having changed.
   Future<void> savePermissionsToDB() async {
     final bool granted = _datasource.permissionGranted;
 
