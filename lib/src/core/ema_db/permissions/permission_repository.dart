@@ -78,4 +78,28 @@ class PermissionRepository {
         permission1.dateTimeChanged.compareTo(permission2.dateTimeChanged));
     return permissions.last;
   }
+
+  /// Saves permission to the db if the status has changed since the most recent.
+  ///
+  /// The permission is saved to the db if there is no permission in the db
+  /// because it is treated as having changed.
+  Future<void> saveIfChanged({
+    required Permission permission,
+    required String pathRemoteDB,
+    required String pathLocalDB,
+  }) async {
+    final Permission? latestPermission = await getLatest(
+      pathRemoteDB: pathRemoteDB,
+      pathLocalDB: pathLocalDB,
+    );
+
+    if (latestPermission?.status == permission.status) {
+      return;
+    }
+    await save(
+      permission: permission,
+      pathRemoteDB: pathRemoteDB,
+      pathLocalDB: pathLocalDB,
+    );
+  }
 }

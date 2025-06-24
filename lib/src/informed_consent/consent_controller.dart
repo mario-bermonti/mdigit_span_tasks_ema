@@ -8,6 +8,7 @@ import 'package:mdigits/src/core/navigator_service/navigator_service.dart';
 import 'package:mdigits/src/core/participant/app_service.dart';
 import 'package:mdigits/src/core/participant/location_services.dart';
 import 'package:mdigits/src/core/participant/participant_service.dart';
+import 'package:mdigits/src/core/physical_activity/pedometer/pedometer_service.dart';
 import 'package:mdigits/src/device/device_service.dart';
 import 'package:mdigits/src/notifications/data/notifications_manager_service.dart';
 import 'package:mdigits/src/notifications/data/notifications_permission_repository_service.dart';
@@ -103,6 +104,13 @@ class ConsentController extends GetxController {
     final DeviceService deviceService =
         DeviceService.init(participantId: participant.id);
     deviceService.saveData();
+
+    /// Step count service
+    await Get.putAsync<PedometerService>(() async {
+      final PedometerService pedometerService =
+          await PedometerService.init(participantId: participant.id);
+      return pedometerService;
+    }, permanent: true);
   }
 
   Future<void> nextScreen() async {
