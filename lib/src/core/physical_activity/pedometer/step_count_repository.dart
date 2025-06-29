@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mdigits/src/core/ema_db/datasources/firebase_datasource.dart';
-import 'package:mdigits/src/core/ema_db/step_count/models/step_count_model.dart';
-import 'package:mdigits/src/core/ema_db/step_count/step_count_repository.dart'
+import 'package:mdigits/src/core/ema_db/continuous_sensor_data/step_count/models/step_count_model.dart';
+import 'package:mdigits/src/core/ema_db/continuous_sensor_data/step_count/step_count_repository.dart'
     as ema_db;
 import 'package:pedometer/pedometer.dart';
 

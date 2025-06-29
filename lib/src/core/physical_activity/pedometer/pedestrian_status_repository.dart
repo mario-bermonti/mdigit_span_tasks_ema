@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mdigits/src/core/ema_db/datasources/firebase_datasource.dart';
-import 'package:mdigits/src/core/ema_db/pedestrian_status/models/pedestrian_status.dart'
+import 'package:mdigits/src/core/ema_db/continuous_sensor_data/pedestrian_status/models/pedestrian_status.dart'
     as ema_db;
-import 'package:mdigits/src/core/ema_db/pedestrian_status/models/pedestrian_status_model.dart';
-import 'package:mdigits/src/core/ema_db/pedestrian_status/pedestrian_status_repository.dart'
+import 'package:mdigits/src/core/ema_db/continuous_sensor_data/pedestrian_status/models/pedestrian_status_model.dart';
+import 'package:mdigits/src/core/ema_db/continuous_sensor_data/pedestrian_status/pedestrian_status_repository.dart'
     as ema_db;
 import 'package:pedometer/pedometer.dart';
 
