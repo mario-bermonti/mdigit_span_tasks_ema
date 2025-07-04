@@ -1,40 +1,43 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mdigits/src/core/ema_db/continuous_sensor_data/continuous_sensor/continuous_sensor_repository.dart';
+import 'package:mdigits/src/core/ema_db/continuous_sensor_data/continuous_sensor/models/continuous_sensor_model.dart';
 import 'package:mdigits/src/core/ema_db/datasources/firebase_datasource.dart';
 import 'package:mdigits/src/core/ema_db/continuous_sensor_data/pedestrian_status/models/pedestrian_status.dart'
-    as ema_db;
-import 'package:mdigits/src/core/ema_db/continuous_sensor_data/pedestrian_status/models/pedestrian_status_model.dart';
-import 'package:mdigits/src/core/ema_db/continuous_sensor_data/pedestrian_status/pedestrian_status_repository.dart'
     as ema_db;
 import 'package:pedometer/pedometer.dart';
 
 class PedestrianStatusRepository {
   final String _participantId;
-  final ema_db.PedestrianStatusRepository _repo;
+  final ContinuousSensorRepository _repo;
 
   PedestrianStatusRepository({
     required String participantId,
-    required ema_db.PedestrianStatusRepository repo,
+    required ContinuousSensorRepository repo,
   })  : _participantId = participantId,
         _repo = repo;
 
   PedestrianStatusRepository.init({required String participantId})
       : _participantId = participantId,
-        _repo = ema_db.PedestrianStatusRepository(
+        _repo = ContinuousSensorRepository(
           remoteDataSource: FirebaseDataSource(db: FirebaseFirestore.instance),
         );
 
   /// Saves [pedestrianStatus] to the remote database.
+  ///
+  /// [pedestrianStatus] is produced by the [pedometer] plugin, so we just
+  /// need to process it.
   Future<void> save(PedestrianStatus pedestrianStatus) async {
     final String pathRemoteDB =
         'physical_activity/$_participantId/pedestrian_status';
-    final PedestrianStatusModel pedestrianStatusModel = PedestrianStatusModel(
+
+    final ContinuousSensorModel continuousSensorData = ContinuousSensorModel(
       participantId: _participantId,
-      status: pedometerToEmaDBStatus(pedestrianStatus.status),
+      value: pedometerToEmaDBStatus(pedestrianStatus.status).name,
       timestamp: pedestrianStatus.timeStamp,
     );
 
     await _repo.save(
-      pedestrianStatus: pedestrianStatusModel,
+      continuousSensorData: continuousSensorData,
       pathRemoteDB: pathRemoteDB,
     );
   }
