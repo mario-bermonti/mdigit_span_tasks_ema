@@ -26,10 +26,14 @@ class PedometerService extends GetxService {
         PedestrianStatusRepository.init(participantId: participantId);
 
     final PedometerDataSource dataSource = PedometerDataSource(
-        onStepCount: stepCountRepo.save,
-        onPedestrianStatus: pedestrianStatusRepo.save,
+        onStepCount: stepCountRepo.cacheData,
+        onPedestrianStatus: pedestrianStatusRepo.cacheData,
         onError: _onError);
     await dataSource.init();
+
+    const Duration interval = Duration(minutes: 5);
+    stepCountRepo.scheduleSavingCachedData(interval: interval);
+    pedestrianStatusRepo.scheduleSavingCachedData(interval: interval);
 
     PedometerPermissionsRepo.init(
       dataSource: dataSource,

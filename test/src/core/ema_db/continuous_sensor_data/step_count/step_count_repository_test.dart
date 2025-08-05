@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mdigits/src/core/ema_db/datasources/firebase_datasource.dart';
-import 'package:mdigits/src/core/ema_db/step_count/models/step_count_model.dart';
-import 'package:mdigits/src/core/ema_db/step_count/step_count_repository.dart';
+import 'package:mdigits/src/core/ema_db/continuous_sensor_data/step_count/models/step_count_model.dart';
+import 'package:mdigits/src/core/ema_db/continuous_sensor_data/step_count/step_count_repository.dart';
 
 import 'step_count_model_test_cases.dart';
 

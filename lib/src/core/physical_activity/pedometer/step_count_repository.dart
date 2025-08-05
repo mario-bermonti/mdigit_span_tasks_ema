@@ -1,38 +1,59 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mdigits/src/core/ema_db/continuous_sensor_data/continuous_sensor/continuous_sensor_repository.dart';
+import 'package:mdigits/src/core/ema_db/continuous_sensor_data/continuous_sensor/models/continuous_sensor_model.dart';
 import 'package:mdigits/src/core/ema_db/datasources/firebase_datasource.dart';
-import 'package:mdigits/src/core/ema_db/step_count/models/step_count_model.dart';
-import 'package:mdigits/src/core/ema_db/step_count/step_count_repository.dart'
-    as ema_db;
 import 'package:pedometer/pedometer.dart';
 
 class StepCountRepository {
   final String _participantId;
-  final ema_db.StepCountRepository _repo;
+  final ContinuousSensorRepository _repo;
 
   StepCountRepository({
     required String participantId,
-    required ema_db.StepCountRepository repo,
+    required ContinuousSensorRepository repo,
   })  : _participantId = participantId,
         _repo = repo;
 
   StepCountRepository.init({required String participantId})
       : _participantId = participantId,
-        _repo = ema_db.StepCountRepository(
+        _repo = ContinuousSensorRepository(
           remoteDataSource: FirebaseDataSource(db: FirebaseFirestore.instance),
         );
 
   /// Saves [stepCount] to the remote database.
+  ///
+  /// [stepCount] is produced by the [pedometer] plugin, so we just
+  /// need to process it.
   Future<void> save(StepCount stepCount) async {
     final String pathRemoteDB = 'physical_activity/$_participantId/step_count';
 
-    final StepCountModel stepCountModel = StepCountModel(
+    final ContinuousSensorModel continuousSensorData = ContinuousSensorModel(
       participantId: _participantId,
-      count: stepCount.steps,
+      value: stepCount.steps.toString(),
       timestamp: stepCount.timeStamp,
     );
 
     await _repo.save(
-      stepCount: stepCountModel,
+      continuousSensorData: continuousSensorData,
+      pathRemoteDB: pathRemoteDB,
+    );
+  }
+
+  void cacheData(StepCount stepCount) {
+    final ContinuousSensorModel data = ContinuousSensorModel(
+      participantId: _participantId,
+      value: stepCount.steps.toString(),
+      timestamp: stepCount.timeStamp,
+    );
+    _repo.cacheData(continuousSensorData: data);
+  }
+
+  void scheduleSavingCachedData({
+    required Duration interval,
+  }) {
+    final String pathRemoteDB = 'physical_activity/$_participantId/step_count';
+    _repo.scheduleSavingCachedData(
+      interval: interval,
       pathRemoteDB: pathRemoteDB,
     );
   }

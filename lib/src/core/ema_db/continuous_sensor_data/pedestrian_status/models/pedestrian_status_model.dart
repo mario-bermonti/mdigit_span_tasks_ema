@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mdigits/src/core/ema_db/models/ema_model.dart';
-import 'package:mdigits/src/core/ema_db/pedestrian_status/models/pedestrian_status.dart';
+import 'package:mdigits/src/core/ema_db/continuous_sensor_data/pedestrian_status/models/pedestrian_status.dart';
 
 part 'pedestrian_status_model.freezed.dart';
 part 'pedestrian_status_model.g.dart';
