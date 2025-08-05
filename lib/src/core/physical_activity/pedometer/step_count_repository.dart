@@ -38,4 +38,23 @@ class StepCountRepository {
       pathRemoteDB: pathRemoteDB,
     );
   }
+
+  void cacheData(StepCount stepCount) {
+    final ContinuousSensorModel data = ContinuousSensorModel(
+      participantId: _participantId,
+      value: stepCount.steps.toString(),
+      timestamp: stepCount.timeStamp,
+    );
+    _repo.cacheData(continuousSensorData: data);
+  }
+
+  void scheduleSavingCachedData({
+    required Duration interval,
+  }) {
+    final String pathRemoteDB = 'physical_activity/$_participantId/step_count';
+    _repo.scheduleSavingCachedData(
+      interval: interval,
+      pathRemoteDB: pathRemoteDB,
+    );
+  }
 }
