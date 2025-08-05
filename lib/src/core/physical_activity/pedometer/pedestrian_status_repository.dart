@@ -54,4 +54,24 @@ class PedestrianStatusRepository {
         return ema_db.PedestrianStatus.unknown;
     }
   }
+
+  void cacheData(PedestrianStatus pedestrianStatus) {
+    final ContinuousSensorModel data = ContinuousSensorModel(
+      participantId: _participantId,
+      value: pedestrianStatus.status,
+      timestamp: pedestrianStatus.timeStamp,
+    );
+    _repo.cacheData(continuousSensorData: data);
+  }
+
+  void scheduleSavingCachedData({
+    required Duration interval,
+  }) {
+    final String pathRemoteDB =
+        'physical_activity/$_participantId/pedestrian_status';
+    _repo.scheduleSavingCachedData(
+      interval: interval,
+      pathRemoteDB: pathRemoteDB,
+    );
+  }
 }
