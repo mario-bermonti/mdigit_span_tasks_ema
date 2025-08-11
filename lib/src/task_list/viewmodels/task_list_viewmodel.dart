@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/config/config.dart';
-import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/task_runners/run_dsb.dart';
-import 'package:mdigit_span_tasks_ema/src/digit_span_tasks/task_runners/run_dsf.dart';
-import 'package:mdigit_span_tasks_ema/src/services/run_session.dart';
-import 'package:mdigit_span_tasks_ema/src/task_list/models/task_tile_model.dart';
+import 'package:mdigits/src/digit_span_tasks/config/config.dart';
+import 'package:mdigits/src/digit_span_tasks/task_runners/run_dsb.dart';
+import 'package:mdigits/src/digit_span_tasks/task_runners/run_dsf.dart';
+import 'package:mdigits/src/services/run_session.dart';
+import 'package:mdigits/src/task_list/models/task_tile_model.dart';
 
 class TaskListViewModel {
   List<TaskTileModel> taskTileModels = <TaskTileModel>[

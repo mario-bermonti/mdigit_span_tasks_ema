@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mdigit_span_tasks_ema/src/task_list/models/task_tile_model.dart';
+import 'package:mdigits/src/task_list/models/task_tile_model.dart';
 
 class TaskTile extends StatelessWidget {
   final TaskTileModel taskTileModel;
