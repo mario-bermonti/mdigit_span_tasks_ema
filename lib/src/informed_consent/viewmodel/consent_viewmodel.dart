@@ -15,9 +15,9 @@ import 'package:mdigits/src/notifications/data/notifications_permission_reposito
 import 'package:mdigits/src/study_progress/study_progress_service.dart';
 import 'package:research_package/research_package.dart';
 
-import 'consent_steps.dart';
+import '../model/consent_steps.dart';
 
-class ConsentController extends GetxController {
+class ConsentViewModel extends GetxController {
   final RPOrderedTask consentTask = RPOrderedTask(
     identifier: "consentTaskID",
     steps: [
