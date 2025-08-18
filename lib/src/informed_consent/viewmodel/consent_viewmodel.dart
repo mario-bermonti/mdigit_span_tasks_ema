@@ -1,23 +1,19 @@
 import 'package:get/get.dart';
 import 'package:mdigits/src/auth/participant.dart';
-import 'package:mdigits/src/core/ema_db/participant/models/participant.dart'
-    as ema_participant;
 import 'package:mdigits/src/core/ema_db/progress/models/study_progress_step.dart';
 import 'package:mdigits/src/core/ema_db/progress/models/status.dart';
 import 'package:mdigits/src/core/navigator_service/navigator_service.dart';
-import 'package:mdigits/src/core/participant/app_service.dart';
-import 'package:mdigits/src/core/participant/location_services.dart';
-import 'package:mdigits/src/core/participant/participant_service.dart';
-import 'package:mdigits/src/core/physical_activity/pedometer/pedometer_service.dart';
-import 'package:mdigits/src/device/device_service.dart';
-import 'package:mdigits/src/notifications/data/notifications_manager_service.dart';
-import 'package:mdigits/src/notifications/data/notifications_permission_repository_service.dart';
+import 'package:mdigits/src/core/setup/deps_init_service.dart';
+import 'package:mdigits/src/core/setup/post_consent_setup_service.dart';
 import 'package:mdigits/src/study_progress/study_progress_service.dart';
 import 'package:research_package/research_package.dart';
 
 import '../model/consent_steps.dart';
 
 class ConsentViewModel extends GetxController {
+  final Participant _participant = Get.find<Participant>();
+  late final DateTime _completionTime;
+
   final RPOrderedTask consentTask = RPOrderedTask(
     identifier: "consentTaskID",
     steps: [
@@ -34,83 +30,28 @@ class ConsentViewModel extends GetxController {
   /// are only enabled after participants has consented to being part of the
   /// study.
   Future<void> completeConsent() async {
+    _completionTime = DateTime.now();
+    await saveProgress();
+    await PostConsentSetupService(completionTime: _completionTime)
+        .runAllSetup();
+    await DependencyInitService().initAllServices();
+  }
+
+  Future<void> saveProgress() async {
     final StudyProgressService studyProgressService =
         StudyProgressService.init();
-
-    final Participant participant = Get.find<Participant>();
-    final DateTime completionTime = DateTime.now();
     final StudyProgressStep consentStep = StudyProgressStep(
-      participantId: participant.id,
+      participantId: _participant.id,
       stepId: "consentStep",
-      completionDateTime: completionTime,
+      completionDateTime: _completionTime,
       stepDescription: "Consent form to participante in the study",
-      lastUpdatedDateTime: completionTime,
+      lastUpdatedDateTime: _completionTime,
       status: Status.completed,
     );
 
     await studyProgressService.save(
       progressStep: consentStep,
     );
-
-    /// Setup/init notifications
-    final NotificationsManagerService notificationsManagerService =
-        NotificationsManagerService.init(participantId: participant.id);
-    await notificationsManagerService.setupNotifications();
-    await notificationsManagerService.initNotifications();
-
-    final StudyProgressStep notificationStep = StudyProgressStep(
-      participantId: participant.id,
-      stepId: "notificationStep",
-      completionDateTime: completionTime,
-      stepDescription:
-          "Step where participants indicate whether they accept to receive notifications.",
-      lastUpdatedDateTime: completionTime,
-      status: Status.completed,
-    );
-    await studyProgressService.save(progressStep: notificationStep);
-
-    /// Save notifications permissions.
-    final NotificationsPermissionRepositoryService
-        notificationsPermissionService =
-        NotificationsPermissionRepositoryService.init(
-            participantId: participant.id);
-    await notificationsPermissionService.save(
-        areAccepted:
-            await notificationsManagerService.areNotificationsEnabled());
-
-    /// Collect localization info about participant.
-    final LocationService locationService = LocationService();
-    final AppService appService = await AppService.init();
-    ema_participant.Participant emaParticipant = ema_participant.Participant(
-      id: participant.id,
-      locale: locationService.locale,
-      timezone: locationService.timezone,
-      appVersion: appService.appVersion,
-      appBuildNumber: appService.appBuildNumber,
-    );
-
-    /// Collect remote notification tokens.
-    final String? token = await notificationsManagerService.getToken();
-    if (token != null) {
-      emaParticipant = emaParticipant.copyWith(
-        notificationTokens: [token],
-      );
-    }
-
-    final ParticipantService participantService = ParticipantService.init();
-    participantService.save(participant: emaParticipant);
-
-    /// Collect device metadata.
-    final DeviceService deviceService =
-        DeviceService.init(participantId: participant.id);
-    deviceService.saveData();
-
-    /// Step count service
-    await Get.putAsync<PedometerService>(() async {
-      final PedometerService pedometerService =
-          await PedometerService.init(participantId: participant.id);
-      return pedometerService;
-    }, permanent: true);
   }
 
   Future<void> nextScreen() async {
