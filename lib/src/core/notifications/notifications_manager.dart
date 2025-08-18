@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
-import 'package:mdigits/src/core/navigator_service/navigator_service.dart';
 import 'package:mdigits/src/core/notifications/models/notification.dart';
 import 'package:mdigits/src/core/notifications/remote_notifications.dart';
 import 'package:uuid/uuid.dart';
@@ -108,8 +107,6 @@ class NotificationsManager extends GetxService {
     if (handleData != null) {
       handleData!(notification: notification);
     }
-    final NavigatorService navigatorService = Get.find();
-    final String nextScreen = await navigatorService.determineNextScreen();
-    Get.offAndToNamed(nextScreen);
+    Get.offAndToNamed('/emaScreen');
   }
 }
